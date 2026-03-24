@@ -10,6 +10,7 @@
 
 \newcommand{\ITEMS}{\begin{enumerate}[leftmargin=4em]}
 \newcommand{\ITEME}{\end{enumerate}}
+\newcommand{\no}{\noindent}
 
 
 \title{数学分析}
@@ -51,6 +52,9 @@
 % 同济版的映射与函数不加赘述，仅记录基本定义
 % 极限的定义与应用
 
+% ================================================================================== 
+% 									集 合 论
+% ================================================================================== 
 \chapter{集合论}
 
 \section{集合及其基本运算}
@@ -111,7 +115,7 @@
 	其中$(x,y)$称为一个序偶
 \ITEME
 
-\section{函数}
+\section{映射与函数}
 
 \subsection{映射}
 设$X$是两个集合$Y$，如果$X$的每一个元素$x$都按照某种规律$f$与$Y$的唯一元素相对应，我们称其为一个映射，通常用以下符号表示映射
@@ -122,7 +126,7 @@
 \subsubsection{单射}
 满足以下条件的映射称为单射
 \[
-	(f(x_1) = f(x_2)) \Rightarrow(x_1=x_2)
+	x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)
 \]
 \subsubsection{满射}
 满足以下条件的映射称为满射
@@ -173,42 +177,15 @@
 	\end{aligned}
 \]
 \subsubsection{幂集}
-称一个集合$A$的所有子集组成的集合称为集合$A$的幂集，记为
-\[
-	P(A)
-\]
-显然
+称一个集合$A$的所有子集组成的集合称为集合$A$的幂集，记为$P(A)$，显然
 \[
 	\lvert P(A) \rvert = 2^{\lvert A \rvert}
 \]
 
 \subsubsection{无最大基数定理}
 
-对于任何集合，都可以构建幂集使得幂集的势大于该集合的势，应用反证法，首先假设集合的幂集与其本身等势
-\[
-\lvert A\rvert = \lvert P(A)\rvert
-\]
-那么，代表我们可以在$A$与$P(A)$之间构建双射$f$
-\[
-	f:A\rightarrow P(A)
-\]
-定义一个$A$的子集合$B$，由不属于其本身经过映射$f$产生的像$f(x)$的元素组成，为%似乎这里的条件有点问题
-\[
-B = \{x\in A: x\notin f(x)\}
-\]
-如果$f(x)$是满射，使得存在一个元素$y\in A$使得
-\[
-f(y) = B
-\]
-那么考虑$y$与$B$的关系，发现无论如何都会矛盾
-\[
-\begin{aligned}
-	y\in B \iff y\notin B
-\end{aligned}
-\]
-
+对于任何集合，都可以构建幂集使得幂集的势大于该集合的势
 \subsection{公理化集合论*}
-% 拓展内容，介绍公理化集合论与第三次数学危机
 
 以下公理主要为描述集合的性质，并展示一些简单推论
 
@@ -271,6 +248,9 @@ f(y) = B
 	选择公理存在一些争议，例如承认此公理会引出分球怪论
 \ITEME
 
+% ================================================================================== 
+% 									实 数
+% ================================================================================== 
 \chapter{实数}
 
 \section{实数集公理系统与一般性质}
@@ -368,6 +348,13 @@ f(y) = B
 % 3
 \subsection{极限点引理（波尔查诺-魏尔斯塔拉斯原理）}
 
+\subsubsection{极限点}
+如果点 $p\in\mathbb{R}$ 的任何邻域都包含集合 $X\subset\mathbb{R}$ 的一个无穷子集，点 $p$ 就称为集合 $X$ 的集合点
+
+\subsubsection{波尔查诺-魏尔斯塔拉斯原理}
+任何无穷有界数集至少有一个极限点
+
+
 \section{可数集与不可数集}
 
 \subsection{可数集}
@@ -417,8 +404,12 @@ f(y) = B
 
 \subsubsection{连续统假设}
 
-连续统假设认为过渡的势不存在，即不存在介于可数集的势与连续统的势之间的势，那么把连续统的势记为$\aleph_1$，在1963年被柯恩证明此假设不可证
+\no {\bf 连续统假设} 不存在一个无穷集合，其基数严格介于自然数集的基数 $\aleph_0$ 与实数集的基数 $\aleph_1$（即连续统的基数）之间\\
+\no {\bf 广义连续统假设} 不存在一个无穷集合，其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1}, n=0, 1,2, \cdots $ 之间
 
+% ================================================================================== 
+% 									极 限 论
+% ================================================================================== 
 \chapter{极限论}
 
 \section{数列极限}
@@ -437,10 +428,9 @@ f(y) = B
 \]
 如果不存在这样的常数$a$，就说数列$\{x_n\}$没有极限，或者数列$\{x_n\}$是发散的
 
-%符号化
-%\[
-%\forall \varepsilon > 0, \exists N \in \mathbb{N}_+\ s.t.\ n>N \Rightarrow |x_n - A|<\varepsilon\
-%\]
+\[
+\forall \varepsilon > 0, \exists N \in \mathbb{N}_+\ s.t.\ n>N \Rightarrow |x_n - A|<\varepsilon
+\]
 
 \subsection{收敛数列的性质}
 
@@ -474,7 +464,7 @@ f(y) = B
 	|x_n-x_m| < \varepsilon
 \]
 % 体现数列逐渐稠密
-符号化
+我们称满足以上条件的数列为基本数列（柯西数列）
 \[
 \forall \varepsilon \in \mathbb{N}_+ ,\ \exists N,\ n,m>N \implies |x_n-x_m| < \varepsilon
 \]
@@ -482,6 +472,14 @@ f(y) = B
 \subsubsection{单调数列极限存在准则}
 
 \subsubsection{自然常数}
+
+\subsubsection{子列与数列的部分极限}
+
+\subsection{级数}
+
+\subsubsection{级数的柯西准则}
+
+
 
 \section{函数极限}
 
@@ -507,69 +505,20 @@ f(y) = B
 % 无穷极限
 % 极限趋近于无穷（极限不存在）
 
+
 \subsection{函数极限的性质}
 
-\subsection{两个重要极限}
+\subsection{极限的一般定义}
 
-\subsubsection{夹逼定理}
-
-如果数列$\{x_n\}$，$\{y_n\}$，$\{z_n\}$满足以下条件
-\begin{enumerate}
-	\item 从某项起，$\exists E n_0 \in \mathbb{N}_+$，当$n>n_0$时，有
-	\[
-		y_n \le x_n \le z_n
-	\]
-	\item $\lim\limits_{n \to \infty} y_n = a$， $\lim\limits_{n \to \infty} z_n = a$
-\end{enumerate}
-那么数列$\{x_n\}$存在，且$\lim\limits_{n\to \infty} x_n= a$
-
-%
-% 在此处添加证明
-%
-
-\bigskip
-
-推广至函数：
-
-如果
-
-\begin{enumerate}
-	\item 当$x\in\mathring{U}(x_0,r)\ (\mbox{或}|x|>M)$时，
-	\[
-	g(x) \le f(x) \le h(x)
-	\]
-	\item $\lim\limits_{x \to x_0 \atop (x \to \infty)} g(x) = A$， $\lim\limits_{x \to x_0 \atop (x \to \infty)} h(x) = A$
-\end{enumerate}
-那么$\lim\limits_{x \to x_0 \atop (x \to \infty)} f(x) = A$
-
-以上两个准则称为夹逼准则，我们可以使用此准则证明一个重要极限
-\[
-	\lim_{x \to 0} \frac{\sin x}{x}
-\]
-我们注意到
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}
-	\coordinate (B) at (45:6);
-	\coordinate (C) at (4.24264,0);
-	\coordinate (D) at (6,6);
-    \draw[thick] (0,0) -- (6,0) arc (0:90:6) -- cycle;
-    \fill[black] (6,0) circle (0pt) node[below] {$A$};
-    \fill[black] (0,0) circle (0pt) node[below] {$O$};
-    \draw[thick] (0,0) -- (D);
-    \fill[black] (4.24264,2.12) circle (0pt) node[left] {$\sin x$};
-    \fill[black] (4.24264,4.6) circle (0pt) node[above] {$B$};
-    \draw[thick] (B) -- (C) node[below] {};
-    \fill[black] (C) circle (0pt) node[below] {$C$};
-    \fill[black] (6,6) circle (0pt) node[right] {$D$};
-    \draw[thick] (D) -- (6,0) node[below] {};
-    \draw[thick] (B) -- (6,0) node[below] {};
-\end{tikzpicture}
-\end{figure}
+\subsection{函数极限的存在问题}
 
 \section{函数的连续性}
 
 \subsection{连续性的定义}
+
+\subsection{连续函数的性质}
+
+
 % 在连续性的定义上不必是空心邻域
 $f(x)$在点$x_0$点连续 
 \[
@@ -597,7 +546,9 @@ $f(x)$在点$x_0$点连续
 \subsection{零值定理}
 $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0$
 
-% 导数与微分
+% ================================================================================== 
+% 									微 分 学
+% ================================================================================== 
 \chapter{微分学}
 \section{导数与微分}
 \subsection{可微函数}
@@ -611,25 +562,39 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 
 \subsection{费马引理}
 
-\subsection{罗尔定理 Rolle}
+\subsubsection{局部极大值}
+
+
+
+\subsection{罗尔定理}
 
 假如函数\(f(x)\)在\([a,b]\)区间上连续，在\((a,b)\)区间上可微，且\(f(a)=f(b)\)，那么$\exists\, \xi\in(a,b)$使得$f'(\xi)=0$
 
-\subsection{拉格朗日定理 Lagrange}
+\subsection{拉格朗日定理}
 
-拉格朗日定理一定程度上是罗尔定理的一般化情况，假如函数\(f(x)\)在\([a,b]\)区间上连续，在\((a,b)\)区间上可微，那么$\exists\, \xi\in(a,b)$使得
+拉格朗日定理是罗尔定理的一般化情况，假如函数\(f(x)\)在\([a,b]\)区间上连续，在\((a,b)\)区间上可微，那么$\exists\, \xi\in(a,b)$使得
 \[
 	f'(\xi)=\frac{f(b)-f(a)}{b-a}
 \]
 
 \subsubsection{常函数检验法}
 
-\subsection{柯西定理 Cauchy}
+\subsection{柯西定理}
 
 \subsection{泰勒公式}
 
+% ================================================================================== 
+% 									积 分 学
+% ================================================================================== 
 \chapter{积分学}
+
+\section{原函数与不定积分}
+
+\section{积分的定义与可积函数集}
 
 
 % 文档结束
 \end{document}
+
+
+
