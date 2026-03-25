@@ -169,13 +169,6 @@
 \end{aligned}
 \]
 则称两个集合等势，记作$X\sim Y$，我们把集合$X$的势记作$\lvert X \rvert$或$\mathrm{card}\ X$，显然如果$X\sim Y$，那么$\lvert X \rvert = \lvert Y \rvert$
-\[
-	\begin{aligned}
-		&(\lvert X \rvert \le \lvert Y \rvert) \land (\lvert Y \rvert \le \lvert Z \rvert)\Rightarrow (\lvert X \rvert\le \lvert Z \rvert)\\
-		&(\lvert X \rvert \le \lvert Y \rvert) \land (\lvert Y \rvert \le \lvert X \rvert)\Rightarrow (\lvert X \rvert = \lvert Y \rvert)\\
-		&\forall X \forall Y(\lvert X \rvert \le \lvert Y \rvert) \lor (\lvert Y \rvert \le \lvert X \rvert)
-	\end{aligned}
-\]
 \subsubsection{幂集}
 称一个集合$A$的所有子集组成的集合称为集合$A$的幂集，记为$P(A)$，显然
 \[
@@ -262,10 +255,12 @@
 	\[
 		+:\mathbb{R}\times \mathbb{R}\rightarrow\mathbb{R}
 	\]
+	% 这一部分还不完善	<-------------------------- HERE
 	\item 乘法公理
 	\[
 		\cdot:\mathbb{R}\times \mathbb{R}\rightarrow\mathbb{R}
 	\]
+	% 这一部分还不完善	<-------------------------- HERE
 	\item 序公理
 	
 	对于$\mathbb{R}$的元素$x$，$y$，可以存在$x\le y$是否成立，这时以下条件成立
@@ -312,14 +307,16 @@
 实数集的任何有上界非空子集有唯一的上确界
 
 \section{实数类与计算}
-
+% 这一部分还不完善	<-------------------------- HERE
 \subsection{自然数集}
 
-\section{关于实数集完备性的一些基本引理}
 
+\subsubsection{邻域}
+包含点$x\in\mathbb{R}$的开区间称为该点的邻域
+
+\section{关于实数集完备性的一些基本引理}
 % 1
 \subsection{闭区间套引理（柯西-康托尔原理）}
-% 柯西使用过此引理，但并未证明，由康托尔完成证明
 \subsubsection{序列}
 
 我们将自然数为自变量的函数称为序列
@@ -507,6 +504,7 @@
 
 
 \subsection{函数极限的性质}
+% 这一部分还不完善	<-------------------------- HERE
 
 \subsection{极限的一般定义}
 
@@ -552,9 +550,8 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 \chapter{微分学}
 \section{导数与微分}
 \subsection{可微函数}
+% 这一部分还不完善	<-------------------------- HERE
 
-
-% dy的线性主部
 
 \section{基本微分法则}
 
@@ -562,7 +559,7 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 
 \subsection{费马引理}
 
-\subsubsection{局部极大值}
+\subsubsection{局部极值点}
 
 
 
@@ -570,7 +567,7 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 
 假如函数\(f(x)\)在\([a,b]\)区间上连续，在\((a,b)\)区间上可微，且\(f(a)=f(b)\)，那么$\exists\, \xi\in(a,b)$使得$f'(\xi)=0$
 
-\subsection{拉格朗日定理}
+\subsection{拉格朗日有限增量定理}
 
 拉格朗日定理是罗尔定理的一般化情况，假如函数\(f(x)\)在\([a,b]\)区间上连续，在\((a,b)\)区间上可微，那么$\exists\, \xi\in(a,b)$使得
 \[
@@ -578,10 +575,55 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 \]
 
 \subsubsection{常函数检验法}
+连续函数在闭区间$[a,b]$上为常数的充要条件是其导数在闭区间$[a,b]$上恒为零
 
-\subsection{柯西定理}
+\subsection{柯西有限增量定理}
+设$x=f(t)$和$y=g(t)$是在闭区间$[a,b]$上连续且在开区间$(a,b)$上可微的函数，则存在点$\tau\in(a,b)$使得
+\[
+	f'(\tau)(g(b)-g(a)) = g'(\tau)(x(b)-x(a))
+\]
 
 \subsection{泰勒公式}
+
+\subsubsection{泰勒多项式}
+在数学的历史上我们经常会有用简单函数描述复杂函数的情况，所以我们希望能够用简单的多项式函数来描述所有的函数，假如有如下函数可以写成多项式之和的形式
+\[
+	P_n(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_n x^n
+\]
+对于该多项式我们可以用函数来表示多项式的系数
+\[
+	\begin{aligned}
+		& P_n(0) = 0! c_0\\
+		P_n'(x) = 1! c_1 + 2 c_2 x + \cdots + n c_n x^{n-1}\qquad & P_n'(0) = 1! c_1\\
+		P_n''(x) = 2! c_2  + \cdots + n(n-1) c_n x^{n-2}\qquad & P_n''(0) = 2! c_2\\
+		\vdots \qquad\qquad\qquad & \qquad\vdots\\
+		P_n^{(n)}(x) = n! c_n\qquad & P_n^{(n)}(0) = n! c_n
+	\end{aligned}
+\]
+函数可以重新写为
+\[
+	P_n(x) = \frac{P_n(0)}{0!} + \frac{P_n'(0)}{1!} x + \frac{P_n''(0)}{2!} x^2 + \cdots + \frac{P_n^{(n)}(0)}{n!} x^n 
+\]
+因为此多项式仅能用于描述$x=0$的邻域，我们还希望在该多项式的基础上进行拓展用于描述更多情况，我们用同样的方法可以写出以下多项式
+\[
+	\begin{aligned}
+		P_n(x)=P_n(x_0;x) &= c_0 + c_1 (x - x_0) + c_2 (x - x_0)^2 + \cdots + c_n (x - x_0)^n\\
+		&=\frac{P_n(0)}{0!} + \frac{P_n'(0)}{1!} (x - x_0) + \frac{P_n''(0)}{2!} (x - x_0)^2 + \cdots + \frac{P_n^{(n)}(0)}{n!} (x - x_0)^n 
+	\end{aligned}
+\]
+如果给定了在$x_0$点具有所有前$n$阶导数的函数$f(x)$我们可以写出以下多项式
+\[
+	P_n(x_0;x) =\frac{f(0)}{0!} + \frac{f'(0)}{1!} (x - x_0) + \frac{f''(0)}{2!} (x - x_0)^2 + \cdots + \frac{f^{(n)}(0)}{n!} (x - x_0)^n 
+\]
+称之为函数$f(x)$的$n$阶泰勒多项式
+\subsubsection{余项}
+
+\section{微分与函数}
+
+\section{复数与初等函数}
+
+\section{微分的应用}
+
 
 % ================================================================================== 
 % 									积 分 学
@@ -590,7 +632,15 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 
 \section{原函数与不定积分}
 
-\section{积分的定义与可积函数集}
+\section{积分的定义}
+
+\section{积分的性质}
+
+\section{微积分}
+
+\section{积分的应用}
+
+\section{反常积分}
 
 
 % 文档结束
