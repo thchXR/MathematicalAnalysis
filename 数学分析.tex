@@ -7,10 +7,12 @@
 \usepackage[paper=a4paper, left=1.5cm, right=1.5cm, top=3cm, bottom=3cm]{geometry}
 \usepackage{enumitem}
 \usepackage{tikz}
+\usepackage{pgfplots}
 
 \newcommand{\ITEMS}{\begin{enumerate}[leftmargin=4em]}
 \newcommand{\ITEME}{\end{enumerate}}
 \newcommand{\no}{\noindent}
+\newcommand{\R}{\mathbb{R}}
 
 
 \title{数学分析}
@@ -252,30 +254,78 @@
 
 \ITEMS
 	\item 加法公理
+	
+	定义如下映射
 	\[
-		+:\mathbb{R}\times \mathbb{R}\rightarrow\mathbb{R}
+		+:\R\times \R\rightarrow\R
 	\]
-	% 这一部分还不完善	<-------------------------- HERE
+	
+	1.中性元素 $0$ 存在;，并且对任何的 $x\in \R$，
+	\[
+		x+0 = 0+x = x
+	\]
+	
+	2.对于任何元素 $x\in\R$，元素 $-x\in\R$ 一定存在，称为 $x$ 的相反元素，满足
+	\[
+		x+(-x)=(-x)+x=0
+	\]
+	
+	3.运算满足结合律，即对 $\R$ 的任何元素 $x,y,z$ 满足
+	\[
+		x+(y+z) = (x+y)+z
+	\]
+	
+	4.运算满足交换，即对 $\R$ 的任何元素 $x,y$ 满足
+	\[
+		x + y = y + x
+	\]
+	
+	如果在某集合 $G$ 上定义了满足前三条公理的运算，我们就说在 $G$ 上给定了群结构，即 $G$ 是群，如果成该运算为加法，就称这个群为加法群，如果除此之外还知道该运算满足交换律，即条件4成立，就称这个群为交换群或阿贝尔群
+	
 	\item 乘法公理
+	
+	定义如下映射
 	\[
-		\cdot:\mathbb{R}\times \mathbb{R}\rightarrow\mathbb{R}
+		\cdot:\R\times \R\rightarrow\R
 	\]
-	% 这一部分还不完善	<-------------------------- HERE
+	
+	1.中性元素 $1\in\R\setminus0$ 存在;，并且对任何的 $x\in \R$，
+	\[
+		x\cdot 1 = 1\cdot x = x
+	\]
+	
+	2.对于任何元素 $x\in\R\setminus0$，元素 $-x\in\R$ 一定存在，称为 $x$ 的逆元素，满足
+	\[
+		x+(-x)=(-x)+x=0
+	\]
+	
+	3.运算满足结合律，即对 $\R$ 的任何元素 $x,y,z$ 满足
+	\[
+		x\cdot(y\cdot z) = (x\cdot y)\cdot z
+	\]
+	
+	4.运算满足交换，即对 $\R$ 的任何元素 $x,y$ 满足
+	\[
+		x \cdot y = y \cdot x
+	\]
+	我们指出集合 $\R\setminus0$ 相对于乘法运算是（乘法）群
+	
 	\item 序公理
 	
-	对于$\mathbb{R}$的元素$x$，$y$，可以存在$x\le y$是否成立，这时以下条件成立
+	对于$\R$的元素$x$，$y$，可以存在$x\le y$是否成立，这时以下条件成立
 	\[
 		\begin{aligned}
-			&\forall x\in\mathbb{R} (x\le x)\\
+			&\forall x\in\R (x\le x)\\
 			&(x\le y)\land(y\le x)\Rightarrow(x=y)\\
 			&(x\le y)\land(y\le z)\Rightarrow(x\le z)\\
-			&\forall x\in\mathbb{R}\forall y\in\mathbb{R}(x\le y)\lor(y\le x)
+			&\forall x\in\R\forall y\in\R(x\le y)\lor(y\le x)
 		\end{aligned}
 	\]
 	
+	% 偏序集和线形序集
 	\item 完备性公理
 	
-	如果$X$和$Y$是$\mathbb{R}$的非空子集，并对于任何$x\in X$，$y\in Y$ 有$y>x$，则存在$c\in\mathbb{R}$，使得对于任何元素$x\in X$，$y\in Y$有$x\le c\le y$
+	如果$X$和$Y$是$\R$的非空子集，并对于任何$x\in X$，$y\in Y$ 有$y>x$，则存在$c\in\R$，使得对于任何元素$x\in X$，$y\in Y$有$x\le c\le y$
 \ITEME
 
 对于任何抽象公理系统，会立刻出现至少两个问题，即无矛盾性问题，该公理系统是否是范畴的
@@ -284,22 +334,22 @@
 
 \subsubsection{上下界}
 
-设集合$X\subset \mathbb{R}$，如果数$c\in\mathbb{R}$存在，使得对于任何$x\in X$都有$x\le c$，就说集合$X$是上有界集，这时称$c$为$X$的上界
+设集合$X\subset \R$，如果数$c\in\R$存在，使得对于任何$x\in X$都有$x\le c$，就说集合$X$是上有界集，这时称$c$为$X$的上界
 
 同理可以定义下界，既有上界又有下界的集合称为有界集
 
 \subsubsection{最值}
 
-设$a$是集合$X\subset\mathbb{R}$的元素，如果对于任何元素$x\in X$都有$x\le a$则元素$a$称为集合$X$的最大元素（最大值）记作$\max X$，而最小值记作$\min X$
+设$a$是集合$X\subset\R$的元素，如果对于任何元素$x\in X$都有$x\le a$则元素$a$称为集合$X$的最大元素（最大值）记作$\max X$，而最小值记作$\min X$
 
 \subsubsection{上下确界}
 
-集合$X\subset\mathbb{R}$的上界中的最小者称为集合$X$的上确界，同理定义下确界如下
+集合$X\subset\R$的上界中的最小者称为集合$X$的上确界，同理定义下确界如下
 \[
-	\sup X = \min\{c\in\mathbb{R}\mid\forall x\in X(x\le c)\}
+	\sup X = \min\{c\in\R\mid\forall x\in X(x\le c)\}
 \]
 \[
-	\inf X = \max\{c\in\mathbb{R}\mid\forall x\in X(c\le x)\}
+	\inf X = \max\{c\in\R\mid\forall x\in X(c\le x)\}
 \]
 
 \subsubsection{引理（上确界原理）}
@@ -312,7 +362,7 @@
 
 
 \subsubsection{邻域}
-包含点$x\in\mathbb{R}$的开区间称为该点的邻域
+包含点$x\in\R$的开区间称为该点的邻域
 
 \section{关于实数集完备性的一些基本引理}
 % 1
@@ -329,7 +379,7 @@
 
 \subsubsection{柯西-康托尔原理}
 
-对于任何闭区间套序列$I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$，可以找到一点$c\in\mathbb{R}$属于所有这些闭区间
+对于任何闭区间套序列$I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$，可以找到一点$c\in\R$属于所有这些闭区间
 
 % 2
 \subsection{有限覆盖引理（博雷尔-勒贝格原理）}
@@ -346,7 +396,7 @@
 \subsection{极限点引理（波尔查诺-魏尔斯塔拉斯原理）}
 
 \subsubsection{极限点}
-如果点 $p\in\mathbb{R}$ 的任何邻域都包含集合 $X\subset\mathbb{R}$ 的一个无穷子集，点 $p$ 就称为集合 $X$ 的集合点
+如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集，点 $p$ 就称为集合 $X$ 的集合点
 
 \subsubsection{波尔查诺-魏尔斯塔拉斯原理}
 任何无穷有界数集至少有一个极限点
@@ -368,27 +418,31 @@
 
 \subsection{连续统的势}
 
-实数集$\mathbb{R}$也称为数的连续统
+实数集$\R$也称为数的连续统，实数集 $\R$ 的基数一般记为 $c$
 
-为了求实数集的解，先把范围缩小为
-\[
-	\lvert \mathbb{R}\rvert =\lvert (0,1]\rvert  
-\]
-显然这一步映射满足双射，然后我们用二进制表示$(0,1]$上的实数
-\[
-	\begin{aligned}
-		\frac{1}{2}_{10} & = 0.100000\cdots_2\\
-		&= 0.011111\cdots_2
-	\end{aligned}
-\]
-假如我们想用二进制表示任何一个实数的，首先要使用二分法将该实数和$\frac12$相比较，若该实数大于$\frac12$则小数第一位为$1$，反之为零，接下来重复以上过程，以确定二进制小数的下一位，若将以上过程无限次的重复下去，则可以将二进制小数与$(0,1]$上的实数建立双射关系，并得出实数集的势
-\[
-	\lvert \mathbb{R}\rvert =2^{\aleph_0}
-\]
-若我们接受连续统假设可得
-\[
-\aleph_1=2^{\aleph_0}
-\]
+证明 $c=\aleph_1$\\
+
+我们先证明 $\lvert \R \rvert=\lvert (0,1]\rvert $，分三步进行：\\
+
+1. $\lvert \R\rvert =\lvert (-1,1)\rvert $: 不难看出映射  $f:(-1,1)\rightarrow \R$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射。\\
+
+2. $\lvert (-1,1)\rvert=\lvert (0,1)\rvert $: 不难看出映射  $f:(-1,1)\rightarrow (0,1) $ 满足 $f(x)=\frac {x+1}{2}$ 是双射。\\
+
+3. $\lvert (0,1)\rvert=\lvert (0,1]\rvert $： 因为 $(0,1)\subseteq (0,1]\subseteq (-1,1)$。\\
+
+下面我们证明 $\lvert (0,1]\rvert=2^{\aleph_0}$: \\
+1. 把 $(0,1]$ 中的任一实数 $x$ 用二进制表示：更具体地讲，就是找到每项取值是 $0$ 或 $1$ 的无穷数列 $\{a_n\}_{n \ge 1}$ 满足在二进制下 $x=0.a_1 a_2\cdots a_n \cdots$，其中无穷多个 $a_n$ 是 $1$ 。\\
+\ITEMS 
+	\item 第一步: 把区间 $(0,1]$ 二等分为两半开闭子区间：若 $x$ 属于靠左的（称为第一个，后同）子区间 $(0,\frac{1}{2}]$，则 $a_1=0$；若 $x$ 属于靠右的（称为第二个，后同）子区间，则 $a_1=1$；
+	
+	\item 第二步：把 $x$ 所属的第一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间，则 $a_2=0$；若 $x$ 属于第二个子区间，则 $a_2=1$；
+	\item $\vdots$ 
+	\item 第 $n$ 步： 把 $x$ 所属的上一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间，则 $a_n=0$；若 $x$ 属于第二个子区间，则 $a_n=1$；
+	\item $\vdots$
+\ITEME
+    注意到上述 $a_n$ 中，有无穷多个是 $1$ （为什么？）。这样我们就建立了 $(0,1]$ 和集合 $$S=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中无穷多个 $a_n$ 是 $1$} \}$$ 的一一对应关系。\\
+2 决定 $\lvert S\rvert$：令 $$T=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中只有限多个 $a_n$ 是 $1$} \}$$ 和 $$ R=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$}\}$$ 
+不难看出 $\lvert R\rvert=2^{\aleph_0}, \lvert T\rvert=\aleph_0$ （为什么？）且 $S\cup T= R$。由上面关于基数的基本定理 $2$，我们有 $$\lvert S\rvert=\lvert S\cup T\rvert =\lvert R\rvert=2^{\aleph_0}=\aleph_1$$
 
 
 \subsubsection{康托尔定理}
@@ -396,7 +450,7 @@
 实数集的势大于自然数集的势
 
 \[
-	\lvert\mathbb{N}\rvert<\lvert\mathbb{R}\rvert
+	\lvert\mathbb{N}\rvert<\lvert\R\rvert
 \]
 
 \subsubsection{连续统假设}
@@ -466,7 +520,9 @@
 \forall \varepsilon \in \mathbb{N}_+ ,\ \exists N,\ n,m>N \implies |x_n-x_m| < \varepsilon
 \]
 
-\subsubsection{单调数列极限存在准则}
+\subsubsection{单调数列极限存在准则（魏尔斯特拉斯定理）}
+
+单调不减数列的极限存在的充要条件是有上界
 
 \subsubsection{自然常数}
 
@@ -618,21 +674,82 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 称之为函数$f(x)$的$n$阶泰勒多项式
 \subsubsection{余项}
 
+
+
 \section{微分与函数}
 
 \section{复数与初等函数}
 
 \section{微分的应用}
 
+\section{原函数与不定积分}
 
 % ================================================================================== 
 % 									积 分 学
 % ================================================================================== 
 \chapter{积分学}
 
-\section{原函数与不定积分}
-
 \section{积分的定义}
+
+我们对于积分学的研究可以从两个角度开始，首先考虑如下物理问题。现有一物体做变加速度直线运动，试求其从 $a$ 时刻到 $b$ 时刻所经过路程（位移），其速度与时间图像如下
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.15]
+
+\def\a{1.5}   
+\def\b{4.5}   
+\pgfmathsetmacro{\va}{0.025*\a^3 + 0.2*\a}
+\pgfmathsetmacro{\vb}{0.025*\b^3 + 0.2*\b}
+\draw[->, thick] (0,0) -- (5.8,0) node[below right] {$t$};
+\draw[->, thick] (0,0) -- (0,5.8) node[above left] {$v$};
+
+% 刻度
+\foreach \x in {1,2,3,4,5}
+    \draw (\x,0.15) -- (\x,-0.15) node[below] {\x};
+\foreach \y in {1,2,3,4,5}
+    \draw (-0.15,\y) -- (0.15,\y) node[left=8pt] {\y};
+    
+\draw[thick, black, smooth, samples=120, domain=0:5.5] 
+    plot (\x,{0.025*\x^3 + 0.2*\x});
+
+\fill[opacity=0.3] 
+    plot[domain=\a:\b, samples=100] (\x,{0.025*\x^3 + 0.2*\x}) 
+    -- (\b,0) -- (\a,0) -- cycle;
+% 垂线
+\draw[dashed, thick] (\a,0) -- (\a,\va);
+\draw[dashed, thick] (\b,0) -- (\b,\vb);
+\fill (\a,\va) circle (2pt);
+\fill (\b,\vb) circle (2pt);
+% 标注 
+\node[below] at (\a, -0.2) {a};
+\node[below] at (\b, -0.2) {b};
+\node[above, font=\small] at (\a, \va + 0.4) {$v(a)$};
+\node[above, font=\small] at (\b, \vb + 0.4) {$v(b)$};
+
+\end{tikzpicture}
+\end{figure}
+
+显然该图像所围成的面积就是位移，我们可以将时间分割成 $n$ 个区间，其中第 $i$ 个区间大小为 $\Delta x_i$，记所用区间的最大值为 $\lambda = \max\limits_{1\le i\le n}\{\Delta x_i\}$ 。现在我们在每个区间上用矩形逼近函数图像，用 $\xi_i$ 表示在第 $i$ 个区间上的中间点，那么第 $i$ 个区间上的矩形面积应为 
+\[
+	v(\xi_i)\Delta t_i
+\]
+我们可以将总体的面积表示为
+\[
+	\sum_{i=1}^n v(\xi_i)\Delta t_i
+\]
+但这个面积仍不等于速度与时间图像的面积，为了使两者相等，要把时间分割成无穷个无穷小的区间，那么考虑对面积取如下极限
+\[
+	\lim_{\lambda\to0}\sum_{i=1}^n v(\xi_i)\Delta t_i
+\]
+同样的，在数学上，对于曲线函数 $f(x)$ 在区间 $[a,b]$ 上围成的曲边梯形，我们可以用相似的办法求得如下面积
+\[
+	\lim_{\lambda\to0}\sum_{i=1}^n f(\xi_i)\Delta x_i
+\]
+我们使用莱布尼兹的符号把这个极限记为
+\[
+	\int_a^b f(x)dx = \lim_{\lambda\to0}\sum_{i=1}^n f(\xi_i)\Delta x_i
+\]
+
 
 \section{积分的性质}
 
