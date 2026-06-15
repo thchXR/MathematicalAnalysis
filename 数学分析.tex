@@ -14,30 +14,56 @@
 \newcommand{\ITEME}{\end{enumerate}}
 \newcommand{\no}{\noindent}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
 
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
-\newtheorem{theorem}{\indent 定理}[chapter]
-\newtheorem*{lemma}{\indent 引理}
-\newtheorem{proposition}[theorem]{\indent 命题}
-\newtheorem{corollary}[theorem]{\indent 推论}
+
+
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem*{lemma}{引理}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem*{remark}{\indent 注}
 
 \newtheorem{example}{Example}[section]
+
+
+
+
+% update list
+% 
+%  完成章节：1
+%  
+%  实数类部分
+%  微分学
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
 
 
 
 \title{数学分析}
 \author{thchXR}
 
-
-
 \begin{document}
 
 \maketitle
 
+\setcounter{page}{1}
+\pagenumbering{Roman}
+
 \tableofcontents
 
-
+\setcounter{page}{1}
+\pagenumbering{arabic}
 % ================================================================================== 
 % 						逻 辑 符 号 与 离 散 数 学 基 础
 % ================================================================================== 
@@ -124,7 +150,10 @@
 \subsubsection{蕴涵}
 设 $p,q$ 为命题，命题 $p \rightarrow q$ 为命题 “若 $p$ ，则 $q$ ”， $\rightarrow$ 是蕴涵联接词。当 $p$ 为真而 $q$ 为假时，命题 $p \rightarrow q$ 为假，否则 $p \rightarrow q$ 为真，对于命题 $p \rightarrow q$ ，其中 $p$ 为前提， $q$ 为结论。
 
-注：为防止后续极限符号 $\to$ 与蕴涵符号产生歧义，在后续分析学章节中将使用 $\Rightarrow$ 符号，仅在讨论逻辑学时使用 $\rightarrow$。
+\begin{remark}
+为防止后续极限符号 $\to$ 与蕴涵符号产生歧义，在后续分析学章节中将使用 $\Rightarrow$ 符号，仅在讨论逻辑学时使用 $\rightarrow$。	
+\end{remark}
+
 
 \subsubsection{逆，倒置与反}
 设 $p,q$ 为命题，对于条件语句 $p \rightarrow q$ ，称 $q \rightarrow p$ 为 $p \rightarrow q$ 的逆蕴涵，称 $\neg q \rightarrow \neg p$ 为 $p \rightarrow q$ 的倒置蕴涵，称 $\neg p \rightarrow \neg q$ 为 $p \rightarrow q$ 的反蕴涵。
@@ -180,7 +209,9 @@
 
 设 $p,q$ 为命题，命题 $p \leftrightarrow q$ 为命题 “$p$ 当且仅当 $q$ ”，我们也将当且仅当写作 iff （if and only if）， $\leftrightarrow$ 是等价联接词。当 $p$ 与 $q$ 的真值相等时，命题 $p \leftrightarrow q$ 为真 ，否则命题 $p \leftrightarrow q$ 为假。
 
-注：在后续分析学章节中将使用 $\Leftrightarrow$ 符号表示等价，仅在讨论逻辑学时使用 $\leftrightarrow$。
+\begin{remark}
+在后续分析学章节中将使用 $\Leftrightarrow$ 符号表示等价，仅在讨论逻辑学时使用 $\leftrightarrow$。	
+\end{remark}
 
 \section{命题公式与等值演算}
 
@@ -214,7 +245,9 @@
 
 设 $A,B$ 是两个命题公式，若等价式 $A \leftrightarrow B$ 是重言式，则称 $A,B$ 是等值的，记作 $A\Leftrightarrow B$ 。
 
-注：在讨论逻辑学时 $\leftrightarrow,\Leftrightarrow$ 两个符号的含义不同，$\Leftrightarrow$ 并不是联接词，但在分析学时我们会使用 $\Leftrightarrow$。
+\begin{remark}
+在讨论逻辑学时 $\leftrightarrow,\Leftrightarrow$ 两个符号的含义不同，$\Leftrightarrow$ 并不是联接词，但在分析学时我们会使用 $\Leftrightarrow$。
+\end{remark}
 
 根据已知的等值式，推演出与给定公式等值的公式的过程称为等值演算
 
@@ -559,7 +592,7 @@
 	
 	\item 完备性公理
 	
-	如果 $X$ 和 $Y$ 是 $\R$ 的非空子集，并对于任何 $x\in X$，$y\in Y$ 有 $y>x$，则存在 $c\in\R$，使得对于任何元素 $x\in X$，$y\in Y$ 有 $x\le c\le y$。
+	如果 $X$ 和 $Y$ 是 $\R$ 的非空子集，并对于任何 $x\in X$，$y\in Y$ 有 $x \le y$，则存在 $c\in\R$，使得对于任何元素 $x\in X$，$y\in Y$ 有 $x\le c\le y$。
 \ITEME
 
 % 实数集代数性质
@@ -599,9 +632,6 @@
 \end{aligned}
 \]
 
-
-
-
 \begin{lemma}[上确界原理]
 实数集的任何有上界非空子集有唯一的上确界。
 \end{lemma}
@@ -610,18 +640,42 @@
 \end{proof}
 
 \section{实数类与计算}
-% 这一部分还不完善	<-------------------------- HERE
+
 \subsection{自然数集}
 
 \subsubsection{皮亚诺算数公理}
+如果以下条件成立，则集合 $\N$ 称为自然数集，其元素称为自然数。
 \ITEMS
 	\item $0$ 是自然数。
-	\item 对于集合 $N$ 中的任意元素 $n$，其后继 $S(n)$ 也是 $N$ 中的一个明确且唯一的自然数。
-	\item 0 不是任何自然数的后继数
+	\item 对于集合 $N$ 中的任意元素 $n$，其后继 $n'$ 也是 $N$ 中的一个明确且唯一的自然数。
+	\item $0$ 不是任何自然数的后继数。
+	\item 对于每个自然数 $b,c$， $b=c$ 当且仅当 $b' = c'$。
+	\item 任意关于自然数的命题，如果证明：它对自然数 $0$ 是真的，且假定它对自然数 $a$ 为真时，可以证明对 $a'$ 也真，那么，命题对所有自然数都真。
 \ITEME
+\begin{remark}
+	其中条件 5 保证了数学归纳原理的正确性，是数学证明的基本工具。
+\end{remark}
+
+\subsection{有理数与无理数}
+
+\subsubsection{整数集}
+
+
+\subsubsection{有理数集}
+
+\subsubsection{无理数集}
+
+\subsection{数轴}
+
+\subsubsection{区间}
 
 \subsubsection{邻域}
-包含点$x\in\R$的开区间称为该点的邻域
+
+包含点 $x \in \R$ 的开区间称为该点的邻域，特别的，当 $\delta > 0$ 时，开区间 $(x - \delta,x+\delta)$ 称为点 $x$ 的 $\delta$ 邻域。
+
+\subsubsection{模}
+
+
 
 \section{关于实数集完备性的一些基本引理}
 % 1
@@ -639,30 +693,42 @@
 	
 	如果除此之外还已知，对于 $\forall \varepsilon > 0$，在序列中可以找到长度 $|I_k| < \varepsilon$ 的闭区间，则 $c$ 是所有闭区间的唯一公共点。
 \end{lemma}
+% 使用完备性公理证明
 \begin{proof}
-首先	指出，对于上述序列中的任何两个闭区间 $I_m = [a_m,b_m],I_n = [a_n,b_n]$ 必有 $a_m \le b_n$
+首先	指出，对于上述序列中的任何两个闭区间 $I_m = [a_m,b_m],I_n = [a_n,b_n]$ 必有 $a_m \le b_n$。因此，对于数集 $A =\{a_m | m\in \N\}, B= \{b_n| n\in \N\}$，根据完备性公理，可以找到数 $c\in\R$ 使得对于 $\forall a_m\in A,\forall b_n\in B$ 有 $a_m\le c\le b_n$。特别的，对于 $\forall n\in N$ 都有 $a_n\le c \le b_n$，即点 $c$ 属于所有闭区间 $I_n$。
+
+现在，假设有两个不同的有相似性质的点 $c_1,c_2$，假如 $c_1 < c_2$，则对于任何 $n\in\N$ 均有， $a_n \le c_1 < c_2 \le b_n$ 从而 $0 < c_1 - c_2 < b_n - a_n$。于是，上述序列中的每一个闭区间的长度不可能小于 $c_2 - c_1 > 0$，这意味着，如果在该序列中有长度任意小的闭区间则公共点是唯一的。 
 \end{proof}
 
 
-% 2
 \subsection{有限覆盖引理（博雷尔-勒贝格原理）}
 
 \subsubsection{覆盖}
 
-设$S=\{X\}$是由一组集合$X$构成的集合族，如果$Y\subset \bigcup_{X\in S}X$，那么我们说$S$覆盖集合$Y$
+设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族，如果 $Y\subset \bigcup\limits_{X\in S}X$，那么我们说 $S$ 覆盖集合 $Y$。
 
-\subsubsection{博雷尔-勒贝格原理}
+集合族 $S = {X}$ 的子集也是一个集合组，称为 $S$ 的子族。因此，集合族的子族本身是同一类型的集合族。
 
-在覆盖一个比区间的开区间族中都有覆盖该闭区间的有限子族
+\begin{lemma}[博雷尔-勒贝格原理]
 
-% 3
+在覆盖一个闭区间的任何开区间族中都有覆盖该闭区间的有限子族。
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+
 \subsection{极限点引理（波尔查诺-魏尔斯塔拉斯原理）}
 
 \subsubsection{极限点}
-如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集，点 $p$ 就称为集合 $X$ 的集合点
+如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集，点 $p$ 就称为集合 $X$ 的极限点。
 
-\subsubsection{波尔查诺-魏尔斯塔拉斯原理}
-任何无穷有界数集至少有一个极限点
+\begin{lemma}[波尔查诺-魏尔斯塔拉斯原理]
+任何无穷有界数集至少有一个极限点。
+\end{lemma}
+\begin{proof}
+
+\end{proof}
 
 \section{集合的势}
 
@@ -720,7 +786,7 @@ f(y) = B
 	\item 如果 $y\notin B=f(y)$, 由 $B$ 的定义，我们会得到 $y\in B$。
 \ITEME
 
-\no {\bf 注} 我们记 $\aleph_n=2^{\aleph_{n-1}}, n=1, 2, \cdots$。由上述定理，显然我们有 
+我们记 $\aleph_n=2^{\aleph_{n-1}}, n=1, 2, \cdots$。由上述定理，显然我们有 
 \[
 	\aleph_0 < \aleph_1 < \aleph_2 <\cdots< 
 \]
@@ -730,8 +796,7 @@ f(y) = B
 \ITEMS
 	\item 对任意集合 $A$ 和 $B$，若 $A\subseteq B$，则 $\lvert A \rvert \le \lvert B \rvert$。
 	\item 设 $A$ 是可数集（有限集或可数无穷集），$B$ 是无穷集，则 $\lvert A\cup B \rvert= \lvert B \rvert$。
-     （例：Hilbert旅馆）
-	\item 设集合列 $\{A_n\}_{n=1}^{\infty}$ 中每一 $A_n$ 的基数都是 $\aleph_0$，则 $\lvert \bigcup_{n=1}^\infty A_n \rvert=\aleph_0 $。也就是说，可数个可数集的并集还是可数集。 （例：记 $\mathbb{Q}=$ 有理数集，则 $\lvert\mathbb{Q}\rvert=\aleph_0 $） 
+	\item 设集合列 $\{A_n\}_{n=1}^{\infty}$ 中每一 $A_n$ 的基数都是 $\aleph_0$，则 $\lvert \bigcup_{n=1}^\infty A_n \rvert=\aleph_0 $。也就是说，可数个可数集的并集还是可数集。
 \ITEME
 
 
@@ -841,7 +906,7 @@ f(y) = B
 
 \subsubsection{子列与数列的部分极限}
 
-\subsection{级数}
+\subsection{级数初步}
 
 \subsubsection{级数的柯西准则}
 
