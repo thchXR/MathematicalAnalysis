@@ -780,12 +780,10 @@
 
 \subsubsection{集合套}
 
-设$X_1,X_2,\cdots,X_n,\cdots$是某些集合的序列，如果$X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$，我们称之为集合套序列。
+设 $X_1,X_2,\cdots,X_n,\cdots$ 是某些闭区间的序列，如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$，且对 $\forall \varepsilon > 0$，在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间，我们称 $X_1,X_2,\cdots,X_n,\cdots$ 为闭区间套序列。
 
 \begin{lemma}[闭区间套引理]
-	对于任何闭区间套序列 $I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$，可以找到一点 $c\in\R$ 属于所有这些闭区间。
-	
-	如果除此之外还已知，对于 $\forall \varepsilon > 0$，在序列中可以找到长度 $|I_k| < \varepsilon$ 的闭区间，则 $c$ 是所有闭区间的唯一公共点。
+	对于任何闭区间的渐降列 $I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$，可以找到一点 $c\in\R$ 属于所有这些闭区间。如果除此之外还已知该序列为闭区间套序列，则 $c$ 是所有闭区间的唯一公共点。
 \end{lemma}
 % 使用完备性公理证明
 \begin{proof}
@@ -795,7 +793,7 @@
 \end{proof}
 
 
-\subsection{有限覆盖引理（博雷尔-勒贝格原理）}
+\subsection{有限覆盖引理（博雷尔-勒贝格原理、海涅-博雷尔原理）}
 
 \subsubsection{覆盖}
 
@@ -808,11 +806,12 @@
 在覆盖一个闭区间的任何开区间族中都有覆盖该闭区间的有限子族。
 \end{lemma}
 \begin{proof}
-设 $S =\{U\}$ 是覆盖闭区间 $[a,b] = I_1$ 的开区间族，$U$ 是构成 $S$ 的开区间
+设 $S =\{U\}$ 是覆盖闭区间 $[a,b] = I_1$ 的开区间族，$U$ 是构成 $S$ 的开区间。假如闭区间 $I_1$ 不能被 $S$ 中有限个开区间覆盖，我们将闭区间 $I_1$ 等分为两个闭区间，则其中至少有一个不能被 $S$ 中有限个开区间覆盖，我们把这个区间记为 $I_2$，我们再通过类似的方法得到 $I_3,I_4,\cdots$。
+
+于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$，而且根据其构造方法可知，第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$，所以在此序列中有长度任意小的闭区间，根据闭区间套引理，存在一点 $c$ 包含于所有闭区间 $I_n$，而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon, c+\varepsilon)$，在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$，所以有 $I_n \subset U$，这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾。
 \end{proof}
 
-
-\subsection{极限点引理（波尔查诺-魏尔斯塔拉斯原理）}
+\subsection{极限点引理（波尔查诺-魏尔斯特拉斯原理）}
 
 \subsubsection{极限点}
 如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集，点 $p$ 就称为集合 $X$ 的极限点。
@@ -821,7 +820,9 @@
 任何无穷有界数集至少有一个极限点。
 \end{lemma}
 \begin{proof}
+设 $X$ 是 $\R$ 的给定子集并且满足引理条件，由有界集的定义可知，某闭区间 $I = [a,b] \subset\R$ 包含集合 $X$。我们证明集合 $I$ 上至少有一个点是 $X$ 的极限点。
 
+假如并非如此，每个点 $x \in I$ 就会有这样的邻域 $U(x)$，其中或者根本没有 $X$ 中的点，或者只有有限个属于集合 $X$ 的点，对每个点 $x\in I$ 构造出的这种邻域的总体 $\{U\}$ 组成闭区间 $I$ 的开区间覆盖，根据有限覆盖引理，可以从上述覆盖中，选出有限个开区间 $I(x_1),\cdots,U(x_n)$，使它们仍覆盖区间 $I$。因为 $X \subset I$，所以它们也覆盖集合 $X$。然而 $X$ 并不是有限集，我们得到了矛盾。
 \end{proof}
 
 \section{集合的势}
@@ -951,45 +952,57 @@ f(y) = B
 
 \section{数列极限}
 
-% 介绍数列的概念
+在前面我们介绍了序列的定义，若序列的值域为实数集或其子集 $f:\N \to \R$，我们称该序列为数列。
 \subsection{数列极限的定义}
 
-% 特殊的函数极限
-设$\{x_n\}$为一数列，如果存在一常数$a$，对于任意给定的正数$\varepsilon$，总存在正整数$N$，使得任意$n > N$
-\[
-	|x_n-a|<\varepsilon
-\]
-都成立，那么就称常数$a$是数列$\{x_n\}$的极限，或者称数列$\{x_n\}$收敛于$a$，记为
-\[
-	\lim_{n \to \infty}x_n = a 
-\]
-如果不存在这样的常数$a$，就说数列$\{x_n\}$没有极限，或者数列$\{x_n\}$是发散的
+我在这里给出两种等价的定义，首先介绍由邻域给出的定义。
 
+数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限，如果对于点 $A$ 的任何一个邻域 $V(A)$，都存在序号 $N$，是的数列中所有序号大于 $N$ 的项都包含在点 $A$ 的上述邻域 $V(A)$ 中。
 \[
-\forall \varepsilon > 0, \exists N \in \mathbb{N}_+\ s.t.\ n>N \Rightarrow |x_n - A|<\varepsilon
+	\left( \lim_{n\to\infty} x_n = A\right) := \forall V(A)\ \exists N\in\N\ \forall n > N (x_n \in V(A))
 \]
+
+接下来指出数列极限定义的另一种常见表述。
+
+数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限，如果对于任何 $\varepsilon >0$ 都存在序号 $N$，是的对于一切 $n>N$，都有 $\lvert x_n - A \rvert < \varepsilon$。
+\[
+	\left( \lim_{n\to\infty} x_n = A\right) := \forall \varepsilon > 0\ \exists N\in\N\ \forall n > N (\lvert x_n - A\rvert < \varepsilon)
+\]
+
+如果 $\lim\limits_{n\to\infty} x_n = A$，我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$，记作 $n\to\infty$ 时 $x_n \to A$。有极限的数列称为收敛数列，没有极限的数列称为发散数列。 
+
 
 \subsection{收敛数列的性质}
+\subsubsection{一般性质}
 
-% 唯一性 保号性 保序性 迫敛性 任意子列收敛
+只取一个值的数列为常数列，数列 $\{x_n\}$ 称为最终常数列，如果存在数 $A$ 与序号 $N$，使得对于任何 $n > N$ 均有 $x_n = A$。
 
-\ITEMS
-\item 唯一性
+数列 $\{x_n\}$ 称为有界数列，如果存在数 $M$，使得对于任何 $n \in N$ 均有 $x_n < M$。
 
-如果数列收敛，那么它的极限唯一
+\begin{theorem}
+	数列极限有如下性质
+	
+	\ITEMS
+		\item 最终常数列收敛。
+		\item 数列极限的任何一个邻域都包含数列中为数有限的项之外的所有项。
+		\item 数列不可能有两个不同的极限。
+		\item 收敛数列有界。
+	\ITEME
+\end{theorem}
 
-\item 保号性
+\begin{proof}
+	由于定理中的 1,2 由极限定义显然，我们只证明 3,4。
+	
+	\ITEMS
+	\item[3] 设 $\lim\limits_{n\to\infty} x_n = A_1 ,\ \lim\limits_{n\to\infty} x_n = A_2$。假如 $A_1 \neq A_2$，我们就选定点 $A_1,A_2$ 的两个不相交的邻域 $V(A_1),V(A_2)$。
+	
+	例如，可以在
+	\item[4]
+	\ITEME
+	
+\end{proof}
 
-如果数列极限为$a$，且$a>0$，或$a<0$，那么存在正整数$N$，对于$\forall n> N$，都有$x_n>0$
-
-\item 有界性
-
-如果数列收敛，那么数列一定有界
-
-\item 子列收敛性
-
-如果数列极限为$a$，那么它的任意子数列也收敛也为$a$
-\ITEME
+\subsubsection{极限过程与算术运算}
 
 \subsection{数列极限的存在问题}
 
