@@ -27,13 +27,11 @@
 \newtheorem{theorem}{定理}[chapter]
 \newtheorem*{lemma}{引理}
 \newtheorem{proposition}[theorem]{命题}
-\newtheorem{corollary}[theorem]{推论}
+\newtheorem*{corollary}{推论}
 \newtheorem*{remark}{\indent 注}
 
-\newtheorem{example}{Example}[section]
-
-
-
+\newtheorem{example}{\indent 例}[section]
+\renewcommand{\theexample}{\arabic{example}} 
 
 
 % update list
@@ -996,34 +994,81 @@ f(y) = B
 	\ITEMS
 	\item[3] 设 $\lim\limits_{n\to\infty} x_n = A_1 ,\ \lim\limits_{n\to\infty} x_n = A_2$。假如 $A_1 \neq A_2$，我们就选定点 $A_1,A_2$ 的两个不相交的邻域 $V(A_1),V(A_2)$。
 	
-	例如，可以在
-	\item[4]
+	例如，可以在 $\delta < \frac{\lvert A_1 - A_2\rvert}{2}$ 时取这两个点的邻域，显然 $V(A_1),V(A_2)$ 不相交。根据极限的定义，可以求得 $N_1,N_2$ 使得 $\forall n > N_1 (x_n\in V(A_1)),\ \forall n > N_2 (x_n\in V(A_2))$。于是对于 $n > \max\{N_1,N_2\}$ 有 $x_n \in V(A_1) \cap V(A_2)$，与 $V(A_1),V(A_2)$ 不相交矛盾。
+	\item[4] 设 $\lim\limits_{n\to\infty} x_n = A$。如果取 $\varepsilon = 1$，就可以求出 $N$，使得 $\forall n > N (\lvert x_n - A \rvert < 1)$。这意味着，当 $n > N$ 时有 $\lvert x_n \rvert < \lvert A \rvert + 1$。如果现在取
+	\[
+		M > \max\{\lvert x_1\rvert,\lvert x_2\rvert,\cdots,\lvert x_N\rvert,\lvert A\rvert + 1\}
+	\]
+	就得到 $\forall n (x_n < M)$。\qedhere
 	\ITEME
-	
 \end{proof}
 
 \subsubsection{极限过程与算术运算}
+
+如果$\{x_n\},\{y_n\}$ 是两个数列，则数列
+\[
+	\{(x_n + y_n)\}, \{(x_n y_n)\}, \left\{\left(\frac{x_n}{y_n}\right)\right\}
+\]
+分别称为这两个数列的和，积和商（$y_n \neq 0,\ n\in\N$ 时商才有定义）。
+
+\begin{theorem}
+设 $\{x_n\},\{y_n\}$ 是两个数列，如果 $\lim\limits_{n\to\infty} x_n = A,\ \lim\limits_{n\to\infty} y_n = B$ 则
+	\ITEMS
+		\item $\lim\limits_{n\to\infty} (x_n + y_n) = A + B$。
+		\item $\lim\limits_{n\to\infty} x_n \cdot y_n = A \cdot B$。
+		\item 当 $y_n\neq 0,\ n\in\N$ 且 $B \neq 0$ 时 $\lim\limits_{n\to\infty} \frac{x_n}{y_n} = \frac AB$。
+	\ITEME
+\end{theorem}
+
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+
+\subsubsection{迫敛性}
+\begin{theorem}
+	
+\end{theorem}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+\begin{corollary}
+	
+\end{corollary}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
 
 \subsection{数列极限的存在问题}
 
 \subsubsection{柯西准则}
 % 因为定义中的A往往是未知的，所用极限不便于应用
 % 三次数学危机，第二次数学危机，无穷小量的引入
-对于数列$\{x_n\}$收敛的充要条件是，对于任意给定的正数$\varepsilon$，存在正整数$N$，使得当$n,m > N$时，满足
-\[
-	|x_n-x_m| < \varepsilon
-\]
-% 体现数列逐渐稠密
-我们称满足以上条件的数列为基本数列（柯西数列）
-\[
-\forall \varepsilon \in \mathbb{N}_+ ,\ \exists N,\ n,m>N \implies |x_n-x_m| < \varepsilon
-\]
+\begin{theorem}
+	对于数列 $\{x_n\}$ 收敛的充要条件是，对于任意给定的正数 $\varepsilon$，存在正整数 $N$，使得当 $n,m > N$ 时，满足 $|x_n-x_m| < \varepsilon$。我们称满足以上条件的数列为基本数列（柯西数列）。
+\end{theorem}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
 
-\subsubsection{单调数列极限存在准则（魏尔斯特拉斯定理）}
 
-单调不减数列的极限存在的充要条件是有上界
+\subsubsection{单调数列极限存在准则}
+
+% 这一部分还不完善	<-------------------------- HERE
+
+\begin{theorem}[魏尔斯特拉斯定理]
+	单调不减数列的极限存在的充要条件是有上界。
+\end{theorem}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
 
 \subsubsection{自然常数}
+
+\begin{example}
+	证明极限 $\lim\limits_{n\to\infty} \left(1+\frac1n \right)^n$ 存在。
+\end{example}
 
 \subsubsection{子列与数列的部分极限}
 
@@ -1105,8 +1150,7 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 % 									微 分 学
 % ================================================================================== 
 \chapter{微分学}
-\section{导数与微分}
-\subsection{可微函数}
+\section{可微函数}
 % 这一部分还不完善	<-------------------------- HERE
 
 
@@ -1183,7 +1227,7 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 
 \section{微分的应用}
 
-\section{原函数与不定积分}
+\section{原函数}
 
 % ================================================================================== 
 % 									积 分 学
@@ -1268,12 +1312,14 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 \chapter{拓扑学}
 
 % ================================================================================== 
-% 								   线 性 代 数
+% 								   高 等 代 数
 % ================================================================================== 
 
-\chapter{线性代数}
+\chapter{高等代数}
 
 \section{行列式}
+
+\section{线性方程组}
 
 \section{矩阵}
 
