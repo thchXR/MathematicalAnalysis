@@ -32,6 +32,7 @@
 
 \newtheorem{example}{\indent 例}[section]
 \renewcommand{\theexample}{\arabic{example}} 
+\newenvironment{solution}{\begin{proof}[\indent 解]}{\end{proof}}
 
 
 % update list
@@ -65,12 +66,14 @@
 
 \tableofcontents
 
-\setcounter{page}{1}
-\pagenumbering{arabic}
+
 % ================================================================================== 
 % 						逻 辑 符 号 与 离 散 数 学 基 础
 % ================================================================================== 
 \chapter{逻辑符号与离散数学基础}
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
 
 离散数学是现代数学的重要分支，也是计算机科学的核心基石，主要研究不连续的、离散的数学结构和对象（如整数、命题和图）。这里我只介绍最基本的逻辑符号，其他内容将在后续离散数学的章节详细介绍。
 
@@ -439,8 +442,26 @@
 \ITEME 
 则称该二元关系为等价关系，记作 $x\sim y$。
 
-% 偏序关系
-% 函数关系
+\subsubsection{偏序关系}
+
+对于一非空集合 $X$，若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
+\ITEMS
+	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$
+	\item 反对称性\quad 若 $x,y\in X , x\mathcal{R}y$ 且 $y\mathcal{R}x$ 则 $x=y$
+	\item 传递性\quad 若 $x,y,z\in X , x\mathcal{R}y, y\mathcal{R}z$ 则 $x\mathcal{R}z$
+\ITEME 
+则称该二元关系为偏序关系，记作 $x \preccurlyeq y$。如果除以上条件外还满足以下条件
+\[
+	\forall a \,\forall b\ ((a \mathcal{R} b ) \lor (b \mathcal{R} a))
+\]
+即集合 $X$ 上所有元素都是可比的，则关系 $\mathcal{R}$ 称为序关系，而定义了序关系的集合 $X$ 为线性序集。
+
+\subsubsection{函数关系}
+满足
+\[
+	(x \mathcal{R} y_1) \land (x \mathcal{R} y_2) \Rightarrow (y_1 = y_2)
+\]
+的关系 $\mathcal{R}$ 称为函数关系。
 
 \section{公理化集合论}
 
@@ -923,7 +944,7 @@ f(y) = B
 	\item 第 $n$ 步： 把 $x$ 所属的上一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间，则 $a_n=0$；若 $x$ 属于第二个子区间，则 $a_n=1$；
 	\item $\vdots$
 \ITEME
-    注意到上述 $a_n$ 中，有无穷多个是 $1$ （为什么？）。这样我们就建立了 $(0,1]$ 和集合 $$S=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中无穷多个 $a_n$ 是 $1$} \}$$ 的一一对应关系。\\
+    注意到上述 $a_n$ 中，有无穷多个是 $1$。这样我们就建立了 $(0,1]$ 和集合 $$S=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中无穷多个 $a_n$ 是 $1$} \}$$ 的一一对应关系。\\
 2 决定 $\lvert S\rvert$：令 $$T=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中只有限多个 $a_n$ 是 $1$} \}$$ 和 $$ R=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$}\}$$ 
 不难看出 $\lvert R\rvert=2^{\aleph_0}, \lvert T\rvert=\aleph_0$ （为什么？）且 $S\cup T= R$。由上面关于基数的基本定理 $2$，我们有 $$\lvert S\rvert=\lvert S\cup T\rvert =\lvert R\rvert=2^{\aleph_0}=\aleph_1$$
 \end{proof}
@@ -935,6 +956,8 @@ f(y) = B
 不存在一个无穷集合，其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1}, n=0, 1,2, \cdots $ 之间。
 
 \section{*数学史：集合论与康托尔}
+
+康托尔出生于圣彼得堡，但他一生大部分时间是在德国度过的，
 
 % 这一部分还不完善	<-------------------------- HERE
 
@@ -1019,25 +1042,35 @@ f(y) = B
 		\item 当 $y_n\neq 0,\ n\in\N$ 且 $B \neq 0$ 时 $\lim\limits_{n\to\infty} \frac{x_n}{y_n} = \frac AB$。
 	\ITEME
 \end{theorem}
-
 \begin{proof}
+
+
+
+
+
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
 
 
 \subsubsection{迫敛性}
 \begin{theorem}
+	设 $\{x_n\},\{y_n\}$ 是两个收敛数列，并且 $\lim\limits_{n\to\infty} x_n = A, \lim\limits_{n\to\infty} y_n = B$。如果 $A < B$，就可以求出序号 $N \in \N$，使得对于任何 $n > N$，不等式 $x_n < y_n$ 成立。
 	
+	设数列 $\{x_n\},\{y_n\},\{z_n\}$ 满足以下条件，对于任何 $n > N \in \N$，关系式 $x_n \le y_n \le z_n$ 成立。如果数列 $\{x_n\},\{z_n\}$ 收敛于同一个极限，则数列 $\{y_n\}$ 页收敛于该极限。 
 \end{theorem}
 \begin{proof}
+
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
 \begin{corollary}
-	
+	设 $\lim\limits_{n\to\infty} x_n = A, \lim\limits_{n\to\infty} y_n = B$。如果存在序号 $N$，是的对于任何 $n > N$ 都有
+	\ITEMS
+		\item $x_n > y_n$，则 $A\ge B$
+		\item $x_n \ge y_n$，则 $A\ge B$
+		\item $x_n > B$，则 $A\ge B$
+		\item $x_n \ge B$，则 $A\ge B$
+	\ITEME
 \end{corollary}
-\begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{proof}
 
 
 \subsection{数列极限的存在问题}
@@ -1055,7 +1088,8 @@ f(y) = B
 
 \subsubsection{单调数列极限存在准则}
 
-% 这一部分还不完善	<-------------------------- HERE
+对于数列 $\{x_n\}$，如果 $\forall n\in\N\ (x_n < x_{n+1})$，则称之为（严格）单调递增数列；如果 $\forall n\in\N\ (x_n \le x_{n+1})$，则称之为单调递增数列或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$，则称之为（严格）单调递减数列；如果 $\forall n\in\N\ (x_n \ge x_{n+1})$，则称之为单调递减数列或单调不增数列。
+% 单调
 
 \begin{theorem}[魏尔斯特拉斯定理]
 	单调不减数列的极限存在的充要条件是有上界。
@@ -1069,12 +1103,48 @@ f(y) = B
 \begin{example}
 	证明极限 $\lim\limits_{n\to\infty} \left(1+\frac1n \right)^n$ 存在。
 \end{example}
+\begin{solution}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{solution}
 
 \subsubsection{子列与数列的部分极限}
 
+如果 $x_1,x_2,\cdots,x_n,\cdots$ 是某数列，而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列，则数列 $x_{n_1},x_{n_2},\cdots,x_{n_k},\cdots$
+
+% 子列
+
+\begin{lemma}[波尔查诺-维尔斯特拉斯引理]
+	每个有界实数列都含有收敛的子列。
+\end{lemma}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+
+\begin{lemma}
+	从每一个实数列中都可以选出一个收敛的或趋于无穷的子列。
+\end{lemma}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+% 上下极限
+
 \subsection{级数初步}
 
+表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$，通常称为级数或无穷级数。
+
 \subsubsection{级数的柯西准则}
+	% 这一部分还不完善	<-------------------------- HERE
+\begin{theorem}[级数收敛的柯西准则]
+
+\end{theorem}
+
+\subsubsection{绝对收敛性}
+
+\subsubsection{自然常数的级数形式}
+	
+
 
 
 
@@ -1106,7 +1176,7 @@ f(y) = B
 \subsection{函数极限的性质}
 % 这一部分还不完善	<-------------------------- HERE
 
-\subsection{极限的一般定义}
+\subsection{函数极限的一般定义}
 
 \subsection{函数极限的存在问题}
 
@@ -1114,35 +1184,11 @@ f(y) = B
 
 \subsection{连续性的定义}
 
-\subsection{连续函数的性质}
-
-
-% 在连续性的定义上不必是空心邻域
-$f(x)$在点$x_0$点连续 
-\[
-\lim_{x\to x_0} f(x) = f(x_0) 
-\]
-
-% 区间上连续
-
-% 一致连续性（扩展）
-
-%\[
-%\lim_{x \to x_0}f(x) = A, \mbox{求}\lim_{x \to x_0} e^{f(x)}
-%\]
-
-% 幂指函数极限
-
-%\[
-%f(x)^{g(x)} = e^{\ln f(x)^{g(x)}} =e^{g(x)\ln f(x)}
-%\]
-
-
 \subsection{间断点}
 
+\subsection{连续函数的局部性质}
 
-\subsection{零值定理}
-$f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0$
+\subsection{连续函数的整体性质}
 
 \section{*数学史：无穷小的幽灵}
 
@@ -1225,7 +1271,7 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 
 \section{复数与初等函数}
 
-\section{微分的应用}
+\section{微分学的应用}
 
 \section{原函数}
 
@@ -1331,7 +1377,22 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 
 \chapter{多元函数微分学}
 
+
+\section{基本微分法则}
+% 8.3
+
+\subsection{方向导数与梯度}
+
+如果函数 $f$ 定义于点 $x_0 \in \R^m$ 的邻域，而 $v\in T \R^m_{x_0}$ 是以点 $x
+_0$ 为起点的向量，则量
+\[
+	D_v f(x_0) := \lim_{t\to 0}\frac{f(x_0+vt) - f(x_0)}{t}
+\]
+称为函数 $f$ 在点 $x_0$ 沿向量 $v$ 的导数。
+
+
 \section{多元函数的极限与连续性}
+
 
 \section{多元函数的泰勒公式}
 
@@ -1344,6 +1405,14 @@ $f(x)$在$[a,b]$上连续，$f(a)f(b)<0$，则$\exists \xi \in (a,b)$使$\xi = 0
 % ================================================================================== 
 
 \chapter{重积分}
+
+\section{二重积分}
+
+\section{三重积分}
+
+\section{$n$ 重积分}
+
+
 
 % ================================================================================== 
 % 							 曲 线 与 曲 面 积 分
