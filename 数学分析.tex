@@ -1132,13 +1132,30 @@ f(y) = B
 
 \subsection{级数初步}
 
-表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$，通常称为级数或无穷级数。
+表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$，通常称为级数或无穷级数。其中数列 $\{a_n\}$ 的元素称为级数的项，而 $a_n$ 称之为级数的第 $n$ 项。$s_n = \sum_{k=1}^n a_k$ 称为级数的前 $n$ 项和。
+
+如果级数的前 $n$ 项和的数列收敛就称级数收敛，否则称级数发散。级数的前 $n$ 项和数列的极限 $\lim_{n\to\infty} s_n = s$ 称为级数的和（如果该极限存在），做出如下记号。
+\[
+	\sum_{n=1}^\infty a_n = s
+\]
 
 \subsubsection{级数的柯西准则}
 	% 这一部分还不完善	<-------------------------- HERE
 \begin{theorem}[级数收敛的柯西准则]
-
+级数 $\sum_{n=1}^\infty a_n$ 收敛的充要条件为，对任何 $epsilon > 0$，可以求出数 $N \in \N$，使得从 $m\ge n > N$ 可知 $\lvert a_n + \cdots + a_m \rvert < \epsilon$
 \end{theorem}
+
+\begin{corollary}
+	如果在一个级数中只改变有限的项，则级数敛散性不变。
+\end{corollary}
+
+\begin{corollary}
+	级数 $\sum_{n=1}^\infty a_n$ 收敛的一个必要条件为，它的项在 $n\to\infty$ 时趋于零，即 $\lim_{n\to\infty} a_n = 0$
+\end{corollary}
+
+\begin{example}
+	考虑无穷几何级数 $\lim_{n=1}^\infty q^{n-1}$
+\end{example}
 
 \subsubsection{绝对收敛性}
 
