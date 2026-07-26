@@ -1511,8 +1511,38 @@ _0$ 为起点的向量，则量
 则称 $M$ 这个代数运算满足交换律。
 
 \begin{theorem}
-	
+	若集合 $M$ 的代数运算 $\circ$ 既满足结合律又满足交换律，则对 $M$ 中任意 $n$ 个元素进行运算时可以任意结合和交换元素的前后次序，其结果均相等。
 \end{theorem}
+
+\begin{proof}
+	对元素个数 $n$ 用数学归纳原理，% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+设集合 $M$ 有两个代数运算 $\circ$ 及 $\oplus$。如果对 $M$ 中任意元素 $a,b,c$ 都有
+\[
+	a \circ (b \oplus c) = (a \circ b) \oplus (a \circ c)
+\]
+则称运算 $\circ$ 对 $\oplus$ 满足左分配律；如果
+\[
+	(b \oplus c) \circ a = (b \circ a) \oplus (c \circ a)
+\]
+则称运算 $\circ$ 对 $\oplus$ 满足右分配律。
+
+\begin{theorem}
+	设集合 $M$ 有两个代数运算 $\circ$ 及 $\oplus$，其中 $\oplus$ 满足结合律，而 $\circ$ 对 $\oplus$ 满足于左分配律，则对 $M$ 中任意元素 $a$ 及 $b_1,b_2,\cdots ,b_n$ 有
+	\[
+		a \circ (b_1 \oplus b_2 \oplus \cdots \oplus b_n) = (a \circ b_1) \oplus \cdots \oplus (a \circ b_n)
+	\]
+\end{theorem}
+
+\begin{proof}
+	对元素个数 $n$ 用数学归纳原理即可得证，且对有分配律也有类似结论，不再赘述。
+\end{proof}
+
+\subsection{同态与同构}
+
+
+
 
 \section{群的定义和初步性质}
 
