@@ -24,7 +24,7 @@
 
 
 
-\newtheorem{theorem}{定理}[chapter]
+\newtheorem{theorem}{定理}[section]
 \newtheorem*{lemma}{引理}
 \newtheorem{proposition}[theorem]{命题}
 \newtheorem*{corollary}{推论}
@@ -442,6 +442,10 @@
 \ITEME 
 则称该二元关系为等价关系，记作 $x\sim y$。
 
+\subsubsection{集合在等价关系下的分类}
+
+% 这一部分还不完善	<-------------------------- HERE
+
 \subsubsection{偏序关系}
 
 对于一非空集合 $X$，若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
@@ -717,11 +721,13 @@
 不是有理数的实数称为无理数，我们一般用符号 $\R\setminus\Q$ 表示无理数。
 \smallskip
 
-在这里证明一个有意思的例子，即 $\sqrt 2$ 为一个无理数。
+在这里证明一个有意思的例子，实数 $\sqrt 2$ 存在，且是一个无理数。
 \begin{proof}
 以上命题根据无理数的定义可以写为： $s^2 = 2, s\in \R, s\notin \Q$。
 
-% 这一部分还不完善	<-------------------------- HERE
+设 $X$ 和 $Y$ 是满足以下条件的正实数的集合： $\forall x \in X (x^2 < 2),\ \forall y \in Y (2 < y^2)$。因为 $1 \in X, 2 \in Y$，所以 $X$ 和 $Y$ 都不是空集。
+
+此外，% 这一部分还不完善	<-------------------------- HERE
 
 \end{proof}
 
@@ -743,7 +749,7 @@
 	如果 $h$ 是任意一个固定的正数，则对于任何实数 $x$，可以找到唯一的整数 $k$，使得 $(k-1)h\le x < kh$。
 \end{theorem}
 \begin{proof}
-% 这一部分还不完善	<-------------------------- HERE
+	因为整数集 $\Z$ 没有上界，所以集合 $\{n\in\Z\mid x/h<n\}$ 是整数集的非空下有界子集。于是该集合有最小元素 $k$，即 $(k-1) \le x/h < k$。因为 $h > 0$，所以这些不等式等价于上述阿基米德原理中的不等式。由数集最小元素的唯一性可知，满足上面两个不等式的整数 $k$ 是唯一的。
 \end{proof}
 
 
@@ -777,7 +783,7 @@
 	x &\mapsto \sqrt{x^2}
 \end{aligned}
 \]
-它称为一个数的模或者绝对值。$\lvert x - y\rvert$ 称为 $x,y\in\R$ 之间的距离。
+它称为一个数的模或者绝对值。称 $\lvert x - y\rvert$ 为 $x,y\in\R$ 之间的距离。
 
 \subsubsection{三角不等式}
 
@@ -960,6 +966,8 @@ f(y) = B
 康托尔出生于圣彼得堡，但他一生大部分时间是在德国度过的，
 
 % 这一部分还不完善	<-------------------------- HERE
+
+
 
 % ================================================================================== 
 % 									极 限 论
@@ -1388,6 +1396,8 @@ f(y) = B
 
 \chapter{拓扑学}
 
+
+
 % ================================================================================== 
 % 								   高 等 代 数
 % ================================================================================== 
@@ -1541,7 +1551,24 @@ _0$ 为起点的向量，则量
 
 \subsection{同态与同构}
 
+设集合 $M$ 与 $\overline{M}$ 各有代数运算 $\circ$ 及 $\overline{\circ}$，且 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个映射。如果 $\varphi$ 保持运算，即对 $M$ 中任意元素 $a,b$，在 $\varphi$ 之下由
+\[
+	a \rightarrow \overline{a},\ b \rightarrow \overline{b}
+\]
+总可得
+\[
+	a \circ b \rightarrow \overline{a} \overline{\circ} \overline{b}
+\]
+则称 $\varphi$ 为代数系统 $M$ 到 $\overline{M}$ 的一个同态映射，若 $\varphi$ 又是满射，则 $\varphi$ 得一个同态满射。
 
+如果 $M$ 到 $\overline{M}$ 存在同态满射，则简称 $M$ 与 $\overline{M}$ 同态，记为
+\[
+	M\sim\overline{M}
+\]
+
+\begin{theorem}
+	设集合
+\end{theorem}
 
 
 \section{群的定义和初步性质}
@@ -1622,7 +1649,7 @@ _0$ 为起点的向量，则量
 	\item 相容性
 \ITEME 
 \begin{theorem}[柯尔莫哥洛夫 Kolmogorov 定理]
-	设分布函数
+	设分布函函数
 \end{theorem}
 
 \section{随机过程的基本类型}
