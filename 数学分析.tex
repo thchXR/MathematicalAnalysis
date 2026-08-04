@@ -727,7 +727,21 @@
 
 设 $X$ 和 $Y$ 是满足以下条件的正实数的集合： $\forall x \in X (x^2 < 2),\ \forall y \in Y (2 < y^2)$。因为 $1 \in X, 2 \in Y$，所以 $X$ 和 $Y$ 都不是空集。
 
-此外，% 这一部分还不完善	<-------------------------- HERE
+此外，因为对于正实数 $x$ 和 $y$ 有 $(x < y) \Leftrightarrow (x^2 < y^2)$，所以任何元素 $x \in X$ 小于任何元素 $y \in Y$。根据完备性公理，存在一个数 $s \in \R$，使得对于 $\forall x \in X, \forall y \in Y$ 有 $x \le s \le y$。
+
+我们先证明 $s^2 = 2$，假如 $s^2 < 2$，因为 $1 \in X$ 那么可知 $1^2 \le s^2 < 2$，即 $0 < \Delta = 2 - s^2 \le 1$。这意味着
+\[
+	\left( s + \frac{\Delta}{3s} \right)^2 = s^2 + 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 + \Delta = 2
+\]
+这与 $x \le s$ 相矛盾，所以不成立。
+
+假如 $s^2 > 2$，因为 $2 \in Y$ 那么可知 $2 < s^2 le 2^2$，即 $0 < \Delta = s^2 - 2 <3$。这意味着
+\[
+	\left( s - \frac{\Delta}{3s} \right)^2 = s^2 - 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 - \Delta = 2
+\]
+这与集合 $Y$ 有下界 $s$ 相矛盾，所以不成立。
+
+于是我们证明了 $s^2 = 2$，接下来只需要证明 $s \notin \Q$ 即可，假如 $s \in \Q$，设 $m/n$ 是 $s$ 的既约分数，则 $m^2 = 2n^2$，所以 $m^2$ 能被 $2$ 整除，而这也表示 $m$ 也能被 $2$ 整除。但是，如果 $m = 2k$，则 $2k^2 = n^2$，而根据同样的理由 $n$ 也应当能被 $2$ 整除，这与 $m/n$ 是 $s$ 的既约分数相矛盾。
 
 \end{proof}
 
