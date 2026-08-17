@@ -1,7 +1,12 @@
 \documentclass{ctexbook}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{xcolor}
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan
+}
 \usepackage{booktabs}
 \usepackage[paper=a4paper,  left=1.5cm,  right=1.5cm,  top=3cm,  bottom=3cm]{geometry}
 \usepackage{enumitem}
@@ -357,23 +362,27 @@ A \subseteq B.
 	不同地区对以上符号的使用市场有所区别，具体使用视情况而定，例如用 $\subset$ 符号表示包含，用 $\subsetneqq$ 符号表示真包含。
 \end{remark}
 
+\subsubsection{集合的族}
+
+给定集合 $A$, 考虑由 $A$ 的所有子集构成的集合, 我们称之为集合 $A$ 的幂集, 记为 $\mathcal{P} (A)$. 通常我们把一个以集合为元素的集合称为族, 一般用大写花体字母表示.
+
 \subsubsection{简单的集合运算}
 
 \ITEMS
-	\item 集合$A$与$B$的并集是
+	\item 集合$A$与$B$的并集是集合
 	\[
 		A\cup B = \{x\in U\mid (x\in A) \vee (x\in B)\}.
 	\]
-	\item 集合$A$与$B$的交集是
+	\item 集合$A$与$B$的交集是集合
 	\[
 		A\cap B = \{x\in U\mid (x\in A) \land (x\in B)\}.
 	\]
 	% 在书中补集是作为差集的延伸提出的, 但我们往往把补集视为基础运算的组合
-	\item 集合$A$在全集$U$上的补集是
+	\item 集合$A$在全集$U$上的补集是集合
 	\[
 		A^c = C_U A= \{x\in U\mid (x\notin A) \}.
 	\]
-	\item 集合$A$与$B$的差集是
+	\item 集合$A$与$B$的差集是集合
 	\[
 		A\setminus B = \{x\in U\mid (x\in A) \land (x\notin B)\}.
 	\]
@@ -384,55 +393,68 @@ A \subseteq B.
 	\[
 		(A\cap B)^c = A^c\cup B^c.
 	\]
-	\item 集合的直积（笛卡尔积）
+	\item 集合的直积（笛卡尔积）为如下集合
 	\[
-		X\times Y=\{(x, y)\mid (x\in X)\land(y\in Y)\}.
+		X\times Y=\{(x, y)\mid (x\in X)\land(y\in Y)\},
 	\]
 	其中 $(x, y)$ 为一个序偶, 序偶由两个对象按照特定先后顺序排列构成的组合.
 \ITEME
+
+\subsubsection{序偶}
+
+是指由两个元素 $x$ 和 $y$ 按一定顺序排列构成的二元组，记作 $\langle x, y \rangle$ 或 $(x, y)$, 其中，$x$ 称为第一元素（或左投影）, $y$ 称为第二元素（或右投影）.  或 (x, y)。在序偶中，x 称为第一元素（或左投影），y 称为第二元素（或右投影）. 序偶具有顺序性，即当 $x \neq y$ 时，$(x,y) \neq (y,x)$.
+
+
+对于序偶这个数学对象我们可以将其作为原始概念对待，不过这里也给出应用集族概念的序偶定义. 
+
+我们定义以下集族为序偶
+\[
+	(a,b) = \{\{a\},\{a,b\}\}.
+\]
+按照定义，$(a,b)$ 是两个集合的族，分别为单元素集和两元素集，而序偶的第一元素是同时属于这两个集合的元素，第二个元素是仅属于一个集合的元素.
 
 \section{映射与函数}
 
 \subsection{映射}
 设有集合 $X, Y$, 如果 $X$ 的每一个元素 $x$ 都按照某种规律 $f$ 与 $Y$ 的唯一元素相对应, 我们称其为一个映射, 通常用以下符号表示映射
 \[
-	f:X\rightarrow Y
+	f:X\rightarrow Y.
 \]
 对于 $\forall A\subseteq X$, 我们称 $f(A)=\{f(x):x\in A\}$ 为 $A$ 的像；对于 $\forall B\subseteq Y$ , 我们称 $f^{-1}(B)=\{x\in X:f(x)\in B\} $ 为 $B$ 的原像.
 
-特别的, 我们称非空的数集之间的映射为函数.
+特别的, 我们称非空的数集之间的映射为函数（数集的定义见 \ref{number set}）.
 
 \subsubsection{限制与延拓}
 
 设有集合 $X, Y$, 有映射 $f:X\to Y$, 对于 $A \subseteq X$ 构建如下映射
 \[
-	f|_A : X\to Y
+	f|_A : X\to Y.
 \]
 映射 $f|_A$ 与 $f$ 在集合 $A$ 下相等, 即在每个元素 $x\in A$ 上映射所得的像相等.我们称 $f|_A$ 为 $f$ 在 $A$ 上的限制, 而相对于 $f|_A$ 称 $f$ 为 $f|_A$ 在 $X$ 上的延拓.
 
 \subsubsection{映射的分类}
 满足不同元素具有不同的像的映射称为单射, 即
 \[
-	x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)
+	x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2).
 \]
 
 满足映射的像等于集合 $Y$ 的映射称为满射, 即
 \[
-	f(X)=Y
+	f(X)=Y.
 \]
 
 即是单射又是满射的映射的映射是双射, 即
 \[
 \begin{aligned}
-	&f(X)=Y\\
-	&(f(x_1) = f(x_2)) \Rightarrow(x_1=x_2)
+	&f(X)=Y,\\
+	&(f(x_1) = f(x_2)) \Rightarrow(x_1=x_2).
 \end{aligned}
 \]
 \subsubsection{逆映射}
 
-当映射是双射的时候, 存在$f:X\rightarrow Y$的逆映射, 记为
+当映射是双射的时候, 存在 $f:X\rightarrow Y$ 的逆映射, 记为
 \[
-	f^{-1}:Y\rightarrow X
+	f^{-1}:Y\rightarrow X.
 \]
 \subsubsection{映射的复合运算}
 
@@ -440,7 +462,7 @@ A \subseteq B.
 \[
 \begin{aligned}
 	g\circ f:X&\to Z\\
-	x &\mapsto g(f(x))
+	x &\mapsto g(f(x)).
 \end{aligned}
 \]
 这样构建出的映射 $g\circ f$ 称为映射 $f$ 与 $g$ 的复合映射.
@@ -453,9 +475,9 @@ A \subseteq B.
 
 对于一非空集合 $X$, 若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
 \ITEMS
-	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$
-	\item 对称性\quad 若 $x, y\in X ,  x\mathcal{R}y$ 则 $y\mathcal{R}x$
-	\item 传递性\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$
+	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$.
+	\item 对称性\quad 若 $x, y\in X ,  x\mathcal{R}y$ 则 $y\mathcal{R}x$.
+	\item 传递性\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$.
 \ITEME 
 则称该二元关系为等价关系, 记作 $x\sim y$.
 
@@ -469,7 +491,7 @@ A \subseteq B.
 \begin{proof}
 	对集合 $M$ 的元素规定以下关系
 	\[
-		a\mathcal{R}b \iff a \text{ 与\ } b \text{ 同在一类}
+		a\mathcal{R}b \iff a \text{ 与\ } b \text{ 同在一类}.
 	\]
 	这显然是 $M$ 的一个等价关系.
 \end{proof}
@@ -486,11 +508,11 @@ A \subseteq B.
 	
 	设 $a\in\overline{b}, a\in\overline{c}$, 则
 	\[
-		a\sim b ,  \ \ a\sim c
+		a\sim b ,  \ \ a\sim c.
 	\]
 	任取 $x \in \overline{b}$, 则 $x\sim b$.由上可得 
 	\[
-		b\sim a ,  \ \ a\sim c
+		b\sim a ,  \ \ a\sim c.
 	\]
 	从而 $x\sim c$, 即 $x\in\overline{c}$, 于是 $\overline{b} \subseteq\overline{c}$.
 	
@@ -513,14 +535,14 @@ A \subseteq B.
 \ITEME 
 则称该二元关系为偏序关系, 记作 $x \preccurlyeq y$.如果除以上条件外还满足以下条件
 \[
-	\forall a \, \forall b\ ((a \mathcal{R} b ) \lor (b \mathcal{R} a))
+	\forall a \, \forall b\ ((a \mathcal{R} b ) \lor (b \mathcal{R} a)).
 \]
 即集合 $X$ 上所有元素都是可比的, 则关系 $\mathcal{R}$ 称为序关系, 而定义了序关系的集合 $X$ 为线性序集.
 
 \subsubsection{函数关系}
 满足
 \[
-	(x \mathcal{R} y_1) \land (x \mathcal{R} y_2) \Rightarrow (y_1 = y_2)
+	(x \mathcal{R} y_1) \land (x \mathcal{R} y_2) \Rightarrow (y_1 = y_2).
 \]
 的关系 $\mathcal{R}$ 称为函数关系.
 
@@ -538,20 +560,20 @@ A \subseteq B.
 \ITEMS
 	\item 外延公理
 	
-	集合$A$与集合$B$相等, 当且仅当它们所具有的各元素是相同的, 即
+	集合 $A$ 与集合 $B$ 相等, 当且仅当它们所具有的各元素是相同的, 即
 	\[
-		A=B\iff A\subset B \land A\supset B
+		A=B\iff A\subset B \land A\supset B.
 	\]
 	\item 分离公理
 	
-	任何集合$A$和性质$P$都对应一个集合, 其元素是且仅是$A$中具有性质$P$的各元素, 即
+	任何集合 $A$ 和性质 $P$ 都对应一个集合, 其元素是且仅是 $A$ 中具有性质 $P$ 的各元素, 即
 	\[
-		\{x\in A: P(x)\}\subset A
+		\{x\in A: P(x)\}\subset A.
 	\]
 	
 	\item 并集公理
 	
-	分离公理为集合运算的基础中的交集和补集提供了公理支持, 但是却无法支持并集运算, 那么我们提出对于集合的任何集合$M$, 存在一个集合$M$的并集的集合$\cup M$, 其元素是且仅是$M$的元素所包含的那些元素.
+	分离公理为集合运算的基础中的交集和补集提供了公理支持, 但是却无法支持并集运算, 那么我们提出对于集合的任何集合 $M$, 存在一个集合 $M$ 的并集的集合 $\cup M$, 其元素是且仅是 $M$ 的元素所包含的那些元素.
 	\item 配对公理
 	
 	对于任何集合 $X$ 和 $Y$ , 存在一个集合 $Z$ , 其元素仅为 $X$ 和 $Y$.
@@ -572,10 +594,10 @@ A \subseteq B.
 	我们在无穷公理的基础上再通过之前所用的公理就可以建立自然数集 $\mathbb{N}_0$ 的模型（冯诺伊曼表示法）, 对自然数作如下表示.
 	\[
 		\begin{aligned}
-			0:\quad & \varnothing\\
-			1:\quad & \varnothing^+=\{\varnothing\}\\
-			2:\quad & \{\varnothing\}^+=\{\{\varnothing\}\}\\
-			\vdots &
+			0:\quad & \varnothing,\\
+			1:\quad & \varnothing^+=\{\varnothing\},\\
+			2:\quad & \{\varnothing\}^+=\{\{\varnothing\}\},\\
+			\vdots & 
 		\end{aligned}
 	\]
 	\item 替换公理
@@ -590,6 +612,7 @@ A \subseteq B.
 \ITEME
 
 \section{实数集公理系统与一般性质}
+\label{number set}
 
 \subsection{实数集的定义}
 
@@ -600,62 +623,62 @@ A \subseteq B.
 	
 	定义如下映射（加法运算）
 	\[
-		+:\R\times \R\rightarrow\R
+		+:\R\times \R\rightarrow\R.
 	\]
 	
 	1$_+$. 中性元素 $0$ 存在;, 并且对任何的 $x\in \R$, 
 	\[
-		x+0 = 0+x = x
+		x+0 = 0+x = x.
 	\]
 	
 	2$_+$. 对于任何元素 $x\in\R$, 元素 $-x\in\R$ 一定存在, 称为 $x$ 的相反元素, 满足
 	\[
-		x+(-x)=(-x)+x=0
+		x+(-x)=(-x)+x=0.
 	\]
 	
 	3$_+$. 运算满足结合律, 即对 $\R$ 的任何元素 $x, y, z$ 满足
 	\[
-		x+(y+z) = (x+y)+z
+		x+(y+z) = (x+y)+z.
 	\]
 	
 	4$_+$. 运算满足交换, 即对 $\R$ 的任何元素 $x, y$ 满足
 	\[
-		x + y = y + x
+		x + y = y + x.
 	\]
 	
-	如果在某集合 $G$ 上定义了满足前三条公理的运算, 我们就说在 $G$ 上给定了群结构, 即 $G$ 是群, 如果成该运算为加法, 就称这个群为加法群, 如果除此之外还知道该运算满足交换律, 即条件 4$_+$ 成立, 就称这个群为交换群或阿贝尔群.
+	如果在某集合 $G$ 上定义了满足前三条公理的运算, 我们就说在 $G$ 上给定了群结构, 即 $G$ 是群, 如果成该运算为加法, 就称这个群为加法群, 如果除此之外还知道该运算满足交换律, 即条件 $4_+$ 成立, 就称这个群为交换群或阿贝尔群.
 	
 	\item 乘法公理
 	
 	定义如下映射（乘法运算）
 	\[
-		\bullet:\R\times \R\rightarrow\R
+		\bullet:\R\times \R\rightarrow\R.
 	\]
 	
-	1$_\bullet$. 中性元素 $1\in\R\setminus0$ 存在;, 并且对任何的 $x\in \R$, 
+	1$_\bullet$. 中性元素 $1\in\R\setminus0$ 存在, 并且对任何的 $x\in \R$, 
 	\[
-		x\cdot 1 = 1\cdot x = x
+		x\cdot 1 = 1\cdot x = x.
 	\]
 	
 	2$_\bullet$. 对于任何元素 $x\in\R\setminus0$, 元素 $-x\in\R$ 一定存在, 称为 $x$ 的逆元素, 满足
 	\[
-		x+(-x)=(-x)+x=0
+		x+(-x)=(-x)+x=0.
 	\]
 	
 	3$_\bullet$. 运算满足结合律, 即对 $\R$ 的任何元素 $x, y, z$ 满足
 	\[
-		x\cdot(y\cdot z) = (x\cdot y)\cdot z
+		x\cdot(y\cdot z) = (x\cdot y)\cdot z.
 	\]
 	
 	4$_\bullet$. 运算满足交换, 即对 $\R$ 的任何元素 $x, y$ 满足
 	\[
-		x \cdot y = y \cdot x
+		x \cdot y = y \cdot x.
 	\]
 	我们指出集合 $\R\setminus0$ 相对于乘法运算是（乘法）群.
 	
 	乘法相对于加法满足分配律, 即 $\forall x, y, z \in \R$, 
 	\[
-		(x+y)\cdot z = x \cdot z + y \cdot z
+		(x+y)\cdot z = x \cdot z + y \cdot z.
 	\]
 	
 	如果某集合 $G$ 上定义了满足上述全部公理的两种运算, 则 $G$ 称为代数域.
@@ -664,15 +687,15 @@ A \subseteq B.
 	
 	对于$\R$的元素$x$, $y$, 可以存在$x\le y$是否成立, 这时以下条件成立
 	
-	0$_\le$. $\forall x\in\R (x\le x)$
+	0$_\le$. $\forall x\in\R (x\le x)$.
 	
-	1$_\le$. $(x\le y)\land(y\le x)\Rightarrow(x=y)$
+	1$_\le$. $(x\le y)\land(y\le x)\Rightarrow(x=y)$.
 	
-	2$_\le$. $(x\le y)\land(y\le z)\Rightarrow(x\le z)$
+	2$_\le$. $(x\le y)\land(y\le z)\Rightarrow(x\le z)$.
 	
-	3$_\le$. $\forall x\in\R\forall y\in\R(x\le y)\lor(y\le x)$
+	3$_\le$. $\forall x\in\R\forall y\in\R(x\le y)\lor(y\le x)$.
 	
-	如果一个集合的某些元素之间的关系满足公理 0$_\le$, 1$_\le$, 2$_\le$, 该集合就称为偏序集, 如果除此之外还满足 3$_\le$, 即集合的任何两个元素都是可比较的, 该集合就称为线性序集.
+	如果一个集合的某些元素之间的关系满足公理 $0_\le$, $1_\le$, $2_\le$, 该集合就称为偏序集, 如果除此之外还满足 $3_\le$, 即集合的任何两个元素都是可比较的, 该集合就称为线性序集.
 	
 	
 	\item 完备性公理
@@ -695,8 +718,8 @@ A \subseteq B.
 设 $a$ 是集合 $X\subset\R$ 的元素, 如果对于任何元素 $x\in X$ 都有 $x\le a$ 则元素 $a$ 称为集合 $X$ 的最大元素（最大值）记作 $\max X$ 或 $\max\limits_{x\in X} x$, 而最小值记作 $\min X$ 或 $\min\limits_{x\in X} x$.
 \[
 \begin{aligned}
-	(a = \max X) := (a\in X \land \forall x \in X (x\le a))\\
-	(a = \min X) := (a\in X \land \forall x \in X (a\le x))	
+	(a = \max X) := (a\in X \land \forall x \in X (x\le a)),\\
+	(a = \min X) := (a\in X \land \forall x \in X (a\le x)).
 \end{aligned}
 \]
 
@@ -705,15 +728,15 @@ A \subseteq B.
 集合 $X\subset\R$ 的上界中的最小者称为集合 $X$ 的上确界, 同理定义下确界如下
 \[
 \begin{aligned}
-	(s = \sup X) &:= (\forall x\in X\, (x\le s))\land (\forall s' < s\,  \exists x' \in X (s'< x'))\\
-	(i = \inf X) &:= (\forall x\in X\;(i\le x))\land (\forall i' > i\; \exists x' \in X (x'< i'))
+	(s = \sup X) &:= (\forall x\in X\, (x\le s))\land (\forall s' < s\,  \exists x' \in X (s'< x')),\\
+	(i = \inf X) &:= (\forall x\in X\;(i\le x))\land (\forall i' > i\; \exists x' \in X (x'< i')).
 \end{aligned}
 \]
 也有等价定义
 \[
 \begin{aligned}
-	\sup X  := \min\{c\in\R\mid\forall x\in X(x\le c)\}\\
-	\inf X  := \max\{c\in\R\mid\forall x\in X(c\le x)\}
+	\sup X  := \min\{c\in\R\mid\forall x\in X(x\le c)\},\\
+	\inf X  := \max\{c\in\R\mid\forall x\in X(c\le x)\}.
 \end{aligned}
 \]
 
@@ -757,7 +780,7 @@ A \subseteq B.
 
 每个自然数能唯一的（不考虑顺序）表示为乘积的形式
 \[
-	n = p_1 \cdots p_k
+	n = p_1 \cdots p_k.
 \]
 其中 $p_1, \cdots , p_k$ 是素数.
 \end{theorem}
@@ -769,7 +792,7 @@ A \subseteq B.
 形如 $\frac{p}{q}$ 的数, 其中 $p, q\in\Z$, 且 $q\neq 0$, 称为有理数, 记有理数集为 $\Q$.
 
 \begin{remark}
-有理数的英文为 Rational numbers, 其中 Rational 虽然有“理性的”的意思, 但是在这里的翻译并不准确, 实际上 ratio 有比率的意思, 而 Rational numbers 的含义应该为“比率数”.
+有理数的英文为 Rational numbers, Rational 虽然有“理性的”的意思, 但是在这里翻译为“有理数”实际上并不准确, 因为 ratio 在这里是比率的意思, 所以 Rational numbers 的实际含义应该为“比率数”. 
 \end{remark}
 
 
@@ -788,13 +811,13 @@ A \subseteq B.
 
 我们先证明 $s^2 = 2$, 假如 $s^2 < 2$, 因为 $1 \in X$ 那么可知 $1^2 \le s^2 < 2$, 即 $0 < \Delta = 2 - s^2 \le 1$.这意味着
 \[
-	\left( s + \frac{\Delta}{3s} \right)^2 = s^2 + 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 + \Delta = 2
+	\left( s + \frac{\Delta}{3s} \right)^2 = s^2 + 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 + \Delta = 2.
 \]
 这与 $x \le s$ 相矛盾, 所以不成立.
 
 假如 $s^2 > 2$, 因为 $2 \in Y$ 那么可知 $2 < s^2 le 2^2$, 即 $0 < \Delta = s^2 - 2 <3$.这意味着
 \[
-	\left( s - \frac{\Delta}{3s} \right)^2 = s^2 - 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 - \Delta = 2
+	\left( s - \frac{\Delta}{3s} \right)^2 = s^2 - 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 - \Delta = 2.
 \]
 这与集合 $Y$ 有下界 $s$ 相矛盾, 所以不成立.
 
@@ -833,10 +856,10 @@ A \subseteq B.
 为了方便建立几何直观, 我们引入以下记号
 \[
 	\begin{aligned}
-		(a, b) = \{a\in\R | a< x< b\}\\
-		[a, b] = \{a\in\R | a\le x\le b\}\\
-		(a, b] = \{a\in\R | a< x\le b\}\\
-		[a, b) = \{a\in\R | a\le x< b\}
+		(a, b) = \{a\in\R | a< x< b\},\\
+		[a, b] = \{a\in\R | a\le x\le b\},\\
+		(a, b] = \{a\in\R | a< x\le b\},\\
+		[a, b) = \{a\in\R | a\le x< b\}.
 	\end{aligned}
 \]
 其中 $(a, b)$ 是开区间, $[a, b]$ 是闭区间, $(a, b]$ 是左开右闭区间, $[a, b)$ 是左闭右开区间.对于一个区间 ab （无论其开闭）称 b-a 为其长度, 对于区间 $I$, 记其长度为 $\lvert I \rvert$.
@@ -851,7 +874,7 @@ A \subseteq B.
 \[
 \begin{aligned}
 	|\cdot|:\R &\to \R_{\ge 0}\\
-	x &\mapsto \sqrt{x^2}
+	x &\mapsto \sqrt{x^2}.
 \end{aligned}
 \]
 它称为一个数的模或者绝对值.称 $\lvert x - y\rvert$ 为 $x, y\in\R$ 之间的距离.
@@ -860,11 +883,15 @@ A \subseteq B.
 
 根据模的定义, 我们可以得到三角不等式
 \[
-	\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert
+	\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert.
 \]
 \begin{proof}
 % 这一部分还不完善	<-------------------------- HERE
 \end{proof}
+
+\section{笛卡尔积}
+
+% 这一部分还不完善	<-------------------------- HERE
 
 
 \section{关于实数集完备性的一些基本引理}
@@ -939,29 +966,23 @@ A \subseteq B.
 \ITEME
 
 
-\subsubsection{幂集}
-称任一集合$A$的所有子集构成的集合为集合$A$的幂集, 记为$P(A)$.不难看出
-\[
-\lvert P(A) \rvert = 2^{\lvert A \rvert}
-\]
-
 \begin{theorem}[无最大基数定理]
-对于任一非空集合 $A$, 我们总有 $\lvert A \rvert<\lvert P(A) \rvert$.
+对于任一非空集合 $A$, 我们总有 $\lvert A \rvert<\lvert \mathcal{P}(A) \rvert$.
 \end{theorem}
 
 \begin{proof}
 
-我们先证明 $\lvert A \rvert \le \lvert P(A) \rvert$\\
-定义映射 $g:A\rightarrow P(A)$ 如下: 
+我们先证明 $\lvert A \rvert \le \lvert \mathcal{P}(A) \rvert$\\
+定义映射 $g:A\rightarrow \mathcal{P}(A)$ 如下: 
 \[ 
 	g(x)=\{x\},  \forall x \in A
 \] 
 不难看出, $g$ 是单射.
 
-下面我们用反证法证明 $\lvert A \rvert \ne \lvert P(A) \rvert$:
+下面我们用反证法证明 $\lvert A \rvert \ne \lvert \mathcal{P}(A) \rvert$:
 若相等, 则存在双射
 \[
-	f:A\rightarrow P(A)
+	f:A\rightarrow \mathcal{P}(A)
 \]
 定义一个$A$的子集合$B$如下: 
 \[
@@ -1021,9 +1042,23 @@ f(y) = B
 	\item 第 $n$ 步:  把 $x$ 所属的上一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间, 则 $a_n=0$；若 $x$ 属于第二个子区间, 则 $a_n=1$；
 	\item $\vdots$
 \ITEME
-    注意到上述 $a_n$ 中, 有无穷多个是 $1$.这样我们就建立了 $(0, 1]$ 和集合 $$S=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中无穷多个 $a_n$ 是 $1$} \}$$ 的一一对应关系.\\
-2 决定 $\lvert S\rvert$: 令 $$T=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中只有限多个 $a_n$ 是 $1$} \}$$ 和 $$ R=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$}\}$$ 
-不难看出 $\lvert R\rvert=2^{\aleph_0},  \lvert T\rvert=\aleph_0$ （为什么？）且 $S\cup T= R$.由上面关于基数的基本定理 $2$, 我们有 $$\lvert S\rvert=\lvert S\cup T\rvert =\lvert R\rvert=2^{\aleph_0}=\aleph_1$$
+    注意到上述 $a_n$ 中, 有无穷多个是 $1$.这样我们就建立了 $(0, 1]$ 和集合 
+\[
+    S=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中无穷多个 $a_n$ 是 $1$} \}
+\] 
+的一一对应关系.\\
+2 决定 $\lvert S\rvert$: 令 
+\[
+	T=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中只有限多个 $a_n$ 是 $1$} \}
+\] 
+和 
+\[
+	R=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$}\}.
+\]
+不难看出 $\lvert R\rvert=2^{\aleph_0},  \lvert T\rvert=\aleph_0$ 且 $S\cup T= R$.由上面关于基数的基本定理 $2$, 我们有 
+\[
+	\lvert S\rvert=\lvert S\cup T\rvert =\lvert R\rvert=2^{\aleph_0}=\aleph_1.
+\]
 \end{proof}
 
 \subsubsection{连续统假设}
@@ -1059,14 +1094,14 @@ f(y) = B
 
 数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于点 $A$ 的任何一个邻域 $V(A)$, 都存在序号 $N$, 是的数列中所有序号大于 $N$ 的项都包含在点 $A$ 的上述邻域 $V(A)$ 中.
 \[
-	\left( \lim_{n\to\infty} x_n = A\right) := \forall V(A)\ \exists N\in\N\ \forall n > N (x_n \in V(A))
+	\left( \lim_{n\to\infty} x_n = A\right) := \forall V(A)\ \exists N\in\N\ \forall n > N (x_n \in V(A)).
 \]
 
 接下来指出数列极限定义的另一种常见表述.
 
 数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 是的对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$.
 \[
-	\left( \lim_{n\to\infty} x_n = A\right) := \forall \varepsilon > 0\ \exists N\in\N\ \forall n > N (\lvert x_n - A\rvert < \varepsilon)
+	\left( \lim_{n\to\infty} x_n = A\right) := \forall \varepsilon > 0\ \exists N\in\N\ \forall n > N (\lvert x_n - A\rvert < \varepsilon).
 \]
 
 如果 $\lim\limits_{n\to\infty} x_n = A$, 我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$, 记作 $n\to\infty$ 时 $x_n \to A$.有极限的数列称为收敛数列, 没有极限的数列称为发散数列. 
@@ -1099,7 +1134,7 @@ f(y) = B
 	例如, 可以在 $\delta < \frac{\lvert A_1 - A_2\rvert}{2}$ 时取这两个点的邻域, 显然 $V(A_1), V(A_2)$ 不相交.根据极限的定义, 可以求得 $N_1, N_2$ 使得 $\forall n > N_1 (x_n\in V(A_1)), \ \forall n > N_2 (x_n\in V(A_2))$.于是对于 $n > \max\{N_1, N_2\}$ 有 $x_n \in V(A_1) \cap V(A_2)$, 与 $V(A_1), V(A_2)$ 不相交矛盾.
 	\item[4] 设 $\lim\limits_{n\to\infty} x_n = A$.如果取 $\varepsilon = 1$, 就可以求出 $N$, 使得 $\forall n > N (\lvert x_n - A \rvert < 1)$.这意味着, 当 $n > N$ 时有 $\lvert x_n \rvert < \lvert A \rvert + 1$.如果现在取
 	\[
-		M > \max\{\lvert x_1\rvert, \lvert x_2\rvert, \cdots, \lvert x_N\rvert, \lvert A\rvert + 1\}
+		M > \max\{\lvert x_1\rvert, \lvert x_2\rvert, \cdots, \lvert x_N\rvert, \lvert A\rvert + 1\},
 	\]
 	就得到 $\forall n (x_n < M)$.\qedhere
 	\ITEME
@@ -1144,10 +1179,10 @@ f(y) = B
 \begin{corollary}
 	设 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果存在序号 $N$, 是的对于任何 $n > N$ 都有
 	\ITEMS
-		\item $x_n > y_n$, 则 $A\ge B$
-		\item $x_n \ge y_n$, 则 $A\ge B$
-		\item $x_n > B$, 则 $A\ge B$
-		\item $x_n \ge B$, 则 $A\ge B$
+		\item $x_n > y_n$, 则 $A\ge B$.
+		\item $x_n \ge y_n$, 则 $A\ge B$.
+		\item $x_n > B$, 则 $A\ge B$.
+		\item $x_n \ge B$, 则 $A\ge B$.
 	\ITEME
 \end{corollary}
 
@@ -1215,7 +1250,7 @@ f(y) = B
 
 如果级数的前 $n$ 项和的数列收敛就称级数收敛, 否则称级数发散.级数的前 $n$ 项和数列的极限 $\lim_{n\to\infty} s_n = s$ 称为级数的和（如果该极限存在）, 做出如下记号.
 \[
-	\sum_{n=1}^\infty a_n = s
+	\sum_{n=1}^\infty a_n = s.
 \]
 
 \subsubsection{级数的柯西准则}
