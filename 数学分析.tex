@@ -881,15 +881,48 @@ A \subseteq B.
 
 \subsubsection{三角不等式}
 
-根据模的定义, 我们可以得到三角不等式
+根据模的定义, 我们可以得到三角不等式, 即对任何数 $x,y$, 不等式
 \[
 	\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert.
 \]
+成立，并且等式当且仅当 $x$ 与 $y$ 同时非负或同时非正才成立.
 \begin{proof}
-% 这一部分还不完善	<-------------------------- HERE
+如果 $0\le x$ 且 $0\le y$, 则 $0\le x+y$, $\lvert x+y\rvert = x+y$, $\lvert x \rvert = x$, $\lvert y \rvert = y$, 所以等式成立.
+
+如果 $x \le 0$ 且 $y\le 0$, 则 $x+y \le 0$, $\lvert x+y\rvert = -(x+y) = -x-y$, $\lvert x \rvert = -x$, $\lvert y \rvert = -y$, 所以等式也成立.
+
+如果 $x,y$ 一正一负, 例如 $x < 0 < y$, 则或者 $x < x+y \le 0$, 或者 $0 \le x+y <y$. 对于前者有 $\lvert x + y\rvert < \lvert x \rvert$, 对于后者有 $\lvert x + y\rvert < \lvert y \rvert$, 即对于二者都有 $\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert$.
 \end{proof}
 
 \section{笛卡尔积}
+
+我们曾在之前介绍过笛卡尔积, 在这节中我们将介绍笛卡尔积的另一种定义.
+
+\subsection{加标集族}
+设 $\mathcal{A}$ 是一个非空集族, $\mathcal{A}$ 的指标函数 $f$ 是从某一个集合 $J$ 到 $\mathcal{A}$ 的一个满射, 其中 $J$ 称为指标集. 族 $\mathcal{A}$ 连同指标函数 $f$ 一起称为集的加标集族, 给定 $\alpha \in J$, 集合 $f(\alpha)$ 记成符号 $A_\alpha$. 这个加标集族本身则记作
+\[
+	\{A_\alpha\}_{\alpha \in J}
+\]
+读作“ $\alpha$ 取遍 $J$ 时, 所有 $A_\alpha$ 的族”. 若指标集自明, 则也可以记为 $\{A_\alpha\}$.
+
+\subsection{元组}
+设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为
+\[
+	x:\{1,\cdots,m\}\to X.
+\]
+若 $x$ 是一个 $m$ 元组, 则往往把 $x$ 在 $i$ 项的值记为 $x_i$, 并称之为 $x$ 的第 $i$ 个坐标, 函数本身写为
+\[
+	(x_1,\cdots,x_m).
+\] 
+
+\subsection{笛卡尔积}
+
+设 $\{A_1,\cdots,A_m\}$ 是一个以 $\{1,\cdots,m\}$ 为指标集的加标集族. 令 $X = A_1 \cup \cdots \cup A_m$. 这个加标族的笛卡尔积记作
+\[
+	\prod_{i=1}^m A_i 或者 A_1 \times \cdots \times A_m,
+\]
+定义为 $X$ 中元素的所有 $m$ 元组 $(x_1,\cdots,x_m)$ 的集合, 使得对每一个 $i$ 有 $x_i\in A_i$.
+
 
 % 这一部分还不完善	<-------------------------- HERE
 
@@ -897,9 +930,12 @@ A \subseteq B.
 \section{关于实数集完备性的一些基本引理}
 
 \subsection{闭区间套引理（柯西-康托尔原理）}
-\subsubsection{序列}
 
-我们将以自然数集为定义域的映射 $f:\mathbb{N}\rightarrow X$ 称为序列.
+%本来要在这里介绍序列的概念的，不过由于加入了笛卡尔积这一小节，提前介绍了序列的概念
+%
+%\subsubsection{序列}
+%
+%我们将以自然数集为定义域的映射 $f:\mathbb{N}\rightarrow X$ 称为序列.
 
 \subsubsection{集合套}
 
@@ -1824,18 +1860,23 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \appendix
 \chapter{补充证明}
 
-
 \hypertarget{A1}{\section{一些超越数的证明}}
+
+%\chapter{名词表}
 
 
 \begin{thebibliography}{99}  
 
-\bibitem{ref1}[俄] B.A.卓立奇. 数学分析. 第一卷[M]. 李植,  译. 7版. 北京: 高等教育出版社,  2019.
-\bibitem{ref2}[俄] B.A.卓立奇. 数学分析. 第二卷[M]. 李植,  译. 7版. 北京: 高等教育出版社,  2019.
+\bibitem{ref1}[俄] B.A.卓立奇. 数学分析. 第一卷[M]. 李植, 译. 7版. 北京: 高等教育出版社, 2019.
+\bibitem{ref2}[俄] B.A.卓立奇. 数学分析. 第二卷[M]. 李植, 译. 7版. 北京: 高等教育出版社, 2019.
 \bibitem{ref3} 杨子胥. 近世代数[M]. 4版. 北京: 高等教育出版社,  2020.
-\bibitem{ref4}[美] Rudin W. 数学分析原理[M]. 赵慈庚,  蒋铎,  译. 3版. 北京: 机械工业出版社,  2004.
-\bibitem{ref5} 耿素云,  屈婉玲,  张立昂. 离散数学[M]. 6版. 北京: 清华大学出版社,  2021.
-\bibitem{ref6} 张波,  商豪,  邓军. 应用随机过程[M]. 6版. 北京: 中国人民大学出版社,  2023.
+\bibitem{ref4}[美] Rudin W. 数学分析原理[M]. 赵慈庚, 蒋铎, 译. 3版. 北京: 机械工业出版社, 2004.
+\bibitem{ref5} 耿素云, 屈婉玲, 张立昂. 离散数学[M]. 6版. 北京: 清华大学出版社, 2021.
+\bibitem{ref6} 张波, 商豪, 邓军. 应用随机过程[M]. 6版. 北京: 中国人民大学出版社, 2023.
+\bibitem{ref7} 陈纪修, 於崇华, 金路. 数学分析. 上册[M]. 3版. 北京: 高等教育出版社, 2019.
+\bibitem{ref8} 陈纪修, 於崇华, 金路. 数学分析. 下册[M]. 3版. 北京: 高等教育出版社, 2019.
+\bibitem{ref9} [美] Rudin W. 实分析与负分析[M]. 戴牧民, 张更容, 郑项伟, 李世余, 译. 3版. 北京: 机械工业出版社, 2006.
+\bibitem{ref10} [美] Strang G. 线性代数[M]. 6版. 北京: 清华大学出版社, 2024.
 \end{thebibliography}
 % 文档结束
 \end{document}
