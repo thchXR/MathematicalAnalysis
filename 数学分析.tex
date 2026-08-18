@@ -29,6 +29,7 @@
 
 
 \newtheorem{theorem}{定理}[section]
+\newtheorem{definition}{定义}[section]
 \newtheorem*{lemma}{引理}
 \newtheorem{proposition}[theorem]{命题}
 \newtheorem*{corollary}{推论}
@@ -41,7 +42,7 @@
 
 % update list
 % 
-%  完成章节: 1
+%  完成章节: 2
 %  
 %  实数类部分
 %  微分学
@@ -95,16 +96,24 @@
 
 \subsubsection{否命题}
 
-设有一命题 $p$ , 则 $p$ 的否定记为 $\neg p$（也可记为 $\overline p$）,  $p$ 的真值与 $\neg p$ 的真值相反.
+	设有一命题 $p$ , 则 $p$ 的否定记为 $\neg p$（也可记为 $\overline p$）,  $p$ 的真值与 $\neg p$ 的真值相反.
+
+
 
 \subsubsection{合取}
+
 设 $p, q$ 为命题,  $p, q$ 的合取式为复合命题, 记为 $p\land q$ , $\land$ 是合取联接词 , 即 $p, q$ 均为 T 时 $p\land q$ 取 T , 否则 $p\land q$ 取 F.
 
+
 \subsubsection{析取}
+
 设 $p, q$ 为命题,  $p, q$ 的析取式为复合命题, 记为 $p\lor q$ , $\lor$ 是析取联接词 , 即 $p, q$ 均为 F 时 $p\lor q$ 取 F , 否则 $p\lor q$ 取 T.
 
+
 \subsubsection{异或}
+
 设 $p, q$ 为命题,  $p, q$ 的异或为复合命题, 记为 $p\oplus q$ , $\oplus$ 是异或联接词, 即 $p, q$ 的真值不同时 $p\oplus q$ 取 T , 否则 $p\oplus q$ 取 F.
+
 
 \subsubsection{真值表}
 对于以上命题, 我们可以用以下真值表表示
@@ -158,15 +167,18 @@
 \subsection{条件语句}
 
 \subsubsection{蕴涵}
+
 设 $p, q$ 为命题, 命题 $p \rightarrow q$ 为命题 “若 $p$ , 则 $q$ ”,  $\rightarrow$ 是蕴涵联接词.当 $p$ 为真而 $q$ 为假时, 命题 $p \rightarrow q$ 为假, 否则 $p \rightarrow q$ 为真, 对于命题 $p \rightarrow q$ , 其中 $p$ 为前提,  $q$ 为结论.
+
 
 \begin{remark}
 为防止后续极限符号 $\to$ 与蕴涵符号产生歧义, 在后续分析学章节中将使用 $\Rightarrow$ 符号, 仅在讨论逻辑学时使用 $\rightarrow$.	
 \end{remark}
 
-
 \subsubsection{逆, 倒置与反}
+
 设 $p, q$ 为命题, 对于条件语句 $p \rightarrow q$ , 称 $q \rightarrow p$ 为 $p \rightarrow q$ 的逆蕴涵, 称 $\neg q \rightarrow \neg p$ 为 $p \rightarrow q$ 的倒置蕴涵, 称 $\neg p \rightarrow \neg q$ 为 $p \rightarrow q$ 的反蕴涵.
+
 \smallskip
 
 % 真值表 1-2
@@ -219,6 +231,7 @@
 
 设 $p, q$ 为命题, 命题 $p \leftrightarrow q$ 为命题 “$p$ 当且仅当 $q$ ”, 我们也将当且仅当写作 iff （if and only if）,  $\leftrightarrow$ 是等价联接词.当 $p$ 与 $q$ 的真值相等时, 命题 $p \leftrightarrow q$ 为真 , 否则命题 $p \leftrightarrow q$ 为假.
 
+
 \begin{remark}
 在后续分析学章节中将使用 $\Leftrightarrow$ 符号表示等价, 仅在讨论逻辑学时使用 $\leftrightarrow$.	
 \end{remark}
@@ -238,9 +251,12 @@
 \ITEME
 在命题逻辑中, 称合式公式为命题公式.
 
+
 \subsubsection{赋值}
 
+
 设 $A$ 为一个命题公式, $p_1, p_2, \cdots, p_n$ 为出现在 $A$ 中的所有命题变项.给 $p_1, p_2, \cdots, p_n$  指定一组真值, 称为对 $A$ 的一个赋值或解释.若指定的一组值使 $A$ 的值为真, 则称这组值为 $A$ 的成真赋值, 反之为成假赋值.
+
 
 \subsubsection{命题公式的分类}
 
@@ -251,9 +267,11 @@
 	\item 若 $A$ 至少存在一组成真赋值, 则称 $A$ 是可满足式.
 \ITEME
 
+
 \subsection{等值演算}
 
 设 $A, B$ 是两个命题公式, 若等价式 $A \leftrightarrow B$ 是重言式, 则称 $A, B$ 是等值的, 记作 $A\Leftrightarrow B$ .
+
 
 \begin{remark}
 在讨论逻辑学时 $\leftrightarrow, \Leftrightarrow$ 两个符号的含义不同, $\Leftrightarrow$ 并不是联接词, 但在分析学时我们会使用 $\Leftrightarrow$.
@@ -609,6 +627,8 @@ A \subseteq B.
 	对于任意互不相交的非空集合组成的集合族, 存在集合$C$, 使得对于该集合族中的任何集合$X$, 集合$X\cap C$只有一个元素组成.
 	
 	ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如承认此公理会引出分球怪论, 但由于选择公理可以为证明提供很多便利, 我们有 ZFC 集合论, 也就是在 ZF 集合论再加上选择公理.
+	
+	% 这一部分还不完善	<-------------------------- HERE
 \ITEME
 
 \section{实数集公理系统与一般性质}
@@ -906,25 +926,40 @@ A \subseteq B.
 读作“ $\alpha$ 取遍 $J$ 时, 所有 $A_\alpha$ 的族”. 若指标集自明, 则也可以记为 $\{A_\alpha\}$.
 
 \subsection{元组}
-设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为
+设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为hjuu 
 \[
-	x:\{1,\cdots,m\}\to X.
+	\boldsymbol{x}:\{1,\cdots,m\}\to X.
 \]
-若 $x$ 是一个 $m$ 元组, 则往往把 $x$ 在 $i$ 项的值记为 $x_i$, 并称之为 $x$ 的第 $i$ 个坐标, 函数本身写为
+我们把 $\boldsymbol{x}$ 在 $i$ 项的值记为 $x_i$, 并称之为 $\boldsymbol{x}$ 的第 $i$ 个坐标, 函数 $\boldsymbol{x}$ 本身写为
 \[
 	(x_1,\cdots,x_m).
 \] 
+
+\subsubsection{序列}
+给定一个集合 $X$, 定义 $X$ 中的元素的 $\omega$ 元组为函数
+\[
+	\boldsymbol{x}:\Z_+ \to X;
+\]
+我们也称 $\omega$ 元组为 $X$ 中元素的一个序列或一个无穷序列. 记 $\boldsymbol{x}$ 在 $i$ 项的值为 $x_i$, 并称之为 $\boldsymbol{x}$ 的第 $i$ 个坐标, 函数 $\boldsymbol{x}$ 本身写为
+\[
+	(x_1, x_2,\cdots) \text{  或者  } (x_n)_{n\in \Z_+}.
+\]
+
 
 \subsection{笛卡尔积}
 
 设 $\{A_1,\cdots,A_m\}$ 是一个以 $\{1,\cdots,m\}$ 为指标集的加标集族. 令 $X = A_1 \cup \cdots \cup A_m$. 这个加标族的笛卡尔积记作
 \[
-	\prod_{i=1}^m A_i 或者 A_1 \times \cdots \times A_m,
+	\prod_{i=1}^m A_i \text{  或者  } A_1 \times \cdots \times A_m,
 \]
-定义为 $X$ 中元素的所有 $m$ 元组 $(x_1,\cdots,x_m)$ 的集合, 使得对每一个 $i$ 有 $x_i\in A_i$.
+定义为 $X$ 中元素的所有 $m$ 元组 $(x_1,\cdots,x_m)$ 的集合, 使得对每一个 $i$ 有 $x_i\in A_i$. 
 
-
-% 这一部分还不完善	<-------------------------- HERE
+\smallskip
+设 $\{A_1,A_2,\cdots\}$ 是一个以正整数集作为指标集的加标集族. $X$ 为这个集族中所有集合之并. 这个加标族的笛卡尔积记作
+\[
+	\prod_{i\in \Z_+} A_i \text{  或者  } A_1 \times A_2 \times \cdots,
+\]
+定义为 $X$ 中元素的所有 $\omega$ 元组的集合, 使得对于每一个 $i,\ x_i\in A_i$.
 
 
 \section{关于实数集完备性的一些基本引理}
@@ -1009,24 +1044,24 @@ A \subseteq B.
 \begin{proof}
 
 我们先证明 $\lvert A \rvert \le \lvert \mathcal{P}(A) \rvert$\\
-定义映射 $g:A\rightarrow \mathcal{P}(A)$ 如下: 
+定义映射 $g:A\rightarrow \mathcal{P}(A)$ 如下
 \[ 
-	g(x)=\{x\},  \forall x \in A
+	g(x)=\{x\},  \forall x \in A.
 \] 
 不难看出, $g$ 是单射.
 
 下面我们用反证法证明 $\lvert A \rvert \ne \lvert \mathcal{P}(A) \rvert$:
 若相等, 则存在双射
 \[
-	f:A\rightarrow \mathcal{P}(A)
+	f:A\rightarrow \mathcal{P}(A).
 \]
 定义一个$A$的子集合$B$如下: 
 \[
-B = \{x\in A: x\notin f(x)\}
+B = \{x\in A: x\notin f(x)\}.
 \]
 由于 $f$ 是双射, 所以必存在（唯一）元素 $y\in A$ 使得
 \[
-f(y) = B
+f(y) = B.
 \]
 考虑 $y$ 与 $B$ 的关系, 发现无论如何都会产生矛盾: 
 \ITEMS
@@ -1036,7 +1071,7 @@ f(y) = B
 
 我们记 $\aleph_n=2^{\aleph_{n-1}},  n=1,  2,  \cdots$.由上述定理, 显然我们有 
 \[
-	\aleph_0 < \aleph_1 < \aleph_2 <\cdots< 
+	\aleph_0 < \aleph_1 < \aleph_2 <\cdots< \aleph_n< \cdots.
 \]
 \end{proof}
 
@@ -1054,22 +1089,25 @@ f(y) = B
 \begin{theorem}[康托尔定理]
 连续统的势大于自然数集的势, 即
 \[
-\lvert \N \rvert < \lvert \R \rvert
+\lvert \N \rvert < \lvert \R \rvert.
 \]
 \end{theorem}
 
 \begin{proof} $c = \aleph_1$
 
-我们先证明 $\lvert \R \rvert=\lvert (0, 1]\rvert $, 分三步进行: \\
+我们先证明 $\lvert \R \rvert=\lvert (0, 1]\rvert $
+\smallskip
 
-1. $\lvert \R\rvert =\lvert (-1, 1)\rvert $: 不难看出映射  $f:(-1, 1)\rightarrow \R$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射.\\
+1. $\lvert \R\rvert =\lvert (-1, 1)\rvert $, 不难看出映射  $f:(-1, 1)\rightarrow \R$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射.
 
-2. $\lvert (-1, 1)\rvert=\lvert (0, 1)\rvert $: 不难看出映射  $f:(-1, 1)\rightarrow (0, 1) $ 满足 $f(x)=\frac {x+1}{2}$ 是双射.\\
+2. $\lvert (-1, 1)\rvert=\lvert (0, 1)\rvert $, 不难看出映射  $f:(-1, 1)\rightarrow (0, 1) $ 满足 $f(x)=\frac {x+1}{2}$ 是双射.
 
-3. $\lvert (0, 1)\rvert=\lvert (0, 1]\rvert $:  因为 $(0, 1)\subseteq (0, 1]\subseteq (-1, 1)$.\\
+3. $\lvert (0, 1)\rvert=\lvert (0, 1]\rvert $, 因为 $(0, 1)\subseteq (0, 1]\subseteq (-1, 1)$.
 
-下面我们证明 $\lvert (0, 1]\rvert=2^{\aleph_0}$: \\
-1. 把 $(0, 1]$ 中的任一实数 $x$ 用二进制表示: 更具体地讲, 就是找到每项取值是 $0$ 或 $1$ 的无穷数列 $\{a_n\}_{n \ge 1}$ 满足在二进制下 $x=0.a_1 a_2\cdots a_n \cdots$, 其中无穷多个 $a_n$ 是 $1$ .\\
+\smallskip
+下面我们证明 $\lvert (0, 1]\rvert=2^{\aleph_0}$.
+
+\no 1. 把 $(0, 1]$ 中的任一实数 $x$ 用二进制表示: 更具体地讲, 就是找到每项取值是 $0$ 或 $1$ 的无穷数列 $\{a_n\}_{n \ge 1}$ 满足在二进制下 $x=0.a_1 a_2\cdots a_n \cdots$, 其中无穷多个 $a_n$ 是 $1$ .
 \ITEMS 
 	\item 第一步: 把区间 $(0, 1]$ 二等分为两半开闭子区间: 若 $x$ 属于靠左的（称为第一个, 后同）子区间 $(0, \frac{1}{2}]$, 则 $a_1=0$；若 $x$ 属于靠右的（称为第二个, 后同）子区间, 则 $a_1=1$；
 	
@@ -1078,12 +1116,14 @@ f(y) = B
 	\item 第 $n$ 步:  把 $x$ 所属的上一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间, 则 $a_n=0$；若 $x$ 属于第二个子区间, 则 $a_n=1$；
 	\item $\vdots$
 \ITEME
-    注意到上述 $a_n$ 中, 有无穷多个是 $1$.这样我们就建立了 $(0, 1]$ 和集合 
+
+注意到上述 $a_n$ 中, 有无穷多个是 $1$.这样我们就建立了 $(0, 1]$ 和集合 
 \[
     S=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中无穷多个 $a_n$ 是 $1$} \}
 \] 
-的一一对应关系.\\
-2 决定 $\lvert S\rvert$: 令 
+的一一对应关系.
+
+\no 2 决定 $\lvert S\rvert$, 令 
 \[
 	T=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中只有限多个 $a_n$ 是 $1$} \}
 \] 
@@ -1103,6 +1143,10 @@ f(y) = B
 
 不存在一个无穷集合, 其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1},  n=0,  1, 2,  \cdots $ 之间.
 
+\section{良序集}
+
+% 这一部分还不完善	<-------------------------- HERE
+
 \section{*数学史: 集合论与康托尔}
 
 康托尔出生于圣彼得堡, 但他一生大部分时间是在德国度过的, 
@@ -1119,7 +1163,7 @@ f(y) = B
 
 在讨论初等数学与高等数学的区别时, 我认为极限的思想是两者间最大的区别, 极限是分析学的基础.初等数学侧重于“常量”与“静态”的计算, 而高等数学侧重于“变量”与“动态”的变化过程, 而极限就是研究动态问题的最基本手段.
 
-其实极限的思想很早就在数学家们的心中产生, 无论是刘徽的割圆术还是芝诺的阿基里斯追龟悖论, 都是极限思想的体现.
+其实极限的思想很早就在数学家们的心中产生, 无论是刘徽的割圆术还是芝诺的阿基里斯追龟悖论, 都是极限思想的体现, 只不过在柯西（Cauchy）提出极限定义之前的两千年间, 数学界一直都没能给出极限的严格定义.
 
 \section{数列极限}
 
@@ -1856,11 +1900,14 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 % 								    附 录
 % ================================================================================== 
 
-\chapter*{附录}
 \appendix
 \chapter{补充证明}
 
 \hypertarget{A1}{\section{一些超越数的证明}}
+
+
+
+
 
 %\chapter{名词表}
 
@@ -1877,6 +1924,7 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \bibitem{ref8} 陈纪修, 於崇华, 金路. 数学分析. 下册[M]. 3版. 北京: 高等教育出版社, 2019.
 \bibitem{ref9} [美] Rudin W. 实分析与负分析[M]. 戴牧民, 张更容, 郑项伟, 李世余, 译. 3版. 北京: 机械工业出版社, 2006.
 \bibitem{ref10} [美] Strang G. 线性代数[M]. 6版. 北京: 清华大学出版社, 2024.
+\bibitem{ref11} [德] Aigner M., Ziegler G. M. 数学天书中的证明[M]. 冯荣权, 宋春伟, 宗传明, 李璐, 译. 6版. 北京: 高等教育出版社, 2022.
 \end{thebibliography}
 % 文档结束
 \end{document}
