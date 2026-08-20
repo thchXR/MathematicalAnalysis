@@ -1238,23 +1238,25 @@ f(y) = B.
 \end{theorem}
 \begin{proof}
 
-
-
-
-
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
 
 
 \subsubsection{迫敛性}
 \begin{theorem}
-	设 $\{x_n\}, \{y_n\}$ 是两个收敛数列, 并且 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果 $A < B$, 就可以求出序号 $N \in \N$, 使得对于任何 $n > N$, 不等式 $x_n < y_n$ 成立.
+\ITEMS
+	\item 设 $\{x_n\}, \{y_n\}$ 是两个收敛数列, 并且 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果 $A < B$, 就可以求出序号 $N \in \N$, 使得对于任何 $n > N$, 不等式 $x_n < y_n$ 成立.
 	
-	设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 页收敛于该极限. 
+	\item 设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 页收敛于该极限. 
+\ITEME
 \end{theorem}
 \begin{proof}
+\ITEMS
+	\item 取数 $C$, 使得 $A < C < B$. 根据极限的定义, 可以求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $\lvert x_n - A \rvert < C - A$, 并且对于任何 $n > N \in \N$, 都有 $\lvert y_n - B \rvert < B - C$. 于是, 当 $n>N = \max\{N',N''\}$ 时, 就得到 $x_n < A + (C - A) = C = B - (B- C) < y_n$.
+	
+	\item 设 $\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} z_n = A$. 由 $\varepsilon > 0$ 求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $N'< A + \varepsilon$. 于是, 当 $n > N =\max\{N',N''\}$ 时, 我们得到 $A -\varepsilon < x_n \le y_n \le z_n < A + \varepsilon$, 即 $\lvert y_n - A\rvert < \varepsilon$, 从而 $A = \lim\limits_{n\to\infty} y_n$.
 
-	% 这一部分还不完善	<-------------------------- HERE
+\ITEME
 \end{proof}
 \begin{corollary}
 	设 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果存在序号 $N$, 是的对于任何 $n > N$ 都有
@@ -1273,9 +1275,16 @@ f(y) = B.
 % 因为定义中的A往往是未知的, 所用极限不便于应用
 % 三次数学危机, 第二次数学危机, 无穷小量的引入
 \begin{theorem}
-	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 $|x_n-x_m| < \varepsilon$.我们称满足以上条件的数列为基本数列（柯西数列）.
+	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 $|x_n-x_m| < \varepsilon$. 我们称满足以上条件的数列为基本数列（柯西数列）.
 \end{theorem}
 \begin{proof}
+	我们首先证明必要性, 设 $\lim\limits_{n\to\infty} x_n = A$. 对于 $\forall \varepsilon > 0$, 可以求出序号 $N$, 使得当 $n > N$ 时有 $\lvert x_n - A\rvert < \varepsilon/2$. 如果现在 $m > N$ 且 $n > N$, 则 $\lvert x_m - x_n \rvert \le \lvert x_m - A \rvert + \lvert x_n - A \rvert < \varepsilon/2 + \varepsilon/2 = \varepsilon$, 必要性证必.
+	
+	接下来我们证明充分性, 设 $\{x_k\}$ 是一个基本数列. 对于 $\forall\varepsilon > 0$, 可以求出序号 $N$, 使得当 $m \ge N$ 且 $k\ge N$ 时有 $\lvert x_m - x_k \rvert < \varepsilon/3$. 把 $m$ 固定为 $m = N$, 则对于任何 $k > N$ 都有
+	\[
+		x_N - \frac\varepsilon3 < x_k < x_N +\frac\varepsilon3.
+	\] 
+	
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
 
@@ -1303,7 +1312,7 @@ f(y) = B.
 
 \subsubsection{子列与数列的部分极限}
 
-如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$
+如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$ 称为数列的子列.
 
 % 子列
 
@@ -1925,6 +1934,8 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \bibitem{ref9} [美] Rudin W. 实分析与负分析[M]. 戴牧民, 张更容, 郑项伟, 李世余, 译. 3版. 北京: 机械工业出版社, 2006.
 \bibitem{ref10} [美] Strang G. 线性代数[M]. 6版. 北京: 清华大学出版社, 2024.
 \bibitem{ref11} [德] Aigner M., Ziegler G. M. 数学天书中的证明[M]. 冯荣权, 宋春伟, 宗传明, 李璐, 译. 6版. 北京: 高等教育出版社, 2022.
+\bibitem{ref12} [美] Boyer C. B., Merzbach U. C. 数学史[M]. 3版. 李文林, 潘丽云, 等译. 北京: 北京大学出版社, 2024.
+
 \end{thebibliography}
 % 文档结束
 \end{document}
