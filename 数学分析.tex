@@ -784,6 +784,45 @@ A \subseteq B.
 	其中条件 5 保证了数学归纳原理的正确性, 是数学证明的基本工具.自然数集在某些定义下不包含 $0$, 在这里我们记不包含零的自然数集为 $\N_+$.
 \end{remark}
 
+\begin{example}
+	用数学归纳原理证明牛顿二项式公式,
+	\[
+		(a + b)^{n} = \sum_{k = 0}^{n} {n \choose k} a^{n - k} b^{k},
+	\]
+	其中 ${n \choose k}$ 称为二项式系数, 其等于 $\frac {n!}{k!(n-k)!}$. 符号 $!$ 表示阶乘, 即所有小于等于该数的正整数的积.
+\begin{proof}
+	假设对于某一 $m \in \N_+$, 有
+	\[
+		(a + b)^{m} = \sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}.
+	\]
+	
+	我们要证明其对 $(a + b)^{m+1}$ 成立,
+	\[
+	\begin{aligned}
+		(a + b)^{m+1} & = (a + b)(a + b)^{m}\\
+		& = (a + b)\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}\\
+		& = a\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k} + b\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}\\
+		& = \sum_{k = 0}^{m} {m \choose k} a^{m - k + 1} b^{k} + \sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k + 1} 
+	\end{aligned}
+	\]
+	
+	对于上式中 $\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k + 1}$, 令 $k = j - 1$
+	\[
+		\sum_{j = 1}^{m+1} {m \choose j-1} a^{m - j + 1} b^{j}.
+	\]
+	
+	将结果带回原式可得
+	\[
+		(a + b)^{m+1} = \sum_{j = 1}^{m+1} {m + 1 \choose j} a^{m - j + 1} b^{j}.
+	\]
+	
+	因为 $(a+b)^1 = {1 \choose 1}a^1 b^0 + {1 \choose 1}a^0 b^1$ 显然成立, 根据归纳原理, 上式对所有正整数 $n$ 成立.
+	
+	
+\end{proof}
+
+\end{example}
+
 \subsection{有理数与无理数}
 
 \subsubsection{整数集}
@@ -1237,7 +1276,7 @@ f(y) = B.
 	\ITEME
 \end{theorem}
 \begin{proof}
-	a
+	
 
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
@@ -1379,8 +1418,46 @@ f(y) = B.
 
 \subsubsection{自然常数的级数形式}
 
-带着我们对级数的了解, 我们再一次回来考虑自然常数 $e$.
-% 这一部分还不完善	<-------------------------- HERE
+带着我们对级数的了解, 我们再次考虑自然常数 $e$. 根据我们曾学过的内容, 我们知道,
+\[
+	e = \lim_{n\to\infty} \left(1 + \frac1n\right)^n.
+\]
+
+根据牛顿二项式定理公式,
+\[
+	\left(1 + \frac1n\right)^n = \sum_{i = 0}^{n} \frac{1}{i!} \frac{n!}{(n-i)!n^i},
+\]
+取
+\[
+	e_n =  \left(1 + \frac1n\right)^n,\ s_n = \sum_{i = 0}^{n} \frac{1}{i!},
+\]
+显然有 $e_n < s_n$.
+
+从以上展开式可见, 对于任何固定的 $k$, 当 $n \ge k$ 时有
+\[
+	\sum_{i = 0}^{k} \frac{1}{i!} \frac{n!}{(n-i)!n^i} \le e_n = \sum_{i = 0}^{n} \frac{1}{i!} \frac{n!}{(n-i)!n^i}.
+\]
+等式左边有
+\[
+	\sum_{i = 0}^{k} \frac{1}{i!} \frac{n!}{(n-i)!n^i} = 1 + 1 + \frac{1}{2!}\left(1-\frac1n\right) + \cdots + \frac{1}{k!}\left(1-\frac1n\right)\cdots\left(1-\frac{k-1}{n}\right).
+\]
+令 $n \to \infty$ , 
+\[
+	\lim_{n\to\infty}\sum_{i = 0}^{k} \frac{1}{i!} \frac{n!}{(n-i)!n^i} = 1 + 1 + \frac{1}{2!} + \cdots + \frac{1}{k!}
+	= s_k.
+\]
+可见等式左边趋于 $s_k$, 而右边显然趋于 $e$, 所以对于任何 $k \in \N$ 都有 $s_k \le e$. 得到如下关系式
+\[
+	e_n < s_n \le e.
+\]
+这时再令 $n \to \infty$, 根据迫敛性可得 $\lim\limits_{n\to\infty} s_n = e$.
+
+根据级数的和的定义, 我们现在可以写出
+\[
+	e = 1 + \frac1{1!} + \frac1{2!} + \cdots + \frac1{n!} + \cdots = \sum_{n=0}^\infty \frac{1}{n!}.
+\]
+
+级数形式是 $e$ 的一个特别便于计算的表达式.
 
 \section{函数极限}
 
@@ -1417,7 +1494,7 @@ f(y) = B.
 \begin{example}
 	符号函数
 	\[
-		\text{sgn} x = \begin{cases}
+		\mathrm{sgn} x = \begin{cases}
 			1, & x>0,\\
 			0, & x=0,\\
 			-1, & x<0
