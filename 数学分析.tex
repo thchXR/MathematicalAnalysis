@@ -1501,9 +1501,15 @@ f(y) = B.
 		\end{cases}
 	\]
 	是在整个数轴上定义的. 我们来证明在 $x$ 趋于 $0$ 时，它没有极限.
-	% 这一部分还不完善	<-------------------------- HERE
-	
 \end{example}
+
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+\begin{proposition}[柯西极限定义与海涅极限定义的等价性命题]
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proposition}
 
 % 七种极限定义
 % 左右单侧极限
@@ -1516,12 +1522,13 @@ f(y) = B.
 \subsubsection{函数极限的一般性质}
 
 
-
 % 这一部分还不完善	<-------------------------- HERE
 
-\subsection{极限过程与算数运算}
+\subsubsection{极限过程与算数运算}
 
-\subsection{极限过程与不等式}
+\subsubsection{极限过程与不等式}
+
+\subsubsection{两个重要实例}
 
 \subsection{函数极限的一般定义}
 
@@ -1529,9 +1536,53 @@ f(y) = B.
 
 \section{函数的连续性}
 
-\subsection{连续性的定义}
+\subsection{连续性的基本定义}
+
+假设函数 $f$ 在点 $a$ 的整个邻域上有定义, 我们说函数 $f$ 在点 $a$ 连续, 如果对于函数在点 $a$ 的值 $f(x)$ 的任何一个邻域 $V(f(a))$, 都可以找到点 $a$ 的邻域 $U(a)$, 使它在映射 $f$ 下的像包含于 $V(f(x))$.
+
+这里给出连续性的形式逻辑写法, 同时给出常用的两个变体
+\[
+	\forall V(f(a))\ \exists U(a)\ (f(U(a)) \subset V(f(a))),
+\]
+\[
+	\forall \varepsilon > 0\ \exists U(a)\ \forall x \in U(a)\ (\lvert f(x) - f(a)\rvert < \varepsilon),
+\]
+\[
+	\forall \varepsilon > 0\ \exists \delta > 0\ \forall x\in \R\ (\lvert x - a\rvert < \delta \Rightarrow \lvert f(x) - f(a)\rvert < \varepsilon).
+\]
+
+接下来我们考虑更一般的情况, 设函数 $f: E \to \R$ 定义在某个集合上的实值函数, 而 $a$ 是函数定义域中的一个点.
+
+我们说函数 $f: E \to \R$ 在点 $a \in E$ 连续, 如果对于函数在点 $a$ 的值 $f(a)$ 的任何一个邻域 $V(f(a))$, 可以找到点 $a$ 在集合 $E$ 中的一个邻域 $U_E(a)$, 使得它的像 $f(U_E(a))$ 包含于 $V(f(a))$.
+
+于是,
+\[
+	\forall V (f(a))\ \exists U_E (a)\ (f(U_E(a)) \subset V(f(a)))
+\]
+
+\begin{remark}
+在提出连续性的严谨定义以前，莱布尼茨曾定义连续函数就是图像可以一笔画出来, 不需要抬笔的函数, 欧拉定义连续函数是用单一函数表示的一条曲线.
+\end{remark}
+
+% 讨论函数在一个点连续的概念
+% 这一部分还不完善	<-------------------------- HERE
 
 \subsection{间断点}
+
+如果函数 $f: E \to \R$ 在集合 $E$ 的某个点上不连续, 则该点称为函数 $f$ 的间断点.
+
+
+
+点 $a\in E$ 称为函数 $f:E \to \R$ 的第一类间断点, 如果如果极限
+\[
+\begin{aligned}
+	&\lim_{E\ni x \to a - 0} f(x),\\
+	&\lim_{E\ni x \to a + 0} f(x)
+\end{aligned}
+\]
+都存在, 但至少其中一个极限不等于函数在点 $a$ 的值 $f(a)$
+
+如果点 $a\in E$ 是函数 $f: E \to \R$ 的间断点, 并且满足 $f|_{E\setminus a} = \widetilde{f}|_{E\setminus a}$ 的连续函数 $\widetilde{f}: E \to \R$, 则 $a$ 称为函数 $f: E \to \R$ 的可去间断点.
 
 \subsection{连续函数的局部性质}
 
@@ -1544,6 +1595,10 @@ f(y) = B.
 % ================================================================================== 
 \chapter{微分学}
 \section{可微函数}
+
+\subsection{引子}
+
+\subsection{切线, 导数和微分的几何意义}
 % 这一部分还不完善	<-------------------------- HERE
 
 
