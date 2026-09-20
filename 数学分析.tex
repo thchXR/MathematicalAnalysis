@@ -494,7 +494,7 @@ A \subseteq B.
 映射 $f|_A$ 与 $f$ 在集合 $A$ 下相等, 即在每个元素 $x\in A$ 上映射所得的像相等.我们称 $f|_A$ 为 $f$ 在 $A$ 上的限制, 而相对于 $f|_A$ 称 $f$ 为 $f|_A$ 在 $X$ 上的延拓.
 \DEFE
 
-\subsubsection{映射的分类}
+\DEFS{映射的分类}
 满足不同元素具有不同的像的映射称为单射, 即
 \[
 	x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2).
@@ -512,14 +512,16 @@ A \subseteq B.
 	&(f(x_1) = f(x_2)) \Rightarrow(x_1=x_2).
 \end{aligned}
 \]
-\subsubsection{逆映射}
+\DEFE
 
+\DEFS{逆映射}
 当映射是双射的时候, 存在 $f:X\rightarrow Y$ 的逆映射, 记为
 \[
 	f^{-1}:Y\rightarrow X.
 \]
-\subsubsection{映射的复合运算}
+\DEFE
 
+\DEFS{映射的复合运算}
 如果在映射 $f:X\to Y$ 和 $g:Y\to Z$ 中, 构建一个新的映射
 \[
 \begin{aligned}
@@ -528,13 +530,15 @@ A \subseteq B.
 \end{aligned}
 \]
 这样构建出的映射 $g\circ f$ 称为映射 $f$ 与 $g$ 的复合映射.
+\DEFE
 
 \subsection{关系}
 
+\DEFS{二元关系}
 关系是两个集合笛卡尔积的子集.如果有两个集合 $A$ 和 $B$, 它们之间的二元关系 $\mathcal{R}$ 是集合 $A$ 与 $B$ 的笛卡尔积的子集, 即 $\mathcal{R} \subseteq A \times B$.若元素 $a \in A$ 与 $b \in B$ 满足 $(a,  b) \in \mathcal{R}$, 则记作 $a\mathcal{R}b$, 否则记为 $a\overline{\mathcal{R}}b$.对于集合 $X$, 如果 $\mathcal{R} \subseteq X^2$, 就说在 $X$ 上给定了二元关系 $\mathcal{R}$.
+\DEFE
 
-\subsubsection{等价关系}
-
+\DEFS{等价关系}
 对于一非空集合 $X$, 若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
 \ITEMS
 	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$.
@@ -542,10 +546,13 @@ A \subseteq B.
 	\item 传递性\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$.
 \ITEME 
 则称该二元关系为等价关系, 记作 $x\sim y$.
+\DEFE
 
 \subsubsection{集合在等价关系下的分类}
 
+\DEFS{等价类}
 若把集合 $M$ 的全体元素分成若干互不相交的子集, 则称每个这样的子集为 $M$ 的一个类, 类的全体叫做 $M$ 的一个分类.
+\DEFE
 
 \begin{theorem}
 	集合 $M$ 的一个分类决定 $M$ 的一个等价关系.
@@ -587,8 +594,7 @@ A \subseteq B.
 % TODO: 这里还可以添加一点例题, 参考近世代数 ref3
 % 这一部分还不完善	<-------------------------- HERE
 
-\subsubsection{偏序关系}
-
+\DEFS{偏序关系}
 对于一非空集合 $X$, 若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
 \ITEMS
 	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$
@@ -600,13 +606,15 @@ A \subseteq B.
 	\forall a \, \forall b\ ((a \mathcal{R} b ) \lor (b \mathcal{R} a)).
 \]
 即集合 $X$ 上所有元素都是可比的, 则关系 $\mathcal{R}$ 称为序关系, 而定义了序关系的集合 $X$ 为线性序集.
+\DEFE
 
-\subsubsection{函数关系}
+\DEFS{函数关系}
 满足
 \[
 	(x \mathcal{R} y_1) \land (x \mathcal{R} y_2) \Rightarrow (y_1 = y_2).
 \]
 的关系 $\mathcal{R}$ 称为函数关系.
+\DEFE
 
 \section{公理化集合论}
 
@@ -619,41 +627,46 @@ A \subseteq B.
 \subsection{公理化集合论}
 
 实际上公理化集合论是一个没有数学美感的产物, 就像东拼西凑出的支柱, 主要为防止如罗素悖论这种矛盾的产生, 其中我们最常用的是策梅洛-弗伦克尔公理系统（Zermelo-Fraenkel）, 一般简称为 ZF 集合论.
-\ITEMS
-	\item 外延公理
-	
+
+\begin{axiom}[外延公理]
 	集合 $A$ 与集合 $B$ 相等, 当且仅当它们所具有的各元素是相同的, 即
 	\[
 		A=B\iff A\subset B \land A\supset B.
 	\]
-	\item 分离公理
-	
+\end{axiom}
+
+\begin{axiom}[分离公理]
 	任何集合 $A$ 和性质 $P$ 都对应一个集合, 其元素是且仅是 $A$ 中具有性质 $P$ 的各元素, 即
 	\[
 		\{x\in A: P(x)\}\subset A.
 	\]
+\end{axiom}
 	
-	\item 并集公理
+分离公理为集合运算的基础中的交集和补集提供了公理支持, 但是却无法支持并集运算.
 	
-	分离公理为集合运算的基础中的交集和补集提供了公理支持, 但是却无法支持并集运算, 那么我们提出对于集合的任何集合 $M$, 存在一个集合 $M$ 的并集的集合 $\cup M$, 其元素是且仅是 $M$ 的元素所包含的那些元素.
-	\item 配对公理
+\begin{axiom}[并集公理]
+	对于集合的任何集合 $M$, 存在一个集合 $M$ 的并集的集合 $\cup M$, 其元素是且仅是 $M$ 的元素所包含的那些元素.
+\end{axiom}
 	
+\begin{axiom}[配对公理]
 	对于任何集合 $X$ 和 $Y$ , 存在一个集合 $Z$ , 其元素仅为 $X$ 和 $Y$.
+\end{axiom}
 	
-	\item 空集公理
-	
+\begin{axiom}[空集公理]
 	存在一个不包含任何元素的集合 $\varnothing$, 由分离定理从任意集合都可以分离出空子集, 并根据外延定理可知所有空子集都相等.
+\end{axiom}
 	
-	\item 幂集公理（子集之集）
-	
+\begin{axiom}[幂集公理（子集之集）]
 	对于任何集合 $X$, 存在一个集合 $\mathcal{P}$, 其元素是且仅是 $X$ 的各子集.
-	\item 无穷公理
-	
-	我们首先需要引入后继集的概念, 定义 $X^+=X\cup \{X\}$ 为后继集, 此外, 如果一个集合包含空集以及自身任何一个元素的后继集, 我们称该集合为归纳集.
-	
-	而无穷公理也就是归纳集存在.
-	
-	我们在无穷公理的基础上再通过之前所用的公理就可以建立自然数集 $\mathbb{N}_0$ 的模型（冯诺伊曼表示法）, 对自然数作如下表示.
+\end{axiom}
+
+在介绍无穷公理之前我们首先需要引入后继集的概念, 定义 $X^+=X\cup \{X\}$ 为后继集, 此外, 如果一个集合包含空集以及自身任何一个元素的后继集, 我们称该集合为归纳集.
+
+\begin{axiom}[无穷公理]
+	归纳集存在.
+\end{axiom}
+
+我们在无穷公理的基础上再通过之前所用的公理就可以建立自然数集 $\mathbb{N}_0$ 的模型（冯诺伊曼表示法）, 对自然数作如下表示.
 	\[
 		\begin{aligned}
 			0:\quad & \varnothing,\\
@@ -662,18 +675,17 @@ A \subseteq B.
 			\vdots & 
 		\end{aligned}
 	\]
-	\item 替换公理
-	 
+	
+\begin{axiom}[替换公理]
 	设$\mathcal{F}(x, y)$是以下命题（公式）: 对于集合$X$中的任何元素$x_0$存在唯一的对象$y_0$, 使得$\mathcal{F}(x_0, y_0)$成立, 那么满足该条件的对象$y$组成一个集合.
+\end{axiom}
 	
-	\item * 选择公理（策梅洛公理）
-	
+\begin{axiom}[* 选择公理（策梅洛公理）]
 	对于任意互不相交的非空集合组成的集合族, 存在集合$C$, 使得对于该集合族中的任何集合$X$, 集合$X\cap C$只有一个元素组成.
+\end{axiom}
+
+ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如承认此公理会引出分球怪论, 但由于选择公理可以为证明提供很多便利, 我们有 ZFC 集合论, 也就是在 ZF 集合论再加上选择公理.
 	
-	ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如承认此公理会引出分球怪论, 但由于选择公理可以为证明提供很多便利, 我们有 ZFC 集合论, 也就是在 ZF 集合论再加上选择公理.
-	
-	% 这一部分还不完善	<-------------------------- HERE
-\ITEME
 
 \section{实数集公理系统与一般性质}
 \label{number set}
@@ -682,9 +694,7 @@ A \subseteq B.
 
 如果以下四组条件成立, 则集合 $\R$ 称为实数集, 其元素称为实数, 这些条件称为实数公理系统.
 
-\ITEMS
-	\item 加法公理
-	
+\begin{axiom}[加法公理]
 	定义如下映射（加法运算）
 	\[
 		+:\R\times \R\rightarrow\R.
@@ -709,11 +719,11 @@ A \subseteq B.
 	\[
 		x + y = y + x.
 	\]
+\end{axiom}
 	
 	如果在某集合 $G$ 上定义了满足前三条公理的运算, 我们就说在 $G$ 上给定了群结构, 即 $G$ 是群, 如果成该运算为加法, 就称这个群为加法群, 如果除此之外还知道该运算满足交换律, 即条件 $4_+$ 成立, 就称这个群为交换群或阿贝尔群.
 	
-	\item 乘法公理
-	
+\begin{axiom}[乘法公理]
 	定义如下映射（乘法运算）
 	\[
 		\bullet:\R\times \R\rightarrow\R.
@@ -738,6 +748,8 @@ A \subseteq B.
 	\[
 		x \cdot y = y \cdot x.
 	\]
+\end{axiom}
+
 	我们指出集合 $\R\setminus0$ 相对于乘法运算是（乘法）群.
 	
 	乘法相对于加法满足分配律, 即 $\forall x, y, z \in \R$, 
@@ -747,8 +759,7 @@ A \subseteq B.
 	
 	如果某集合 $G$ 上定义了满足上述全部公理的两种运算, 则 $G$ 称为代数域.
 	
-	\item 序公理
-	
+\begin{axiom}[序公理]
 	对于$\R$的元素$x$, $y$, 可以存在$x\le y$是否成立, 这时以下条件成立
 	
 	0$_\le$. $\forall x\in\R (x\le x)$.
@@ -758,27 +769,28 @@ A \subseteq B.
 	2$_\le$. $(x\le y)\land(y\le z)\Rightarrow(x\le z)$.
 	
 	3$_\le$. $\forall x\in\R\forall y\in\R(x\le y)\lor(y\le x)$.
+
+\end{axiom}
 	
-	如果一个集合的某些元素之间的关系满足公理 $0_\le$, $1_\le$, $2_\le$, 该集合就称为偏序集, 如果除此之外还满足 $3_\le$, 即集合的任何两个元素都是可比较的, 该集合就称为线性序集.
+如果一个集合的某些元素之间的关系满足公理 $0_\le$, $1_\le$, $2_\le$, 该集合就称为偏序集, 如果除此之外还满足 $3_\le$, 即集合的任何两个元素都是可比较的, 该集合就称为线性序集.
+
 	
-	
-	\item 完备性公理
-	
+\begin{axiom}[完备性公理]
 	如果 $X$ 和 $Y$ 是 $\R$ 的非空子集, 并对于任何 $x\in X$, $y\in Y$ 有 $x \le y$, 则存在 $c\in\R$, 使得对于任何元素 $x\in X$, $y\in Y$ 有 $x\le c\le y$.
-\ITEME
+\end{axiom}
+
 
 % 实数集代数性质
 
 \subsection{完备性公理与数集的上确界（下确界）的存在性}
 
-\subsubsection{上下界}
-
+\DEFS{上下界}
 设集合 $X\subset \R$, 如果数 $c\in\R$ 存在, 使得对于任何 $x\in X$ 都有 $x\le c$, 就说集合 $X$ 是上有界集, 这时称 $c$ 为 $X$ 的上界.
 
 同理可以定义下界, 既有上界又有下界的集合称为有界集.
+\DEFE
 
-\subsubsection{最值}
-
+\DEFS{最值}
 设 $a$ 是集合 $X\subset\R$ 的元素, 如果对于任何元素 $x\in X$ 都有 $x\le a$ 则元素 $a$ 称为集合 $X$ 的最大元素（最大值）记作 $\max X$ 或 $\max\limits_{x\in X} x$, 而最小值记作 $\min X$ 或 $\min\limits_{x\in X} x$.
 \[
 \begin{aligned}
@@ -786,8 +798,9 @@ A \subseteq B.
 	(a = \min X) := (a\in X \land \forall x \in X (a\le x)).
 \end{aligned}
 \]
+\DEFE
 
-\subsubsection{上下确界}
+\DEFS{上下确界}
 
 集合 $X\subset\R$ 的上界中的最小者称为集合 $X$ 的上确界, 同理定义下确界如下
 \[
@@ -803,10 +816,11 @@ A \subseteq B.
 	\inf X  := \max\{c\in\R\mid\forall x\in X(c\le x)\}.
 \end{aligned}
 \]
+\DEFE
 
-\begin{lemma}[上确界原理]
+\begin{theorem}[上确界原理]
 实数集的任何有上界非空子集有唯一的上确界.
-\end{lemma}
+\end{theorem}
 \begin{proof}
 	设 $X \subseteq \R$ 是给定的子集, 而 $Y = \{y\in\R | \forall x \in X (x \le y)\}$ 是 $X$ 的上界的集合, 依条件 $X\neq \varnothing,  Y\neq \varnothing$.于是, 根据完备性公理, 存在 $c \in \R$, 使得 $\forall x \in X, \forall y \in Y (x\le c\le y)$, 因此数 $c$ 既是 $X$ 的上界, 也是 $Y$ 的下届, 所以有 $c = \min Y = \max X$.
 \end{proof}
