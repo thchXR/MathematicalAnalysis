@@ -829,7 +829,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \subsection{自然数集}
 
-\subsubsection{皮亚诺算数公理}
+\begin{axiom}[皮亚诺算数公理]
 如果以下条件成立, 则集合 $\N$ 称为自然数集, 其元素称为自然数.
 \ITEMS
 	\item $0$ 是自然数.
@@ -838,6 +838,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	\item 对于每个自然数 $b, c$,  $b=c$ 当且仅当 $b' = c'$.
 	\item 任意关于自然数的命题, 如果证明: 它对自然数 $0$ 是真的, 且假定它对自然数 $a$ 为真时, 可以证明对 $a'$ 也真, 那么, 命题对所有自然数都真.
 \ITEME
+\end{axiom}
 \begin{remark}
 	其中条件 5 保证了数学归纳原理的正确性, 是数学证明的基本工具.自然数集在某些定义下不包含 $0$, 在这里我们记不包含零的自然数集为 $\N_+$.
 \end{remark}
@@ -883,15 +884,19 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \subsection{有理数与无理数}
 
-\subsubsection{整数集}
-
+\DEFS{整数集}
 自然数集与非零自然数的相反数的集合的并集称为整数集, 记作 $\Z$.
+\DEFE
 
 \subsubsection{算数基本定理}
 
+\DEFS{}
 当数 $m, n \in \Z$, 而数 $k=m\cdot n^{-1} \in \Z$ 时, 即当 $m =k\cdot n$, 其中 $k \in \Z$ 时, 我们说 $m$ 可以被 $n$ 整除, 其中 $n$ 是 $m$ 的因数.
+\DEFE
 
+\DEFS{}
 设 $p\in\N ,  p\neq 1$.如果数 $p$ 在 $\N$ 中没有与 $1$ 和 $p$ 不同的因数, 该数就称为素数.
+\DEFE
 
 \begin{theorem}[算数基本定理]
 
@@ -902,20 +907,21 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 其中 $p_1, \cdots , p_k$ 是素数.
 \end{theorem}
 
+\DEFS{}
 如果数 $m, n \in \Z$ 没有与 $1, -1$ 不同的公因数, 它们就称为互素数.
- 
-\subsubsection{有理数集}
+\DEFE
 
+\DEFS{有理数集}
 形如 $\frac{p}{q}$ 的数, 其中 $p, q\in\Z$, 且 $q\neq 0$, 称为有理数, 记有理数集为 $\Q$.
-
+\DEFE
 \begin{remark}
 有理数的英文为 Rational numbers, Rational 虽然有“理性的”的意思, 但是在这里翻译为“有理数”实际上并不准确, 因为 ratio 在这里是比率的意思, 所以 Rational numbers 的实际含义应该为“比率数”. 
 \end{remark}
 
 
-\subsubsection{无理数集}
-
+\DEFS{无理数集}
 不是有理数的实数称为无理数, 我们一般用符号 $\R\setminus\Q$ 表示无理数.
+\DEFE
 \smallskip
 
 在这里证明一个有意思的例子, 实数 $\sqrt 2$ 存在, 且是一个无理数.
@@ -968,8 +974,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 根据几何公理（在后面介绍几何时再详述）, 对于一条直线 $\mathbb{L}$ 可以将其与实数集建立双射关系 $f:\mathbb{L} \to \R$.当上述双射 $f$ 存在时, 称直线 $\mathbb{L}$ 为坐标轴或数轴.
 
-\subsubsection{区间}
-
+\DEFS{区间}
 为了方便建立几何直观, 我们引入以下记号
 \[
 	\begin{aligned}
@@ -980,13 +985,13 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	\end{aligned}
 \]
 其中 $(a, b)$ 是开区间, $[a, b]$ 是闭区间, $(a, b]$ 是左开右闭区间, $[a, b)$ 是左闭右开区间.对于一个区间 ab （无论其开闭）称 b-a 为其长度, 对于区间 $I$, 记其长度为 $\lvert I \rvert$.
+\DEFE
 
-\subsubsection{邻域}
-
+\DEFS{邻域}
 包含点 $x \in \R$ 的开区间称为该点的邻域, 特别的, 当 $\delta > 0$ 时, 开区间 $(x - \delta, x+\delta)$ 称为点 $x$ 的 $\delta$ 邻域.
+\DEFE
 
-\subsubsection{模}
-
+\DEFS{模}
 考虑数 $x, y\in\R$ 之间的距离, 也就是以它们为端点的区间的长度, 为了方便计算, 我们引入以下函数
 \[
 \begin{aligned}
@@ -995,14 +1000,15 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{aligned}
 \]
 它称为一个数的模或者绝对值.称 $\lvert x - y\rvert$ 为 $x, y\in\R$ 之间的距离.
+\DEFE
 
-\subsubsection{三角不等式}
-
+\DEFS{三角不等式}
 根据模的定义, 我们可以得到三角不等式, 即对任何数 $x,y$, 不等式
 \[
 	\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert.
 \]
 成立，并且等式当且仅当 $x$ 与 $y$ 同时非负或同时非正才成立.
+\DEFE
 \begin{proof}
 如果 $0\le x$ 且 $0\le y$, 则 $0\le x+y$, $\lvert x+y\rvert = x+y$, $\lvert x \rvert = x$, $\lvert y \rvert = y$, 所以等式成立.
 
@@ -1015,14 +1021,15 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 我们曾在之前介绍过笛卡尔积, 在这节中我们将介绍笛卡尔积的另一种定义.
 
-\subsection{加标集族}
+\DEFS{加标集族}
 设 $\mathcal{A}$ 是一个非空集族, $\mathcal{A}$ 的指标函数 $f$ 是从某一个集合 $J$ 到 $\mathcal{A}$ 的一个满射, 其中 $J$ 称为指标集. 族 $\mathcal{A}$ 连同指标函数 $f$ 一起称为集的加标集族, 给定 $\alpha \in J$, 集合 $f(\alpha)$ 记成符号 $A_\alpha$. 这个加标集族本身则记作
 \[
 	\{A_\alpha\}_{\alpha \in J}
 \]
 读作“ $\alpha$ 取遍 $J$ 时, 所有 $A_\alpha$ 的族”. 若指标集自明, 则也可以记为 $\{A_\alpha\}$.
+\DEFE
 
-\subsection{元组}
+\DEFS{元组}
 设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为hjuu 
 \[
 	\boldsymbol{x}:\{1,\cdots,m\}\to X.
@@ -1031,8 +1038,9 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \[
 	(x_1,\cdots,x_m).
 \] 
+\DEFE
 
-\subsubsection{序列}
+\DEFS{序列}
 给定一个集合 $X$, 定义 $X$ 中的元素的 $\omega$ 元组为函数
 \[
 	\boldsymbol{x}:\Z_+ \to X;
@@ -1041,10 +1049,10 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \[
 	(x_1, x_2,\cdots) \text{  或者  } (x_n)_{n\in \Z_+}.
 \]
-
+\DEFE
 
 \subsection{笛卡尔积}
-
+\DEFS{笛卡尔积}
 设 $\{A_1,\cdots,A_m\}$ 是一个以 $\{1,\cdots,m\}$ 为指标集的加标集族. 令 $X = A_1 \cup \cdots \cup A_m$. 这个加标族的笛卡尔积记作
 \[
 	\prod_{i=1}^m A_i \text{  或者  } A_1 \times \cdots \times A_m,
@@ -1057,7 +1065,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	\prod_{i\in \Z_+} A_i \text{  或者  } A_1 \times A_2 \times \cdots,
 \]
 定义为 $X$ 中元素的所有 $\omega$ 元组的集合, 使得对于每一个 $i,\ x_i\in A_i$.
-
+\DEFE
 
 \section{关于实数集完备性的一些基本引理}
 
@@ -1069,9 +1077,9 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 %
 %我们将以自然数集为定义域的映射 $f:\mathbb{N}\rightarrow X$ 称为序列.
 
-\subsubsection{集合套}
-
+\DEFS{集合套}
 设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
+\DEFE
 
 \begin{lemma}[闭区间套引理]
 	对于任何闭区间的渐降列 $I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$, 可以找到一点 $c\in\R$ 属于所有这些闭区间.如果除此之外还已知该序列为闭区间套序列, 则 $c$ 是所有闭区间的唯一公共点.
@@ -1086,9 +1094,9 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \subsection{有限覆盖引理（博雷尔-勒贝格原理、海涅-博雷尔原理）}
 
-\subsubsection{覆盖}
-
+\DEFS{覆盖}
 设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族, 如果 $Y\subset \bigcup\limits_{X\in S}X$, 那么我们说 $S$ 覆盖集合 $Y$.
+\DEFE
 
 集合族 $S = {X}$ 的子集也是一个集合组, 称为 $S$ 的子族.因此, 集合族的子族本身是同一类型的集合族.
 
@@ -1104,8 +1112,9 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \subsection{极限点引理（波尔查诺-魏尔斯特拉斯原理）}
 
-\subsubsection{极限点}
+\DEFS{极限点}
 如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集, 点 $p$ 就称为集合 $X$ 的极限点.
+\DEFE
 
 \begin{lemma}[波尔查诺-魏尔斯塔拉斯原理]
 任何无穷有界数集至少有一个极限点.
