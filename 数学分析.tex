@@ -1,78 +1,8 @@
-%\documentclass{ctexbook}
-%
-%\usepackage{amsmath}
-%\usepackage{amssymb}
-%\usepackage{xcolor}
-%\usepackage{hyperref}
-%\hypersetup{
-%    colorlinks=true,
-%    linkcolor=cyan
-%}
-%\usepackage{booktabs}
-%\usepackage[paper=a4paper,  left=1.5cm,  right=1.5cm,  top=3cm,  bottom=3cm]{geometry}
-%\usepackage{enumitem}
-%\usepackage{tikz}
-%\usepackage{pgfplots}
-%\usepackage{amsthm}
-%
-%\usepackage{appendix}
-%
-%\newcommand{\ITEMS}{\begin{enumerate}[leftmargin=3.5em]}
-%\newcommand{\ITEME}{\end{enumerate}}
-%\newcommand{\no}{\noindent}
-%\newcommand{\R}{\mathbb{R}}
-%\newcommand{\N}{\mathbb{N}}
-%\newcommand{\Z}{\mathbb{Z}}
-%\newcommand{\Q}{\mathbb{Q}}
-%
-%\setcounter{tocdepth}{2}
-%
-%
-%\newtheorem{theorem}{定理}[section]
-%\newtheorem{axiom}{公理}[section]
-%
-%\newtheorem*{lemma}{引理}
-%\newtheorem{proposition}[theorem]{命题}
-%\newtheorem*{corollary}{推论}
-%\newtheorem*{remark}{\indent 注}
-%\newtheorem*{idea}{证明思路}
-%
-%\newtheoremstyle{defstyle}
-%  {1em}          % 上方间距
-%  {1em}        % 下方间距
-%  {\normalfont}  % 正文用正常字体（定义一般不斜体）
-%  {}          % 首行缩进 2em —— 关键参数
-%  {\bfseries}    % 定理头加粗
-%  {}            % 定理头后用句点
-%  {0.5em}        % 定理头后间距
-%  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}             % 定理头格式
-%
-%\theoremstyle{defstyle}
-%\newtheorem{definition}{定义}[section]
-%
-%\newcommand{\begin{definition}}[1]{\begin{definition}[#1]\,\\\indent}
-%\newcommand{\end{definition}}{\end{definition}}
-%
-%\newtheorem{example}{\indent 例}[section]
-%
-%\renewcommand{\theexample}{\arabic{example}} 
-%\newenvironment{solution}{\begin{proof}[\indent 解]}{\end{proof}}
-%
-%\title{数学分析}
-%\author{thchXR}
-%
-%\begin{document}
+\documentclass[cn,toc=twocol]{elegantbook}
 
-
-\documentclass[cn]{elegantbook}
-
-% elegantbook 已加载 amsmath, amssymb, xcolor, booktabs,
-% enumitem, hyperref, geometry, tikz, appendix 等宏包，
-% 这里只需额外加载 pgfplots 即可。
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
-% 用 \geometry 修改页面，而不是重新加载 geometry
 \geometry{paper=a4paper, left=1.5cm, right=1.5cm, top=3cm, bottom=3cm}
 
 \hypersetup{
@@ -89,6 +19,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 
+\elegantnewtheorem{idea}{证明思路}{prostyle}
+
 \setcounter{tocdepth}{2}
 
 \title{数学分析}
@@ -100,7 +32,6 @@
 
 \begin{document}
 
-% ... 正文 ...
 
 \maketitle
 
@@ -109,6 +40,13 @@
 
 \tableofcontents
 
+% ================================================================================== 
+% 						           序 章
+% ================================================================================== 
+
+\chapter*{序章}
+\markboth{Introduction}{Introduction}
+The content of introduction.
 
 % ================================================================================== 
 % 						逻 辑 符 号 与 离 散 数 学 基 础
@@ -319,7 +257,7 @@
 \end{remark}
 
 
-\begin{theorem}{}{thm:label}
+\begin{theorem}{}
 设 $\Phi(A)$ 是含命题公式 $A$ 的命题公式, $\Phi(B)$ 是用命题公式 $B$ 置换了 $\Phi(A)$ 中的 $A$ 之后得到的命题公式.如果 $A\Leftrightarrow B$ , 则 $\Phi(A)\Leftrightarrow\Phi(B)$.
 \end{theorem}
 
@@ -333,7 +271,7 @@
 仅由有限个简单合取式构成的析取式称为析取范式, 仅由有限个简单析取式构成的合取式称为合取范式.
 \end{definition}
 
-\begin{theorem}[范式存在定理]
+\begin{theorem}{范式存在定理}{thm:EToNF}
 任意命题公式都存在与之等值的析取范式和合取范式.
 \end{theorem}
 
@@ -871,7 +809,8 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 		(a + b)^{n} = \sum_{k = 0}^{n} {n \choose k} a^{n - k} b^{k},
 	\]
 	其中 ${n \choose k}$ 称为二项式系数, 其等于 $\frac {n!}{k!(n-k)!}$. 符号 $!$ 表示阶乘, 即所有小于等于该数的正整数的积.
-\begin{proof}
+\end{example}
+\begin{solution}
 	假设对于某一 $m \in \N_+$, 有
 	\[
 		(a + b)^{m} = \sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}.
@@ -900,9 +839,8 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	因为 $(a+b)^1 = {1 \choose 1}a^1 b^0 + {1 \choose 1}a^0 b^1$ 显然成立, 根据归纳原理, 上式对所有正整数 $n$ 成立.
 	
 	
-\end{proof}
+\end{solution}
 
-\end{example}
 
 \subsection{有理数与无理数}
 
@@ -972,17 +910,18 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 无理数又可以分为代数数和超越数.
 
+\begin{definition}
 如果一个实数是具有有理系数的代数方程
 \[
 	a_0 x^n + \cdots + a_{n-1} x + a_n = 0
 \]
 的根, 该实数就称为代数数, 不满足这个条件的实数称为超越数.
+\end{definition}
 
 由于目前我们还没有介绍到集合的势, 我将超越数的势, 超越数 $\pi$ 的证明, 希尔伯特第七问题这几个有意思的问题放在\hyperlink{A1}{附录 A.1}.
 
-\subsubsection{阿基米德原理}
 
-在一些其他的实数公理系统中, 此原理常被列为公理, 不过我们实际上可以通过完备性公理证明此原理.
+在一些其他的实数公理系统中, 阿基米德原理常被列为公理, 不过我们实际上可以通过完备性公理证明此原理.
 
 \begin{theorem}[阿基米德原理]
 	如果 $h$ 是任意一个固定的正数, 则对于任何实数 $x$, 可以找到唯一的整数 $k$, 使得 $(k-1)h\le x < kh$.
@@ -1024,13 +963,14 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 它称为一个数的模或者绝对值.称 $\lvert x - y\rvert$ 为 $x, y\in\R$ 之间的距离.
 \end{definition}
 
-\begin{definition}{三角不等式}
+% triangle inequality
+\begin{theorem}{三角不等式}{thm:ti}
 根据模的定义, 我们可以得到三角不等式, 即对任何数 $x,y$, 不等式
 \[
 	\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert.
 \]
 成立，并且等式当且仅当 $x$ 与 $y$ 同时非负或同时非正才成立.
-\end{definition}
+\end{theorem}
 \begin{proof}
 如果 $0\le x$ 且 $0\le y$, 则 $0\le x+y$, $\lvert x+y\rvert = x+y$, $\lvert x \rvert = x$, $\lvert y \rvert = y$, 所以等式成立.
 
@@ -1052,7 +992,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{definition}
 
 \begin{definition}{元组}
-设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为hjuu 
+设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为函数
 \[
 	\boldsymbol{x}:\{1,\cdots,m\}\to X.
 \]
@@ -1089,23 +1029,18 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 定义为 $X$ 中元素的所有 $\omega$ 元组的集合, 使得对于每一个 $i,\ x_i\in A_i$.
 \end{definition}
 
-\section{关于实数集完备性的一些基本引理}
+% 关于实数集完备性的一些基本定理
+\section{关于实数集完备性的一些基本定理}
 
-\subsection{闭区间套引理（柯西-康托尔原理）}
-
-%本来要在这里介绍序列的概念的，不过由于加入了笛卡尔积这一小节，提前介绍了序列的概念
-%
-%\subsubsection{序列}
-%
-%我们将以自然数集为定义域的映射 $f:\mathbb{N}\rightarrow X$ 称为序列.
+\subsection{闭区间套定理（柯西-康托尔原理）}
 
 \begin{definition}{集合套}
 设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
 \end{definition}
 
-\begin{lemma}[闭区间套引理]
+\begin{theorem}{闭区间套引理}
 	对于任何闭区间的渐降列 $I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$, 可以找到一点 $c\in\R$ 属于所有这些闭区间.如果除此之外还已知该序列为闭区间套序列, 则 $c$ 是所有闭区间的唯一公共点.
-\end{lemma}
+\end{theorem}
 % 使用完备性公理证明
 \begin{proof}
 首先	指出, 对于上述序列中的任何两个闭区间 $I_m = [a_m, b_m], I_n = [a_n, b_n]$ 必有 $a_m \le b_n$.因此, 对于数集 $A =\{a_m | m\in \N\},  B= \{b_n| n\in \N\}$, 根据完备性公理, 可以找到数 $c\in\R$ 使得对于 $\forall a_m\in A, \forall b_n\in B$ 有 $a_m\le c\le b_n$.特别的, 对于 $\forall n\in N$ 都有 $a_n\le c \le b_n$, 即点 $c$ 属于所有闭区间 $I_n$.
@@ -1122,25 +1057,24 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 集合族 $S = {X}$ 的子集也是一个集合组, 称为 $S$ 的子族.因此, 集合族的子族本身是同一类型的集合族.
 
-\begin{lemma}[博雷尔-勒贝格原理]
-
+\begin{theorem}{博雷尔-勒贝格原理}
 在覆盖一个闭区间的任何开区间族中都有覆盖该闭区间的有限子族.
-\end{lemma}
+\end{theorem}
 \begin{proof}
 设 $S =\{U\}$ 是覆盖闭区间 $[a, b] = I_1$ 的开区间族, $U$ 是构成 $S$ 的开区间.假如闭区间 $I_1$ 不能被 $S$ 中有限个开区间覆盖, 我们将闭区间 $I_1$ 等分为两个闭区间, 则其中至少有一个不能被 $S$ 中有限个开区间覆盖, 我们把这个区间记为 $I_2$, 我们再通过类似的方法得到 $I_3, I_4, \cdots$.
 
 于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$, 而且根据其构造方法可知, 第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$, 所以在此序列中有长度任意小的闭区间, 根据闭区间套引理, 存在一点 $c$ 包含于所有闭区间 $I_n$, 而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon,  c+\varepsilon)$, 在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$, 所以有 $I_n \subset U$, 这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾.
 \end{proof}
 
-\subsection{极限点引理（波尔查诺-魏尔斯特拉斯原理）}
+\subsection{极限点定理（波尔查诺-魏尔斯特拉斯原理）}
 
 \begin{definition}{极限点}
 如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集, 点 $p$ 就称为集合 $X$ 的极限点.
 \end{definition}
 
-\begin{lemma}[波尔查诺-魏尔斯塔拉斯原理]
+\begin{theorem}{波尔查诺-魏尔斯塔拉斯原理}
 任何无穷有界数集至少有一个极限点.
-\end{lemma}
+\end{theorem}
 \begin{proof}
 设 $X$ 是 $\R$ 的给定子集并且满足引理条件, 由有界集的定义可知, 某闭区间 $I = [a, b] \subset\R$ 包含集合 $X$.我们证明集合 $I$ 上至少有一个点是 $X$ 的极限点.
 
@@ -1150,22 +1084,23 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \section{集合的势}
 
 \subsection{集合的势}
-
+\begin{definition}{势}
 集合 $A$ 的基数或者势, 记为 $|A|$ 或 $\mathrm{card}\ A$, 有限集的元素个数是一个自然数, 势标志着该集合的大小.对于有限集, 势为其元素的数量.但对于有限集合大小并不是我们要研究的对象, 康托尔在建立集合论初就是为了研究无穷集合, 我们称自然数集
 \[
 	\mathbb{N}=\{1, 2, \cdots\}
 \]
 的基数为可数无穷, 记为 $\aleph_0$.
+\end{definition}
 
 在比较任意两个集合 $A$ 和 $B$ 的基数时, 我们有下面的定义: 
-
+\begin{definition}
 \ITEMS
 	\item 我们称 $\lvert A \rvert \le \lvert B \rvert$, 如果存在从 $A$ 到 $B$ 的单射.
 	\item 我们称 $\lvert A \rvert = \lvert B \rvert$, 如果$\lvert A \rvert \le \lvert B \rvert$ 且 $\lvert B \rvert \le \lvert A \rvert$, 也就是说, 存在从 $A$ 到 $B$ 的双射.
 \ITEME
+\end{definition}
 
-
-\begin{theorem}[无最大基数定理]
+\begin{theorem}{无最大基数定理}
 对于任一非空集合 $A$, 我们总有 $\lvert A \rvert<\lvert \mathcal{P}(A) \rvert$.
 \end{theorem}
 
@@ -1203,16 +1138,25 @@ f(y) = B.
 \]
 \end{proof}
 
-\subsubsection{关于基数的几个基本定理}
-\ITEMS
-	\item 对任意集合 $A$ 和 $B$, 若 $A\subseteq B$, 则 $\lvert A \rvert \le \lvert B \rvert$.
-	\item 设 $A$ 是可数集（有限集或可数无穷集）, $B$ 是无穷集, 则 $\lvert A\cup B \rvert= \lvert B \rvert$.
-	\item 设集合列 $\{A_n\}_{n=1}^{\infty}$ 中每一 $A_n$ 的基数都是 $\aleph_0$, 则 $\lvert \bigcup_{n=1}^\infty A_n \rvert=\aleph_0 $.也就是说, 可数个可数集的并集还是可数集.
-\ITEME
+\subsection{关于基数的几个基本定理}
+\begin{theorem}
+	对任意集合 $A$ 和 $B$, 若 $A\subseteq B$, 则 $\lvert A \rvert \le \lvert B \rvert$.
+\end{theorem}
+
+\begin{theorem}
+	设 $A$ 是可数集（有限集或可数无穷集）, $B$ 是无穷集, 则 $\lvert A\cup B \rvert= \lvert B \rvert$.
+\end{theorem}
+	
+\begin{theorem}
+	设集合列 $\{A_n\}_{n=1}^{\infty}$ 中每一 $A_n$ 的基数都是 $\aleph_0$, 则 $\lvert \bigcup_{n=1}^\infty A_n \rvert=\aleph_0 $.也就是说, 可数个可数集的并集还是可数集.
+\end{theorem}
 
 
-\subsubsection{实数集的基数}
-实数集 $\R$ 的基数一般记为 $c$, 即连续统的势.
+
+\subsection{实数集的基数}
+\begin{definition}{连续统的势}
+	实数集 $\R$ 的基数一般记为 $c$, 即连续统的势.
+\end{definition}
 
 \begin{theorem}[康托尔定理]
 连续统的势大于自然数集的势, 即
@@ -1225,17 +1169,18 @@ f(y) = B.
 
 我们先证明 $\lvert \R \rvert=\lvert (0, 1]\rvert $
 \smallskip
+\ITEMS
+\item $\lvert \R\rvert =\lvert (-1, 1)\rvert $, 不难看出映射  $f:(-1, 1)\rightarrow \R$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射.
 
-1. $\lvert \R\rvert =\lvert (-1, 1)\rvert $, 不难看出映射  $f:(-1, 1)\rightarrow \R$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射.
+\item $\lvert (-1, 1)\rvert=\lvert (0, 1)\rvert $, 不难看出映射  $f:(-1, 1)\rightarrow (0, 1) $ 满足 $f(x)=\frac {x+1}{2}$ 是双射.
 
-2. $\lvert (-1, 1)\rvert=\lvert (0, 1)\rvert $, 不难看出映射  $f:(-1, 1)\rightarrow (0, 1) $ 满足 $f(x)=\frac {x+1}{2}$ 是双射.
-
-3. $\lvert (0, 1)\rvert=\lvert (0, 1]\rvert $, 因为 $(0, 1)\subseteq (0, 1]\subseteq (-1, 1)$.
+\item $\lvert (0, 1)\rvert=\lvert (0, 1]\rvert $, 因为 $(0, 1)\subseteq (0, 1]\subseteq (-1, 1)$.
+\ITEME
 
 \smallskip
 下面我们证明 $\lvert (0, 1]\rvert=2^{\aleph_0}$.
 
-\no 1. 把 $(0, 1]$ 中的任一实数 $x$ 用二进制表示: 更具体地讲, 就是找到每项取值是 $0$ 或 $1$ 的无穷数列 $\{a_n\}_{n \ge 1}$ 满足在二进制下 $x=0.a_1 a_2\cdots a_n \cdots$, 其中无穷多个 $a_n$ 是 $1$ .
+把 $(0, 1]$ 中的任一实数 $x$ 用二进制表示: 更具体地讲, 就是找到每项取值是 $0$ 或 $1$ 的无穷数列 $\{a_n\}_{n \ge 1}$ 满足在二进制下 $x=0.a_1 a_2\cdots a_n \cdots$, 其中无穷多个 $a_n$ 是 $1$ .
 \ITEMS 
 	\item 第一步: 把区间 $(0, 1]$ 二等分为两半开闭子区间: 若 $x$ 属于靠左的（称为第一个, 后同）子区间 $(0, \frac{1}{2}]$, 则 $a_1=0$；若 $x$ 属于靠右的（称为第二个, 后同）子区间, 则 $a_1=1$；
 	
@@ -1251,7 +1196,7 @@ f(y) = B.
 \] 
 的一一对应关系.
 
-\no 2 决定 $\lvert S\rvert$, 令 
+决定 $\lvert S\rvert$, 令 
 \[
 	T=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中只有限多个 $a_n$ 是 $1$} \}
 \] 
@@ -1259,18 +1204,18 @@ f(y) = B.
 \[
 	R=\{(a_1,  a_2, \cdots,  a_n,  \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$}\}.
 \]
+
 不难看出 $\lvert R\rvert=2^{\aleph_0},  \lvert T\rvert=\aleph_0$ 且 $S\cup T= R$.由上面关于基数的基本定理 $2$, 我们有 
 \[
 	\lvert S\rvert=\lvert S\cup T\rvert =\lvert R\rvert=2^{\aleph_0}=\aleph_1.
 \]
 \end{proof}
 
-\subsubsection{连续统假设}
+\begin{proposition}{连续统假设}
+不存在一个无穷集合, 其基数严格介于自然数集的基数 $\aleph_0$ 与实数集的基数 $\aleph_1$（即连续统的基数）之间. 即不存在一个无穷集合, 其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1},  n=0,  1, 2,  \cdots $ 之间.
+\end{proposition}
 
-不存在一个无穷集合, 其基数严格介于自然数集的基数 $\aleph_0$ 与实数集的基数 $\aleph_1$（即连续统的基数）之间.
-
-不存在一个无穷集合, 其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1},  n=0,  1, 2,  \cdots $ 之间.
-
+连续统假设是一个在 ZFC 公理化集合论体系内不可证（不能被证明、也不能被证伪）的命题.
 \section{良序集}
 
 % 这一部分还不完善	<-------------------------- HERE
@@ -1295,68 +1240,102 @@ f(y) = B.
 
 \section{数列极限}
 
-在前面我们介绍了序列的定义, 若序列的值域为实数集或其子集 $f:\N \to \R$, 我们称该序列为数列.
+\begin{definition}{数列}
+在前面我们介绍了序列的定义, 若序列的值域为实数集或其子集 $f:\N \to \R$, 我们称该序列为数列.	
+\end{definition}
+
+
 \subsection{数列极限的定义}
 
-我在这里给出两种等价的定义, 首先介绍由邻域给出的定义.
+我在这里介绍两种等价的定义, 首先介绍根据邻域的思想（拓扑）所给出的定义.
 
-数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于点 $A$ 的任何一个邻域 $V(A)$, 都存在序号 $N$, 是的数列中所有序号大于 $N$ 的项都包含在点 $A$ 的上述邻域 $V(A)$ 中.
+\begin{definition}
+	数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于点 $A$ 的任何一个邻域 $V(A)$, 都存在序号 $N$, 使得数列中所有序号大于 $N$ 的项都包含在点 $A$ 的上述邻域 $V(A)$ 中. 即
 \[
 	\left( \lim_{n\to\infty} x_n = A\right) := \forall V(A)\ \exists N\in\N\ \forall n > N (x_n \in V(A)).
 \]
+\end{definition}
 
 接下来指出数列极限定义的另一种常见表述.
 
-数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 是的对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$.
+\begin{definition}
+数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 是的对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$. 即
 \[
 	\left( \lim_{n\to\infty} x_n = A\right) := \forall \varepsilon > 0\ \exists N\in\N\ \forall n > N (\lvert x_n - A\rvert < \varepsilon).
 \]
 
 如果 $\lim\limits_{n\to\infty} x_n = A$, 我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$, 记作 $n\to\infty$ 时 $x_n \to A$.有极限的数列称为收敛数列, 没有极限的数列称为发散数列. 
-
+\end{definition}
 
 \subsection{收敛数列的性质}
-\subsubsection{一般性质}
 
-只取一个值的数列为常数列, 数列 $\{x_n\}$ 称为最终常数列, 如果存在数 $A$ 与序号 $N$, 使得对于任何 $n > N$ 均有 $x_n = A$.
+\begin{definition}
+	只取一个值的数列为常数列, 数列 $\{x_n\}$ 称为最终常数列, 如果存在数 $A$ 与序号 $N$, 使得对于任何 $n > N$ 均有 $x_n = A$.
+\end{definition}
 
-数列 $\{x_n\}$ 称为有界数列, 如果存在数 $M$, 使得对于任何 $n \in N$ 均有 $x_n < M$.
+\begin{definition}{有界数列}
+	数列 $\{x_n\}$ 称为有界数列, 如果存在数 $M$, 使得对于任何 $n \in N$ 均有 $x_n < M$.
+\end{definition}
+
+数列极限有如下性质
 
 \begin{theorem}
-	数列极限有如下性质
+最终常数列收敛.
+\end{theorem}
+
+\begin{theorem}
+数列极限的任何一个邻域都包含数列中为数有限的项之外的所有项.
+\end{theorem}
+
+以上两条性质皆由定义显然.
+
+\begin{theorem}{数列极限的唯一性}{thm:Slimit_p1}
+数列不可能有两个不同的极限.
+\end{theorem}
+\begin{idea}
+使用反证法, 假设数列有两个不同的极限，证明两个极限相同.
+\end{idea}
+
+\begin{proof}
+	设 $\lim\limits_{n\to\infty} x_n = A_1 , \ \lim\limits_{n\to\infty} x_n = A_2$.假如 $A_1 \neq A_2$, 我们就选定点 $A_1, A_2$ 的两个不相交的邻域 $V(A_1), V(A_2)$.
 	
-	\ITEMS
-		\item 最终常数列收敛.
-		\item 数列极限的任何一个邻域都包含数列中为数有限的项之外的所有项.
-		\item 数列不可能有两个不同的极限.
-		\item 收敛数列有界.
-	\ITEME
+	例如, 可以在 $\delta < \frac{\lvert A_1 - A_2\rvert}{2}$ 时取这两个点的邻域, 显然 $V(A_1), V(A_2)$ 不相交.根据极限的定义, 可以求得 $N_1, N_2$ 使得 $\forall n > N_1 (x_n\in V(A_1)), \ \forall n > N_2 (x_n\in V(A_2))$.于是对于 $n > \max\{N_1, N_2\}$ 有 $x_n \in V(A_1) \cap V(A_2)$, 与 $V(A_1), V(A_2)$ 不相交矛盾.
+\end{proof}
+
+
+\begin{theorem}{数列极限的有界性}{thm:Slimit_p2}
+收敛数列有界.
 \end{theorem}
 
 \begin{proof}
-	由于定理中的 1, 2 由极限定义显然, 我们只证明 3, 4.
-	
-	\ITEMS
-	\item[3] 设 $\lim\limits_{n\to\infty} x_n = A_1 , \ \lim\limits_{n\to\infty} x_n = A_2$.假如 $A_1 \neq A_2$, 我们就选定点 $A_1, A_2$ 的两个不相交的邻域 $V(A_1), V(A_2)$.
-	
-	例如, 可以在 $\delta < \frac{\lvert A_1 - A_2\rvert}{2}$ 时取这两个点的邻域, 显然 $V(A_1), V(A_2)$ 不相交.根据极限的定义, 可以求得 $N_1, N_2$ 使得 $\forall n > N_1 (x_n\in V(A_1)), \ \forall n > N_2 (x_n\in V(A_2))$.于是对于 $n > \max\{N_1, N_2\}$ 有 $x_n \in V(A_1) \cap V(A_2)$, 与 $V(A_1), V(A_2)$ 不相交矛盾.
-	\item[4] 设 $\lim\limits_{n\to\infty} x_n = A$.如果取 $\varepsilon = 1$, 就可以求出 $N$, 使得 $\forall n > N (\lvert x_n - A \rvert < 1)$.这意味着, 当 $n > N$ 时有 $\lvert x_n \rvert < \lvert A \rvert + 1$.如果现在取
+	设 $\lim\limits_{n\to\infty} x_n = A$.如果取 $\varepsilon = 1$, 就可以求出 $N$, 使得 $\forall n > N (\lvert x_n - A \rvert < 1)$.这意味着, 当 $n > N$ 时有 $\lvert x_n \rvert < \lvert A \rvert + 1$.如果现在取
 	\[
 		M > \max\{\lvert x_1\rvert, \lvert x_2\rvert, \cdots, \lvert x_N\rvert, \lvert A\rvert + 1\},
 	\]
 	就得到 $\forall n (x_n < M)$.
-	\ITEME
 \end{proof}
 
-\subsubsection{极限过程与算术运算}
+\begin{theorem}{数列极限的保序性}{thm:Slimit_p3}
+设有收敛数列 $\{x_n\},\{y_n\}$, 满足 $\lim\limits_{n\to\infty} x_n = a, \lim\limits_{n\to\infty} y_n = b$ 且有 $a < b$, 则存在 $N \in \N^+$ 使得对任意 $n > N$ 有
+\[
+	x_n < y_n.
+\]
 
+\end{theorem}
+
+\begin{proof}
+	取数 $C$, 使得 $A < C < B$. 根据极限的定义, 可以求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $\lvert x_n - A \rvert < C - A$, 并且对于任何 $n > N \in \N$, 都有 $\lvert y_n - B \rvert < B - C$. 于是, 当 $n>N = \max\{N',N''\}$ 时, 就得到 $x_n < A + (C - A) = C = B - (B- C) < y_n$.
+\end{proof}
+
+\begin{definition}{极限的运算}
 如果$\{x_n\}, \{y_n\}$ 是两个数列, 则数列
 \[
 	\{(x_n + y_n)\},  \{(x_n y_n)\},  \left\{\left(\frac{x_n}{y_n}\right)\right\}
 \]
 分别称为这两个数列的和, 积和商（$y_n \neq 0, \ n\in\N$ 时商才有定义）.
+\end{definition}
 
-\begin{theorem}
+\begin{theorem}{极限的四则运算}
 设 $\{x_n\}, \{y_n\}$ 是两个数列, 如果 $\lim\limits_{n\to\infty} x_n = A, \ \lim\limits_{n\to\infty} y_n = B$ 则
 	\ITEMS
 		\item $\lim\limits_{n\to\infty} (x_n + y_n) = A + B$.
@@ -1371,22 +1350,14 @@ f(y) = B.
 \end{proof}
 
 
-\subsubsection{迫敛性}
-\begin{theorem}
-\ITEMS
-	\item 设 $\{x_n\}, \{y_n\}$ 是两个收敛数列, 并且 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果 $A < B$, 就可以求出序号 $N \in \N$, 使得对于任何 $n > N$, 不等式 $x_n < y_n$ 成立.
-	
-	\item 设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 页收敛于该极限. 
-\ITEME
+\begin{theorem}{迫敛性}
+设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 也收敛于该极限. 
 \end{theorem}
 \begin{proof}
-\ITEMS
-	\item 取数 $C$, 使得 $A < C < B$. 根据极限的定义, 可以求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $\lvert x_n - A \rvert < C - A$, 并且对于任何 $n > N \in \N$, 都有 $\lvert y_n - B \rvert < B - C$. 于是, 当 $n>N = \max\{N',N''\}$ 时, 就得到 $x_n < A + (C - A) = C = B - (B- C) < y_n$.
-	
-	\item 设 $\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} z_n = A$. 由 $\varepsilon > 0$ 求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $N'< A + \varepsilon$. 于是, 当 $n > N =\max\{N',N''\}$ 时, 我们得到 $A -\varepsilon < x_n \le y_n \le z_n < A + \varepsilon$, 即 $\lvert y_n - A\rvert < \varepsilon$, 从而 $A = \lim\limits_{n\to\infty} y_n$.
+设 $\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} z_n = A$. 由 $\varepsilon > 0$ 求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $N'< A + \varepsilon$. 于是, 当 $n > N =\max\{N',N''\}$ 时, 我们得到 $A -\varepsilon < x_n \le y_n \le z_n < A + \varepsilon$, 即 $\lvert y_n - A\rvert < \varepsilon$, 从而 $A = \lim\limits_{n\to\infty} y_n$.
 
-\ITEME
 \end{proof}
+
 \begin{corollary}
 	设 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果存在序号 $N$, 是的对于任何 $n > N$ 都有
 	\ITEMS
@@ -1400,11 +1371,13 @@ f(y) = B.
 
 \subsection{数列极限的存在问题}
 
-\subsubsection{柯西准则}
 % 因为定义中的A往往是未知的, 所用极限不便于应用
 % 三次数学危机, 第二次数学危机, 无穷小量的引入
-\begin{theorem}
-	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 $|x_n-x_m| < \varepsilon$. 我们称满足以上条件的数列为基本数列（柯西数列）.
+\begin{theorem}{柯西准则}
+	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 
+	\[
+		|x_n-x_m| < \varepsilon.
+	\] 我们称满足以上条件的数列为基本数列（柯西数列）.
 \end{theorem}
 \begin{proof}
 	我们首先证明必要性, 设 $\lim\limits_{n\to\infty} x_n = A$. 对于 $\forall \varepsilon > 0$, 可以求出序号 $N$, 使得当 $n > N$ 时有 $\lvert x_n - A\rvert < \varepsilon/2$. 如果现在 $m > N$ 且 $n > N$, 则 $\lvert x_m - x_n \rvert \le \lvert x_m - A \rvert + \lvert x_n - A \rvert < \varepsilon/2 + \varepsilon/2 = \varepsilon$, 必要性证必.
@@ -1418,10 +1391,15 @@ f(y) = B.
 \end{proof}
 
 
-\subsubsection{单调数列极限存在准则}
 
-对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为（严格）单调递增数列；如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为（严格）单调递减数列；如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列或单调不增数列.
-% 单调
+\begin{definition}{单调性}
+	对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为（严格）单调递增数列；如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为（严格）单调递减数列；如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列或单调不增数列.
+\end{definition}
+
+\begin{theorem}{单调数列极限存在准则}
+	
+\end{theorem}
+
 
 \begin{theorem}[魏尔斯特拉斯定理]
 	单调不减数列的极限存在的充要条件是有上界.
@@ -1431,22 +1409,14 @@ f(y) = B.
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
 
-\subsubsection{自然常数}
 
-\begin{example}
-	证明极限 $\lim\limits_{n\to\infty} \left(1+\frac1n \right)^n$ 存在.
-\end{example}
-\begin{solution}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{solution}
-
-\subsubsection{子列与数列的部分极限}
-
+\begin{definition}{子列}
 如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$ 称为数列的子列.
+\end{definition}
 
 % 子列
 
-\begin{lemma}[波尔查诺-维尔斯特拉斯引理]
+\begin{lemma}{波尔查诺-维尔斯特拉斯引理}
 	每个有界实数列都含有收敛的子列.
 \end{lemma}
 \begin{proof}
@@ -1464,17 +1434,19 @@ f(y) = B.
 % 上下极限
 
 \subsection{级数初步}
+\begin{definition}{级数}
+表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$, 通常称为级数或无穷级数. 其中数列 $\{a_n\}$ 的元素称为级数的项, 而 $a_n$ 称之为级数的第 $n$ 项. $s_n = \sum\limits_{k=1}^n a_k$ 称为级数的前 $n$ 项和.
 
-表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$, 通常称为级数或无穷级数.其中数列 $\{a_n\}$ 的元素称为级数的项, 而 $a_n$ 称之为级数的第 $n$ 项.$s_n = \sum_{k=1}^n a_k$ 称为级数的前 $n$ 项和.
-
-如果级数的前 $n$ 项和的数列收敛就称级数收敛, 否则称级数发散.级数的前 $n$ 项和数列的极限 $\lim_{n\to\infty} s_n = s$ 称为级数的和（如果该极限存在）, 做出如下记号.
+如果级数的前 $n$ 项和的数列收敛就称级数收敛, 否则称级数发散.级数的前 $n$ 项和数列的极限 $\lim\limits_{n\to\infty} s_n = s$ 称为级数的和（如果该极限存在）, 做出如下记号.
 \[
 	\sum_{n=1}^\infty a_n = s.
 \]
+\end{definition}
+
 
 \subsubsection{级数的柯西准则}
-\begin{theorem}[级数收敛的柯西准则]
-级数 $\sum_{n=1}^\infty a_n$ 收敛的充要条件为, 对任何 $\varepsilon > 0$, 可以求出数 $N \in \N$, 使得从 $m\ge n > N$ 可知 $\lvert a_n + \cdots + a_m \rvert < \varepsilon$
+\begin{theorem}{级数收敛的柯西准则} 
+级数 $\sum\limits_{n=1}^\infty a_n$ 收敛的充要条件为, 对任何 $\varepsilon > 0$, 可以求出数 $N \in \N$, 使得从 $m\ge n > N$ 可知 $\lvert a_n + \cdots + a_m \rvert < \varepsilon$.
 \end{theorem}
 
 \begin{corollary}
@@ -1552,17 +1524,18 @@ f(y) = B.
 
 \subsection{函数极限的定义}
 
-我们现给出函数极限的第一种定义方式, 也就是最早由柯西提出的定义, 即 $\varepsilon$ - $\delta$ 语言.
+我们现给出函数极限的第一种定义方式, 也就是最早由柯西提出的定义, 即 $\varepsilon$-$\delta$ 语言.
 
+\begin{definition}{$\varepsilon$-$\delta$ 语言}
 对于函数 $f:E \to \R$, 如果对于任何一个数 $\varepsilon > 0$, 都存在一个数 $\delta > 0$ 使得对于满足 $\lvert x - a \rvert < \delta$ 的任意 $x \in E$, 关系式 $\lvert f(x) - A\rvert < \varepsilon$ 都成立, 我们说, 当 $x$ 趋于 $a$ 时, 函数 $f$ 趋于 $A$, 或者说 $A$ 是 $f$ 在 $x$ 趋于 $a$ 时的极限.  
 
 我们也可以用逻辑符号描述上述定义
 \[
 	\forall \varepsilon > 0 \ \exists \delta > 0\ \forall a \in E\ (0 < \lvert x - a \rvert < \delta \Rightarrow \lvert f(x) - A \rvert < \varepsilon).
 \]
+\end{definition}
 
-\subsubsection{空心邻域}
-
+\begin{definition}{空心邻域}
 从一个点的邻域去掉该点本身, 所得集合为该点的空心邻域或去心邻域. 我们引入如下记号
 \[
 	\begin{aligned}
@@ -1571,6 +1544,7 @@ f(y) = B.
 	\end{aligned}
 \]
 分别称为点 $a$ 在集合 $E$ 中的邻域与去心邻域.
+\end{definition}
 
 于是我们可以给出函数极限的另一种表述: 如果对于点 $A$ 任何一个邻域, 都可以找到点 $a$ 在集合 $E$ 中的一个去心邻域, 使得它在映射 $f: E \to \R$ 下的像包含于点 $A$ 的给定邻域, 则数 $A$ 称为函数 $f: E \to \R$ 在 $x$ 沿集合 $E$ 趋于点 $a$ 时的极限.
 
@@ -1684,6 +1658,8 @@ f(y) = B.
 
 \subsection{连续函数的整体性质}
 
+\subsection{闭区间上的连续函数的性质}
+
 \section{*数学史: 无穷小的幽灵}
 
 % ================================================================================== 
@@ -1708,63 +1684,20 @@ f(y) = B.
 
 \subsection{费马引理}
 
-\subsubsection{局部极值点}
-
 
 \subsection{罗尔定理}
 
-假如函数 $f(x)$ 在 $[a, b]$ 区间上连续, 在 $(a, b)$ 区间上可微, 且 $f(a)=f(b)$, 那么$\exists\,  \xi\in(a, b)$使得$f'(\xi)=0$
 
 \subsection{拉格朗日有限增量定理}
 
-拉格朗日定理是罗尔定理的一般化情况, 假如函数 $f(x)$ 在 $[a, b]$ 区间上连续, 在 $(a, b)$ 区间上可微, 那么 $\exists\,  \xi\in(a, b)$ 使得
-\[
-	f'(\xi)=\frac{f(b)-f(a)}{b-a}
-\]
 
 \subsubsection{常函数检验法}
-连续函数在闭区间 $[a, b]$ 上为常数的充要条件是其导数在闭区间 $[a, b]$ 上恒为零
+
 
 \subsection{柯西有限增量定理}
-设 $x=f(t)$ 和 $y=g(t)$ 是在闭区间 $[a, b]$ 上连续且在开区间 $(a, b)$ 上可微的函数, 则存在点 $\tau\in(a, b)$ 使得
-\[
-	f'(\tau)(g(b)-g(a)) = g'(\tau)(x(b)-x(a))
-\]
+
 
 \subsection{泰勒公式}
-
-\subsubsection{泰勒多项式}
-在数学的历史上我们经常会有用简单函数描述复杂函数的情况, 所以我们希望能够用简单的多项式函数来描述所有的函数, 假如有如下函数可以写成多项式之和的形式
-\[
-	P_n(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_n x^n
-\]
-对于该多项式我们可以用函数来表示多项式的系数
-\[
-	\begin{aligned}
-		& P_n(0) = 0! c_0\\
-		P_n'(x) = 1! c_1 + 2 c_2 x + \cdots + n c_n x^{n-1}\qquad & P_n'(0) = 1! c_1\\
-		P_n''(x) = 2! c_2  + \cdots + n(n-1) c_n x^{n-2}\qquad & P_n''(0) = 2! c_2\\
-		\vdots \qquad\qquad\qquad & \qquad\vdots\\
-		P_n^{(n)}(x) = n! c_n\qquad & P_n^{(n)}(0) = n! c_n
-	\end{aligned}
-\]
-函数可以重新写为
-\[
-	P_n(x) = \frac{P_n(0)}{0!} + \frac{P_n'(0)}{1!} x + \frac{P_n''(0)}{2!} x^2 + \cdots + \frac{P_n^{(n)}(0)}{n!} x^n 
-\]
-因为此多项式仅能用于描述$x=0$的邻域, 我们还希望在该多项式的基础上进行拓展用于描述更多情况, 我们用同样的方法可以写出以下多项式
-\[
-	\begin{aligned}
-		P_n(x)=P_n(x_0;x) &= c_0 + c_1 (x - x_0) + c_2 (x - x_0)^2 + \cdots + c_n (x - x_0)^n\\
-		&=\frac{P_n(0)}{0!} + \frac{P_n'(0)}{1!} (x - x_0) + \frac{P_n''(0)}{2!} (x - x_0)^2 + \cdots + \frac{P_n^{(n)}(0)}{n!} (x - x_0)^n 
-	\end{aligned}
-\]
-如果给定了在$x_0$点具有所有前$n$阶导数的函数$f(x)$我们可以写出以下多项式
-\[
-	P_n(x_0;x) =\frac{f(0)}{0!} + \frac{f'(0)}{1!} (x - x_0) + \frac{f''(0)}{2!} (x - x_0)^2 + \cdots + \frac{f^{(n)}(0)}{n!} (x - x_0)^n 
-\]
-称之为函数$f(x)$的$n$阶泰勒多项式
-\subsubsection{余项}
 
 
 
@@ -1782,100 +1715,52 @@ f(y) = B.
 \chapter{积分学}
 
 \section{积分的定义与可积函数集}
+
 \subsection{引子}
-
-我们对于积分学的研究可以从两个角度开始, 首先考虑如下物理问题.现有一物体做变加速度直线运动, 试求其从 $a$ 时刻到 $b$ 时刻所经过路程（位移）, 其速度与时间图像如下
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=1.15]
-
-\def\a{1.5}   
-\def\b{4.5}   
-\pgfmathsetmacro{\va}{0.025*\a^3 + 0.2*\a}
-\pgfmathsetmacro{\vb}{0.025*\b^3 + 0.2*\b}
-\draw[->,  thick] (0, 0) -- (5.8, 0) node[below right] {$t$};
-\draw[->,  thick] (0, 0) -- (0, 5.8) node[above left] {$v$};
-
-% 刻度
-\foreach \x in {1, 2, 3, 4, 5}
-    \draw (\x, 0.15) -- (\x, -0.15) node[below] {\x};
-\foreach \y in {1, 2, 3, 4, 5}
-    \draw (-0.15, \y) -- (0.15, \y) node[left=8pt] {\y};
-    
-\draw[thick,  black,  smooth,  samples=120,  domain=0:5.5] 
-    plot (\x, {0.025*\x^3 + 0.2*\x});
-
-\fill[opacity=0.3] 
-    plot[domain=\a:\b,  samples=100] (\x, {0.025*\x^3 + 0.2*\x}) 
-    -- (\b, 0) -- (\a, 0) -- cycle;
-% 垂线
-\draw[dashed,  thick] (\a, 0) -- (\a, \va);
-\draw[dashed,  thick] (\b, 0) -- (\b, \vb);
-\fill (\a, \va) circle (2pt);
-\fill (\b, \vb) circle (2pt);
-% 标注 
-\node[below] at (\a,  -0.2) {a};
-\node[below] at (\b,  -0.2) {b};
-\node[above,  font=\small] at (\a,  \va + 0.4) {$v(a)$};
-\node[above,  font=\small] at (\b,  \vb + 0.4) {$v(b)$};
-
-\end{tikzpicture}
-\end{figure}
-
-显然该图像所围成的面积就是位移, 我们可以将时间分割成 $n$ 个区间, 其中第 $i$ 个区间大小为 $\Delta x_i$, 记所用区间的最大值为 $\lambda = \max\limits_{1\le i\le n}\{\Delta x_i\}$ .现在我们在每个区间上用矩形逼近函数图像, 用 $\xi_i$ 表示在第 $i$ 个区间上的中间点, 那么第 $i$ 个区间上的矩形面积应为 
-\[
-	v(\xi_i)\Delta t_i
-\]
-我们可以将总体的面积表示为
-\[
-	\sum_{i=1}^n v(\xi_i)\Delta t_i
-\]
-但这个面积仍不等于速度与时间图像的面积, 为了使两者相等, 要把时间分割成无穷个无穷小的区间, 那么考虑对面积取如下极限
-\[
-	\lim_{\lambda\to0}\sum_{i=1}^n v(\xi_i)\Delta t_i
-\]
-同样的, 在数学上, 对于曲线函数 $f(x)$ 在区间 $[a, b]$ 上围成的曲边梯形, 我们可以用相似的办法求得如下面积
-\[
-	\lim_{\lambda\to0}\sum_{i=1}^n f(\xi_i)\Delta x_i
-\]
-我们使用莱布尼兹的符号把这个极限记为
-\[
-	\int_a^b f(x)dx = \lim_{\lambda\to0}\sum_{i=1}^n f(\xi_i)\Delta x_i
-\]
-所以积分本质上是和式极限
 
 \subsection{黎曼积分的定义}
 
 \subsection{可积函数集}
 
-\section{积分的性质}
+\section{定积分的性质}
 
 \section{微积分}
 
-\section{积分的应用}
+\section{定积分的应用}
 
 \section{反常积分}
 
 
 % ================================================================================== 
-% 							拓 扑 空 间 与 连 续 函 数
+% 							      数 项 级 数 
 % ================================================================================== 
 
+\chapter{数项级数}
+
+% ================================================================================== 
+% 							    函 数 项 级 数 
+% ================================================================================== 
+
+\chapter{函数项级数}
+
+
+% ================================================================================== 
+% 							拓 扑 空 间 与 连 续 函 数
+% ================================================================================== 
 \chapter{拓扑空间与连续函数}
 从这一章开始我们将开始学习一般拓扑学的内容
 
 % ================================================================================== 
 % 							  连 通 性 与 紧 致 性
 % ================================================================================== 
-
 \chapter{连通性与紧致性}
 
 
 % ================================================================================== 
 % 						   可 数 性 公 理 和 分 离 公 理
 % ================================================================================== 
-
 \chapter{可数性公理和分离公理}
+
 
 
 
@@ -1904,6 +1789,14 @@ f(y) = B.
 
 \chapter{向量空间}
 
+% \section{向量与线性运算}
+%
+% \section{向量的内积}
+%
+% \section{向量的外积}
+%
+% \section{混合积和双重外积}
+
 % ================================================================================== 
 % 							      线 性 变 换 
 % ================================================================================== 
@@ -1929,27 +1822,6 @@ f(y) = B.
 \chapter{双线性函数}
 
 
-% ================================================================================== 
-% 							      数 项 级 数 
-% ================================================================================== 
-
-\chapter{数项级数}
-
-% ================================================================================== 
-% 							    函 数 项 级 数 
-% ================================================================================== 
-
-\chapter{函数项级数}
-
-% ================================================================================== 
-% 							      向 量 代 数
-% ================================================================================== 
-
-\chapter{向量代数}
-
-从这一章开始我们将用四章的时间学习空间解析几何的内容
-
-\section{向量与线性运算}
 
 
 % ================================================================================== 
@@ -1974,15 +1846,16 @@ f(y) = B.
 % ================================================================================== 
 % 							  多 元 函 数 微 分 学
 % ================================================================================== 
-
 \chapter{多元函数微分学}
+
+我们已经充分了解了一元函数的分析性质, 从这一章开始, 我们将类比着一元函数来研究多元函数的分析性质.
 
 \section{多元函数的极限与连续性}
 
 
+\section{偏导数与全微分}
 
-\section{基本微分法则}
-% 8.3
+
 
 \subsection{方向导数与梯度}
 
@@ -2031,10 +1904,29 @@ _0$ 为起点的向量, 则量
 
 \chapter{傅立叶级数与傅里叶变换}
 
+\section{傅立叶}
+
 \section{与傅里叶级数相关的一般概念}
+
+\subsection{三角级数}
 
 \subsection{正交函数系}
 
+\section{函数的傅立叶展开}
+
+\section{傅立叶级数的收敛性}
+
+\subsection{黎曼引理}
+
+\subsection{狄利克雷引理}
+
+\subsection{狄尼条件}
+
+\subsection{傅立叶级数判别法}
+
+\section{傅立叶级数的性质}
+
+\section{傅立叶变换与傅立叶积分}
 
 % ================================================================================== 
 % 								  	  群
