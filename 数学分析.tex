@@ -11,13 +11,16 @@
 }
 
 % ---------- 自定义命令 ----------
-\newcommand{\ITEMS}{\begin{enumerate}[leftmargin=3.5em]}
+\newcommand{\ITEMS}{\begin{enumerate}}
 \newcommand{\ITEME}{\end{enumerate}}
 \newcommand{\no}{\noindent}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ve}[1]{\boldsymbol{#1}}
+\newcommand{\Ve}[1]{\overrightarrow{#1}}
+
 
 \elegantnewtheorem{idea}{证明思路}{prostyle}
 
@@ -31,7 +34,6 @@
 \cover{title.png}
 
 \begin{document}
-
 
 \maketitle
 
@@ -1762,6 +1764,78 @@ f(y) = B.
 \chapter{可数性公理和分离公理}
 
 
+% ================================================================================== 
+% 								  向 量 代 数
+% ================================================================================== 
+
+\section{向量与线性运算}
+
+\subsection{向量及其表示}
+
+\begin{definition}{向量与数量}
+	我们称只有大小的量为数量（标量）, 把既有大小又有方向的量称为向量（矢量）.
+\end{definition}
+
+我们常常使用有向线段来表示向量, 有向线段方向代表向量的方向, 有向线段长度代表向量大小. 记为 $\Ve{AB}$, 其中 $A$ 是向量的起点, $B$ 是向量的终点. 有时我们也用黑体小写字母 $\ve{a}$ 表示向量（手写时仍用箭头表示）.
+
+\begin{definition}{模}
+	向量 $\Ve{AB}$ 的大小, 也称为向量的模, 记作 $\lvert \Ve{AB} \rvert$.
+\end{definition}
+
+\begin{definition}{零向量}
+	长度为零的向量称为零向量, 记作 $\ve{0}$.	
+\end{definition}
+
+\begin{definition}{共线}
+	对于一组向量, 若将其平移至同一起点后, 它们在同一直线上, 那么就称这组向量是共线的（平行的）, 用记号 $\parallel$ 表示.	
+\end{definition}
+
+零向量的的方向不定, 零向量与任何向量共线.
+
+\begin{definition}{共面}
+	对于一组向量, 若将其平移至同一起点后向量在同一平面上, 那么就称这组向量是共面的.
+\end{definition}
+
+显然, 任意两个共线的必共面.
+
+\subsection{向量的加法与减法}
+
+\begin{definition}{向量的和}
+设有两向量 $\ve{a} = \Ve{OA} ,\ \ve{b} = \Ve{AB}$
+\end{definition}
+
+\subsection{数乘}
+
+\subsection{共线与共面向量}
+
+\subsection{定比分点}
+	
+
+% 向量的内积
+\section{向量的内积}
+
+\subsection{向量夹角}
+
+\subsection{向量的投影}
+
+\subsection{向量的内积}
+
+
+
+\section{向量的外积}
+
+\subsection{外积的定义}
+
+\subsection{外积的性质}
+
+\subsection{外积的应用}
+
+
+\section{混合积和双重外积}
+
+\subsection{向量的混合积}
+
+\subsection{向量的双重外积}
 
 
 
@@ -1789,13 +1863,6 @@ f(y) = B.
 
 \chapter{向量空间}
 
-% \section{向量与线性运算}
-%
-% \section{向量的内积}
-%
-% \section{向量的外积}
-%
-% \section{混合积和双重外积}
 
 % ================================================================================== 
 % 							      线 性 变 换 
@@ -1829,6 +1896,8 @@ f(y) = B.
 % ================================================================================== 
 
 \chapter{平面与直线}
+
+\section{坐标系与坐标系中的向量计算}
 
 % ================================================================================== 
 % 						   特 殊 曲 面 与 二 次 曲 面
