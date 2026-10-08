@@ -58,7 +58,7 @@ The content of introduction.
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-离散数学是现代数学的重要分支, 也是计算机科学的核心基石, 主要研究不连续的、离散的数学结构和对象（如整数、命题和图）.这里我只介绍最基本的逻辑符号, 其他内容将在后续离散数学的章节详细介绍.
+离散数学是现代数学的重要分支, 也是计算机科学的核心基石, 主要研究不连续的、离散的数学结构和对象 (如整数、命题和图).这里我只介绍最基本的逻辑符号, 其他内容将在后续离散数学的章节详细介绍.
 
 %\begin{introduction}
 %\item 理解基本的逻辑符号
@@ -69,31 +69,31 @@ The content of introduction.
 \subsection{命题与联接词}
 
 \begin{definition}{命题}
-	命题是逻辑的基本成分, 命题是一个或真或假的陈述语句, 但不可能即真又假.我们习惯用小写字母 $p, q, r, s, \cdots$ 表示命题.如果一个命题为真, 用 T 表示, 反之用 F 表示.
+	命题 (Proposition) 是逻辑的基本成分, 命题是一个或真或假的陈述语句, 但不可能即真又假.我们习惯用小写字母 $p, q, r, s, \cdots$ 表示命题.如果一个命题为真, 用 T 表示, 反之用 F 表示.
 	
 	特别的, 对于无法拆分成更简单语句的命题, 我们称之为简单命题或原子命题, 而称由联接词和简单命题构成的命题为复合命题.
 \end{definition}
 
 
 \begin{definition}{命题常项与命题变项}
-对于简单命题来说, 其真值是确定的, 因而又称命题常项或命题变元, 而对于一些含有变量的陈述句, 虽然不是命题, 但只要给定变量的值就可以得到其真值, 所以我们称之为命题变项或命题变元.
+对于简单命题来说, 其真值是确定的, 因而又称命题常项 (Propositional constant), 而对于一些含有变量的陈述句, 虽然不是命题, 但只要给定变量的值就可以得到其真值, 所以我们称之为命题变项 (Propositional variable).
 \end{definition}
 
 \begin{definition}{否命题}
-	设有一命题 $p$ , 则 $p$ 的否定记为 $\neg p$（也可记为 $\overline p$）,  $p$ 的真值与 $\neg p$ 的真值相反.
+	设有一命题 $p$, 则 $p$ 的否定 (Inverse) 记为 $\neg p$ (也可记为 $\overline p$),  $p$ 的真值与 $\neg p$ 的真值相反.
 \end{definition}
 
 
 \begin{definition}{合取}
-设 $p, q$ 为命题,  $p, q$ 的合取式为复合命题, 记为 $p\land q$ , $\land$ 是合取联接词 , 即 $p, q$ 均为 T 时 $p\land q$ 取 T , 否则 $p\land q$ 取 F.
+设 $p, q$ 为命题,  $p, q$ 的合取式为复合命题, 记为 $p\land q$ , $\land$ 是合取联接词 (Conjunction), 即 $p, q$ 均为 T 时 $p\land q$ 取 T , 否则 $p\land q$ 取 F.
 \end{definition}
 
 \begin{definition}{析取}
-设 $p, q$ 为命题,  $p, q$ 的析取式为复合命题, 记为 $p\lor q$ , $\lor$ 是析取联接词 , 即 $p, q$ 均为 F 时 $p\lor q$ 取 F , 否则 $p\lor q$ 取 T.
+设 $p, q$ 为命题,  $p, q$ 的析取式为复合命题, 记为 $p\lor q$ , $\lor$ 是析取联接词 (Disjunction), 即 $p, q$ 均为 F 时 $p\lor q$ 取 F , 否则 $p\lor q$ 取 T.
 \end{definition}
 
 \begin{definition}{异或}
-设 $p, q$ 为命题,  $p, q$ 的异或为复合命题, 记为 $p\oplus q$ , $\oplus$ 是异或联接词, 即 $p, q$ 的真值不同时 $p\oplus q$ 取 T , 否则 $p\oplus q$ 取 F.
+设 $p, q$ 为命题, $p, q$ 的异或为复合命题 (Compound proposition), 记为 $p\oplus q$ , $\oplus$ 是异或联接词 (Exclusive OR), 即 $p, q$ 的真值不同时 $p\oplus q$ 取 T , 否则 $p\oplus q$ 取 F.
 \end{definition}
 
 \subsection{真值表}
@@ -148,7 +148,7 @@ The content of introduction.
 \subsection{条件语句}
 
 \begin{definition}{蕴涵}
-设 $p, q$ 为命题, 命题 $p \rightarrow q$ 为命题 “若 $p$ , 则 $q$ ”,  $\rightarrow$ 是蕴涵联接词.当 $p$ 为真而 $q$ 为假时, 命题 $p \rightarrow q$ 为假, 否则 $p \rightarrow q$ 为真, 对于命题 $p \rightarrow q$ , 其中 $p$ 为前提,  $q$ 为结论.
+设 $p, q$ 为命题, 命题 $p \rightarrow q$ 为命题 “若 $p$ , 则 $q$ ”, $\rightarrow$ 是蕴涵联接词 (Entailment). 当 $p$ 为真而 $q$ 为假时, 命题 $p \rightarrow q$ 为假, 否则 $p \rightarrow q$ 为真, 对于命题 $p \rightarrow q$, 其中 $p$ 为前提, $q$ 为结论.
 \end{definition}
 
 \begin{remark}
@@ -208,7 +208,7 @@ The content of introduction.
 \end{minipage}
 
 \begin{definition}{等价}
-设 $p, q$ 为命题, 命题 $p \leftrightarrow q$ 为命题 “$p$ 当且仅当 $q$ ”, 我们也将当且仅当写作 iff （if and only if）,  $\leftrightarrow$ 是等价联接词.当 $p$ 与 $q$ 的真值相等时, 命题 $p \leftrightarrow q$ 为真 , 否则命题 $p \leftrightarrow q$ 为假.
+设 $p, q$ 为命题, 命题 $p \leftrightarrow q$ 为命题 “$p$ 当且仅当 $q$ ”, 我们也将当且仅当写作 iff (if and only if),  $\leftrightarrow$ 是等价联接词.当 $p$ 与 $q$ 的真值相等时, 命题 $p \leftrightarrow q$ 为真 , 否则命题 $p \leftrightarrow q$ 为假.
 \end{definition}
 
 \begin{remark}
@@ -321,9 +321,9 @@ The content of introduction.
 % ================================================================================== 
 \chapter{集合论}
 
-集合论（set theory）, 是研究集合（由一堆抽象对象构成的整体）的数学理论, 包含集合和元素（或称为成员）、关系等最基本数学概念.集合论、命题逻辑与谓词逻辑共同构成了数学的公理化基础, 以未定义的“集合”与“集合成员”等术语来形式化地建构数学对象.
+集合论(set theory), 是研究集合(由一堆抽象对象构成的整体)的数学理论, 包含集合和元素(或称为成员)、关系等最基本数学概念.集合论、命题逻辑与谓词逻辑共同构成了数学的公理化基础, 以未定义的“集合”与“集合成员”等术语来形式化地建构数学对象.
 
-德国数学家格奥尔格·康托尔（Cantor）于十九世纪七十年代提出了朴素集合论, 并从此展开了对集合论的研究.
+德国数学家格奥尔格·康托尔(Cantor)于十九世纪七十年代提出了朴素集合论, 并从此展开了对集合论的研究.
 
 \section{集合及其基本运算}
 
@@ -391,7 +391,7 @@ A \subseteq B.
 	\[
 		A\setminus B = \{x\in U\mid (x\in A) \land (x\notin B)\}.
 	\]
-	\item 集合的直积（笛卡尔积）为如下集合
+	\item 集合的直积(笛卡尔积)为如下集合
 	\[
 		X\times Y=\{(x, y)\mid (x\in X)\land(y\in Y)\},
 	\]
@@ -421,7 +421,7 @@ A \subseteq B.
 \end{proof}
 
 \begin{definition}{序偶}
-序偶是指由两个元素 $x$ 和 $y$ 按一定顺序排列构成的二元组，记作 $\langle x, y \rangle$ 或 $(x, y)$, 其中，$x$ 称为第一元素（或左投影）, $y$ 称为第二元素（或右投影）.  或 (x, y)。在序偶中，x 称为第一元素（或左投影），y 称为第二元素（或右投影）. 序偶具有顺序性，即当 $x \neq y$ 时，$(x,y) \neq (y,x)$.
+序偶是指由两个元素 $x$ 和 $y$ 按一定顺序排列构成的二元组，记作 $\langle x, y \rangle$ 或 $(x, y)$, 其中，$x$ 称为第一元素(或左投影), $y$ 称为第二元素(或右投影).  或 (x, y)。在序偶中，x 称为第一元素(或左投影)，y 称为第二元素(或右投影). 序偶具有顺序性，即当 $x \neq y$ 时，$(x,y) \neq (y,x)$.
 \end{definition}
 
 对于序偶这个数学对象我们可以将其作为原始概念对待，不过这里也给出应用集族概念的序偶定义. 
@@ -445,7 +445,7 @@ A \subseteq B.
 \]
 对于 $\forall A\subseteq X$, 我们称 $f(A)=\{f(x):x\in A\}$ 为 $A$ 的像；对于 $\forall B\subseteq Y$ , 我们称 $f^{-1}(B)=\{x\in X:f(x)\in B\} $ 为 $B$ 的原像.
 
-% 特别的, 我们称非空的数集之间的映射为函数（数集的定义见 \ref{number set}）.
+% 特别的, 我们称非空的数集之间的映射为函数(数集的定义见 \ref{number set}).
 \end{definition}
 
 \begin{definition}{限制与延拓}
@@ -588,7 +588,7 @@ A \subseteq B.
 
 \subsection{公理化集合论}
 
-实际上公理化集合论是一个没有数学美感的产物, 就像东拼西凑出的支柱, 主要为防止如罗素悖论这种矛盾的产生, 其中我们最常用的是策梅洛-弗伦克尔公理系统（Zermelo-Fraenkel）, 一般简称为 ZF 集合论.
+实际上公理化集合论是一个没有数学美感的产物, 就像东拼西凑出的支柱, 主要为防止如罗素悖论这种矛盾的产生, 其中我们最常用的是策梅洛-弗伦克尔公理系统(Zermelo-Fraenkel), 一般简称为 ZF 集合论.
 
 \begin{axiom}[外延公理]
 	集合 $A$ 与集合 $B$ 相等, 当且仅当它们所具有的各元素是相同的, 即
@@ -618,7 +618,7 @@ A \subseteq B.
 	存在一个不包含任何元素的集合 $\varnothing$, 由分离定理从任意集合都可以分离出空子集, 并根据外延定理可知所有空子集都相等.
 \end{axiom}
 	
-\begin{axiom}[幂集公理（子集之集）]
+\begin{axiom}[幂集公理(子集之集)]
 	对于任何集合 $X$, 存在一个集合 $\mathcal{P}$, 其元素是且仅是 $X$ 的各子集.
 \end{axiom}
 
@@ -628,7 +628,7 @@ A \subseteq B.
 	归纳集存在.
 \end{axiom}
 
-我们在无穷公理的基础上再通过之前所用的公理就可以建立自然数集 $\mathbb{N}_0$ 的模型（冯诺伊曼表示法）, 对自然数作如下表示.
+我们在无穷公理的基础上再通过之前所用的公理就可以建立自然数集 $\mathbb{N}_0$ 的模型(冯诺伊曼表示法), 对自然数作如下表示.
 	\[
 		\begin{aligned}
 			0:\quad & \varnothing,\\
@@ -639,10 +639,10 @@ A \subseteq B.
 	\]
 	
 \begin{axiom}[替换公理]
-	设$\mathcal{F}(x, y)$是以下命题（公式）: 对于集合$X$中的任何元素$x_0$存在唯一的对象$y_0$, 使得$\mathcal{F}(x_0, y_0)$成立, 那么满足该条件的对象$y$组成一个集合.
+	设$\mathcal{F}(x, y)$是以下命题(公式): 对于集合$X$中的任何元素$x_0$存在唯一的对象$y_0$, 使得$\mathcal{F}(x_0, y_0)$成立, 那么满足该条件的对象$y$组成一个集合.
 \end{axiom}
 	
-\begin{axiom}[* 选择公理（策梅洛公理）]
+\begin{axiom}[* 选择公理(策梅洛公理)]
 	对于任意互不相交的非空集合组成的集合族, 存在集合$C$, 使得对于该集合族中的任何集合$X$, 集合$X\cap C$只有一个元素组成.
 \end{axiom}
 
@@ -657,7 +657,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 如果以下四组条件成立, 则集合 $\R$ 称为实数集, 其元素称为实数, 这些条件称为实数公理系统.
 
 \begin{axiom}[加法公理]
-	定义如下映射（加法运算）
+	定义如下映射(加法运算)
 	\[
 		+:\R\times \R\rightarrow\R.
 	\]
@@ -686,7 +686,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	如果在某集合 $G$ 上定义了满足前三条公理的运算, 我们就说在 $G$ 上给定了群结构, 即 $G$ 是群, 如果成该运算为加法, 就称这个群为加法群, 如果除此之外还知道该运算满足交换律, 即条件 $4_+$ 成立, 就称这个群为交换群或阿贝尔群.
 	
 \begin{axiom}[乘法公理]
-	定义如下映射（乘法运算）
+	定义如下映射(乘法运算)
 	\[
 		\bullet:\R\times \R\rightarrow\R.
 	\]
@@ -712,7 +712,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	\]
 \end{axiom}
 
-	我们指出集合 $\R\setminus0$ 相对于乘法运算是（乘法）群.
+	我们指出集合 $\R\setminus0$ 相对于乘法运算是(乘法)群.
 	
 	乘法相对于加法满足分配律, 即 $\forall x, y, z \in \R$, 
 	\[
@@ -744,7 +744,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 % 实数集代数性质
 
-\subsection{完备性公理与数集的上确界（下确界）的存在性}
+\subsection{完备性公理与数集的上确界(下确界)的存在性}
 
 \begin{definition}{上下界}
 设集合 $X\subset \R$, 如果数 $c\in\R$ 存在, 使得对于任何 $x\in X$ 都有 $x\le c$, 就说集合 $X$ 是上有界集, 这时称 $c$ 为 $X$ 的上界.
@@ -753,7 +753,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{definition}
 
 \begin{definition}{最值}
-设 $a$ 是集合 $X\subset\R$ 的元素, 如果对于任何元素 $x\in X$ 都有 $x\le a$ 则元素 $a$ 称为集合 $X$ 的最大元素（最大值）记作 $\max X$ 或 $\max\limits_{x\in X} x$, 而最小值记作 $\min X$ 或 $\min\limits_{x\in X} x$.
+设 $a$ 是集合 $X\subset\R$ 的元素, 如果对于任何元素 $x\in X$ 都有 $x\le a$ 则元素 $a$ 称为集合 $X$ 的最大元素(最大值)记作 $\max X$ 或 $\max\limits_{x\in X} x$, 而最小值记作 $\min X$ 或 $\min\limits_{x\in X} x$.
 \[
 \begin{aligned}
 	(a = \max X) := (a\in X \land \forall x \in X (x\le a)),\\
@@ -862,7 +862,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \begin{theorem}[算数基本定理]
 
-每个自然数能唯一的（不考虑顺序）表示为乘积的形式
+每个自然数能唯一的(不考虑顺序)表示为乘积的形式
 \[
 	n = p_1 \cdots p_k.
 \]
@@ -935,7 +935,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \subsection{数轴}
 
-根据几何公理（在后面介绍几何时再详述）, 对于一条直线 $\mathbb{L}$ 可以将其与实数集建立双射关系 $f:\mathbb{L} \to \R$.当上述双射 $f$ 存在时, 称直线 $\mathbb{L}$ 为坐标轴或数轴.
+根据几何公理(在后面介绍几何时再详述), 对于一条直线 $\mathbb{L}$ 可以将其与实数集建立双射关系 $f:\mathbb{L} \to \R$.当上述双射 $f$ 存在时, 称直线 $\mathbb{L}$ 为坐标轴或数轴.
 
 \begin{definition}{区间}
 为了方便建立几何直观, 我们引入以下记号
@@ -947,7 +947,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 		[a, b) = \{a\in\R | a\le x< b\}.
 	\end{aligned}
 \]
-其中 $(a, b)$ 是开区间, $[a, b]$ 是闭区间, $(a, b]$ 是左开右闭区间, $[a, b)$ 是左闭右开区间.对于一个区间 ab （无论其开闭）称 b-a 为其长度, 对于区间 $I$, 记其长度为 $\lvert I \rvert$.
+其中 $(a, b)$ 是开区间, $[a, b]$ 是闭区间, $(a, b]$ 是左开右闭区间, $[a, b)$ 是左闭右开区间.对于一个区间 ab (无论其开闭)称 b-a 为其长度, 对于区间 $I$, 记其长度为 $\lvert I \rvert$.
 \end{definition}
 
 \begin{definition}{邻域}
@@ -1034,7 +1034,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 % 关于实数集完备性的一些基本定理
 \section{关于实数集完备性的一些基本定理}
 
-\subsection{闭区间套定理（柯西-康托尔原理）}
+\subsection{闭区间套定理(柯西-康托尔原理)}
 
 \begin{definition}{集合套}
 设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
@@ -1051,7 +1051,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{proof}
 
 
-\subsection{有限覆盖引理（博雷尔-勒贝格原理、海涅-博雷尔原理）}
+\subsection{有限覆盖引理(博雷尔-勒贝格原理、海涅-博雷尔原理)}
 
 \begin{definition}{覆盖}
 设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族, 如果 $Y\subset \bigcup\limits_{X\in S}X$, 那么我们说 $S$ 覆盖集合 $Y$.
@@ -1068,7 +1068,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$, 而且根据其构造方法可知, 第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$, 所以在此序列中有长度任意小的闭区间, 根据闭区间套引理, 存在一点 $c$ 包含于所有闭区间 $I_n$, 而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon,  c+\varepsilon)$, 在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$, 所以有 $I_n \subset U$, 这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾.
 \end{proof}
 
-\subsection{极限点定理（波尔查诺-魏尔斯特拉斯原理）}
+\subsection{极限点定理(波尔查诺-魏尔斯特拉斯原理)}
 
 \begin{definition}{极限点}
 如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集, 点 $p$ 就称为集合 $X$ 的极限点.
@@ -1124,7 +1124,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \[
 B = \{x\in A: x\notin f(x)\}.
 \]
-由于 $f$ 是双射, 所以必存在（唯一）元素 $y\in A$ 使得
+由于 $f$ 是双射, 所以必存在(唯一)元素 $y\in A$ 使得
 \[
 f(y) = B.
 \]
@@ -1146,7 +1146,7 @@ f(y) = B.
 \end{theorem}
 
 \begin{theorem}
-	设 $A$ 是可数集（有限集或可数无穷集）, $B$ 是无穷集, 则 $\lvert A\cup B \rvert= \lvert B \rvert$.
+	设 $A$ 是可数集(有限集或可数无穷集), $B$ 是无穷集, 则 $\lvert A\cup B \rvert= \lvert B \rvert$.
 \end{theorem}
 	
 \begin{theorem}
@@ -1184,7 +1184,7 @@ f(y) = B.
 
 把 $(0, 1]$ 中的任一实数 $x$ 用二进制表示: 更具体地讲, 就是找到每项取值是 $0$ 或 $1$ 的无穷数列 $\{a_n\}_{n \ge 1}$ 满足在二进制下 $x=0.a_1 a_2\cdots a_n \cdots$, 其中无穷多个 $a_n$ 是 $1$ .
 \ITEMS 
-	\item 第一步: 把区间 $(0, 1]$ 二等分为两半开闭子区间: 若 $x$ 属于靠左的（称为第一个, 后同）子区间 $(0, \frac{1}{2}]$, 则 $a_1=0$；若 $x$ 属于靠右的（称为第二个, 后同）子区间, 则 $a_1=1$；
+	\item 第一步: 把区间 $(0, 1]$ 二等分为两半开闭子区间: 若 $x$ 属于靠左的(称为第一个, 后同)子区间 $(0, \frac{1}{2}]$, 则 $a_1=0$；若 $x$ 属于靠右的(称为第二个, 后同)子区间, 则 $a_1=1$；
 	
 	\item 第二步: 把 $x$ 所属的第一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间, 则 $a_2=0$；若 $x$ 属于第二个子区间, 则 $a_2=1$；
 	\item $\vdots$ 
@@ -1214,10 +1214,10 @@ f(y) = B.
 \end{proof}
 
 \begin{proposition}{连续统假设}
-不存在一个无穷集合, 其基数严格介于自然数集的基数 $\aleph_0$ 与实数集的基数 $\aleph_1$（即连续统的基数）之间. 即不存在一个无穷集合, 其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1},  n=0,  1, 2,  \cdots $ 之间.
+不存在一个无穷集合, 其基数严格介于自然数集的基数 $\aleph_0$ 与实数集的基数 $\aleph_1$(即连续统的基数)之间. 即不存在一个无穷集合, 其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1},  n=0,  1, 2,  \cdots $ 之间.
 \end{proposition}
 
-连续统假设是一个在 ZFC 公理化集合论体系内不可证（不能被证明、也不能被证伪）的命题.
+连续统假设是一个在 ZFC 公理化集合论体系内不可证(不能被证明、也不能被证伪)的命题.
 \section{良序集}
 
 % 这一部分还不完善	<-------------------------- HERE
@@ -1238,21 +1238,22 @@ f(y) = B.
 
 在讨论初等数学与高等数学的区别时, 我认为极限的思想是两者间最大的区别, 极限是分析学的基础.初等数学侧重于“常量”与“静态”的计算, 而高等数学侧重于“变量”与“动态”的变化过程, 而极限就是研究动态问题的最基本手段.
 
-其实极限的思想很早就在数学家们的心中产生, 无论是刘徽的割圆术还是芝诺的阿基里斯追龟悖论, 都是极限思想的体现, 只不过在柯西（Cauchy）提出极限定义之前的两千年间, 数学界一直都没能给出极限的严格定义.
+其实极限的思想很早就在数学家们的心中产生, 无论是刘徽的割圆术还是芝诺的阿基里斯追龟悖论, 都是极限思想的体现, 只不过在柯西(Cauchy)提出极限定义之前的两千年间, 数学界一直都没能给出极限的严格定义.
 
 \section{数列极限}
+在前面我们介绍了序列的定义.
 
 \begin{definition}{数列}
-在前面我们介绍了序列的定义, 若序列的值域为实数集或其子集 $f:\N \to \R$, 我们称该序列为数列.	
+若序列的值域为实数集或其子集 $f:\N \to \R$, 我们称该序列为数列.	
 \end{definition}
 
 
 \subsection{数列极限的定义}
 
-我在这里介绍两种等价的定义, 首先介绍根据邻域的思想（拓扑）所给出的定义.
+我在这里介绍两种等价的定义, 首先介绍根据邻域的思想(拓扑)所给出的定义.
 
-\begin{definition}
-	数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于点 $A$ 的任何一个邻域 $V(A)$, 都存在序号 $N$, 使得数列中所有序号大于 $N$ 的项都包含在点 $A$ 的上述邻域 $V(A)$ 中. 即
+\begin{definition}{数列极限邻域定义}
+	数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于点 $A$ 的任何一个邻域 $V(A)$, 都存在序号 $N$, 使得数列中所有序号大于 $N$ 的项都包含在点 $A$ 的上述邻域 $V(A)$ 中, 即
 \[
 	\left( \lim_{n\to\infty} x_n = A\right) := \forall V(A)\ \exists N\in\N\ \forall n > N (x_n \in V(A)).
 \]
@@ -1260,18 +1261,39 @@ f(y) = B.
 
 接下来指出数列极限定义的另一种常见表述.
 
-\begin{definition}
-数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 是的对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$. 即
+\begin{definition}{数列极限一般定义}
+数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 使得对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$, 即
 \[
 	\left( \lim_{n\to\infty} x_n = A\right) := \forall \varepsilon > 0\ \exists N\in\N\ \forall n > N (\lvert x_n - A\rvert < \varepsilon).
 \]
 
-如果 $\lim\limits_{n\to\infty} x_n = A$, 我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$, 记作 $n\to\infty$ 时 $x_n \to A$.有极限的数列称为收敛数列, 没有极限的数列称为发散数列. 
+如果 $\lim\limits_{n\to\infty} x_n = A$, 我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$, 记作 $n\to\infty$ 时 $x_n \to A$. 有极限的数列称为收敛数列, 没有极限的数列称为发散数列. 
 \end{definition}
 
-\subsection{收敛数列的性质}
+%为了描述发散数列的性质, 我们引入上下极限的概念. 首先我们自然想到将数列
 
-\begin{definition}
+%% 子列
+%\begin{definition}{子列}
+%如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$ 称为数列的子列.
+%\end{definition}
+%
+%% 极限点
+%\begin{definition}{极限点}
+%称数列的一个收敛子列的极限为数列的一个极限点.
+%\end{definition}
+%
+%% 上下极限
+%\begin{definition}{上下极限}
+%数列的所有极限点的上确界(下确界)为上极限(下极限)记为
+%\[
+%	\varlimsup_{n\to\infty}\{x_n\}
+%\]
+%\end{definition}
+
+\subsection{收敛数列的性质}
+接下来我们研究收敛数列所拥有的分析性质, 不过未来将看到这些性质并非数列所所特有的. 
+
+\begin{definition}{常数列}
 	只取一个值的数列为常数列, 数列 $\{x_n\}$ 称为最终常数列, 如果存在数 $A$ 与序号 $N$, 使得对于任何 $n > N$ 均有 $x_n = A$.
 \end{definition}
 
@@ -1289,52 +1311,91 @@ f(y) = B.
 数列极限的任何一个邻域都包含数列中为数有限的项之外的所有项.
 \end{theorem}
 
-以上两条性质皆由定义显然.
+以上两条性质皆由定义显然. 而接下来介绍一些更具一般性的性质.
 
+% 唯一性
 \begin{theorem}{数列极限的唯一性}{thm:Slimit_p1}
 数列不可能有两个不同的极限.
 \end{theorem}
-\begin{idea}
-使用反证法, 假设数列有两个不同的极限，证明两个极限相同.
-\end{idea}
+\begin{idea*}
+使用反证法, 假设数列有两个不同的极限, 证明两个极限相同.
+\end{idea*}
 
 \begin{proof}
 	设 $\lim\limits_{n\to\infty} x_n = A_1 , \ \lim\limits_{n\to\infty} x_n = A_2$.假如 $A_1 \neq A_2$, 我们就选定点 $A_1, A_2$ 的两个不相交的邻域 $V(A_1), V(A_2)$.
 	
-	例如, 可以在 $\delta < \frac{\lvert A_1 - A_2\rvert}{2}$ 时取这两个点的邻域, 显然 $V(A_1), V(A_2)$ 不相交.根据极限的定义, 可以求得 $N_1, N_2$ 使得 $\forall n > N_1 (x_n\in V(A_1)), \ \forall n > N_2 (x_n\in V(A_2))$.于是对于 $n > \max\{N_1, N_2\}$ 有 $x_n \in V(A_1) \cap V(A_2)$, 与 $V(A_1), V(A_2)$ 不相交矛盾.
+	例如, 可以在 $\delta < \frac{\lvert A_1 - A_2\rvert}{2}$ 时取这两个点的邻域, 显然 $V(A_1), V(A_2)$ 不相交. 根据极限的定义, 可以求得 $N_1, N_2$ 使得 $\forall n > N_1 (x_n\in V(A_1)), \ \forall n > N_2 (x_n\in V(A_2))$.于是对于 $n > \max\{N_1, N_2\}$ 有 $x_n \in V(A_1) \cap V(A_2)$, 与 $V(A_1), V(A_2)$ 不相交矛盾.
 \end{proof}
 
-
+% 有界性
 \begin{theorem}{数列极限的有界性}{thm:Slimit_p2}
 收敛数列有界.
 \end{theorem}
 
+\begin{idea*}
+根据极限定义对于 $N$ 之后的值显然有 $A - \epsilon < x_n < A + \epsilon$, 那么显然有限数列是有界的.
+\end{idea*}
+
 \begin{proof}
-	设 $\lim\limits_{n\to\infty} x_n = A$.如果取 $\varepsilon = 1$, 就可以求出 $N$, 使得 $\forall n > N (\lvert x_n - A \rvert < 1)$.这意味着, 当 $n > N$ 时有 $\lvert x_n \rvert < \lvert A \rvert + 1$.如果现在取
+	设 $\lim\limits_{n\to\infty} x_n = A$.如果取 $\varepsilon = 1$, 就可以求出 $N$, 使得 $\forall n > N (\lvert x_n - A \rvert < 1)$. 这意味着, 当 $n > N$ 时有 $\lvert x_n \rvert < \lvert A \rvert + 1$.如果现在取
 	\[
 		M > \max\{\lvert x_1\rvert, \lvert x_2\rvert, \cdots, \lvert x_N\rvert, \lvert A\rvert + 1\},
 	\]
 	就得到 $\forall n (x_n < M)$.
 \end{proof}
 
+% 保序性
 \begin{theorem}{数列极限的保序性}{thm:Slimit_p3}
-设有收敛数列 $\{x_n\},\{y_n\}$, 满足 $\lim\limits_{n\to\infty} x_n = a, \lim\limits_{n\to\infty} y_n = b$ 且有 $a < b$, 则存在 $N \in \N^+$ 使得对任意 $n > N$ 有
+设有收敛数列 $\{x_n\},\{y_n\}$, 满足 $\lim\limits_{n\to\infty} x_n = A, \lim\limits_{n\to\infty} y_n = B$ 且有 $a < b$, 则存在 $N \in \N^+$ 使得对任意 $n > N$ 有
 \[
 	x_n < y_n.
 \]
 
 \end{theorem}
-
+\begin{idea*}
+设 $\varepsilon = \frac{B - A}{2}$, 则有 $N$ 使得 $x_n < \frac{B + A}{2},\ y_n > \frac{B + A}{2}$.
+\end{idea*}
 \begin{proof}
 	取数 $C$, 使得 $A < C < B$. 根据极限的定义, 可以求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $\lvert x_n - A \rvert < C - A$, 并且对于任何 $n > N \in \N$, 都有 $\lvert y_n - B \rvert < B - C$. 于是, 当 $n>N = \max\{N',N''\}$ 时, 就得到 $x_n < A + (C - A) = C = B - (B- C) < y_n$.
 \end{proof}
 
+% 保号性
+\begin{corollary}{保号性}
+	设 $\lim\limits_{n\to\infty} x_n = A \neq 0$, 则存在 $N \in \N^+$, 当 $n > N$ 时有
+	\ITEMS
+		\item 若 $A > 0$,
+		\[
+			x_n > \frac A2 > 0.
+		\]
+		\item 若 $A < 0$,
+		\[
+			x_n < \frac A2 < 0.
+		\]
+	\ITEME
+\end{corollary}
+
+保号性由保序性显然.
+
+% 迫敛性
+\begin{theorem}{迫敛性}
+设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 也收敛于该极限. 
+\end{theorem}
+
+\begin{idea*}
+由定义显然，对于任意 $\varepsilon$ 只需取最大的 $N$ 即可.
+\end{idea*}
+
+\begin{proof}
+设 $\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} z_n = A$. 由 $\varepsilon > 0$ 求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $N'< A + \varepsilon$. 于是, 当 $n > N =\max\{N',N''\}$ 时, 我们得到 $A -\varepsilon < x_n \le y_n \le z_n < A + \varepsilon$, 即 $\lvert y_n - A\rvert < \varepsilon$, 从而 $\lim\limits_{n\to\infty} y_n = A$.
+\end{proof}
+
+% 运算性质
 \begin{definition}{极限的运算}
 如果$\{x_n\}, \{y_n\}$ 是两个数列, 则数列
 \[
-	\{(x_n + y_n)\},  \{(x_n y_n)\},  \left\{\left(\frac{x_n}{y_n}\right)\right\}
+	\{(x_n + y_n(\},  \{(x_n y_n)\},  \left\{\left(\frac{x_n}{y_n}\right)\right\}
 \]
-分别称为这两个数列的和, 积和商（$y_n \neq 0, \ n\in\N$ 时商才有定义）.
+分别称为这两个数列的和, 积和商($y_n \neq 0, \ n\in\N$ 时商才有定义).
 \end{definition}
 
 \begin{theorem}{极限的四则运算}
@@ -1345,20 +1406,34 @@ f(y) = B.
 		\item 当 $y_n\neq 0, \ n\in\N$ 且 $B \neq 0$ 时 $\lim\limits_{n\to\infty} \frac{x_n}{y_n} = \frac AB$.
 	\ITEME
 \end{theorem}
-\begin{proof}
-	
-
+ 
+\begin{idea*}
 	% 这一部分还不完善	<-------------------------- HERE
-\end{proof}
+\end{idea*}
 
-
-\begin{theorem}{迫敛性}
-设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 也收敛于该极限. 
-\end{theorem}
 \begin{proof}
-设 $\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} z_n = A$. 由 $\varepsilon > 0$ 求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $N'< A + \varepsilon$. 于是, 当 $n > N =\max\{N',N''\}$ 时, 我们得到 $A -\varepsilon < x_n \le y_n \le z_n < A + \varepsilon$, 即 $\lvert y_n - A\rvert < \varepsilon$, 从而 $A = \lim\limits_{n\to\infty} y_n$.
-
+	我们逐个来证明:
+	\ITEMS
+		\item 设给定 $\varepsilon > 0$, 对于数列 $\{x_n\}$ 存在 $N'$ 使得 $\forall n > N'$ 有 $\lvert x_n - A \rvert < \frac{\varepsilon}{2}$. 类似的, 对于数列 $\{y_n\}$ 存在 $N''$ 使得 $\forall n > N'$ 有 $\lvert y_n - B \rvert < \frac{\varepsilon}{2}$. 于是, 当 $n > \max\{N', N''\}$ 时, 有
+		\[
+			\lvert(A + B) - (x_n + y_n)\rvert < \varepsilon.
+		\]
+		\item 注意到
+		\[
+		\begin{aligned}
+			\lvert x_n y_n - AB\rvert &= \lvert [A + (x_n - A)][B + (y_n - B)] - AB \rvert\\ 
+			&= \lvert AB + B(x_n - A) + A(y_n - B) + (x_n - A)(y_n - B) - AB  \rvert \\
+			&= \lvert B(x_n - A) + A(y_n - B) + (x_n - A)(y_n - B) \rvert \\
+			&\le \lvert A\rvert \lvert y_n - B\rvert + \lvert B\rvert \lvert x_n - A\rvert + \lvert (x_n - A)(y_n - B) \rvert
+		\end{aligned}
+		\]
+		
+		对于任意给定的 $\varepsilon > 0$, 
+		
+		\item 
+	\ITEME
 \end{proof}
+
 
 \begin{corollary}
 	设 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果存在序号 $N$, 是的对于任何 $n > N$ 都有
@@ -1379,7 +1454,7 @@ f(y) = B.
 	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 
 	\[
 		|x_n-x_m| < \varepsilon.
-	\] 我们称满足以上条件的数列为基本数列（柯西数列）.
+	\] 我们称满足以上条件的数列为基本数列(柯西数列).
 \end{theorem}
 \begin{proof}
 	我们首先证明必要性, 设 $\lim\limits_{n\to\infty} x_n = A$. 对于 $\forall \varepsilon > 0$, 可以求出序号 $N$, 使得当 $n > N$ 时有 $\lvert x_n - A\rvert < \varepsilon/2$. 如果现在 $m > N$ 且 $n > N$, 则 $\lvert x_m - x_n \rvert \le \lvert x_m - A \rvert + \lvert x_n - A \rvert < \varepsilon/2 + \varepsilon/2 = \varepsilon$, 必要性证必.
@@ -1395,7 +1470,7 @@ f(y) = B.
 
 
 \begin{definition}{单调性}
-	对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为（严格）单调递增数列；如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为（严格）单调递减数列；如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列或单调不增数列.
+	对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为(严格)单调递增数列；如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为(严格)单调递减数列；如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列或单调不增数列.
 \end{definition}
 
 \begin{theorem}{单调数列极限存在准则}
@@ -1410,13 +1485,6 @@ f(y) = B.
 	
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
-
-
-\begin{definition}{子列}
-如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$ 称为数列的子列.
-\end{definition}
-
-% 子列
 
 \begin{lemma}{波尔查诺-维尔斯特拉斯引理}
 	每个有界实数列都含有收敛的子列.
@@ -1439,7 +1507,7 @@ f(y) = B.
 \begin{definition}{级数}
 表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$, 通常称为级数或无穷级数. 其中数列 $\{a_n\}$ 的元素称为级数的项, 而 $a_n$ 称之为级数的第 $n$ 项. $s_n = \sum\limits_{k=1}^n a_k$ 称为级数的前 $n$ 项和.
 
-如果级数的前 $n$ 项和的数列收敛就称级数收敛, 否则称级数发散.级数的前 $n$ 项和数列的极限 $\lim\limits_{n\to\infty} s_n = s$ 称为级数的和（如果该极限存在）, 做出如下记号.
+如果级数的前 $n$ 项和的数列收敛就称级数收敛, 否则称级数发散.级数的前 $n$ 项和数列的极限 $\lim\limits_{n\to\infty} s_n = s$ 称为级数的和(如果该极限存在), 做出如下记号.
 \[
 	\sum_{n=1}^\infty a_n = s.
 \]
@@ -1579,7 +1647,7 @@ f(y) = B.
 % 七种极限定义
 % 左右单侧极限
 % 无穷极限
-% 极限趋近于无穷（极限不存在）
+% 极限趋近于无穷(极限不存在)
 
 
 \subsection{函数极限的性质}
@@ -1773,10 +1841,10 @@ f(y) = B.
 \subsection{向量及其表示}
 
 \begin{definition}{向量与数量}
-	我们称只有大小的量为数量（标量）, 把既有大小又有方向的量称为向量（矢量）.
+	我们称只有大小的量为数量(标量), 把既有大小又有方向的量称为向量(矢量).
 \end{definition}
 
-我们常常使用有向线段来表示向量, 有向线段方向代表向量的方向, 有向线段长度代表向量大小. 记为 $\Ve{AB}$, 其中 $A$ 是向量的起点, $B$ 是向量的终点. 有时我们也用黑体小写字母 $\ve{a}$ 表示向量（手写时仍用箭头表示）.
+我们常常使用有向线段来表示向量, 有向线段方向代表向量的方向, 有向线段长度代表向量大小. 记为 $\Ve{AB}$, 其中 $A$ 是向量的起点, $B$ 是向量的终点. 有时我们也用黑体小写字母 $\ve{a}$ 表示向量(手写时仍用箭头表示).
 
 \begin{definition}{模}
 	向量 $\Ve{AB}$ 的大小, 也称为向量的模, 记作 $\lvert \Ve{AB} \rvert$.
@@ -1787,7 +1855,7 @@ f(y) = B.
 \end{definition}
 
 \begin{definition}{共线}
-	对于一组向量, 若将其平移至同一起点后, 它们在同一直线上, 那么就称这组向量是共线的（平行的）, 用记号 $\parallel$ 表示.	
+	对于一组向量, 若将其平移至同一起点后, 它们在同一直线上, 那么就称这组向量是共线的(平行的), 用记号 $\parallel$ 表示.	
 \end{definition}
 
 零向量的的方向不定, 零向量与任何向量共线.
@@ -1928,19 +1996,15 @@ f(y) = B.
 
 \subsection{方向导数与梯度}
 
-如果函数 $f$ 定义于点 $x_0 \in \R^m$ 的邻域, 而 $v\in T \R^m_{x_0}$ 是以点 $x
-_0$ 为起点的向量, 则量
-\[
-	D_v f(x_0) := \lim_{t\to 0}\frac{f(x_0+vt) - f(x_0)}{t}
-\]
-称为函数 $f$ 在点 $x_0$ 沿向量 $v$ 的导数.
-
-如果
 
 \section{多元函数的极限与连续性}
 
 
 \section{多元函数的泰勒公式}
+
+\subsection{中值定理}
+
+\subsection{泰勒公式}
 
 \section{条件极值}
 
@@ -1951,8 +2015,11 @@ _0$ 为起点的向量, 则量
 % ================================================================================== 
 
 \chapter{重积分}
+接下来我们学习多重函数积分学的两个章节
 
 \section{$n$ 维曲面上的黎曼积分}
+
+
 
 \subsection{积分的定义}
 
@@ -2101,14 +2168,14 @@ _0$ 为起点的向量, 则量
 
 
 \begin{theorem}
-	设集合 $M$ 有代数运算 $\circ$ 即 $\oplus$ , 集合 $\overline{M}$ 有代数运算 $\overline{\circ}$ 及 $\overline{\oplus}$；又 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个满射, 且是关于 $\circ$ 与 $\overline{\circ}$ 以及 $\oplus$ 与 $\overline{\oplus}$ 的同态, 则当 $\circ$ 对 $\oplus$ 满足左（右）分配律时, $\overline{\circ}$ 对 $\overline{\oplus}$ 也满足左（右）分配律.
+	设集合 $M$ 有代数运算 $\circ$ 即 $\oplus$ , 集合 $\overline{M}$ 有代数运算 $\overline{\circ}$ 及 $\overline{\oplus}$；又 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个满射, 且是关于 $\circ$ 与 $\overline{\circ}$ 以及 $\oplus$ 与 $\overline{\oplus}$ 的同态, 则当 $\circ$ 对 $\oplus$ 满足左(右)分配律时, $\overline{\circ}$ 对 $\overline{\oplus}$ 也满足左(右)分配律.
 \end{theorem}
 
 \begin{proof}
 	证明方法类似, 不再重复.
 \end{proof}
 
-设 $\varphi$ 是 $M$ 到 $\overline{M}$ （关于代数运算 $\circ$ 及 $\overline{\circ}$）的的一个同态满射, 如果 $\varphi$ 又是单射（即 $\varphi$ 是双射）, 则称 $\varphi$ 是 $M$ 与 $\overline{M}$ 的一个同构映射.
+设 $\varphi$ 是 $M$ 到 $\overline{M}$ (关于代数运算 $\circ$ 及 $\overline{\circ}$)的的一个同态满射, 如果 $\varphi$ 又是单射(即 $\varphi$ 是双射), 则称 $\varphi$ 是 $M$ 与 $\overline{M}$ 的一个同构映射.
 
 如果集合 $M$ 与 $\overline{M}$ 存在同构映射, 就说 $M$ 与 $\overline{M}$ 同构, 记为 $M \cong \overline{M}$.否则, 即若 $M$ 到 $\overline{M}$ 不存在任何同构映射, 则称 $M$ 与 $\overline{M}$ 不同构.
 
@@ -2185,7 +2252,7 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 
 随机过程过程是概率空间 $(\Omega, \mathcal{F}, P)$ 上的一族随机变量 $\{X(t), t\in T\}$, 其中 $T$ 称为指标集或参数集.当指标集取 $\R, \R_+$ 或 $[a, b]$ 时, 称 $\{X(t), t\in T\}$ 为连续参数的随机过程, 当指标集取 $\Z, \Z_+$ 时, 称 $\{X(t), t\in T\}$ 为离散参数的随机过程.若指标集 $T = \{0, 1, 2, \cdots\}$ 时, 称之为随机序列或时间序列.在这里举几个随机过程的例子.
 \begin{example}[随机游动]
-	一个醉汉在路上行走, 以概率 $p$ 前进一步, 以概率 $1-p$ 后退一步（假定其步长相同）.以 $X(t)$ 记 $t$ 时刻他在路上的位置, 则 $\{X(t)\}$ 就是直线上的随机游动.
+	一个醉汉在路上行走, 以概率 $p$ 前进一步, 以概率 $1-p$ 后退一步(假定其步长相同).以 $X(t)$ 记 $t$ 时刻他在路上的位置, 则 $\{X(t)\}$ 就是直线上的随机游动.
 \end{example}
 
 \begin{example}[布朗运动]
@@ -2198,7 +2265,7 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 
 \section{有限维分布与柯尔莫哥洛夫定理}
 
-为了描述随机过程 $\{X(t), t\in T\}$ 的统计特征, 对于每个 $t\in T$, 要知道 $X(t)$ 的分布函数 $F(t, x) = P\{X(t)\le x\}$ （我们称 $F(t, x)$ 为随机过程的一维分布）, 以及它们在任意 $n$ 个时间点的联合分, 即随机过程的 $n$ 维分布
+为了描述随机过程 $\{X(t), t\in T\}$ 的统计特征, 对于每个 $t\in T$, 要知道 $X(t)$ 的分布函数 $F(t, x) = P\{X(t)\le x\}$ (我们称 $F(t, x)$ 为随机过程的一维分布), 以及它们在任意 $n$ 个时间点的联合分, 即随机过程的 $n$ 维分布
 \[
 	F_{t_1, t_2, \cdots, t_n}(x_1, x_2, \cdots, x_n) = P\{X(t_1) \le x_1, X_(t_2)\le x_2, \cdots, X(t_n)\le x_n\}
 \]
