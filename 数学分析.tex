@@ -273,7 +273,7 @@ The content of introduction.
 仅由有限个简单合取式构成的析取式称为析取范式, 仅由有限个简单析取式构成的合取式称为合取范式.
 \end{definition}
 
-\begin{theorem}{范式存在定理}{thm:EToNF}
+\begin{theorem}{范式存在定理}{EToNF}
 任意命题公式都存在与之等值的析取范式和合取范式.
 \end{theorem}
 
@@ -321,9 +321,9 @@ The content of introduction.
 % ================================================================================== 
 \chapter{集合论}
 
-集合论(set theory), 是研究集合(由一堆抽象对象构成的整体)的数学理论, 包含集合和元素(或称为成员)、关系等最基本数学概念.集合论、命题逻辑与谓词逻辑共同构成了数学的公理化基础, 以未定义的“集合”与“集合成员”等术语来形式化地建构数学对象.
+集合论 (Set theory), 是研究集合(由一堆抽象对象构成的整体)的数学理论, 包含集合和元素 (或称为成员)、关系等最基本数学概念.集合论、命题逻辑与谓词逻辑共同构成了数学的公理化基础, 以未定义的“集合”与“集合成员”等术语来形式化地建构数学对象.
 
-德国数学家格奥尔格·康托尔(Cantor)于十九世纪七十年代提出了朴素集合论, 并从此展开了对集合论的研究.
+德国数学家格奥尔格·康托尔 (Cantor) 于十九世纪七十年代提出了朴素集合论, 并从此展开了对集合论的研究.
 
 \section{集合及其基本运算}
 
@@ -370,8 +370,8 @@ A \subseteq B.
 给定集合 $A$, 考虑由 $A$ 的所有子集构成的集合, 我们称之为集合 $A$ 的幂集, 记为 $\mathcal{P} (A)$. 通常我们把一个以集合为元素的集合称为族, 一般用大写花体字母表示.
 \end{definition}
 
-\subsubsection{简单的集合运算}
-\begin{definition}{}
+% 简单的集合运算
+\begin{definition}{简单的集合运算}
 对于集合 $A$ 与 $B$ 我们定义以下运算
 \ITEMS
 	\item 集合 $A$ 与 $B$ 的并集是集合
@@ -419,6 +419,7 @@ A \subseteq B.
 \begin{proof}
 	由定义显然.
 \end{proof}
+\smallskip
 
 \begin{definition}{序偶}
 序偶是指由两个元素 $x$ 和 $y$ 按一定顺序排列构成的二元组，记作 $\langle x, y \rangle$ 或 $(x, y)$, 其中，$x$ 称为第一元素(或左投影), $y$ 称为第二元素(或右投影).  或 (x, y)。在序偶中，x 称为第一元素(或左投影)，y 称为第二元素(或右投影). 序偶具有顺序性，即当 $x \neq y$ 时，$(x,y) \neq (y,x)$.
@@ -510,8 +511,6 @@ A \subseteq B.
 则称该二元关系为等价关系, 记作 $x\sim y$.
 \end{definition}
 
-\subsubsection{集合在等价关系下的分类}
-
 \begin{definition}{等价类}
 若把集合 $M$ 的全体元素分成若干互不相交的子集, 则称每个这样的子集为 $M$ 的一个类, 类的全体叫做 $M$ 的一个分类.
 \end{definition}
@@ -526,6 +525,7 @@ A \subseteq B.
 	\]
 	这显然是 $M$ 的一个等价关系.
 \end{proof}
+\smallskip
 
 \begin{theorem}
 	集合 $M$ 的一个等价关系决定 $M$ 的一个分类.
@@ -550,6 +550,7 @@ A \subseteq B.
 	同理可证 $\overline{c} \subseteq\overline{b}$, 因此 $\overline{b}=\overline{c}$.即如果两个类公有元素 $a$, 则两个类完全相等, 说明每个元素只能属于一个类.
 	
 \end{proof}
+\smallskip
 
 对于给定集合 $X$ 中的一个等价关系, 及一元素 $\forall x\in X$, 我们称由 $x$ 决定的等价类为 $[x] = \{y\in X:y\sim x\}$.其中由 $x$ 决定的等价类包含 $x$.
 
@@ -780,12 +781,17 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \]
 \end{definition}
 
-\begin{theorem}[上确界原理]
+\begin{theorem}{上确界原理}{R1}
 实数集的任何有上界非空子集有唯一的上确界.
 \end{theorem}
+\begin{idea*}
+用完备性公理可证.	
+\end{idea*}
+
 \begin{proof}
 	设 $X \subseteq \R$ 是给定的子集, 而 $Y = \{y\in\R | \forall x \in X (x \le y)\}$ 是 $X$ 的上界的集合, 依条件 $X\neq \varnothing,  Y\neq \varnothing$.于是, 根据完备性公理, 存在 $c \in \R$, 使得 $\forall x \in X, \forall y \in Y (x\le c\le y)$, 因此数 $c$ 既是 $X$ 的上界, 也是 $Y$ 的下届, 所以有 $c = \min Y = \max X$.
 \end{proof}
+\smallskip
 
 \section{实数类与计算}
 
@@ -840,7 +846,6 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	
 	因为 $(a+b)^1 = {1 \choose 1}a^1 b^0 + {1 \choose 1}a^0 b^1$ 显然成立, 根据归纳原理, 上式对所有正整数 $n$ 成立.
 	
-	
 \end{solution}
 
 
@@ -860,8 +865,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 设 $p\in\N ,  p\neq 1$.如果数 $p$ 在 $\N$ 中没有与 $1$ 和 $p$ 不同的因数, 该数就称为素数.
 \end{definition}
 
-\begin{theorem}[算数基本定理]
-
+\begin{theorem}{算数基本定理}
 每个自然数能唯一的(不考虑顺序)表示为乘积的形式
 \[
 	n = p_1 \cdots p_k.
@@ -909,10 +913,11 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 于是我们证明了 $s^2 = 2$, 接下来只需要证明 $s \notin \Q$ 即可, 假如 $s \in \Q$, 设 $m/n$ 是 $s$ 的既约分数, 则 $m^2 = 2n^2$, 所以 $m^2$ 能被 $2$ 整除, 而这也表示 $m$ 也能被 $2$ 整除.但是, 如果 $m = 2k$, 则 $2k^2 = n^2$, 而根据同样的理由 $n$ 也应当能被 $2$ 整除, 这与 $m/n$ 是 $s$ 的既约分数相矛盾.
 
 \end{proof}
+\smallskip
 
 无理数又可以分为代数数和超越数.
 
-\begin{definition}
+\begin{definition}{代数数和超越数}
 如果一个实数是具有有理系数的代数方程
 \[
 	a_0 x^n + \cdots + a_{n-1} x + a_n = 0
@@ -931,7 +936,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \begin{proof}
 	因为整数集 $\Z$ 没有上界, 所以集合 $\{n\in\Z\mid x/h<n\}$ 是整数集的非空下有界子集.于是该集合有最小元素 $k$, 即 $(k-1) \le x/h < k$.因为 $h > 0$, 所以这些不等式等价于上述阿基米德原理中的不等式.由数集最小元素的唯一性可知, 满足上面两个不等式的整数 $k$ 是唯一的.
 \end{proof}
-
+\smallskip
 
 \subsection{数轴}
 
@@ -966,7 +971,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{definition}
 
 % triangle inequality
-\begin{theorem}{三角不等式}{thm:ti}
+\begin{theorem}{三角不等式}{ti}
 根据模的定义, 我们可以得到三角不等式, 即对任何数 $x,y$, 不等式
 \[
 	\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert.
@@ -980,6 +985,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 如果 $x,y$ 一正一负, 例如 $x < 0 < y$, 则或者 $x < x+y \le 0$, 或者 $0 \le x+y <y$. 对于前者有 $\lvert x + y\rvert < \lvert x \rvert$, 对于后者有 $\lvert x + y\rvert < \lvert y \rvert$, 即对于二者都有 $\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert$.
 \end{proof}
+\smallskip
 
 \section{笛卡尔积}
 
@@ -1040,18 +1046,22 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
 \end{definition}
 
-\begin{theorem}{闭区间套引理}
+\begin{theorem}{柯西-康托尔原理}{R2}
 	对于任何闭区间的渐降列 $I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$, 可以找到一点 $c\in\R$ 属于所有这些闭区间.如果除此之外还已知该序列为闭区间套序列, 则 $c$ 是所有闭区间的唯一公共点.
 \end{theorem}
-% 使用完备性公理证明
+
+\begin{idea*}
+使用完备性定理可证.	
+\end{idea*}
+
 \begin{proof}
 首先	指出, 对于上述序列中的任何两个闭区间 $I_m = [a_m, b_m], I_n = [a_n, b_n]$ 必有 $a_m \le b_n$.因此, 对于数集 $A =\{a_m | m\in \N\},  B= \{b_n| n\in \N\}$, 根据完备性公理, 可以找到数 $c\in\R$ 使得对于 $\forall a_m\in A, \forall b_n\in B$ 有 $a_m\le c\le b_n$.特别的, 对于 $\forall n\in N$ 都有 $a_n\le c \le b_n$, 即点 $c$ 属于所有闭区间 $I_n$.
 
 现在, 假设有两个不同的有相似性质的点 $c_1, c_2$, 假如 $c_1 < c_2$, 则对于任何 $n\in\N$ 均有,  $a_n \le c_1 < c_2 \le b_n$ 从而 $0 < c_1 - c_2 < b_n - a_n$.于是, 上述序列中的每一个闭区间的长度不可能小于 $c_2 - c_1 > 0$, 这意味着, 如果在该序列中有长度任意小的闭区间则公共点是唯一的. 
 \end{proof}
+\smallskip
 
-
-\subsection{有限覆盖引理(博雷尔-勒贝格原理、海涅-博雷尔原理)}
+\subsection{有限覆盖定理 (博雷尔-勒贝格原理、海涅-博雷尔原理)}
 
 \begin{definition}{覆盖}
 设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族, 如果 $Y\subset \bigcup\limits_{X\in S}X$, 那么我们说 $S$ 覆盖集合 $Y$.
@@ -1059,7 +1069,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 集合族 $S = {X}$ 的子集也是一个集合组, 称为 $S$ 的子族.因此, 集合族的子族本身是同一类型的集合族.
 
-\begin{theorem}{博雷尔-勒贝格原理}
+\begin{theorem}{博雷尔-勒贝格原理}{R3}
 在覆盖一个闭区间的任何开区间族中都有覆盖该闭区间的有限子族.
 \end{theorem}
 \begin{proof}
@@ -1067,6 +1077,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$, 而且根据其构造方法可知, 第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$, 所以在此序列中有长度任意小的闭区间, 根据闭区间套引理, 存在一点 $c$ 包含于所有闭区间 $I_n$, 而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon,  c+\varepsilon)$, 在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$, 所以有 $I_n \subset U$, 这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾.
 \end{proof}
+\smallskip
 
 \subsection{极限点定理(波尔查诺-魏尔斯特拉斯原理)}
 
@@ -1074,7 +1085,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集, 点 $p$ 就称为集合 $X$ 的极限点.
 \end{definition}
 
-\begin{theorem}{波尔查诺-魏尔斯塔拉斯原理}
+\begin{theorem}{波尔查诺-魏尔斯塔拉斯原理}{R4}
 任何无穷有界数集至少有一个极限点.
 \end{theorem}
 \begin{proof}
@@ -1082,6 +1093,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 假如并非如此, 每个点 $x \in I$ 就会有这样的邻域 $U(x)$, 其中或者根本没有 $X$ 中的点, 或者只有有限个属于集合 $X$ 的点, 对每个点 $x\in I$ 构造出的这种邻域的总体 $\{U\}$ 组成闭区间 $I$ 的开区间覆盖, 根据有限覆盖引理, 可以从上述覆盖中, 选出有限个开区间 $I(x_1), \cdots, U(x_n)$, 使它们仍覆盖区间 $I$.因为 $X \subset I$, 所以它们也覆盖集合 $X$.然而 $X$ 并不是有限集, 我们得到了矛盾.
 \end{proof}
+\smallskip
 
 \section{集合的势}
 
@@ -1139,6 +1151,7 @@ f(y) = B.
 	\aleph_0 < \aleph_1 < \aleph_2 <\cdots< \aleph_n< \cdots.
 \]
 \end{proof}
+\smallskip
 
 \subsection{关于基数的几个基本定理}
 \begin{theorem}
@@ -1212,6 +1225,7 @@ f(y) = B.
 	\lvert S\rvert=\lvert S\cup T\rvert =\lvert R\rvert=2^{\aleph_0}=\aleph_1.
 \]
 \end{proof}
+\smallskip
 
 \begin{proposition}{连续统假设}
 不存在一个无穷集合, 其基数严格介于自然数集的基数 $\aleph_0$ 与实数集的基数 $\aleph_1$(即连续统的基数)之间. 即不存在一个无穷集合, 其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1},  n=0,  1, 2,  \cdots $ 之间.
@@ -1238,7 +1252,7 @@ f(y) = B.
 
 在讨论初等数学与高等数学的区别时, 我认为极限的思想是两者间最大的区别, 极限是分析学的基础.初等数学侧重于“常量”与“静态”的计算, 而高等数学侧重于“变量”与“动态”的变化过程, 而极限就是研究动态问题的最基本手段.
 
-其实极限的思想很早就在数学家们的心中产生, 无论是刘徽的割圆术还是芝诺的阿基里斯追龟悖论, 都是极限思想的体现, 只不过在柯西(Cauchy)提出极限定义之前的两千年间, 数学界一直都没能给出极限的严格定义.
+其实极限的思想很早就在数学家们的心中产生, 无论是刘徽的割圆术还是芝诺的阿基里斯追龟悖论, 都是极限思想的体现, 只不过在柯西 (Cauchy) 提出极限定义之前的两千年间, 数学界一直都没能给出极限的严格定义.
 
 \section{数列极限}
 在前面我们介绍了序列的定义.
@@ -1261,7 +1275,7 @@ f(y) = B.
 
 接下来指出数列极限定义的另一种常见表述.
 
-\begin{definition}{数列极限一般定义}
+\begin{definition}{数列极限的 $\varepsilon - N$}
 数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 使得对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$, 即
 \[
 	\left( \lim_{n\to\infty} x_n = A\right) := \forall \varepsilon > 0\ \exists N\in\N\ \forall n > N (\lvert x_n - A\rvert < \varepsilon).
@@ -1314,7 +1328,7 @@ f(y) = B.
 以上两条性质皆由定义显然. 而接下来介绍一些更具一般性的性质.
 
 % 唯一性
-\begin{theorem}{数列极限的唯一性}{thm:Slimit_p1}
+\begin{theorem}{数列极限的唯一性}{Slimit_p1}
 数列不可能有两个不同的极限.
 \end{theorem}
 \begin{idea*}
@@ -1326,9 +1340,10 @@ f(y) = B.
 	
 	例如, 可以在 $\delta < \frac{\lvert A_1 - A_2\rvert}{2}$ 时取这两个点的邻域, 显然 $V(A_1), V(A_2)$ 不相交. 根据极限的定义, 可以求得 $N_1, N_2$ 使得 $\forall n > N_1 (x_n\in V(A_1)), \ \forall n > N_2 (x_n\in V(A_2))$.于是对于 $n > \max\{N_1, N_2\}$ 有 $x_n \in V(A_1) \cap V(A_2)$, 与 $V(A_1), V(A_2)$ 不相交矛盾.
 \end{proof}
+\smallskip
 
 % 有界性
-\begin{theorem}{数列极限的有界性}{thm:Slimit_p2}
+\begin{theorem}{数列极限的有界性}{Slimit_p2}
 收敛数列有界.
 \end{theorem}
 
@@ -1343,9 +1358,10 @@ f(y) = B.
 	\]
 	就得到 $\forall n (x_n < M)$.
 \end{proof}
+\smallskip
 
 % 保序性
-\begin{theorem}{数列极限的保序性}{thm:Slimit_p3}
+\begin{theorem}{数列极限的保序性}{Slimit_p3}
 设有收敛数列 $\{x_n\},\{y_n\}$, 满足 $\lim\limits_{n\to\infty} x_n = A, \lim\limits_{n\to\infty} y_n = B$ 且有 $a < b$, 则存在 $N \in \N^+$ 使得对任意 $n > N$ 有
 \[
 	x_n < y_n.
@@ -1358,9 +1374,10 @@ f(y) = B.
 \begin{proof}
 	取数 $C$, 使得 $A < C < B$. 根据极限的定义, 可以求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $\lvert x_n - A \rvert < C - A$, 并且对于任何 $n > N \in \N$, 都有 $\lvert y_n - B \rvert < B - C$. 于是, 当 $n>N = \max\{N',N''\}$ 时, 就得到 $x_n < A + (C - A) = C = B - (B- C) < y_n$.
 \end{proof}
+\smallskip
 
 % 保号性
-\begin{corollary}{保号性}
+\begin{corollary}{数列极限的保号性}
 	设 $\lim\limits_{n\to\infty} x_n = A \neq 0$, 则存在 $N \in \N^+$, 当 $n > N$ 时有
 	\ITEMS
 		\item 若 $A > 0$,
@@ -1377,7 +1394,7 @@ f(y) = B.
 保号性由保序性显然.
 
 % 迫敛性
-\begin{theorem}{迫敛性}
+\begin{theorem}{数列极限的迫敛性 (夹逼定理)}
 设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 也收敛于该极限. 
 \end{theorem}
 
@@ -1388,52 +1405,7 @@ f(y) = B.
 \begin{proof}
 设 $\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} z_n = A$. 由 $\varepsilon > 0$ 求出序号 $N'$ 和 $N''$, 使得对于任何 $n>N'$ 都有 $N'< A + \varepsilon$. 于是, 当 $n > N =\max\{N',N''\}$ 时, 我们得到 $A -\varepsilon < x_n \le y_n \le z_n < A + \varepsilon$, 即 $\lvert y_n - A\rvert < \varepsilon$, 从而 $\lim\limits_{n\to\infty} y_n = A$.
 \end{proof}
-
-% 运算性质
-\begin{definition}{极限的运算}
-如果$\{x_n\}, \{y_n\}$ 是两个数列, 则数列
-\[
-	\{(x_n + y_n(\},  \{(x_n y_n)\},  \left\{\left(\frac{x_n}{y_n}\right)\right\}
-\]
-分别称为这两个数列的和, 积和商($y_n \neq 0, \ n\in\N$ 时商才有定义).
-\end{definition}
-
-\begin{theorem}{极限的四则运算}
-设 $\{x_n\}, \{y_n\}$ 是两个数列, 如果 $\lim\limits_{n\to\infty} x_n = A, \ \lim\limits_{n\to\infty} y_n = B$ 则
-	\ITEMS
-		\item $\lim\limits_{n\to\infty} (x_n + y_n) = A + B$.
-		\item $\lim\limits_{n\to\infty} x_n \cdot y_n = A \cdot B$.
-		\item 当 $y_n\neq 0, \ n\in\N$ 且 $B \neq 0$ 时 $\lim\limits_{n\to\infty} \frac{x_n}{y_n} = \frac AB$.
-	\ITEME
-\end{theorem}
- 
-\begin{idea*}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{idea*}
-
-\begin{proof}
-	我们逐个来证明:
-	\ITEMS
-		\item 设给定 $\varepsilon > 0$, 对于数列 $\{x_n\}$ 存在 $N'$ 使得 $\forall n > N'$ 有 $\lvert x_n - A \rvert < \frac{\varepsilon}{2}$. 类似的, 对于数列 $\{y_n\}$ 存在 $N''$ 使得 $\forall n > N'$ 有 $\lvert y_n - B \rvert < \frac{\varepsilon}{2}$. 于是, 当 $n > \max\{N', N''\}$ 时, 有
-		\[
-			\lvert(A + B) - (x_n + y_n)\rvert < \varepsilon.
-		\]
-		\item 注意到
-		\[
-		\begin{aligned}
-			\lvert x_n y_n - AB\rvert &= \lvert [A + (x_n - A)][B + (y_n - B)] - AB \rvert\\ 
-			&= \lvert AB + B(x_n - A) + A(y_n - B) + (x_n - A)(y_n - B) - AB  \rvert \\
-			&= \lvert B(x_n - A) + A(y_n - B) + (x_n - A)(y_n - B) \rvert \\
-			&\le \lvert A\rvert \lvert y_n - B\rvert + \lvert B\rvert \lvert x_n - A\rvert + \lvert (x_n - A)(y_n - B) \rvert
-		\end{aligned}
-		\]
-		
-		对于任意给定的 $\varepsilon > 0$, 
-		
-		\item 
-	\ITEME
-\end{proof}
-
+\smallskip
 
 \begin{corollary}
 	设 $\lim\limits_{n\to\infty} x_n = A,  \lim\limits_{n\to\infty} y_n = B$.如果存在序号 $N$, 是的对于任何 $n > N$ 都有
@@ -1445,50 +1417,229 @@ f(y) = B.
 	\ITEME
 \end{corollary}
 
+除了上述性质外, 我们也需要讨论在极限过程中代数运算的性质. 
 
-\subsection{数列极限的存在问题}
+% 运算性质
+\begin{theorem}{极限的四则运算}
+设 $\{x_n\}, \{y_n\}$ 是两个数列, 如果 $\lim\limits_{n\to\infty} x_n = A, \ \lim\limits_{n\to\infty} y_n = B$ 则
+	\ITEMS
+		\item $\lim\limits_{n\to\infty} (x_n + y_n) = A + B$.
+		\item $\lim\limits_{n\to\infty} x_n \cdot y_n = A \cdot B$.
+		\item 当 $y_n\neq 0, \ n\in\N$ 且 $B \neq 0$ 时 $\lim\limits_{n\to\infty} \frac{x_n}{y_n} = \frac AB$.
+	\ITEME
+\end{theorem}
+ 
+\begin{idea*}
+	构造性证明, 通过换元 $A = x_n + \alpha,\ B = y_n + \beta$ 与不等式关系使得原式小于任意给定的 $\varepsilon$.
+\end{idea*}
 
-% 因为定义中的A往往是未知的, 所用极限不便于应用
-% 三次数学危机, 第二次数学危机, 无穷小量的引入
-\begin{theorem}{柯西准则}
+\begin{proof}
+	我们逐个来证明:
+	\ITEMS
+		\item 设给定 $\varepsilon > 0$, 对于数列 $\{x_n\}$ 存在 $N'$ 使得 $\forall n > N'$ 有 $\lvert x_n - A \rvert < \frac{\varepsilon}{2}$. 类似的, 对于数列 $\{y_n\}$ 存在 $N''$ 使得 $\forall n > N''$ 有 $\lvert y_n - B \rvert < \frac{\varepsilon}{2}$. 于是, 当 $n > \max\{N', N''\}$ 时, 有
+		\[
+			\lvert(A + B) - (x_n + y_n)\rvert \le \lvert A-x_n\rvert +\lvert B-y_n\rvert < \frac{\varepsilon}{2}+\frac{\varepsilon}{2} =\varepsilon.
+		\]
+		\item 注意到
+		\[
+		\begin{aligned}
+			\lvert x_n y_n - AB\rvert &= \lvert [A + (x_n - A)][B + (y_n - B)] - AB \rvert\\ 
+			&= \lvert AB + B(x_n - A) + A(y_n - B) + (x_n - A)(y_n - B) - AB  \rvert \\
+			&= \lvert B(x_n - A) + A(y_n - B) + (x_n - A)(y_n - B) \rvert \\
+			&\le \lvert A\rvert \lvert y_n - B\rvert + \lvert B\rvert \lvert x_n - A\rvert + \lvert x_n - A \rvert \lvert y_n - B \rvert
+		\end{aligned}
+		\]
+		
+		对于任意给定的 $\varepsilon > 0$, 根据极限定义存在 $N',N''$, 使得
+		\[
+		\begin{aligned}
+			\forall n > N'\left(\lvert x_n - A\rvert < \min\left\{1,\frac{\varepsilon}{3(\lvert B\rvert + 1)}\right\} \right),\\
+			\forall n > N''\left(\lvert y_n - B\rvert < \min\left\{1,\frac{\varepsilon}{3(\lvert A\rvert + 1)}\right\} \right).
+		\end{aligned}
+		\]
+		则对于 $n > \max\{N',N''\}$ 有
+		\[
+			\lvert x_n \rvert \le \lvert A \rvert + \lvert x_n - A \rvert < \lvert A \rvert + 1,
+		\]
+		\[
+			\lvert y_n \rvert \le \lvert B \rvert + \lvert y_n - B \rvert < \lvert B \rvert + 1,
+		\]
+		\[
+			\lvert x_n - A \rvert \lvert y_n - B \rvert < \min\left\{1,\frac \varepsilon3\right\}^2 \le \frac\varepsilon3,
+		\]
+		由此可得
+		\[
+			\lvert x_n \rvert \lvert y_n - B \rvert < (\lvert A \rvert + 1) \frac{\varepsilon}{3(\lvert A\rvert + 1)} < \frac{\varepsilon}{3},
+		\]
+		\[
+			\lvert y_n \rvert \lvert x_n - A \rvert (\lvert B \rvert + 1) \frac{\varepsilon}{3(\lvert B\rvert + 1)} < \frac{\varepsilon}{3},
+		\]
+		\[
+			\lvert x_n - A \rvert \lvert y_n - B \rvert < \frac{\varepsilon}{3}.
+		\]
+		即 $\lvert x_n y_n - AB\rvert < \varepsilon$.
+		
+		\item 注意到
+		\[
+		\begin{aligned}
+			\left\lvert \frac{A}{B} - \frac{x_n}{y_n}\right\rvert 
+				&= \left\lvert \frac{A y_n - B x_n}{B y_n} \right\rvert\\
+				&= \left\lvert \frac{(x_n + A - x_n) y_n - (y_n + B - y_n) x_n}{(y_n + B - y_n) y_n} \right\rvert\\
+				&= \left\lvert \frac{x_n y_n + (A - x_n) y_n - x_n y_n - (B - y_n) x_n}{\left(1 + \frac{B - y_n}{y_n}\right) y_n^2} \right\rvert\\
+				&= \left\lvert \frac{(A - x_n) y_n - (B - y_n) x_n}{y_n^2} \right\rvert \left\lvert \frac{1}{1 + \frac{B - y_n}{y_n}} \right\rvert\\
+				&\le \frac{\lvert A - x_n\rvert \lvert y_n \rvert + \lvert B - y_n \rvert \lvert x_n \rvert}{y_n^2} \frac{1}{1 - \frac{\lvert B - y_n \rvert}{\lvert y_n \rvert}}.
+		\end{aligned}
+		\]
+		
+		对于任意给定的 $\varepsilon > 0$, 根据极限定义存在 $N',N''$, 使得
+		\[
+			\forall n > N'\left(\lvert x_n - A\rvert < \min\left\{1,\frac{\varepsilon\lvert B \rvert}{8}\right\} \right),
+		\]
+		\[
+			\forall n > N''\left(\lvert y_n - B\rvert < \min\left\{ \frac{\lvert B\rvert}{4},\frac{\varepsilon B^2}{16(\lvert A\rvert + 1)}\right\} \right).
+		\]
+		由 $\lim\limits y_n=B\neq 0$, 对于 $n > \max\{N',N''\}$ 有
+		\[
+			\lvert x_n \rvert \le \lvert A \rvert + \lvert x_n - A \rvert < \lvert A \rvert + 1,
+		\]
+		\[
+			\lvert y_n \rvert \ge \lvert B \rvert - \lvert y_n - B \rvert > \lvert B \rvert - \frac{\lvert B \rvert}{4} > \frac{\lvert B \rvert}{2},
+		\]
+		\[
+			0 \le \frac{\lvert B - y_n \rvert}{\lvert y_n \rvert} < \frac{\lvert B \rvert / 4}{\lvert B \rvert / 2} = \frac12
+		\]
+		\[
+			1 - \frac{\lvert B - y_n \rvert}{\lvert y_n \rvert} > \frac{1}{2},
+		\]
+		由此可得
+		\[
+			\frac{\lvert A - x_n\rvert}{\lvert y_n \rvert} < \frac{2}{\lvert B \rvert} \frac{\varepsilon \lvert B \rvert}{8} = \frac{\varepsilon}{4}
+		\]
+		\[
+			\frac{\lvert B - y_n \rvert \lvert x_n \rvert}{y_n^2} < (\lvert A \rvert + 1) \frac{4}{B^2} \frac{\varepsilon B^2}{16(\lvert A\rvert + 1)} = \frac{\varepsilon}{4} = \frac{\varepsilon}{4}
+		\]
+		\[
+			0 < \frac{1}{1 - \frac{\lvert B - y_n \rvert}{\lvert y_n \rvert}} < 2
+		\]
+		即 $\left\lvert \frac{A}{B} - \frac{x_n}{y_n}\right\rvert  < \varepsilon$.
+
+	\ITEME
+\end{proof}
+\smallskip
+
+\begin{remark}
+	以上是构造性的证明方式, 也常见一种非构造性的分析性与归纳性证明, 可以参考陈纪修老师的数学分析. 在数学构成主义（Constructivism）看来, 证明一个对象存在, 就必须把它构造出来. 他们拒绝使用排中律等非构造性逻辑. 不过两者都属于 $\varepsilon - N$ 语言下的严格证明.
+\end{remark}
+
+\begin{remark}
+	数乘显然对其成立, 在这里不做证明.
+\end{remark}
+
+
+
+\subsection{数列极限的审敛法}
+% 柯西审敛法
+\begin{theorem}{柯西准则}{R5}
 	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 
 	\[
 		|x_n-x_m| < \varepsilon.
 	\] 我们称满足以上条件的数列为基本数列(柯西数列).
 \end{theorem}
+
+\begin{idea*}
+必要性显然, 充分性通过构造上确界与下确界的闭区间套, 由闭区间套原理可证明.	
+\end{idea*}
+
 \begin{proof}
-	我们首先证明必要性, 设 $\lim\limits_{n\to\infty} x_n = A$. 对于 $\forall \varepsilon > 0$, 可以求出序号 $N$, 使得当 $n > N$ 时有 $\lvert x_n - A\rvert < \varepsilon/2$. 如果现在 $m > N$ 且 $n > N$, 则 $\lvert x_m - x_n \rvert \le \lvert x_m - A \rvert + \lvert x_n - A \rvert < \varepsilon/2 + \varepsilon/2 = \varepsilon$, 必要性证必.
+	我们首先证明必要性, 设 $\lim\limits_{n\to\infty} x_n = A$. 对于 $\forall \varepsilon > 0$, 可以求出序号 $N$, 使得当 $n > N$ 时有 $\lvert x_n - A\rvert < \varepsilon/2$. 如果现在 $m > N$ 且 $n > N$, 则 
+	\[
+		\lvert x_m - x_n \rvert = \lvert x_m - A - x_n + A \rvert \le \lvert x_m - A \rvert + \lvert x_n - A \rvert < \varepsilon/2 + \varepsilon/2 = \varepsilon,
+	\]
+	必要性证毕.
 	
 	接下来我们证明充分性, 设 $\{x_k\}$ 是一个基本数列. 对于 $\forall\varepsilon > 0$, 可以求出序号 $N$, 使得当 $m \ge N$ 且 $k\ge N$ 时有 $\lvert x_m - x_k \rvert < \varepsilon/3$. 把 $m$ 固定为 $m = N$, 则对于任何 $k > N$ 都有
 	\[
 		x_N - \frac\varepsilon3 < x_k < x_N +\frac\varepsilon3.
 	\] 
+	即 $\{x_k\}$ 是有界数列.
 	
-	% 这一部分还不完善	<-------------------------- HERE
+	我们做出如下定义 $a_n := \inf\limits_{k \ge n} x_k ,\ b_n := \sup\limits_{k \ge n} x_k$.
+	
+	则显然有 $a_n \le a_{n+1} \le b_{n+1} \le b_n$. 根据闭区间套定理可得闭区间套列 $[a_n, b_n]$ 存在一公共点 $A$. 
+	
+	对于任何 $n \in \N$我们有
+	\[
+		a_n \le A \le b_n,
+	\]
+	当 $k \ge n$ 时有
+	\[
+		a_n \le x_k \le b_n.
+	\]	
+	所以当 $k \ge n$ 时
+	\[
+		\lvert A - x_k \rvert \le b_n - a_n.
+	\]
+	综上可知
+	\[
+	x_N - \frac{\varepsilon}{3} \le a_n \le b_n \le x_N + \frac{\varepsilon}{3},
+	\]
+	所以有
+	\[
+		b_n - a_n \le x_N + \frac{\varepsilon}{3} - x_N + \frac{\varepsilon}{3} = \frac{2\varepsilon}{3} < \varepsilon.
+	\]
+	即
+	\[
+		\lvert A - x_k \rvert \le \varepsilon.
+	\]
+	从而 $\lim\limits_{n\to\infty} x_n = A$, 充分性得证.
+	
 \end{proof}
-
+\smallskip
 
 
 \begin{definition}{单调性}
 	对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为(严格)单调递增数列；如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为(严格)单调递减数列；如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列或单调不增数列.
 \end{definition}
 
-\begin{theorem}{单调数列极限存在准则}
-	
+\begin{theorem}{单调数列极限存在准则 (魏尔斯特拉斯定理)}{R6}
+单调不减数列的极限存在的充要条件是有上界.	
 \end{theorem}
 
+\begin{idea*}
+	确界原理可证上确界为其极限.
+\end{idea*}
 
-\begin{theorem}[魏尔斯特拉斯定理]
-	单调不减数列的极限存在的充要条件是有上界.
-\end{theorem}
 \begin{proof}
+	必要性由数列极限的有界性显然, 这里只用证明其充分性.
 	
-	% 这一部分还不完善	<-------------------------- HERE
+	由有界性可知 $\{x_n\}$ 存在上界, 由确界原理可知其有唯一的上确界 $s = \sup\limits_{n\in\N} x_n$.
+	
+	由上确界的定义可知, 对于任意的 $\varepsilon > 0$, $\exists x_N \in \{x_n\}$ 使得 $s - \varepsilon < x_N \le s$, 由于 $\{x_n\}$ 是不减数列, 所以对于任何 $n > N$ 都有 $s - x_n < \varepsilon$, 即有 $\lim\limits_{n \to \infty} x_n = s$. 可知极限等于其上确界.
 \end{proof}
+\smallskip
 
-\begin{lemma}{波尔查诺-维尔斯特拉斯引理}
+这里给出几个实例.
+
+\begin{example}
+	当 $q > 1$ 时, $\lim\limits_{n \to \infty} \frac{n}{q^n} = 0$. 
+\end{example}
+
+\begin{solution}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{solution}
+
+\begin{example}
+	$\lim\limits_{n \to \infty} \frac{q^n}{n!} = 0$, 其中 $q \in \R$, $n \in \N$.
+\end{example}
+
+\begin{solution}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{solution}
+
+我们曾经介绍过波尔查诺-魏尔斯特拉斯原理 \ref{thm:R4} , 在这里给出另一等价表述.
+\begin{theorem}{波尔查诺-魏尔斯特拉斯原理}
 	每个有界实数列都含有收敛的子列.
-\end{lemma}
+\end{theorem}
 \begin{proof}
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
@@ -1503,6 +1654,14 @@ f(y) = B.
 
 % 上下极限
 
+\subsection{三个重要常数}
+
+我们先来
+
+\subsection{实数集完备性的基本定理}
+
+
+% 级数初步
 \subsection{级数初步}
 \begin{definition}{级数}
 表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$, 通常称为级数或无穷级数. 其中数列 $\{a_n\}$ 的元素称为级数的项, 而 $a_n$ 称之为级数的第 $n$ 项. $s_n = \sum\limits_{k=1}^n a_k$ 称为级数的前 $n$ 项和.
@@ -1605,6 +1764,7 @@ f(y) = B.
 \]
 \end{definition}
 
+% 空心邻域
 \begin{definition}{空心邻域}
 从一个点的邻域去掉该点本身, 所得集合为该点的空心邻域或去心邻域. 我们引入如下记号
 \[
