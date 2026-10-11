@@ -23,6 +23,7 @@
 
 
 \elegantnewtheorem{idea}{证明思路}{prostyle}
+\elegantnewtheorem{conjecture}{猜想}{prostyle}{conj}
 
 \setcounter{tocdepth}{2}
 
@@ -1040,7 +1041,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 % 关于实数集完备性的一些基本定理
 \section{关于实数集完备性的一些基本定理}
 
-\subsection{闭区间套定理(柯西-康托尔原理)}
+\subsection{闭区间套定理 (柯西-康托尔原理 Cauchy-Cantor)}
 
 \begin{definition}{集合套}
 设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
@@ -1061,7 +1062,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{proof}
 \smallskip
 
-\subsection{有限覆盖定理 (博雷尔-勒贝格原理、海涅-博雷尔原理)}
+\subsection{有限覆盖定理 (博雷尔-勒贝格原理 Borel–Lebesgue、海涅-博雷尔原理 Heine-Borel)}
 
 \begin{definition}{覆盖}
 设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族, 如果 $Y\subset \bigcup\limits_{X\in S}X$, 那么我们说 $S$ 覆盖集合 $Y$.
@@ -1079,7 +1080,8 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{proof}
 \smallskip
 
-\subsection{极限点定理(波尔查诺-魏尔斯特拉斯原理)}
+\subsection{极限点定理(波尔查诺-魏尔斯特拉斯原理 Bolzano-Weiestrass)}
+极限点定理也称为致密性定理, 其有另一种表述将在后文介绍 (定理 \ref{thm:R4'}) .
 
 \begin{definition}{极限点}
 如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集, 点 $p$ 就称为集合 $X$ 的极限点.
@@ -1250,15 +1252,15 @@ f(y) = B.
 
 \chapter{极限论}
 
-在讨论初等数学与高等数学的区别时, 我认为极限的思想是两者间最大的区别, 极限是分析学的基础.初等数学侧重于“常量”与“静态”的计算, 而高等数学侧重于“变量”与“动态”的变化过程, 而极限就是研究动态问题的最基本手段.
+在讨论初等数学与高等数学的区别时, 极限思想往往被认为是二者之间最根本的区别, 也是分析学的基础. 初等数学侧重于 "常量" 与 "静态" 的计算, 高等数学则侧重于 "变量" 与 "动态" 的变化过程，而极限正是研究动态问题的最基本手段。
 
-其实极限的思想很早就在数学家们的心中产生, 无论是刘徽的割圆术还是芝诺的阿基里斯追龟悖论, 都是极限思想的体现, 只不过在柯西 (Cauchy) 提出极限定义之前的两千年间, 数学界一直都没能给出极限的严格定义.
+事实上, 极限思想很早就在数学家心中萌生. 无论是刘徽的割圆术, 还是芝诺的阿基里斯追龟悖论, 都体现了极限思想; 只不过, 在柯西（Cauchy）系统建立极限理论之前的两千多年间, 数学界长期未能给出普遍接受的严格定义。
 
-\section{数列极限}
+\section{数列极限与性质}
 在前面我们介绍了序列的定义.
 
 \begin{definition}{数列}
-若序列的值域为实数集或其子集 $f:\N \to \R$, 我们称该序列为数列.	
+若序列的值域为实数集或其子集 $f:\N \to \R$, 我们称该序列为数列 (Sequence).	
 \end{definition}
 
 
@@ -1273,7 +1275,7 @@ f(y) = B.
 \]
 \end{definition}
 
-接下来指出数列极限定义的另一种常见表述.
+接下来指出数列极限定义的另一种常见表述 (柯西, 达朗贝尔 D’Alembert,).
 
 \begin{definition}{数列极限的 $\varepsilon - N$}
 数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 使得对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$, 即
@@ -1281,7 +1283,7 @@ f(y) = B.
 	\left( \lim_{n\to\infty} x_n = A\right) := \forall \varepsilon > 0\ \exists N\in\N\ \forall n > N (\lvert x_n - A\rvert < \varepsilon).
 \]
 
-如果 $\lim\limits_{n\to\infty} x_n = A$, 我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$, 记作 $n\to\infty$ 时 $x_n \to A$. 有极限的数列称为收敛数列, 没有极限的数列称为发散数列. 
+如果 $\lim\limits_{n\to\infty} x_n = A$, 我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$, 记作 $n\to\infty$ 时 $x_n \to A$. 有极限的数列称为收敛 (Convergent) 数列, 没有极限的数列称为发散 (Divergent) 数列. 
 \end{definition}
 
 %为了描述发散数列的性质, 我们引入上下极限的概念. 首先我们自然想到将数列
@@ -1392,6 +1394,7 @@ f(y) = B.
 \end{corollary}
 
 保号性由保序性显然.
+\smallskip
 
 % 迫敛性
 \begin{theorem}{数列极限的迫敛性 (夹逼定理)}
@@ -1417,7 +1420,7 @@ f(y) = B.
 	\ITEME
 \end{corollary}
 
-除了上述性质外, 我们也需要讨论在极限过程中代数运算的性质. 
+除了上述性质外, 我们也需要讨论在极限过程中代数运算的性质.  
 
 % 运算性质
 \begin{theorem}{极限的四则运算}
@@ -1532,13 +1535,160 @@ f(y) = B.
 \end{remark}
 
 \begin{remark}
-	数乘显然对其成立, 在这里不做证明.
+	数乘显然对极限过程成立, 在这里不做证明.
+\end{remark}
+
+% 无穷小与无穷大
+\subsection{无穷小与无穷大}
+\begin{definition}{无穷小量}
+	称极限值为 $0$ 的数列为无穷小量.
+\end{definition}
+\begin{remark}
+无穷小量不是某个固定的很小的数, 而是一个变量 (数列).	
+\end{remark}
+
+由无穷小量的定义我们可以直接得到
+\[
+	\lim_{n \to \infty} x_n = a \iff \{x_n - a\} \text{是无穷小量}.
+\]
+
+\begin{definition}{无穷大量}
+	若对于任意给定的 $G > 0$, 可以找到正整数 $N$, 使得当 $n > N$ 时成立
+	\[
+		\lvert x_n \rvert > G,
+	\] 
+	则称数列 $\{x_n\}$ 是无穷大量, 记为
+	\[
+		\lim_{n\to\infty} x_n = \infty.
+	\]
+	特别的, 如果 $\{x_n\}$ 从某一项开始都是正 (负) 的, 则称其为 正 (负) 无穷大量, 分别记为
+	\[
+		\lim_{n\to\infty} x_n = +\infty (\lim_{n\to\infty} x_n = -\infty)
+	\]	
+\end{definition}
+
+\begin{theorem}{无穷大量与无穷小量的关系}
+	设 $x_n \neq 0$, 则 $\{x_n\}$ 是无穷大量的充要条件是 $\left\{\frac{1}{x_n}\right\}$ 是无穷小量.
+\end{theorem}
+
+\begin{proof}
+	有 $\{x_n\}$ 是无穷大量, 对于 $\forall \varepsilon > 0$, 取 $G = \frac{1}{\varepsilon} > 0$, 由无穷大量的定义, $\exists N, \forall n > N: \lvert x_n \rvert > G = \frac{1}{\varepsilon}$ 则有 $\left\lvert\frac{1}{x_n} \right\rvert< \varepsilon$, 即 $\left\{\frac{1}{x_n}\right\}$ 是无穷小量.
+	
+	同理可证充分性.
+\end{proof}
+
+% 斯托茨定理
+\subsection{施笃兹定理}
+
+我们在处理无穷大量与无穷小量的商的极限问题时, 常常会遇到形如 $\infty/\infty$ 或 $0/0$ 的极限, 其结果可能是无穷大量或实数极限, 但也有可能不存在极限, 我们称这种极限为不定式或待定式 (Indeterminate form).
+
+\begin{remark}
+虽然也有其他的形如 $0\cdot \infty , 1^{\infty }, \infty -\infty , 0^{0}, \infty ^{0}$ 等不定式, 但总是可以将其化为 $\infty/\infty$ 或 $0/0$ 的不定式. 实际上 $\infty/\infty$ 型或 $0/0$ 型极限本质是相同的. 但是针对这两种情形, 施笃兹定理的内容有一些细微的差异.
 \end{remark}
 
 
+\begin{theorem}{施笃兹定理 ($\infty / \infty$ 型)}
+	设有两数列 $\{x_n\}, \{y_n\}$, 其中 $\{y_n\}$ 是严格单调递增数列, 有 $y_n \to +\infty$, 且
+	\[
+		\lim_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = a
+	\]
+	其中 $a \in \R \cup \{\pm \infty\}$, 则
+	\[
+		\lim_{n\to\infty} \frac{x_n}{y_n} = a.
+	\]
+\end{theorem}
 
-\subsection{数列极限的审敛法}
-% 柯西审敛法
+\begin{idea*}
+	对 $a$ 的取值进行分类讨论, 先证明 $a = 0$ 的情况, 那么其他情况也就迎刃而解了. 而 $a = 0$ 的情况主要想法是用三角不等式将数列 $\left\{\frac{x_n}{y_n}\right\}$ 分成两部分, 并使其分别趋于 $0$ 即可证明, 难点在于如何拆分该数列.
+\end{idea*}
+
+\begin{proof}
+	\begin{enumerate}
+		\item 当 $a = 0$ 时, 由 $\lim\limits_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = a$ 可知 $\forall \varepsilon > 0,\ \exists N',\ \forall n > N'$ 有
+		\[
+			\lvert x_n - x_{n-1} \rvert < \frac{\varepsilon}{2} (y_n - y_{n-1})
+		\]
+		由于 $y_n \to +\infty$, 我们可以要求 $y_{N'} > 0$, 又因为 $y_n$ 是严格单调递增数列有
+		\[
+			\lvert x_n - x_{n-1} \rvert + \lvert x_{n-1} - x_{n-2} \rvert + \cdots + \lvert x_{N'+1} - x_{N'} \rvert < \frac{\varepsilon}{2} (y_n - y_{n-1}) + \frac{\varepsilon}{2} (y_{n-1} - y_{n-2}) + \cdots + \frac{\varepsilon}{2} (y_{N'+1} - y_{N'}),
+		\]
+		由三角不等式化简可得
+		\[
+			\lvert x_n - x_{N'} \rvert < \frac{\varepsilon}{2} (y_{n} - y_{N'}).
+		\]
+		对不等式两边同时除以 $y_n > 0$ 则有
+		\[
+			\left\lvert \frac{x_n}{y_n} - \frac{x_{N'}}{y_n} \right\rvert < \frac{\varepsilon}{2} \left(1 - \frac{y_{N'}}{y_n}\right) < \frac{\varepsilon}{2}.
+		\]
+		由 $y_n \to +\infty$ 可知 $\exists N'' > N'$ 使得 $\forall n > N''$ 时有
+		\[
+			\left\lvert \frac{x_{N'}}{y_n} \right\rvert < \frac{\varepsilon}{2}.
+		\]
+		取 $N = \max\{N',\ N''\}$, 对于 $\forall n > N$ 综上可得
+		\[
+			\left\lvert \frac{x_n}{y_n} \right\rvert \le \left\lvert \frac{x_n}{y_n}- \frac{x_{N'}}{y_n} + \frac{x_{N'}}{y_n} \right\rvert \le \left\lvert \frac{x_n}{y_n}- \frac{x_{N'}}{y_n}\right\rvert + \left\lvert \frac{x_{N'}}{y_n}\right\rvert < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+		\]
+		即 $\lim\limits_{n\to\infty} \frac{x_n}{y_n} = 0$.
+		\smallskip
+		
+		\item 当 $a \in \R\setminus\{0\}$ 时, 基本想法是构造数列使得我们可以应用 $a = 0$ 情况下的结论. 于是便想到如下构造
+		\[
+			x_n' = x_n - a y_n
+		\]
+		于是有
+		\[
+			\lim_{n\to\infty} \frac{x_n' - x_{n-1}'}{y_n - y_{n-1}} = \lim_{n\to\infty} \frac{x_n - a y_n - x_{n-1} + a y_{n-1}}{y_n - y_{n-1}} = \lim_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} - a = 0,
+		\]
+		显然由 $a = 0$ 情况的结论可知 $\lim\limits_{n\to\infty} \frac{x_n'}{y_n} = 0$ 从而
+		\[
+			\lim_{n\to\infty} \frac{x_n}{y_n} = a.
+		\]
+		\smallskip
+		
+		\item 当 $a = +\infty$ 时, 存在 $N > 0,\ \forall n > N$ 有
+		\[
+			x_n - x_{n-1} > y_n - y_{n-1},
+		\] 
+		则可知 $\{x_n\}_{n>N}$ 也是严格单调递增数列, 且可知 $\{x_n\}$ 为无穷大量. 于是便有
+		\[
+			\lim_{n \to \infty} \frac{y_n - y_{n-1}}{x_n -x_{n-1}} = 0.
+		\]
+		应用 $a = 0$ 情况的结论可知
+		\[
+			\lim_{n \to \infty} \frac{y_n}{x_n} = 0,
+		\]
+		即
+		[
+			\lim_{n \to \infty} \frac{x_n}{y_n} = +\infty.
+		\]
+		\smallskip
+		
+		\item 当 $a = -\infty$ 时,
+		
+		
+	\end{enumerate}
+		
+\end{proof}
+\smallskip
+
+\begin{remark}
+假若 $a = \infty$ 而非定号无穷大那么施笃兹定理不成立.
+\end{remark}
+
+
+\begin{theorem}{施笃兹定理 ($0/0$ 型)}
+	
+\end{theorem}
+
+\begin{proof}
+	
+\end{proof}
+
+
+
+% 审敛法
+\section{数列极限的审敛法}
+\subsection{柯西准则}
 \begin{theorem}{柯西准则}{R5}
 	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 
 	\[
@@ -1598,9 +1748,10 @@ f(y) = B.
 
 
 \begin{definition}{单调性}
-	对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为(严格)单调递增数列；如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为(严格)单调递减数列；如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列或单调不增数列.
+	对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为严格单调递增数列(Strictly increasing sequence); 如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列 (Monotonically increasing sequence) 或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为严格单调递减数列 (Strictly decreasing sequence); 如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列 (Monotonically decreasing sequence) 或单调不增数列.
 \end{definition}
 
+% 魏尔斯特拉斯定理
 \begin{theorem}{单调数列极限存在准则 (魏尔斯特拉斯定理)}{R6}
 单调不减数列的极限存在的充要条件是有上界.	
 \end{theorem}
@@ -1621,23 +1772,66 @@ f(y) = B.
 这里给出几个实例.
 
 \begin{example}
-	当 $q > 1$ 时, $\lim\limits_{n \to \infty} \frac{n}{q^n} = 0$. 
+	证明当 $q > 1$ 时, $\lim\limits_{n \to \infty} \frac{n}{q^n} = 0$. 
 \end{example}
 
 \begin{solution}
-	% 这一部分还不完善	<-------------------------- HERE
+	由数列的通项公式可以求出数列的递推公式 $x_{n+1} = \frac{n+1}{nq} x_n$. 对其中系数求极限有
+	\[
+		\lim_{n \to \infty} \frac{n+1}{nq} = \lim_{n\to \infty} \left(1 + \frac{1}{n}\right)\frac{1}{q} = \lim_{n\to \infty} \left(1 + \frac{1}{n}\right) \cdot \lim_{n\to \infty} \frac{1}{q} = \frac{1}{q} < 0
+	\]
+	有极限定义可知存在 $N$ 使得对于 $\forall n > N$, 有 $\frac{n+1}{nq} < 1$. 即对于 $\forall n > N$ 时 $\{x_n\}$ 单调递减. 由于数列极限的有限项不影响数列的收敛性, 我们只需求出数列 $\{x_n\}_{n > N}$ 的极限.
+	
+	显然数列 $\{ x_n \}_{n > N}$ 的各项值恒大于 $0$, 即数列下有界, 根据定理 \ref{thm:R6} 可知其极限存在.
+	
+	设 $x = \lim\limits_{n \to \infty} x_{n}$ 有
+	\[
+		x = \lim_{n \to \infty} x_{n + 1} = \lim_{n \to \infty}\left(\frac{n + 1}{nq} x_n\right) = \lim_{n \to \infty}\frac{n+1}{nq} \cdot \lim_{n \to \infty} x_n = \frac 1q x.
+	\]
+	则有 $(1 - \frac1q) x = 0$, 即 $x = \lim\limits_{n \to \infty} x_{n} = 0$.
 \end{solution}
+\smallskip
+
+由上面的例题我们还可以得到如下的两个推论 
+\[
+	\lim_{n \to \infty} \sqrt[n]{n} = 1,
+\]
+\[
+	\forall a > 0, \lim_{n \to \infty} \sqrt[n]{a} = 1.
+\]
+\smallskip
 
 \begin{example}
-	$\lim\limits_{n \to \infty} \frac{q^n}{n!} = 0$, 其中 $q \in \R$, $n \in \N$.
+	证明 $\lim\limits_{n \to \infty} \frac{q^n}{n!} = 0$, 其中 $q \in \R$, $n \in \N$.
 \end{example}
 
 \begin{solution}
+	当 $q = 0$ 时结论显然成立, 
+
 	% 这一部分还不完善	<-------------------------- HERE
 \end{solution}
+\smallskip
 
-我们曾经介绍过波尔查诺-魏尔斯特拉斯原理 \ref{thm:R4} , 在这里给出另一等价表述.
-\begin{theorem}{波尔查诺-魏尔斯特拉斯原理}
+\subsection{三个重要常数}
+
+我们先来介绍我们最熟悉的常数, 圆周率 $\pi$, 即圆的周长与直径之比, 约等于 $3.14159$. 其符号取自 "周长" 希腊语 "πϵριµϵρoζ" 的首字母.
+
+% 这一部分还不完善	<-------------------------- HERE
+
+接下来我们介绍自然常数 $e$.
+
+% 这一部分还不完善	<-------------------------- HERE
+
+最后介绍一个十分神秘的数学常数 $\gamma$.
+
+% 这一部分还不完善	<-------------------------- HERE
+
+
+\subsection{数列与部分极限}
+
+
+我们曾经介绍过波尔查诺-魏尔斯特拉斯原理 (定理\ref{thm:R4}) , 在这里给出另一等价表述.
+\begin{theorem}{波尔查诺-魏尔斯特拉斯原理}{R4'}
 	每个有界实数列都含有收敛的子列.
 \end{theorem}
 \begin{proof}
@@ -1654,11 +1848,10 @@ f(y) = B.
 
 % 上下极限
 
-\subsection{三个重要常数}
-
-我们先来
-
+% 实数集完备性的基本定理
 \subsection{实数集完备性的基本定理}
+
+在上述的
 
 
 % 级数初步
