@@ -5,11 +5,6 @@
 
 \geometry{paper=a4paper, left=1.5cm, right=1.5cm, top=3cm, bottom=3cm}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=cyan
-}
-
 % ---------- 自定义命令 ----------
 \newcommand{\ITEMS}{\begin{enumerate}}
 \newcommand{\ITEME}{\end{enumerate}}
@@ -18,6 +13,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\ve}[1]{\boldsymbol{#1}}
 \newcommand{\Ve}[1]{\overrightarrow{#1}}
 
@@ -30,7 +26,7 @@
 \title{数学分析}
 \subtitle{分析、拓扑、代数与数学史}
 \date{\today}
-\author{thchXR}
+\author{ChagnlXR}
 \extrainfo{Wir müssen wissen, wir werden wissen}
 \cover{title.png}
 
@@ -49,7 +45,7 @@
 
 \chapter*{序章}
 \markboth{Introduction}{Introduction}
-The content of introduction.
+这是一个由个人整理的数学分析相关笔记, 本人水平并不高, 显然难免会有错误 (错漏百出啊实际上), 欢迎指出错误或提出建议. 在序章我想提出个人作为一名学生对于数学学科的见解, 关于我认为数学这门学科的本质与魅力就是是什么?
 
 % ================================================================================== 
 % 						逻 辑 符 号 与 离 散 数 学 基 础
@@ -59,7 +55,9 @@ The content of introduction.
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-离散数学是现代数学的重要分支, 也是计算机科学的核心基石, 主要研究不连续的、离散的数学结构和对象 (如整数、命题和图).这里我只介绍最基本的逻辑符号, 其他内容将在后续离散数学的章节详细介绍.
+离散数学是现代数学的重要分支, 也是计算机科学的核心基石, 主要研究不连续的、离散的数学结构和对象 (如整数、命题和图). 这里我只介绍最基本的逻辑符号, 有关离散数学其他内容将在后续离散数学的章节详细介绍.
+
+在这一章我们将会把重点放在逻辑符号上, 为数学分析的学习建立牢固的基础, 当然我们并不会像 Russel 那样严格的用逻辑学来构筑 $1+1=2$.
 
 %\begin{introduction}
 %\item 理解基本的逻辑符号
@@ -93,7 +91,7 @@ The content of introduction.
 设 $p, q$ 为命题,  $p, q$ 的析取式为复合命题, 记为 $p\lor q$ , $\lor$ 是析取联接词 (Disjunction), 即 $p, q$ 均为 F 时 $p\lor q$ 取 F , 否则 $p\lor q$ 取 T.
 \end{definition}
 
-\begin{definition}{异或}
+\begin{definition}{异或}{eor}
 设 $p, q$ 为命题, $p, q$ 的异或为复合命题 (Compound proposition), 记为 $p\oplus q$ , $\oplus$ 是异或联接词 (Exclusive OR), 即 $p, q$ 的真值不同时 $p\oplus q$ 取 T , 否则 $p\oplus q$ 取 F.
 \end{definition}
 
@@ -311,7 +309,7 @@ The content of introduction.
 \end{definition}
 
 
-\begin{definition}{量词}
+\begin{definition}{量词}{exists}
 量词指的是表示数量的词, 有全称量词和存在量词两种.符号 $\forall$ 表示全称量词, 读作“任意”, 符号取自英文词汇 Arbitrary 的首字母.$\forall$ 用于表达某指定范围内“所有”、“任意”或“每一个”对象都具备某种性质.符号 $\exists$ 表示存在量词, 读作“存在”, 符号取自英文词汇 Exists 的首字母.$\exists$ 用于表达某指定范围内“至少存在一个”对象具备某种性质.
 
 特别的, 记 $\exists !$ 为唯一存在量词, 用于表达某指定范围内“唯一存在一个”对象具备某种性质.
@@ -320,17 +318,19 @@ The content of introduction.
 % ================================================================================== 
 % 									集 合 论
 % ================================================================================== 
-\chapter{集合论}
+\chapter{集合论与实数理论}
 
 集合论 (Set theory), 是研究集合(由一堆抽象对象构成的整体)的数学理论, 包含集合和元素 (或称为成员)、关系等最基本数学概念.集合论、命题逻辑与谓词逻辑共同构成了数学的公理化基础, 以未定义的“集合”与“集合成员”等术语来形式化地建构数学对象.
 
-德国数学家格奥尔格·康托尔 (Cantor) 于十九世纪七十年代提出了朴素集合论, 并从此展开了对集合论的研究.
+德国数学家 Cantor 于十九世纪七十年代提出了朴素集合论, 并从此展开了对集合论的研究.
 
 \section{集合及其基本运算}
 
-\subsection{集合及其基本计算}
+凡是学习过高中数学的同学应该都对朴素集合论有相关概念, 在这里我们先回顾一下中学的朴素集合论.
 
-康托尔集合论, 也被称为“朴素”集合论, 我们将其基本前提总结为以下几点
+\subsection{朴素集合论与集合运算}
+
+Cantor 集合论, 也被称为“朴素”集合论, 我们将其基本前提总结为以下几点
 
 \ITEMS
 	\item 互异性 \quad 集合可有任何有区别的对象组成.
@@ -338,7 +338,7 @@ The content of introduction.
 	\item 确定性 \quad 任何性质都确定一个具有该性质的对象的集合.
 \ITEME
 
-\begin{definition}{包含关系}
+
 我们将组成一个集合的对象称为该集合的元素, 元素 $x$ 属于集合 $X$ 可以简记为
 \[
 	x\in X\ \mbox{或}\ X\ni x 
@@ -347,9 +347,7 @@ The content of introduction.
 \[
 	x\notin X\ \mbox{或}\ X \not\ni x.
 \]
-\end{definition}
 
-\begin{definition}{子集}
 如果集合 $A$ 的每一个元素都是 $B$ 的元素, 就说 $A$ 是 $B$ 的子集, 记作
 \[
 A \subseteq B.
@@ -361,47 +359,45 @@ A \subseteq B.
 
 其中 $\subseteq$ 和 $\subsetneq$ 分别称为包含关系和真包含关系.
 
-\end{definition}
-
 \begin{remark}
 	以上符号在使用上依地区年代有所区别，具体使用视情况而定，例如用 $\subset$ 符号表示包含，用 $\subsetneqq$ 符号表示真包含。
 \end{remark}
 
-\begin{definition}{集合的族}
-给定集合 $A$, 考虑由 $A$ 的所有子集构成的集合, 我们称之为集合 $A$ 的幂集, 记为 $\mathcal{P} (A)$. 通常我们把一个以集合为元素的集合称为族, 一般用大写花体字母表示.
-\end{definition}
 
 % 简单的集合运算
-\begin{definition}{简单的集合运算}
 对于集合 $A$ 与 $B$ 我们定义以下运算
 \ITEMS
 	\item 集合 $A$ 与 $B$ 的并集是集合
 	\[
-		A\cup B = \{x\in U\mid (x\in A) \vee (x\in B)\}.
+		A\cup B := \{x\in U\mid (x\in A) \vee (x\in B)\}.
 	\]
 	\item 集合 $A$ 与 $B$ 的交集是集合
 	\[
-		A\cap B = \{x\in U\mid (x\in A) \land (x\in B)\}.
+		A\cap B := \{x\in U\mid (x\in A) \land (x\in B)\}.
 	\]
 	% 在书中补集是作为差集的延伸提出的, 但我们往往把补集视为基础运算的组合
 	\item 集合 $A$ 在全集 $U$ 上的补集是集合
 	\[
-		A^c = C_U A= \{x\in U\mid (x\notin A) \}.
+		A^c = C_U A := \{x\in U\mid (x\notin A) \}.
 	\]
 	\item 集合 $A$ 与 $B$ 的差集是集合
 	\[
-		A\setminus B = \{x\in U\mid (x\in A) \land (x\notin B)\}.
+		A\setminus B := \{x\in U\mid (x\in A) \land (x\notin B)\}.
 	\]
-	\item 集合的直积(笛卡尔积)为如下集合
+	\item 集合的直积(Cartesian 积)为如下集合
 	\[
-		X\times Y=\{(x, y)\mid (x\in X)\land(y\in Y)\},
+		A \times B :=\{(x, y)\mid (x \in A)\land(y \in B)\}.
 	\]
 	其中 $(x, y)$ 为一个序偶, 序偶由两个对象按照特定先后顺序排列构成的组合.
+	\item 集合的对称差为如下集合 (使用了 \hyperref[def:eor]{异或运算定义})
+	\[
+		A \Delta B := \{x\in U\mid (x \in A) \oplus (x \in B)\}.
+	\]
 \ITEME
-\end{definition}
 
-\begin{theorem}[德摩根法则 A. de Morgan]
-	德摩根法则有命题逻辑和集合论形式,其中命题逻辑形式:
+%\begin{theorem}{A. De Morgan 法则}
+
+由集合的交并补运算可以得到 De Morgan 法则, 德摩根法则一般有两种表述, 分别为命题逻辑和集合论形式, 其中命题逻辑形式:
 	\[
 		\neg (p\land q)\equiv (\neg p)\lor (\neg q),
 	\]
@@ -415,38 +411,325 @@ A \subseteq B.
 	\[
 		(A\cap B)^c = A^c\cup B^c.
 	\]
-\end{theorem}
+%\end{theorem}
 
-\begin{proof}
-	由定义显然.
-\end{proof}
-\smallskip
+在介绍 ZFC 集合论之前, 我们先来介绍一下为什么我们需要一个公理化的集合论. 集合论虽然看起来是一个简单的概念, 但对数学却是一个非常重要的概念.
 
-\begin{definition}{序偶}
-序偶是指由两个元素 $x$ 和 $y$ 按一定顺序排列构成的二元组，记作 $\langle x, y \rangle$ 或 $(x, y)$, 其中，$x$ 称为第一元素(或左投影), $y$ 称为第二元素(或右投影).  或 (x, y)。在序偶中，x 称为第一元素(或左投影)，y 称为第二元素(或右投影). 序偶具有顺序性，即当 $x \neq y$ 时，$(x,y) \neq (y,x)$.
+% 这一部分还不完善	<-------------------------- HERE
+
+\subsection{Russel 悖论与数学危机}
+
+Russel 悖论设集合 $A=\{x\mid x\in A\}$, 那么我们可以假设 $A\in A\Rightarrow A\notin A$, 同样 $A\notin A \Rightarrow A\in A$, 我们得出了截然不同的两种结果. 这意味着现代数学基础的集合论存在瑕疵, 数学家们随即对集合论进行了严格的约束, 从而规避了逻辑悖论, 但实际上数学危机远远不只是 Russel 悖论这么简单的问题, 而且仍并未被 ``完美" 解决. 
+
+实际上的数学危机是一次将数学界分为三个学派的巨大分歧, 以 Russel 为代表的逻辑主义, 以布劳威尔为首的直觉主义, 以及 Hilbert 所率领的形式主义. 其中为主导的 Hilbert 与他的形式主义曾提出了著名的 Hilbert 纲领, 试图通过形式化的方法解决数学危机, 但之后的哥德尔不完备定理却表明任何系统都无法做到既完全又自洽, 击碎了 Hilbert 纲领的设想. 但 Hilbert 纲领深刻地重塑了现代数学与逻辑学, 我们也常称 Hilbert 为现代数学之父. 虽然数学不得已从追求绝对真理撤退到现代数学体系, 但却是我们对人类理性边界的认知的提升. 
+
+% 这一部分还不完善	<-------------------------- HERE
+
+\subsection{公理化集合论}
+
+实际上公理化集合论是一个没有数学美感的产物, 就像东拼西凑出的支柱, 主要为防止如 Russel 悖论这种矛盾的产生, 其中我们最常用的是策梅洛-弗伦克尔公理系统(Zermelo-Fraenkel), 一般简称为 ZFC 集合论.
+
+首先我们引入类的概念, 可以将其理解为更一般化的集合, 即任何集合都是类, 但是类不一定是集合. 
+\begin{definition}{类}
+	如果 $\varphi(x,p_1,\cdots,p_n)$ 是表达式, 则称
+	\[
+		C := {x\mid\varphi(x,p_1,\cdots,p_n)}
+	\]
+	为类 (Class), 有 $x \in C \iff \varphi(x,p_1,\cdots,p_n)$.
 \end{definition}
 
-对于序偶这个数学对象我们可以将其作为原始概念对待，不过这里也给出应用集族概念的序偶定义. 
+\begin{definition}{万有类}
+	万有类 (Universal class) 是所有集合的类,
+	\[
+		U := \{x \mid x = x\}.
+	\]
+\end{definition}
+
+\begin{definition}{包含与类运算}
+	类的包含关系 (Inclusion) 如下 
+	\[
+		C \subseteq D \iff \forall x (x \in C \rightarrow x \in D)
+	\]
+	类的运算如下
+	\[
+		C \cap D := \{x \mid(x \in C) \land (x \in D)\},
+	\]
+	\[
+		C \cup D := \{x \mid (x \in C) \lor (x \in D)\},
+	\]
+	\[
+		C \setminus D := \{x \mid (x \in C) \land (x \notin D)\},
+	\]
+	\[
+		\bigcup C := \{x \mid \exists S \in C (x \in S)\}.
+	\]
+\end{definition}
+
+\begin{definition}{真类}
+	称不是集合的类为真类 (Proper class). 例如 Russel 悖论所构建的就是一个真类.
+\end{definition}
+
+接下来我们来逐步构建公理化集合论, 先阐述下我们的基本思想, 首先希望让集合论支持以往的集合运算, 在此基础上尽量从根源上避免如 Russel 悖论等悖论的诞生.
+
+\begin{axiom}{外延公理 (Axiom of extensionality)}{zfc1}
+	集合 $A$ 与集合 $B$ 相等, 当且仅当它们所具有的各元素是相同的, 即
+	\[
+		A = B \iff A\subset B \land A\supset B.
+	\]
+\end{axiom}
+
+外延公理使得集合由构成集合的元素决定.
+
+\begin{axiom}{分离公理模式 (axiom schema of separation)}{zfc2}
+	设有表达式 $\varphi (u,p_1,\cdots,p_n)$, 则对任何集合 $X$ 和任意 $p_1,\cdots ,p_n$ 存在 $Y = \{u \in X \mid \varphi(u,p_1,\cdots,p_n)\}.$
+	\[
+		\forall X , \forall p_{1} , \ldots , \forall p_{n} , \exists Y , \forall x \left(x \in Y \Longleftrightarrow x \in X \land \varphi \left(x , p_{1} , \ldots , p_{n}\right)\right).
+	\]
+\end{axiom}
+
+\begin{remark}
+分离公理模式是一个公理模式, 即对于每个不同的 $\varphi$ 都有可以生成一个公理, 所以分离公理模式本质是无穷条公理.	
+\end{remark}
+
+由分离公理模式可得以下定义
+
+% 集合运算 1
+\begin{definition}{交集与差集}
+	设有集合 $X, Y$ 应用分离公理模式可知, 如下集合存在,
+	\[
+		X \cap Y := \{u \in X \mid u \in Y\},\quad X\setminus Y := \{u \in X \mid u \notin Y\},
+	\]
+	分别称为集合的交集, 差集 (补集即在全集上的差集).
+\end{definition}
+	
+但是注意到分离公理虽然为交集和补集提供了公理支持, 但是却无法支持并集运算.
+	
+\begin{axiom}{并集公理 (Axiom of union)}{zfc3}
+	对于集合的任何集合 $M$, 存在一个集合 $M$ 的并集的集合 $\cup M$, 其元素是且仅是 $M$ 的元素所包含的那些元素.
+\end{axiom}
+	
+由并集公理我们可以知道假如只包含集合 $X, Y$ 的集合 $\{X, Y\}$ 存在, 那么两集合的并集 $X \cup Y$ 就存在. 但注意到有需要集合 $\{X, Y\}$ 存在的限制存在, 于是提出配对公理.
+
+\begin{axiom}{配对公理 (Axiom of pairing)}{zfc4}
+	对于任何集合 $X$ 和 $Y$ , 存在一个集合 $Z$ , 其元素仅为 $X$ 和 $Y$.
+\end{axiom}
+
+\begin{definition}{对}
+	由外延公理可知配对公理中的 $Z$ 是唯一的, 则对任意 $a, b$ 有对 $\{a,b\}$ 存在,
+	\[
+		\{a,b\} := \text{唯一的 $c$ 满足}\; \forall x(x \in c \iff (x = a) \lor (x = b)).
+	\]
+	单点集 $\{a\}$ 可由定义为 $\{a\} = \{a, a\}$.
+\end{definition}
+	
+把配对公理与并集公理凑到一起我们就终于为并集运算铺平了道路, 于是有如下定义.
+
+% 集合运算 2
+\begin{definition}{并集与对称差}
+	设有集合 $X, Y$ 应用配对公理与并集公理可知, 如下集合存在,
+	\[
+		X \cup Y := \bigcup\{X,Y\}, \quad X \Delta Y := (X \setminus Y) \cup (Y \setminus X),
+	\]
+	分别称为集合的并集和对称差.
+\end{definition}
+
+\begin{axiom}{空集公理}{zfc5}
+	存在一个不包含任何元素的集合 $\varnothing$. 由分离定理从任意集合都可以分离出空子集, 并根据外延定理可知所有空子集都相等.
+\end{axiom}
+
+有时不将空集公理列入 ZFC 集合论, 而是将其视为分离公理模式的推论.
+
+\begin{definition}{子集}
+集合 $X$ 称为 $Y$ 的子集 (Subset), 记作 $X \subset Y$, 如果
+	\[
+		\forall x(x \in X \rightarrow x \in Y).
+	\]
+	若 $X \subseteq Y$ 且 $X \neq Y$, 称 $X$ 是 $Y$ 的真子集 (Proper subset).
+\end{definition}
+
+\begin{definition}{幂集}
+	设有集合 $X$ , 则其所有子集构成的集合
+	\[
+		\mathcal{P}(X) := \{u\mid u \subseteq X\},
+	\]
+称为 $X$ 的幂集 (Power set).
+\end{definition}
+
+\begin{axiom}{幂集公理 子集之集 (Axiom of power set)}{zfc6}
+	对于任何集合 $X$, 幂集 $\mathcal{P}(X)$ 存在.
+\end{axiom}
+
+
+在介绍无穷公理之前我们首先需要引入后继集的概念。 
+\begin{definition}
+	设有集合 $X$, 称 
+	\[
+		X^+=X\cup \{X\}
+	\]
+	为 $X$ 的后继集. 此外, 如果一个集合包含空集以及自身任何一个元素的后继集, 我们称该集合为归纳集. 即设有集合 $S$ 满足
+	\[
+		(\varnothing \in S) \land ((\forall x \in S) \ x \cup {x} \in S).
+	\]
+	则称 $S$ 为归纳集.
+\end{definition}
+
+\begin{axiom}{无穷公理 (Axiom of infinity)}{zfc7}
+	归纳集存在.
+\end{axiom}
+
+无穷公理看起来简单, 但实际上无穷公理为现代数学的诸多研究提供了公理保障, 它使实无穷成为了一个可被研究的数学对象. 例如自然数集由此成为了合法的数学对象, 我们在无穷公理的基础上再通过之前所用的公理就可以建立自然数集 $\mathbb{N}_0$ 的模型(冯诺伊曼表示法), 对自然数作如下表示.
+	\[
+		\begin{aligned}
+			0:\quad & \varnothing,\\
+			1:\quad & \varnothing^+=\{\varnothing\},\\
+			2:\quad & \{\varnothing\}^+=\{\{\varnothing\}\},\\
+			\vdots & 
+		\end{aligned}
+	\]
+	
+\begin{axiom}{替换公理模式 (axiom schema of replacement)}{zfc8}
+	设有表达式 $\varphi (x, y, z)$, 对于任意集合 $X$, 若对每一个 $x \in X$ 都有唯一的 $y$ 使 $\varphi (x, y, z)$ 成立, 那么就存在集合 $Y$ 恰好由所有 $y$ 构成.
+\end{axiom}
+
+实际上由替换公理模式可以推出分离公理模式, 所以有时 ZFC 不会包含分离公理模式.
+
+\begin{axiom}{正则公理 (Axiom of regularity)}{zfc9}
+	对任意非空集合 $A$, 都存在一个元素 $x \in A$, 使得 $x$ 与 $A$ 没有公共元素, 我们称该元素为 $\in$-极小元素.
+	\[
+		\forall A\Bigl(A\neq\varnothing\to \exists x\in A\,(x\cap A=\varnothing)\Bigr).
+	\]
+\end{axiom}
+
+	
+\begin{axiom}{* 选择公理 策梅洛公理 (Axiom of choice)}{zfc10}
+	对于任意互不相交的非空集合组成的集合族, 存在集合 $C$, 使得对于该集合族中的任何集合 $X$, 集合 $X\cap C$ 只有一个元素组成.
+\end{axiom}
+
+ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如承认此公理会引出分球怪论, 但由于选择公理可以为证明提供很多便利, 我们仍主要使用 ZFC 集合论.
+
+\subsection{集合的任意交和并}
+
+\begin{definition}{集族}
+通常我们把一个以集合为元素的集合称为集族, 一般用大写花体字母表示, 如 $\mathscr{A}$.
+\end{definition}
+
+这里给出由集族概念所得的序偶定义.
 
 \begin{definition}{序偶}
 我们定义以下集族为序偶
 \[
-	(a,b) = \{\{a\},\{a,b\}\}.
+	(a,b) := \{\{a\},\{a,b\}\}.
 \]
-按照定义，$(a,b)$ 是两个集合的族，分别为单元素集和两元素集，而序偶的第一元素是同时属于这两个集合的元素，第二个元素是仅属于一个集合的元素.
+按照定义, $(a,b)$ 是两个集合的族, 分别为单元素集和两元素集, 而序偶的第一元素是同时属于这两个集合的元素, 第二个元素是仅属于一个集合的元素.
 \end{definition}
 
-\section{映射与函数}
+对于序偶我们也可以将其作为原始概念对待. 
+
+\begin{definition}{序偶}
+序偶是指由两个元素 $x$ 和 $y$ 按一定顺序排列构成的二元组, 记作 $\langle x, y \rangle$ 或 $(x, y)$, 其中，$x$ 称为第一元素(或左投影), $y$ 称为第二元素(或右投影). 在序偶中，x 称为第一元素(或左投影), y 称为第二元素(或右投影). 序偶具有顺序性，即当 $x \neq y$ 时，$(x,y) \neq (y,x)$.
+\end{definition}
+
+我们可以使用嵌套序偶构造多元组, 例如 $(x,y,z) = ((x,y),z)$ 为三元组, 显然元组也是有序的.
+
+\begin{definition}{加标集族}
+设 $J$ 是一个非空集合, 若对于每个 $\alpha \in J$ 都有集合 $A_\alpha$. 则由所有 $A_\alpha$ 构成的集族 $\mathscr{A}$ 称为加标集族, 定义如下
+\[
+	\mathscr{A} = \{A_\alpha\}_{\alpha \in J} := \{A_\alpha\mid \alpha \in J \}.
+\]
+读作 ``$\alpha$ 取遍 $J$ 时, 所有 $A_\alpha$ 的集族". 若指标集自明, 则也可以记为 $\{A_\alpha\}$.
+\end{definition}
+
+\begin{definition}{Cartesian 乘积}
+	设有集合 $A, B$, 则其的 Cartesian 乘积 (Cartesian product) 为
+	\[
+		A \times B := \{(a,b)\mid(a \in A) \lor (b \in B)\}.
+	\]
+\end{definition}
+
+
+\begin{definition}{集族中的交和并}
+	令 $X$ 是一集合且 $\mathscr{A} = \{A_\alpha \mid\alpha \in J\}$ 是由 $X$ 的一些子集所构成的集族. 定义集合族 $\mathscr{A}$ 中元素的并为
+	\[
+		\bigcup_{\alpha \in J} A_\alpha \equiv \bigcup_{A \in \mathscr{A}} A := \{x \mid \exists A \in \mathscr{A} (x \in A)\},
+	\]
+	定义集合族 $\mathscr{A}$ 中元素的交为
+	\[
+		\bigcap_{\alpha \in J} A_\alpha \equiv \bigcap_{A \in \mathscr{A}} A := \{x \mid \forall A \in \mathscr{A} (x \in A)\}.
+	\]
+\end{definition}
+
+\begin{theorem}{运算律}
+	若 $\mathscr{A} = \{A_\alpha \mid \alpha \in J_A\}$ 和 $\mathscr{B} = \{B_\beta \mid \beta \in J_B\}$ 是由集合 $X$ 的一些子集所构成的集族, 则
+	\ITEMS
+		\item 结合率
+		\[
+			\bigcap_{\alpha\in J_A} A_\alpha \cap \bigcap_{\beta\in J_B} B_\beta = \bigcap_{(\alpha,\beta)\in J_A \times J_B} A_\alpha \cap B_\beta,
+		\]
+		\[
+			\bigcup_{\alpha\in J_A} A_\alpha \cup \bigcup_{\beta\in J_B} B_\beta = \bigcup_{(\alpha,\beta)\in J_A \times J_B} A_\alpha \cup B_\beta.
+		\]
+		\item 分配律
+		\[
+			\bigcap_{\alpha\in J_A} A_\alpha \cup \bigcap_{\beta\in J_B} B_\beta = \bigcap_{(\alpha,\beta)\in J_A \times J_B} A_\alpha \cup B_\beta,
+		\]
+		\[
+			\bigcup_{\alpha\in J_A} A_\alpha \cap \bigcup_{\beta\in J_B} B_\beta = \bigcup_{(\alpha,\beta)\in J_A \times J_B} A_\alpha \cap B_\beta.
+		\]
+		\item De Morgan 法则
+		\[
+			\left(\bigcup_{\alpha\in J_A} A_\alpha\right)^c = \bigcap_{\alpha\in J_A} A_\alpha^c,
+		\]
+		\[
+			\left(\bigcap_{\alpha\in J_A} A_\alpha\right)^c = \bigcup_{\alpha\in J_A} A_\alpha^c.
+		\]
+	\ITEME
+\end{theorem}
+
+\section{映射与关系}
+
+在高中我们就学习过函数的定义, 不过实际上函数的严格定义诞生的时间在数学史上很晚, Leibniz 在 1673 年才首次使用了术语 ``函数", 这时还没有对函数的严格数学定义, 但随着用代数方法研究曲线的发展, 用一个术语来表示“利用解析表达式来表示依赖于一个变量的数量”变得越来越有必要了. 在 Leibniz 和 Jean Bernoulli 的 1695 年和 1698 年的通信中, ``函数" 最终被采纳. 1718 年, Jean Bernoulli 将变量的函数定义为以某种方式由变量和常量组成的量.
 
 \subsection{映射}
 
-\begin{definition}{映射}
-设有集合 $X, Y$, 如果 $X$ 的每一个元素 $x$ 都按照某种规律 $f$ 与 $Y$ 的唯一元素相对应, 我们称其为一个映射, 通常用以下符号表示映射
-\[
-	f:X\rightarrow Y.
-\]
-对于 $\forall A\subseteq X$, 我们称 $f(A)=\{f(x):x\in A\}$ 为 $A$ 的像；对于 $\forall B\subseteq Y$ , 我们称 $f^{-1}(B)=\{x\in X:f(x)\in B\} $ 为 $B$ 的原像.
+映射是更抽象化的函数, 将函数从数集拓展到一般集合上.
 
+% 这一部分还不完善	<-------------------------- HERE
+
+\begin{definition}{赋值法则}
+	设有集合 $C, D$, 一个赋值法则 (Rule of assignment) $R$ 是指满足条件
+	\[
+		\bigl((c, d) \in R \bigr) \land \bigl((c, d') \in R \bigr)\Rightarrow d = d'
+	\]
+	的 $C \times D$ 的子集. 赋值法则的定义域 (Domain) 和像域 (Image set) 如下
+	\[
+		D_R := \{c\in C\mid\exists d\in D \bigl((c,d) \in R\bigr)\}, 
+	\]
+	\[
+		I_R := \{d\in D\mid\exists c\in C \bigl((c,d) \in R\bigr)\}.
+	\]
+\end{definition}
+
+\begin{definition}{映射}
+
+	对于一个赋值法则 $R$, 与集合 $A, B$ 若
+	\[
+		R \subseteq D_R \times I_R \subseteq A \times B,
+	\]
+	则我们称三元组 $(R, A, B)$ 为一个映射 (mapping) $f$, 其中 $B$ 称为陪域, $A$ 为定义域, 当 $A$ 由 $R$ 可得是也可以用序偶 $(R, B)$ 表示. 通常用以下符号表示映射, (此符号由 Eular 引入)
+	\[
+	\begin{aligned}
+		f:X&\rightarrow Y,\\
+		x&\mapsto f(x).
+	\end{aligned}
+	\]
+	定义映射的定义域与值域如下
+	\[
+		D_f := D_R,\qquad I_f := I_R.
+	\]
+	$f$ 的图 (graph) 定义为
+	\[
+		\operatorname{graph}(f) := \{(a,f(a))\mid a \in A\} \subseteq A \times B.
+	\]
 % 特别的, 我们称非空的数集之间的映射为函数(数集的定义见 \ref{number set}).
 \end{definition}
 
@@ -459,17 +742,17 @@ A \subseteq B.
 \end{definition}
 
 \begin{definition}{映射的分类}
-满足不同元素具有不同的像的映射称为单射, 即
+满足不同元素具有不同的像的映射称为单射 (Injective), 即
 \[
 	x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2).
 \]
 
-满足映射的像等于集合 $Y$ 的映射称为满射, 即
+满足映射的像等于集合 $Y$ 的映射称为满射 (Surjective), 即
 \[
 	f(X)=Y.
 \]
 
-即是单射又是满射的映射的映射是双射, 即
+即是单射又是满射的映射的映射是双射 (Bijective) , 即
 \[
 \begin{aligned}
 	&f(X)=Y,\\
@@ -479,11 +762,23 @@ A \subseteq B.
 \end{definition}
 
 \begin{definition}{逆映射}
-当映射是双射的时候, 存在 $f:X\rightarrow Y$ 的逆映射, 记为
+当映射是双射的时候, 存在 $f:A\rightarrow B$ 的逆映射 (Inverse), 记为
 \[
-	f^{-1}:Y\rightarrow X.
+	f^{-1}: B \rightarrow A.
+\]
+给定映射 $f : A \rightarrow B$. 定义 $f$ 的左逆 (Left inverse) 存在 $g : B \rightarrow A$ 对所有 $a \in A$ 都有
+\[
+	g(f(a)) = a.
+\] 
+定义 $f$ 的右逆 (Right inverse) 存在 $h: B \rightarrow A$ 对所有 $b\in B$ 都有 
+\[
+	f(h(b)) = b.
 \]
 \end{definition}
+
+\begin{lemma}
+	给定映射 $f : A \rightarrow B$. 如果存在 $f$ 的左逆 $g : B \rightarrow A$ 和 $f$ 的右逆 $h: B \rightarrow A$, 则 $g = h = f^{−1}$.
+\end{lemma}
 
 \begin{definition}{映射的复合运算}
 如果在映射 $f:X\to Y$ 和 $g:Y\to Z$ 中, 构建一个新的映射
@@ -498,22 +793,24 @@ A \subseteq B.
 
 \subsection{关系}
 
+关系是为了将 ``=" 和 ``<" 从定义在数集上推广到定义在一般集合上.
+
 \begin{definition}{二元关系}
-关系是两个集合笛卡尔积的子集.如果有两个集合 $A$ 和 $B$, 它们之间的二元关系 $\mathcal{R}$ 是集合 $A$ 与 $B$ 的笛卡尔积的子集, 即 $\mathcal{R} \subseteq A \times B$.若元素 $a \in A$ 与 $b \in B$ 满足 $(a,  b) \in \mathcal{R}$, 则记作 $a\mathcal{R}b$, 否则记为 $a\overline{\mathcal{R}}b$.对于集合 $X$, 如果 $\mathcal{R} \subseteq X^2$, 就说在 $X$ 上给定了二元关系 $\mathcal{R}$.
+关系 (relation) 是两个集合 Cartesian 积的子集.如果有两个集合 $A$ 和 $B$, 它们之间的二元关系 $\mathcal{R}$ 是集合 $A$ 与 $B$ 的 Cartesian 积的子集, 即 $\mathcal{R} \subseteq A \times B$.若元素 $a \in A$ 与 $b \in B$ 满足 $(a,  b) \in \mathcal{R}$, 则记作 $a\mathcal{R}b$, 否则记为 $a\overline{\mathcal{R}}b$.对于集合 $X$, 如果 $\mathcal{R} \subseteq X^2$, 就说在 $X$ 上给定了二元关系 $\mathcal{R}$.
 \end{definition}
 
 \begin{definition}{等价关系}
 对于一非空集合 $X$, 若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
 \ITEMS
-	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$.
-	\item 对称性\quad 若 $x, y\in X ,  x\mathcal{R}y$ 则 $y\mathcal{R}x$.
-	\item 传递性\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$.
+	\item 自反性 (Reflexivity)\quad $\forall x\in X \Rightarrow x\mathcal{R}x$,
+	\item 对称性 (Symmetry)\quad 若 $x, y\in X ,  x\mathcal{R}y$ 则 $y\mathcal{R}x$,
+	\item 传递性 (Transitivity)\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$.
 \ITEME 
-则称该二元关系为等价关系, 记作 $x\sim y$.
+则称该二元关系为等价关系 (Equivalence relation), 记作 $x\sim y$.
 \end{definition}
 
-\begin{definition}{等价类}
-若把集合 $M$ 的全体元素分成若干互不相交的子集, 则称每个这样的子集为 $M$ 的一个类, 类的全体叫做 $M$ 的一个分类.
+\begin{definition}{分类}
+若把集合 $M$ 的全体元素分成若干互不相交的子集, 这些子集的并集等于 $A$, 则由这些子集构成的集族叫做 $M$ 的一个分类 (partition).
 \end{definition}
 
 \begin{theorem}
@@ -548,29 +845,71 @@ A \subseteq B.
 	\]
 	从而 $x\sim c$, 即 $x\in\overline{c}$, 于是 $\overline{b} \subseteq\overline{c}$.
 	
-	同理可证 $\overline{c} \subseteq\overline{b}$, 因此 $\overline{b}=\overline{c}$.即如果两个类公有元素 $a$, 则两个类完全相等, 说明每个元素只能属于一个类.
+	同理可证 $\overline{c} \subseteq\overline{b}$, 因此 $\overline{b}=\overline{c}$.即如果两个类公有元素 $a$, 则两个类完全相等, 说明每个元素只能属于一个类. 
 	
 \end{proof}
 \smallskip
 
-对于给定集合 $X$ 中的一个等价关系, 及一元素 $\forall x\in X$, 我们称由 $x$ 决定的等价类为 $[x] = \{y\in X:y\sim x\}$.其中由 $x$ 决定的等价类包含 $x$.
+\begin{definition}{等价类}
+	对于给定集合 $X$ 中的一个等价关系, 及一元素 $\forall x\in X$, 我们称由 $x$ 决定的等价类为
+	\[
+		[x] := \{y\in X:y\sim x\}.
+	\]
+	其中由 $x$ 决定的等价类包含 $x$.
+\end{definition}
 
 % TODO: 这里还可以添加一点例题, 参考近世代数 ref3
-% 这一部分还不完善	<-------------------------- HERE
 
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\begin{definition}{序关系}
+对于一非空集合 $X$, 若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
+\ITEMS
+	\item 相容性 (Comparability)\quad $ \forall x, y \in A$ 且 $x \neq y$ 则 $x\mathcal{R}y$ 或 $y\mathcal{R}x$ 其一成立, 
+	\item 非自反性 (Nonreflexivity)\quad $\neg\exists x\in X \Rightarrow x\mathcal{R}x$,
+	\item 传递性 (Transitivity)\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$.
+\ITEME 
+则称该二元关系为序关系 (Order relation) 或简单序 (Simple order) 或线性序 (Linear order), 记为 $x < y$. 特别的 $x \le y$ 表示 $x < y$ 或 $x = y$. 若 $X$ 上存在一个序关系 $<$, 则 $(X,<)$ 是有序集 (Ordered set).
+\end{definition}
+
+% 严格偏序关系
+\begin{definition}{严格偏序关系}
+对于一非空集合 $X$, 若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
+\ITEMS
+	\item 非自反性\quad \quad $\neg\exists x\in X \Rightarrow x\mathcal{R}x$,
+	\item 传递性\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$.
+\ITEME 
+则称该二元关系为严格偏序关系 (Strict partial order) , 记作 $x \prec y$, 显然序关系必是严格偏序关系. 
+
+类似的如果 $\prec$ 是 $A$ 上的严格偏序关系, 则 $(A,\prec)$ 为严格偏序集 (Strictly partially ordered set). 对于严格偏序集 $(A,\prec)$, 设 $A_0$ 是 $A$ 的子集, 若不存在 $x \in A_0$ 满足 $b\prec x$ 则称 $b$ 是 $A_0$ 的极大元 (Maximal element). 若 $x \in A_0$ 满足 $x\prec a$. 称 $a$ 是 $A_0$ 的极小元 (Minimal element).
+\end{definition}
+
+\begin{lemma}{Zorn 引理}
+假设集合 $A$ 上有一个严格偏序关系 $\prec$. 如果 $A$ 的任何有序子集在 $A$ 中都有上界, 则 $A$ 必有极大元.
+\end{lemma}
+
+% 偏序关系
 \begin{definition}{偏序关系}
 对于一非空集合 $X$, 若在 $X$ 上给定了二元关系 $\mathcal{R}$ 满足以下条件
 \ITEMS
-	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$
-	\item 反对称性\quad 若 $x, y\in X ,  x\mathcal{R}y$ 且 $y\mathcal{R}x$ 则 $x=y$
-	\item 传递性\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$
+	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$,
+	\item 反对称性\quad 若 $x, y\in X ,  x\mathcal{R}y$ 且 $y\mathcal{R}x$ 则 $x=y$,
+	\item 传递性\quad 若 $x, y, z\in X ,  x\mathcal{R}y,  y\mathcal{R}z$ 则 $x\mathcal{R}z$.
 \ITEME 
-则称该二元关系为偏序关系, 记作 $x \preccurlyeq y$.如果除以上条件外还满足以下条件
+则称该二元关系为偏序关系 (Partial order), 记作 $x \preccurlyeq y$. 类似的如果 $\preccurlyeq$ 是 $A$ 上的严格偏序关系, 则 $(A,\preccurlyeq)$ 为偏序集 (Partially ordered set). 假设 $\preccurlyeq$ 是 $A$ 上的偏序. 如果进一步有
 \[
-	\forall a \, \forall b\ ((a \mathcal{R} b ) \lor (b \mathcal{R} a)).
+	\forall a,b \in A \Rightarrow (a \preccurlyeq b) \lor (b \preccurlyeq a),
 \]
-即集合 $X$ 上所有元素都是可比的, 则关系 $\mathcal{R}$ 称为序关系, 而定义了序关系的集合 $X$ 为线性序集.
+则称 $\preccurlyeq$ 是 $A$ 上的全序 (total order), 并称 $(A,\preccurlyeq)$ 为全序集 (totally order set). 类似地可以定义全序子集(totally order subset) 概念, 如果对任何 $a,b \in A_0$ 都有 $a \preccurlyeq b$ 或 $b \preccurlyeq a$ 成立, 则子集 $A_0 \subseteq A$ 称为全序子集.
 \end{definition}
+
+
 
 \begin{definition}{函数关系}
 满足
@@ -580,85 +919,195 @@ A \subseteq B.
 的关系 $\mathcal{R}$ 称为函数关系.
 \end{definition}
 
-\section{公理化集合论}
 
-\subsection{罗素悖论与第三次数学危机}
+\subsection{Cartesian 积}
 
-罗素悖论设集合$A=\{x\mid x\in A\}$, 那么我们可以假设$A\in A\Rightarrow A\notin A$, 同样$A\notin A \Rightarrow A\in A$, 我们得出了截然不同的两种结果.
+我们曾在之前介绍过 Cartesian 积, 在这里我们将介绍 Cartesian 积的另一种定义.
 
-这意味着现代数学基础的集合论存在瑕疵, 数学家们随即对集合论进行了严格的约束, 从而规避了逻辑悖论, 但第三次数学危机仍并未被“完美”解决, 之后的哥德尔不完备定理表明任何系统都无法做到既完全又自洽, 从此促使数学从追求绝对真理转变为现代公理化体系.
+\begin{definition}{元组}
+设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为函数
+\[
+	\boldsymbol{x}:\{1,\cdots,m\}\to X.
+\]
+我们把 $\boldsymbol{x}$ 在 $i$ 项的值记为 $x_i$, 并称之为 $\boldsymbol{x}$ 的第 $i$ 个坐标, 函数 $\boldsymbol{x}$ 本身写为
+\[
+	(x_1,\cdots,x_m).
+\] 
+\end{definition}
 
-\subsection{公理化集合论}
+\begin{definition}{序列}
+给定一个集合 $X$, 定义 $X$ 中的元素的 $\omega$ 元组为函数
+\[
+	\boldsymbol{x}:\Z_+ \to X;
+\]
+我们也称 $\omega$ 元组为 $X$ 中元素的一个序列或一个无穷序列. 记 $\boldsymbol{x}$ 在 $i$ 项的值为 $x_i$, 并称之为 $\boldsymbol{x}$ 的第 $i$ 个坐标, 函数 $\boldsymbol{x}$ 本身写为
+\[
+	(x_1, x_2,\cdots) \text{  或者  } (x_n)_{n\in \Z_+}.
+\]
+\end{definition}
 
-实际上公理化集合论是一个没有数学美感的产物, 就像东拼西凑出的支柱, 主要为防止如罗素悖论这种矛盾的产生, 其中我们最常用的是策梅洛-弗伦克尔公理系统(Zermelo-Fraenkel), 一般简称为 ZF 集合论.
+\begin{definition}{Cartesian 积}
+设 $\{A_1,\cdots,A_m\}$ 是一个以 $\{1,\cdots,m\}$ 为指标集的加标集族. 令 $X = A_1 \cup \cdots \cup A_m$. 这个加标族的 Cartesian 积记作
+\[
+	\prod_{i=1}^m A_i \text{  或者  } A_1 \times \cdots \times A_m,
+\]
+定义为 $X$ 中元素的所有 $m$ 元组 $(x_1,\cdots,x_m)$ 的集合, 使得对每一个 $i$ 有 $x_i\in A_i$. 
 
-\begin{axiom}[外延公理]
-	集合 $A$ 与集合 $B$ 相等, 当且仅当它们所具有的各元素是相同的, 即
+\smallskip
+设 $\{A_1,A_2,\cdots\}$ 是一个以正整数集作为指标集的加标集族. $X$ 为这个集族中所有集合之并. 这个加标族的 Cartesian 积记作
+\[
+	\prod_{i\in \Z_+} A_i \text{  或者  } A_1 \times A_2 \times \cdots,
+\]
+定义为 $X$ 中元素的所有 $\omega$ 元组的集合, 使得对于每一个 $i,\ x_i\in A_i$.
+\end{definition}
+
+
+\section{范畴}
+
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\section{抽象代数初步}
+
+\subsection{代数运算}
+
+设 $M$ 是一个集合, 如果有一个发色, 它对 $M$ 中任意两个有次序的元素 $a$ 与 $b$ 在 $M$ 中都有一个唯一确定的元素 $d$ 与它们对应, 则称这个法则是集合 $M$ 的一个代数运算.有代数运算的集合, 简称为代数系统.我将使用符号 $\circ$ 来表示本定义中所说的法则, 则通常把 $a$ 与 $b$ 通过此法则 $\circ$ 所确定的元素 $d$ 记为
+\[
+	a \circ b = d
+\]
+显然这正是加法与乘法所共有的最本质的属性.因此, 代数运算就是加法运算与乘法运算在最一般情况下的一种自然推广.
+
+\subsection{运算律}
+
+\begin{definition}{结合律}{}
+设 $M$ 是一个有代数运算 $\circ$ 的集合.如果对 $M$ 中任意元素 $a, b, c$ 都有
+\[
+	(a\circ b) \circ c = a \circ (b \circ c)
+\]
+则称 $M$ 这个代数运算满足结合律.
+\end{definition}
+
+\begin{theorem}
+	若集合 $M$ 有代数运算 $\circ$ 满足结合律, 则对 $M$ 中任意 $n(n\ge 3)$ 个元素进行运算时无论怎么加括号, 其结果都相等.
+\end{theorem}
+
+\begin{proof}
+	对元素个数 $n$ 用数学归纳原理, % 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+\begin{definition}{交换律}{}
+设 $M$ 是一个有代数运算 $\circ$ 的集合.如果对 $M$ 中任意元素 $a, b$ 都有
+\[
+	a\circ b = b \circ a
+\]
+则称 $M$ 这个代数运算满足交换律.
+\end{definition}
+
+\begin{theorem}
+	若集合 $M$ 的代数运算 $\circ$ 既满足结合律又满足交换律, 则对 $M$ 中任意 $n$ 个元素进行运算时可以任意结合和交换元素的前后次序, 其结果均相等.
+\end{theorem}
+
+\begin{proof}
+	对元素个数 $n$ 用数学归纳原理, % 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+\begin{definition}{分配律}{}
+设集合 $M$ 有两个代数运算 $\circ$ 及 $\oplus$.如果对 $M$ 中任意元素 $a, b, c$ 都有
+\[
+	a \circ (b \oplus c) = (a \circ b) \oplus (a \circ c)
+\]
+则称运算 $\circ$ 对 $\oplus$ 满足左分配律；如果
+\[
+	(b \oplus c) \circ a = (b \circ a) \oplus (c \circ a)
+\]
+则称运算 $\circ$ 对 $\oplus$ 满足右分配律.
+\end{definition}
+
+\begin{theorem}
+	设集合 $M$ 有两个代数运算 $\circ$ 及 $\oplus$, 其中 $\oplus$ 满足结合律, 而 $\circ$ 对 $\oplus$ 满足于左分配律, 则对 $M$ 中任意元素 $a$ 及 $b_1, b_2, \cdots , b_n$ 有
 	\[
-		A=B\iff A\subset B \land A\supset B.
+		a \circ (b_1 \oplus b_2 \oplus \cdots \oplus b_n) = (a \circ b_1) \oplus \cdots \oplus (a \circ b_n)
 	\]
-\end{axiom}
+\end{theorem}
 
-\begin{axiom}[分离公理]
-	任何集合 $A$ 和性质 $P$ 都对应一个集合, 其元素是且仅是 $A$ 中具有性质 $P$ 的各元素, 即
-	\[
-		\{x\in A: P(x)\}\subset A.
-	\]
-\end{axiom}
-	
-分离公理为集合运算的基础中的交集和补集提供了公理支持, 但是却无法支持并集运算.
-	
-\begin{axiom}[并集公理]
-	对于集合的任何集合 $M$, 存在一个集合 $M$ 的并集的集合 $\cup M$, 其元素是且仅是 $M$ 的元素所包含的那些元素.
-\end{axiom}
-	
-\begin{axiom}[配对公理]
-	对于任何集合 $X$ 和 $Y$ , 存在一个集合 $Z$ , 其元素仅为 $X$ 和 $Y$.
-\end{axiom}
-	
-\begin{axiom}[空集公理]
-	存在一个不包含任何元素的集合 $\varnothing$, 由分离定理从任意集合都可以分离出空子集, 并根据外延定理可知所有空子集都相等.
-\end{axiom}
-	
-\begin{axiom}[幂集公理(子集之集)]
-	对于任何集合 $X$, 存在一个集合 $\mathcal{P}$, 其元素是且仅是 $X$ 的各子集.
-\end{axiom}
+\begin{proof}
+	对元素个数 $n$ 用数学归纳原理即可得证, 且对有分配律也有类似结论, 不再赘述.
+\end{proof}
 
-在介绍无穷公理之前我们首先需要引入后继集的概念, 定义 $X^+=X\cup \{X\}$ 为后继集, 此外, 如果一个集合包含空集以及自身任何一个元素的后继集, 我们称该集合为归纳集.
+\subsection{同态与同构}
 
-\begin{axiom}[无穷公理]
-	归纳集存在.
-\end{axiom}
+设集合 $M$ 与 $\overline{M}$ 各有代数运算 $\circ$ 及 $\overline{\circ}$, 且 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个映射.如果 $\varphi$ 保持运算, 即对 $M$ 中任意元素 $a, b$, 在 $\varphi$ 之下由
+\[
+	a \rightarrow \overline{a}, \ b \rightarrow \overline{b}
+\]
+总可得
+\[
+	a \circ b \rightarrow \overline{a} \overline{\circ} \overline{b}
+\]
+则称 $\varphi$ 为代数系统 $M$ 到 $\overline{M}$ 的一个同态映射, 若 $\varphi$ 又是满射, 则 $\varphi$ 得一个同态满射.
 
-我们在无穷公理的基础上再通过之前所用的公理就可以建立自然数集 $\mathbb{N}_0$ 的模型(冯诺伊曼表示法), 对自然数作如下表示.
-	\[
-		\begin{aligned}
-			0:\quad & \varnothing,\\
-			1:\quad & \varnothing^+=\{\varnothing\},\\
-			2:\quad & \{\varnothing\}^+=\{\{\varnothing\}\},\\
-			\vdots & 
-		\end{aligned}
-	\]
-	
-\begin{axiom}[替换公理]
-	设$\mathcal{F}(x, y)$是以下命题(公式): 对于集合$X$中的任何元素$x_0$存在唯一的对象$y_0$, 使得$\mathcal{F}(x_0, y_0)$成立, 那么满足该条件的对象$y$组成一个集合.
-\end{axiom}
-	
-\begin{axiom}[* 选择公理(策梅洛公理)]
-	对于任意互不相交的非空集合组成的集合族, 存在集合$C$, 使得对于该集合族中的任何集合$X$, 集合$X\cap C$只有一个元素组成.
-\end{axiom}
+如果 $M$ 到 $\overline{M}$ 存在同态满射, 则简称 $M$ 与 $\overline{M}$ 同态, 记为
+\[
+	M\sim\overline{M}
+\]
 
-ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如承认此公理会引出分球怪论, 但由于选择公理可以为证明提供很多便利, 我们有 ZFC 集合论, 也就是在 ZF 集合论再加上选择公理.
-	
+% 结合律和交换律在同态满射上的传递性
+\begin{theorem}
+	设集合 $M$ 与 $\overline{M}$ 分别有代数运算 $\circ$ 与 $\overline{\circ}$, 且 $M \sim \overline{M}$, 则
+	\ITEMS
+		\item 当 $\circ$ 满足结合律时, $\overline{\circ}$ 也满足结合律
+		\item 当 $\circ$ 满足交换律时, $\overline{\circ}$ 也满足交换律
+	\ITEME
+\end{theorem}
 
-\section{实数集公理系统与一般性质}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+
+
+\begin{theorem}
+	设集合 $M$ 有代数运算 $\circ$ 即 $\oplus$ , 集合 $\overline{M}$ 有代数运算 $\overline{\circ}$ 及 $\overline{\oplus}$；又 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个满射, 且是关于 $\circ$ 与 $\overline{\circ}$ 以及 $\oplus$ 与 $\overline{\oplus}$ 的同态, 则当 $\circ$ 对 $\oplus$ 满足左(右)分配律时, $\overline{\circ}$ 对 $\overline{\oplus}$ 也满足左(右)分配律.
+\end{theorem}
+
+\begin{proof}
+	证明方法类似, 不再重复.
+\end{proof}
+
+设 $\varphi$ 是 $M$ 到 $\overline{M}$ (关于代数运算 $\circ$ 及 $\overline{\circ}$)的的一个同态满射, 如果 $\varphi$ 又是单射(即 $\varphi$ 是双射), 则称 $\varphi$ 是 $M$ 与 $\overline{M}$ 的一个同构映射.
+
+如果集合 $M$ 与 $\overline{M}$ 存在同构映射, 就说 $M$ 与 $\overline{M}$ 同构, 记为 $M \cong \overline{M}$.否则, 即若 $M$ 到 $\overline{M}$ 不存在任何同构映射, 则称 $M$ 与 $\overline{M}$ 不同构.
+
+$M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自同态, 同样 $M$ 到自身的同构映射, 叫做 $M$ 的自同构映射, 简称 $M$ 的自同构.
+
+\begin{example}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{example}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+
+
+\section{数集公理系统与一般性质}
 \label{number set}
 
 \subsection{实数集的定义}
 
 如果以下四组条件成立, 则集合 $\R$ 称为实数集, 其元素称为实数, 这些条件称为实数公理系统.
 
-\begin{axiom}[加法公理]
+\begin{axiom}{加法公理}
 	定义如下映射(加法运算)
 	\[
 		+:\R\times \R\rightarrow\R.
@@ -687,7 +1136,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	
 	如果在某集合 $G$ 上定义了满足前三条公理的运算, 我们就说在 $G$ 上给定了群结构, 即 $G$ 是群, 如果成该运算为加法, 就称这个群为加法群, 如果除此之外还知道该运算满足交换律, 即条件 $4_+$ 成立, 就称这个群为交换群或阿贝尔群.
 	
-\begin{axiom}[乘法公理]
+\begin{axiom}{乘法公理}
 	定义如下映射(乘法运算)
 	\[
 		\bullet:\R\times \R\rightarrow\R.
@@ -739,7 +1188,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 如果一个集合的某些元素之间的关系满足公理 $0_\le$, $1_\le$, $2_\le$, 该集合就称为偏序集, 如果除此之外还满足 $3_\le$, 即集合的任何两个元素都是可比较的, 该集合就称为线性序集.
 
 	
-\begin{axiom}[完备性公理]
+\begin{axiom}{完备性公理}
 	如果 $X$ 和 $Y$ 是 $\R$ 的非空子集, 并对于任何 $x\in X$, $y\in Y$ 有 $x \le y$, 则存在 $c\in\R$, 使得对于任何元素 $x\in X$, $y\in Y$ 有 $x\le c\le y$.
 \end{axiom}
 
@@ -794,22 +1243,22 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{proof}
 \smallskip
 
-\section{实数类与计算}
+
 
 \subsection{自然数集}
 
-\begin{axiom}[皮亚诺算数公理]
+\begin{axiom}{Peano 算数公理}
 如果以下条件成立, 则集合 $\N$ 称为自然数集, 其元素称为自然数.
 \ITEMS
 	\item $0$ 是自然数.
 	\item 对于集合 $N$ 中的任意元素 $n$, 其后继 $n'$ 也是 $N$ 中的一个明确且唯一的自然数.
 	\item $0$ 不是任何自然数的后继数.
 	\item 对于每个自然数 $b, c$,  $b=c$ 当且仅当 $b' = c'$.
-	\item 任意关于自然数的命题, 如果证明: 它对自然数 $0$ 是真的, 且假定它对自然数 $a$ 为真时, 可以证明对 $a'$ 也真, 那么, 命题对所有自然数都真.
+	\item 任意关于自然数的命题, 如果证明: 它对自然数 $0$ 是真的, 且假定它对自然数 $a$ 为真时, 可以证明对 $a'$ 也真, 那么命题对所有自然数都真.
 \ITEME
 \end{axiom}
 \begin{remark}
-	其中条件 5 保证了数学归纳原理的正确性, 是数学证明的基本工具.自然数集在某些定义下不包含 $0$, 在这里我们记不包含零的自然数集为 $\N_+$.
+	其中公理 5 保证了数学归纳原理的正确性, 是数学证明的基本工具.自然数集在某些定义下不包含 $0$, 在这里我们记不包含零的自然数集为 $\N_+$.
 \end{remark}
 
 \begin{example}
@@ -918,7 +1367,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 无理数又可以分为代数数和超越数.
 
-\begin{definition}{代数数和超越数}
+\begin{definition}{代数数和超越数}{transcendental}
 如果一个实数是具有有理系数的代数方程
 \[
 	a_0 x^n + \cdots + a_{n-1} x + a_n = 0
@@ -926,7 +1375,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 的根, 该实数就称为代数数, 不满足这个条件的实数称为超越数.
 \end{definition}
 
-由于目前我们还没有介绍到集合的势, 我将超越数的势, 超越数 $\pi$ 的证明, 希尔伯特第七问题这几个有意思的问题放在\hyperlink{A1}{附录 A.1}.
+由于目前我们还没有介绍到集合的势, 我将超越数的势, 超越数 $\pi$ 的证明, Hilbert 第七问题这几个有意思的问题放在 \hyperlink{A1}{附录 A.1}.
 
 
 在一些其他的实数公理系统中, 阿基米德原理常被列为公理, 不过我们实际上可以通过完备性公理证明此原理.
@@ -941,7 +1390,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \subsection{数轴}
 
-根据几何公理(在后面介绍几何时再详述), 对于一条直线 $\mathbb{L}$ 可以将其与实数集建立双射关系 $f:\mathbb{L} \to \R$.当上述双射 $f$ 存在时, 称直线 $\mathbb{L}$ 为坐标轴或数轴.
+根据几何公理 (在后面介绍几何时再详述), 对于一条直线 $\mathbb{L}$ 可以将其与实数集建立双射关系 $f:\mathbb{L} \to \R$.当上述双射 $f$ 存在时, 称直线 $\mathbb{L}$ 为坐标轴或数轴.
 
 \begin{definition}{区间}
 为了方便建立几何直观, 我们引入以下记号
@@ -988,120 +1437,13 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{proof}
 \smallskip
 
-\section{笛卡尔积}
 
-我们曾在之前介绍过笛卡尔积, 在这节中我们将介绍笛卡尔积的另一种定义.
 
-\begin{definition}{加标集族}
-设 $\mathcal{A}$ 是一个非空集族, $\mathcal{A}$ 的指标函数 $f$ 是从某一个集合 $J$ 到 $\mathcal{A}$ 的一个满射, 其中 $J$ 称为指标集. 族 $\mathcal{A}$ 连同指标函数 $f$ 一起称为集的加标集族, 给定 $\alpha \in J$, 集合 $f(\alpha)$ 记成符号 $A_\alpha$. 这个加标集族本身则记作
-\[
-	\{A_\alpha\}_{\alpha \in J}
-\]
-读作“ $\alpha$ 取遍 $J$ 时, 所有 $A_\alpha$ 的族”. 若指标集自明, 则也可以记为 $\{A_\alpha\}$.
-\end{definition}
+\section{集合的基数}
 
-\begin{definition}{元组}
-设 $m$ 是一个正整数, 对于给定的集合 $X$, $X$ 中元素的一个 $m$ 元组定义为函数
-\[
-	\boldsymbol{x}:\{1,\cdots,m\}\to X.
-\]
-我们把 $\boldsymbol{x}$ 在 $i$ 项的值记为 $x_i$, 并称之为 $\boldsymbol{x}$ 的第 $i$ 个坐标, 函数 $\boldsymbol{x}$ 本身写为
-\[
-	(x_1,\cdots,x_m).
-\] 
-\end{definition}
-
-\begin{definition}{序列}
-给定一个集合 $X$, 定义 $X$ 中的元素的 $\omega$ 元组为函数
-\[
-	\boldsymbol{x}:\Z_+ \to X;
-\]
-我们也称 $\omega$ 元组为 $X$ 中元素的一个序列或一个无穷序列. 记 $\boldsymbol{x}$ 在 $i$ 项的值为 $x_i$, 并称之为 $\boldsymbol{x}$ 的第 $i$ 个坐标, 函数 $\boldsymbol{x}$ 本身写为
-\[
-	(x_1, x_2,\cdots) \text{  或者  } (x_n)_{n\in \Z_+}.
-\]
-\end{definition}
-
-\subsection{笛卡尔积}
-\begin{definition}{笛卡尔积}
-设 $\{A_1,\cdots,A_m\}$ 是一个以 $\{1,\cdots,m\}$ 为指标集的加标集族. 令 $X = A_1 \cup \cdots \cup A_m$. 这个加标族的笛卡尔积记作
-\[
-	\prod_{i=1}^m A_i \text{  或者  } A_1 \times \cdots \times A_m,
-\]
-定义为 $X$ 中元素的所有 $m$ 元组 $(x_1,\cdots,x_m)$ 的集合, 使得对每一个 $i$ 有 $x_i\in A_i$. 
-
-\smallskip
-设 $\{A_1,A_2,\cdots\}$ 是一个以正整数集作为指标集的加标集族. $X$ 为这个集族中所有集合之并. 这个加标族的笛卡尔积记作
-\[
-	\prod_{i\in \Z_+} A_i \text{  或者  } A_1 \times A_2 \times \cdots,
-\]
-定义为 $X$ 中元素的所有 $\omega$ 元组的集合, 使得对于每一个 $i,\ x_i\in A_i$.
-\end{definition}
-
-% 关于实数集完备性的一些基本定理
-\section{关于实数集完备性的一些基本定理}
-
-\subsection{闭区间套定理 (柯西-康托尔原理 Cauchy-Cantor)}
-
-\begin{definition}{集合套}
-设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
-\end{definition}
-
-\begin{theorem}{柯西-康托尔原理}{R2}
-	对于任何闭区间的渐降列 $I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$, 可以找到一点 $c\in\R$ 属于所有这些闭区间.如果除此之外还已知该序列为闭区间套序列, 则 $c$ 是所有闭区间的唯一公共点.
-\end{theorem}
-
-\begin{idea*}
-使用完备性定理可证.	
-\end{idea*}
-
-\begin{proof}
-首先	指出, 对于上述序列中的任何两个闭区间 $I_m = [a_m, b_m], I_n = [a_n, b_n]$ 必有 $a_m \le b_n$.因此, 对于数集 $A =\{a_m | m\in \N\},  B= \{b_n| n\in \N\}$, 根据完备性公理, 可以找到数 $c\in\R$ 使得对于 $\forall a_m\in A, \forall b_n\in B$ 有 $a_m\le c\le b_n$.特别的, 对于 $\forall n\in N$ 都有 $a_n\le c \le b_n$, 即点 $c$ 属于所有闭区间 $I_n$.
-
-现在, 假设有两个不同的有相似性质的点 $c_1, c_2$, 假如 $c_1 < c_2$, 则对于任何 $n\in\N$ 均有,  $a_n \le c_1 < c_2 \le b_n$ 从而 $0 < c_1 - c_2 < b_n - a_n$.于是, 上述序列中的每一个闭区间的长度不可能小于 $c_2 - c_1 > 0$, 这意味着, 如果在该序列中有长度任意小的闭区间则公共点是唯一的. 
-\end{proof}
-\smallskip
-
-\subsection{有限覆盖定理 (博雷尔-勒贝格原理 Borel–Lebesgue、海涅-博雷尔原理 Heine-Borel)}
-
-\begin{definition}{覆盖}
-设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族, 如果 $Y\subset \bigcup\limits_{X\in S}X$, 那么我们说 $S$ 覆盖集合 $Y$.
-\end{definition}
-
-集合族 $S = {X}$ 的子集也是一个集合组, 称为 $S$ 的子族.因此, 集合族的子族本身是同一类型的集合族.
-
-\begin{theorem}{博雷尔-勒贝格原理}{R3}
-在覆盖一个闭区间的任何开区间族中都有覆盖该闭区间的有限子族.
-\end{theorem}
-\begin{proof}
-设 $S =\{U\}$ 是覆盖闭区间 $[a, b] = I_1$ 的开区间族, $U$ 是构成 $S$ 的开区间.假如闭区间 $I_1$ 不能被 $S$ 中有限个开区间覆盖, 我们将闭区间 $I_1$ 等分为两个闭区间, 则其中至少有一个不能被 $S$ 中有限个开区间覆盖, 我们把这个区间记为 $I_2$, 我们再通过类似的方法得到 $I_3, I_4, \cdots$.
-
-于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$, 而且根据其构造方法可知, 第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$, 所以在此序列中有长度任意小的闭区间, 根据闭区间套引理, 存在一点 $c$ 包含于所有闭区间 $I_n$, 而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon,  c+\varepsilon)$, 在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$, 所以有 $I_n \subset U$, 这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾.
-\end{proof}
-\smallskip
-
-\subsection{极限点定理(波尔查诺-魏尔斯特拉斯原理 Bolzano-Weiestrass)}
-极限点定理也称为致密性定理, 其有另一种表述将在后文介绍 (定理 \ref{thm:R4'}) .
-
-\begin{definition}{极限点}
-如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集, 点 $p$ 就称为集合 $X$ 的极限点.
-\end{definition}
-
-\begin{theorem}{波尔查诺-魏尔斯塔拉斯原理}{R4}
-任何无穷有界数集至少有一个极限点.
-\end{theorem}
-\begin{proof}
-设 $X$ 是 $\R$ 的给定子集并且满足引理条件, 由有界集的定义可知, 某闭区间 $I = [a, b] \subset\R$ 包含集合 $X$.我们证明集合 $I$ 上至少有一个点是 $X$ 的极限点.
-
-假如并非如此, 每个点 $x \in I$ 就会有这样的邻域 $U(x)$, 其中或者根本没有 $X$ 中的点, 或者只有有限个属于集合 $X$ 的点, 对每个点 $x\in I$ 构造出的这种邻域的总体 $\{U\}$ 组成闭区间 $I$ 的开区间覆盖, 根据有限覆盖引理, 可以从上述覆盖中, 选出有限个开区间 $I(x_1), \cdots, U(x_n)$, 使它们仍覆盖区间 $I$.因为 $X \subset I$, 所以它们也覆盖集合 $X$.然而 $X$ 并不是有限集, 我们得到了矛盾.
-\end{proof}
-\smallskip
-
-\section{集合的势}
-
-\subsection{集合的势}
-\begin{definition}{势}
-集合 $A$ 的基数或者势, 记为 $|A|$ 或 $\mathrm{card}\ A$, 有限集的元素个数是一个自然数, 势标志着该集合的大小.对于有限集, 势为其元素的数量.但对于有限集合大小并不是我们要研究的对象, 康托尔在建立集合论初就是为了研究无穷集合, 我们称自然数集
+\subsection{集合的基数}
+\begin{definition}{基数}
+集合 $A$ 的基数或者势, 记为 $|A|$ 或 $\mathrm{card}\ A$, 有限集的元素个数是一个自然数, 基数标志着该集合的大小. 对于有限集, 基数为其元素的数量.但对于有限集合大小并不是我们要研究的对象, Cantor 在建立集合论初就是为了研究无穷集合, 我们称自然数集
 \[
 	\mathbb{N}=\{1, 2, \cdots\}
 \]
@@ -1175,7 +1517,7 @@ f(y) = B.
 	实数集 $\R$ 的基数一般记为 $c$, 即连续统的势.
 \end{definition}
 
-\begin{theorem}[康托尔定理]
+\begin{theorem}{Cantor 定理}
 连续统的势大于自然数集的势, 即
 \[
 \lvert \N \rvert < \lvert \R \rvert.
@@ -1236,13 +1578,126 @@ f(y) = B.
 连续统假设是一个在 ZFC 公理化集合论体系内不可证(不能被证明、也不能被证伪)的命题.
 \section{良序集}
 
-% 这一部分还不完善	<-------------------------- HERE
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
 
-\section{*数学史: 集合论与康托尔}
 
-康托尔出生于圣彼得堡, 但他一生大部分时间是在德国度过的, 
 
-% 这一部分还不完善	<-------------------------- HERE
+
+% 关于实数集完备性的一些基本定理
+\section{关于实数集完备性的一些基本定理}
+
+\subsection{闭区间套定理 (Cauchy-Cantor 原理)}
+
+\begin{definition}{集合套}
+设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
+\end{definition}
+
+\begin{theorem}{Cauchy-Cantor 原理}{R2}
+	对于任何闭区间的渐降列 $I_1\supset I_2\supset \cdots \supset I_n \supset\cdots$, 可以找到一点 $c\in\R$ 属于所有这些闭区间.如果除此之外还已知该序列为闭区间套序列, 则 $c$ 是所有闭区间的唯一公共点.
+\end{theorem}
+
+\begin{idea*}
+使用完备性定理可证.	
+\end{idea*}
+
+\begin{proof}
+首先	指出, 对于上述序列中的任何两个闭区间 $I_m = [a_m, b_m], I_n = [a_n, b_n]$ 必有 $a_m \le b_n$.因此, 对于数集 $A =\{a_m | m\in \N\},  B= \{b_n| n\in \N\}$, 根据完备性公理, 可以找到数 $c\in\R$ 使得对于 $\forall a_m\in A, \forall b_n\in B$ 有 $a_m\le c\le b_n$.特别的, 对于 $\forall n\in N$ 都有 $a_n\le c \le b_n$, 即点 $c$ 属于所有闭区间 $I_n$.
+
+现在, 假设有两个不同的有相似性质的点 $c_1, c_2$, 假如 $c_1 < c_2$, 则对于任何 $n\in\N$ 均有,  $a_n \le c_1 < c_2 \le b_n$ 从而 $0 < c_1 - c_2 < b_n - a_n$.于是, 上述序列中的每一个闭区间的长度不可能小于 $c_2 - c_1 > 0$, 这意味着, 如果在该序列中有长度任意小的闭区间则公共点是唯一的. 
+\end{proof}
+\smallskip
+
+\subsection{有限覆盖定理 (Borel–Lebesgue 原理, Heine-Borel 原理)}
+
+\begin{definition}{覆盖}
+设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族, 如果 $Y\subset \bigcup\limits_{X\in S}X$, 那么我们说 $S$ 覆盖集合 $Y$.
+\end{definition}
+
+集合族 $S = {X}$ 的子集也是一个集合组, 称为 $S$ 的子族.因此, 集合族的子族本身是同一类型的集合族.
+
+\begin{theorem}{Borel–Lebesgue 原理}{R3}
+在覆盖一个闭区间的任何开区间族中都有覆盖该闭区间的有限子族.
+\end{theorem}
+\begin{proof}
+设 $S =\{U\}$ 是覆盖闭区间 $[a, b] = I_1$ 的开区间族, $U$ 是构成 $S$ 的开区间.假如闭区间 $I_1$ 不能被 $S$ 中有限个开区间覆盖, 我们将闭区间 $I_1$ 等分为两个闭区间, 则其中至少有一个不能被 $S$ 中有限个开区间覆盖, 我们把这个区间记为 $I_2$, 我们再通过类似的方法得到 $I_3, I_4, \cdots$.
+
+于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$, 而且根据其构造方法可知, 第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$, 所以在此序列中有长度任意小的闭区间, 根据 \hyperref[thm:R2]{闭区间套定理}, 存在一点 $c$ 包含于所有闭区间 $I_n$, 而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon,  c+\varepsilon)$, 在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$, 所以有 $I_n \subset U$, 这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾.
+\end{proof}
+\smallskip
+
+\subsection{极限点定理 (Bolzano-Weierstrass 原理)}
+极限点定理也称为致密性定理, 其有另一种表述将在后文介绍 (\hyperref[thm:R4']{致密性定理}) .
+
+\begin{definition}{极限点}
+如果点 $p\in\R$ 的任何邻域都包含集合 $X\subset\R$ 的一个无穷子集, 点 $p$ 就称为集合 $X$ 的极限点.
+\end{definition}
+
+\begin{theorem}{Bolzano-Weierstrass 原理}{R4}
+任何无穷有界数集至少有一个极限点.
+\end{theorem}
+\begin{proof}
+设 $X$ 是 $\R$ 的给定子集并且满足定理条件, 由有界集的定义可知, 某闭区间 $I = [a, b] \subset\R$ 包含集合 $X$. 我们证明集合 $I$ 上至少有一个点是 $X$ 的极限点.
+
+假如并非如此, 每个点 $x \in I$ 就会有这样的邻域 $U(x)$, 其中或者根本没有 $X$ 中的点, 或者只有有限个属于集合 $X$ 的点, 对每个点 $x\in I$ 构造出的这种邻域的总体 $\{U\}$ 组成闭区间 $I$ 的开区间覆盖, 根据 \hyperref[thm:R3]{有限覆盖定理}, 可以从上述覆盖中, 选出有限个开区间 $I(x_1), \cdots, U(x_n)$, 使它们仍覆盖区间 $I$.因为 $X \subset I$, 所以它们也覆盖集合 $X$.然而 $X$ 并不是有限集, 我们得到了矛盾.
+\end{proof}
+\smallskip
+
+\section{函数}
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\section{度量空间}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\section{泛函}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\section{测度}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\section{*数学史: 集合论与 Cantor}
+
+Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的, 
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
 
 
 
@@ -1252,9 +1707,9 @@ f(y) = B.
 
 \chapter{极限论}
 
-在讨论初等数学与高等数学的区别时, 极限思想往往被认为是二者之间最根本的区别, 也是分析学的基础. 初等数学侧重于 "常量" 与 "静态" 的计算, 高等数学则侧重于 "变量" 与 "动态" 的变化过程，而极限正是研究动态问题的最基本手段。
+在讨论初等数学与高等数学的区别时, 极限思想往往被认为是二者之间最根本的区别, 也是分析学的基础. 初等数学侧重于 ``常量" 与 ``静态" 的计算, 高等数学则侧重于 "变量" 与 ``动态" 的变化过程，而极限正是研究动态问题的最基本手段。
 
-事实上, 极限思想很早就在数学家心中萌生. 无论是刘徽的割圆术, 还是芝诺的阿基里斯追龟悖论, 都体现了极限思想; 只不过, 在柯西（Cauchy）系统建立极限理论之前的两千多年间, 数学界长期未能给出普遍接受的严格定义。
+事实上, 极限思想很早就在数学家心中萌生. 无论是刘徽的割圆术, 还是芝诺的阿基里斯追龟悖论, 都体现了极限思想; 只不过, 在 Cauchy 系统建立极限理论之前的两千多年间, 数学界长期未能给出普遍接受的严格定义。
 
 \section{数列极限与性质}
 在前面我们介绍了序列的定义.
@@ -1275,7 +1730,7 @@ f(y) = B.
 \]
 \end{definition}
 
-接下来指出数列极限定义的另一种常见表述 (柯西, 达朗贝尔 D’Alembert,).
+接下来指出数列极限定义的另一种常见表述 (Cauchy, D’Alembert,).
 
 \begin{definition}{数列极限的 $\varepsilon - N$}
 数 $A \in \R$ 称为数列 $\{x_n\}$ 的极限, 如果对于任何 $\varepsilon >0$ 都存在序号 $N$, 使得对于一切 $n>N$, 都有 $\lvert x_n - A \rvert < \varepsilon$, 即
@@ -1286,25 +1741,6 @@ f(y) = B.
 如果 $\lim\limits_{n\to\infty} x_n = A$, 我们就说数列 $\{x_n\}$ 收敛于 $A$ 或趋于 $A$, 记作 $n\to\infty$ 时 $x_n \to A$. 有极限的数列称为收敛 (Convergent) 数列, 没有极限的数列称为发散 (Divergent) 数列. 
 \end{definition}
 
-%为了描述发散数列的性质, 我们引入上下极限的概念. 首先我们自然想到将数列
-
-%% 子列
-%\begin{definition}{子列}
-%如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$ 称为数列的子列.
-%\end{definition}
-%
-%% 极限点
-%\begin{definition}{极限点}
-%称数列的一个收敛子列的极限为数列的一个极限点.
-%\end{definition}
-%
-%% 上下极限
-%\begin{definition}{上下极限}
-%数列的所有极限点的上确界(下确界)为上极限(下极限)记为
-%\[
-%	\varlimsup_{n\to\infty}\{x_n\}
-%\]
-%\end{definition}
 
 \subsection{收敛数列的性质}
 接下来我们研究收敛数列所拥有的分析性质, 不过未来将看到这些性质并非数列所所特有的. 
@@ -1379,7 +1815,7 @@ f(y) = B.
 \smallskip
 
 % 保号性
-\begin{corollary}{数列极限的保号性}
+\begin{corollary}{数列极限的保号性}{Slimit_p4}
 	设 $\lim\limits_{n\to\infty} x_n = A \neq 0$, 则存在 $N \in \N^+$, 当 $n > N$ 时有
 	\ITEMS
 		\item 若 $A > 0$,
@@ -1397,7 +1833,7 @@ f(y) = B.
 \smallskip
 
 % 迫敛性
-\begin{theorem}{数列极限的迫敛性 (夹逼定理)}
+\begin{theorem}{数列极限的迫敛性 (夹逼定理)}{sandwich}
 设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 也收敛于该极限. 
 \end{theorem}
 
@@ -1423,7 +1859,7 @@ f(y) = B.
 除了上述性质外, 我们也需要讨论在极限过程中代数运算的性质.  
 
 % 运算性质
-\begin{theorem}{极限的四则运算}
+\begin{theorem}{极限的四则运算}{Slimit_p5}
 设 $\{x_n\}, \{y_n\}$ 是两个数列, 如果 $\lim\limits_{n\to\infty} x_n = A, \ \lim\limits_{n\to\infty} y_n = B$ 则
 	\ITEMS
 		\item $\lim\limits_{n\to\infty} (x_n + y_n) = A + B$.
@@ -1567,7 +2003,7 @@ f(y) = B.
 	\]	
 \end{definition}
 
-\begin{theorem}{无穷大量与无穷小量的关系}
+\begin{theorem}{无穷大量与无穷小量的关系}{inftyrelation}
 	设 $x_n \neq 0$, 则 $\{x_n\}$ 是无穷大量的充要条件是 $\left\{\frac{1}{x_n}\right\}$ 是无穷小量.
 \end{theorem}
 
@@ -1577,17 +2013,25 @@ f(y) = B.
 	同理可证充分性.
 \end{proof}
 
-% 斯托茨定理
-\subsection{施笃兹定理}
+% 这一部分还不完善	<-------------------------- HERE
+
+% 无穷小的阶
+
+
+
+
+
+% Stolz定理
+\subsection{Stolz 定理}
 
 我们在处理无穷大量与无穷小量的商的极限问题时, 常常会遇到形如 $\infty/\infty$ 或 $0/0$ 的极限, 其结果可能是无穷大量或实数极限, 但也有可能不存在极限, 我们称这种极限为不定式或待定式 (Indeterminate form).
 
 \begin{remark}
-虽然也有其他的形如 $0\cdot \infty , 1^{\infty }, \infty -\infty , 0^{0}, \infty ^{0}$ 等不定式, 但总是可以将其化为 $\infty/\infty$ 或 $0/0$ 的不定式. 实际上 $\infty/\infty$ 型或 $0/0$ 型极限本质是相同的. 但是针对这两种情形, 施笃兹定理的内容有一些细微的差异.
+虽然也有其他的形如 $0\cdot \infty , 1^{\infty }, \infty -\infty , 0^{0}, \infty ^{0}$ 等不定式, 但总是可以将其化为 $\infty/\infty$ 或 $0/0$ 的不定式. 实际上 $\infty/\infty$ 型或 $0/0$ 型极限本质是相同的. 但是针对这两种情形, Stolz 定理的内容有一些细微的差异.
 \end{remark}
 
 
-\begin{theorem}{施笃兹定理 ($\infty / \infty$ 型)}
+\begin{theorem}{Stolz 定理 ($\infty / \infty$ 型)}{stolz_1}
 	设有两数列 $\{x_n\}, \{y_n\}$, 其中 $\{y_n\}$ 是严格单调递增数列, 有 $y_n \to +\infty$, 且
 	\[
 		\lim_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = a
@@ -1603,7 +2047,7 @@ f(y) = B.
 \end{idea*}
 
 \begin{proof}
-	\begin{enumerate}
+	\ITEMS
 		\item 当 $a = 0$ 时, 由 $\lim\limits_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = a$ 可知 $\forall \varepsilon > 0,\ \exists N',\ \forall n > N'$ 有
 		\[
 			\lvert x_n - x_{n-1} \rvert < \frac{\varepsilon}{2} (y_n - y_{n-1})
@@ -1633,13 +2077,13 @@ f(y) = B.
 		
 		\item 当 $a \in \R\setminus\{0\}$ 时, 基本想法是构造数列使得我们可以应用 $a = 0$ 情况下的结论. 于是便想到如下构造
 		\[
-			x_n' = x_n - a y_n
+			x_n' = x_n - a y_n.
 		\]
 		于是有
 		\[
 			\lim_{n\to\infty} \frac{x_n' - x_{n-1}'}{y_n - y_{n-1}} = \lim_{n\to\infty} \frac{x_n - a y_n - x_{n-1} + a y_{n-1}}{y_n - y_{n-1}} = \lim_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} - a = 0,
 		\]
-		显然由 $a = 0$ 情况的结论可知 $\lim\limits_{n\to\infty} \frac{x_n'}{y_n} = 0$ 从而
+		显然由 $a = 0$ 情况下的结论可知 $\lim\limits_{n\to\infty} \frac{x_n'}{y_n} = 0$ 从而
 		\[
 			\lim_{n\to\infty} \frac{x_n}{y_n} = a.
 		\]
@@ -1649,51 +2093,186 @@ f(y) = B.
 		\[
 			x_n - x_{n-1} > y_n - y_{n-1},
 		\] 
-		则可知 $\{x_n\}_{n>N}$ 也是严格单调递增数列, 且可知 $\{x_n\}$ 为无穷大量. 于是便有
+		则可知 $\{x_n\}_{n>N}$ 也是严格单调递增数列, 且可知 $\{x_n\}$ 为正无穷大量. 由于
 		\[
-			\lim_{n \to \infty} \frac{y_n - y_{n-1}}{x_n -x_{n-1}} = 0.
+			\lim_{n \to \infty} \frac{x_n -x_{n-1}}{y_n - y_{n-1}} = +\infty.
 		\]
-		应用 $a = 0$ 情况的结论可知
+		由定理 \hyperref[thm:inftyrelation]{定理 3.8} 可得
+		\[
+			\lim_{n \to \infty} \frac{y_n - y_{n-1}}{x_n -x_{n-1}} = 0,
+		\]
+		那么我们可以使用 $a = 0$ 情况下的结论得到
 		\[
 			\lim_{n \to \infty} \frac{y_n}{x_n} = 0,
 		\]
-		即
-		[
+		再由 \hyperref[thm:inftyrelation]{定理 3.8} 有
+		\[
 			\lim_{n \to \infty} \frac{x_n}{y_n} = +\infty.
 		\]
 		\smallskip
 		
-		\item 当 $a = -\infty$ 时,
+		\item 当 $a = -\infty$ 时, 注意到若令 $x_n' = -x_n$ 则可变为 $a = +\infty$ 的情况, 则可得
+		\[
+			\lim_{n \to \infty} \frac{x_n}{y_n} = -\infty.
+		\]
 		
-		
-	\end{enumerate}
-		
+	\ITEME
 \end{proof}
 \smallskip
 
 \begin{remark}
-假若 $a = \infty$ 而非定号无穷大那么施笃兹定理不成立.
+假若 $a = \infty$ 而非定号无穷大, 那么 Stolz 定理不成立.
 \end{remark}
+\smallskip
 
-
-\begin{theorem}{施笃兹定理 ($0/0$ 型)}
-	
+\begin{theorem}{Stolz 定理 ($0/0$ 型)}{stolz_2}
+	设有两数列 $\{x_n\}, \{y_n\}$, 其中 $\{y_n\}$ 是严格单调递增数列, 有 $x_n \to 0,\ y_n \to 0$, 且
+	\[
+		\lim_{n\to\infty} \frac{x_n - x_{n+1}}{y_n - y_{n+1}} = a
+	\]
+	其中 $a \in \R \cup \{\pm \infty\}$, 则
+	\[
+		\lim_{n\to\infty} \frac{x_n}{y_n} = a.
+	\]
 \end{theorem}
 
 \begin{proof}
-	
+	\ITEMS
+		\item 当 $a \in \R$ 时, 由极限定义有, 对于 $\forall \varepsilon > 0$, 存在 $N \in \N$ 使得 $n > N$ 时有
+		\[
+			a - \varepsilon < \frac{x_n - x_{n+1}}{y_n - y_{n+1}} < a + \varepsilon,
+		\]
+		则有
+		\[
+			(a - \varepsilon)(y_n - y_{n+1}) < x_n - x_{n+1} < (a + \varepsilon)(y_n - y_{n+1}),
+		\]
+		进一步可得, 对任意 $p \ge 1$
+		\[
+			(a - \varepsilon)(y_n - y_{n+p}) < x_n - x_{n+p} < (a + \varepsilon)(y_n - y_{n+p}),
+		\]
+		令 $p \to +\infty$ 有
+		\[
+			y_n (a - \varepsilon) < x_n < y_n (a + \varepsilon),
+		\]
+		再同时除以 $y_n$ 有
+		\[
+			a - \varepsilon < \frac{x_n}{y_n} < a + \varepsilon.
+		\]
+		即
+		\[
+			\lim_{n\to\infty} \frac{x_n}{y_n} = a.
+		\]
+		\smallskip
+		
+		\item 当 $a = +\infty$ 时, 由无穷大量的定义可知, 对于给定 $C > 0$, 存在 $N \in \N$ 使得对任意 $n > N$ 有
+		\[
+			x_n − x_{n+1} > C (y_n − y_{n+1}),
+		\]
+		进一步有对任意 $n > N$ 和 $p \ge 1$ 有
+		\[
+			x_n − x_{n+p} > C (y_n − y_{n+p}).
+		\]
+		令 $p \to +\infty$ 得到
+		\[
+			x_n > C.
+		\]
+		即
+		\[
+			\lim_{n\to\infty} \frac{x_n}{y_n} = a.
+		\]
+		\smallskip
+		
+		\item 当 $a = -\infty$ 时, 可以用类似 $\frac{\infty}{\infty}$ 的证明方法证明.
+	\ITEME
 \end{proof}
 
+\begin{remark}
+注意两种情形下的区别, 前者为后项减前项, 后者为前项减后项.	
+\end{remark}
 
+% Toeplitz 定理
+% 这一部分还不完善	<-------------------------- HERE
+
+
+% 级数初步
+\subsection{级数初步}
+\begin{definition}{级数}
+我们将表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 
+\[
+	\sum\limits_{n=1}^\infty a_n \quad\text{或}\quad \sum\limits_{n \ge 1} a_n ,
+\]
+通常称为级数或无穷级数 (Infinite series). 其中数列 $\{a_n\}$ 的元素称为级数的项, 而 $a_n$ 称通项 (General form) 为级数的第 $n$ 项. 
+
+\[
+	s_n := \sum\limits_{k=1}^n a_k,
+\] 
+称为级数的部分和 (Partial sum) 或前 $n$ 项和.
+
+如果级数的部分和的数列收敛就称级数收敛, 否则称级数发散. 如果级数部分和数列的极限存在, 则 $\lim\limits_{n\to\infty} s_n = s$ 称为级数的和 (Sum), 做出如下记号.
+\[
+	\sum_{n=1}^\infty a_n := s.
+\]
+\end{definition}
+
+\begin{remark}
+	收敛级数的本质是一类数列极限, 即部分和数列极限, 可以使用数列极限的性质.
+\end{remark}
+
+我们接下来简单分析一下收敛级数的性质.
+\begin{theorem}{收敛级数的代数性质}
+	设有两个收敛级数 $\sum\limits_{n = 1}^\infty a_n = a, \sum\limits_{n = 1}^\infty b_n = b$, 则对于任意的 $\alpha , \beta \in \R$, 数列 $\sum\limits_{n = 1}^\infty (\alpha a_n + \beta b_n)$ 也收敛, 且有
+	\[
+		\sum\limits_{n = 1}^\infty (\alpha a_n + \beta b_n) = \alpha\sum\limits_{n = 1}^\infty a_n + \beta\sum\limits_{n = 1}^\infty b_n.
+	\]
+\end{theorem}
+
+\begin{proof}
+	由\hyperref[thm:Slimit_p5]{数列极限代数性质}显然. 但要注意发散数列不一定满足上述性质.
+\end{proof}
+
+\begin{theorem}{收敛级数的必要条件}
+	设有收敛级数 $\sum\limits_{n = 1}^\infty a_n = a$ 则
+	\[
+		\lim_{n \to \infty} a_n = 0.
+	\]
+\end{theorem}
+
+\begin{proof}
+	由 $a_n = s_n - s_{n-1}$ 易证.
+\end{proof}
+
+%\subsubsection{级数的 Cauchy 准则}
+%\begin{theorem}{级数收敛的 Cauchy 准则} 
+%级数 $\sum\limits_{n=1}^\infty a_n$ 收敛的充要条件为, 对任何 $\varepsilon > 0$, 可以求出数 $N \in \N$, 使得从 $m\ge n > N$ 可知 $\lvert a_n + \cdots + a_m \rvert < \varepsilon$.
+%\end{theorem}
+
+%\begin{corollary}
+%	如果在一个级数中只改变有限的项, 则级数敛散性不变.
+%\end{corollary}
+%
+%\begin{corollary}
+%	级数 $\sum_{n=1}^\infty a_n$ 收敛的一个必要条件为, 它的项在 $n\to\infty$ 时趋于零, 即 $\lim_{n\to\infty} a_n = 0$
+%\end{corollary}
+
+\begin{example}{}{geometricseries}
+	考虑无穷几何级数 $\lim\limits_{n=1}^\infty q^{n-1}$ 的敛散性
+\end{example}
+
+\begin{solution}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{solution}
+
+% 这一部分还不完善	<-------------------------- HERE
 
 % 审敛法
 \section{数列极限的审敛法}
-\subsection{柯西准则}
-\begin{theorem}{柯西准则}{R5}
+\subsection{Cauchy 准则}
+\begin{theorem}{Cauchy 准则}{R5}
 	对于数列 $\{x_n\}$ 收敛的充要条件是, 对于任意给定的正数 $\varepsilon$, 存在正整数 $N$, 使得当 $n, m > N$ 时, 满足 
 	\[
 		|x_n-x_m| < \varepsilon.
-	\] 我们称满足以上条件的数列为基本数列(柯西数列).
+	\]
+	我们称满足以上条件的数列为基本数列 (Cauchy 数列).
 \end{theorem}
 
 \begin{idea*}
@@ -1715,7 +2294,7 @@ f(y) = B.
 	
 	我们做出如下定义 $a_n := \inf\limits_{k \ge n} x_k ,\ b_n := \sup\limits_{k \ge n} x_k$.
 	
-	则显然有 $a_n \le a_{n+1} \le b_{n+1} \le b_n$. 根据闭区间套定理可得闭区间套列 $[a_n, b_n]$ 存在一公共点 $A$. 
+	则显然有 $a_n \le a_{n+1} \le b_{n+1} \le b_n$. 根据 \hyperref[thm:R2]{闭区间套定理} 可得闭区间套列 $[a_n, b_n]$ 存在一公共点 $A$. 
 	
 	对于任何 $n \in \N$我们有
 	\[
@@ -1746,13 +2325,13 @@ f(y) = B.
 \end{proof}
 \smallskip
 
-
+\subsection{单调数列极限存在准则}
 \begin{definition}{单调性}
 	对于数列 $\{x_n\}$, 如果 $\forall n\in\N\ (x_n < x_{n+1})$, 则称之为严格单调递增数列(Strictly increasing sequence); 如果 $\forall n\in\N\ (x_n \le x_{n+1})$, 则称之为单调递增数列 (Monotonically increasing sequence) 或单调不减数列；如果 $\forall n\in\N\ (x_n > x_{n+1})$, 则称之为严格单调递减数列 (Strictly decreasing sequence); 如果 $\forall n\in\N\ (x_n \ge x_{n+1})$, 则称之为单调递减数列 (Monotonically decreasing sequence) 或单调不增数列.
 \end{definition}
 
-% 魏尔斯特拉斯定理
-\begin{theorem}{单调数列极限存在准则 (魏尔斯特拉斯定理)}{R6}
+% Weierstrass 定理
+\begin{theorem}{单调数列极限存在准则 (Weierstrass 定理)}{R6}
 单调不减数列的极限存在的充要条件是有上界.	
 \end{theorem}
 
@@ -1782,7 +2361,7 @@ f(y) = B.
 	\]
 	有极限定义可知存在 $N$ 使得对于 $\forall n > N$, 有 $\frac{n+1}{nq} < 1$. 即对于 $\forall n > N$ 时 $\{x_n\}$ 单调递减. 由于数列极限的有限项不影响数列的收敛性, 我们只需求出数列 $\{x_n\}_{n > N}$ 的极限.
 	
-	显然数列 $\{ x_n \}_{n > N}$ 的各项值恒大于 $0$, 即数列下有界, 根据定理 \ref{thm:R6} 可知其极限存在.
+	显然数列 $\{ x_n \}_{n > N}$ 的各项值恒大于 $0$, 即数列下有界, 根据 \hyperref[thm:R6]{Weierstrass 定理} 可知其极限存在.
 	
 	设 $x = \lim\limits_{n \to \infty} x_{n}$ 有
 	\[
@@ -1806,105 +2385,105 @@ f(y) = B.
 \end{example}
 
 \begin{solution}
-	当 $q = 0$ 时结论显然成立, 
-
-	% 这一部分还不完善	<-------------------------- HERE
+	当 $q = 0$ 时结论显然成立. $q \neq 0$ 时因为 $\left\lvert \frac{q^n}{n!} \right\rvert = \frac{\lvert q \rvert ^n}{n!}$, 所以不妨设 $q > 0$.
+	
+	注意到该数列的通项公式为 $x_{n+1} = \frac{q}{n+1} x_n$, 考虑用 \hyperref[thm:R6]{Weierstrass 定理} 证明, 显然存在 $N > 0$ 使得对 $\forall n > N$ 都有 
+	\[
+		0 < \frac{q}{n+1} < 1
+	\]
+	即数列 $\{x_n\}_{n>N}$ 是严格单调递减数列, 而显然再由数列非负由 \hyperref[thm:R6]{Weierstrass 定理} 可得极限存在. 因此设极限为 $x$ 有
+	\[
+		x = \lim_{n\to\infty} x_{n+1} = \lim_{n\to\infty} \frac{q}{n+1} x_n = \lim_{n\to\infty} \frac{q}{n+1} \lim_{n\to\infty} x_n = 0 \cdot x = 0.
+	\]
 \end{solution}
+\begin{remark}
+	若极限不存在时不能设其为 $x$.
+\end{remark}
 \smallskip
 
 \subsection{三个重要常数}
 
-我们先来介绍我们最熟悉的常数, 圆周率 $\pi$, 即圆的周长与直径之比, 约等于 $3.14159$. 其符号取自 "周长" 希腊语 "πϵριµϵρoζ" 的首字母.
+我们先来介绍我们最熟悉的常数, 圆周率 $\pi$, 即圆的周长与直径之比, 约等于 $3.14159$. 其符号取自 ``周长" 希腊语 ``πϵριµϵρoζ" 的首字母, 实际上 $\pi$ 在 1706 年才被 William Jones 在其著作 Synopsis Palmariorium Mathesios 中用来表示圆周率.
 
-% 这一部分还不完善	<-------------------------- HERE
+$\pi$ 之所以是这么重要的一个常数, 是因为 $\pi$ 与几何学的紧密联系, 无论是欧氏几何的圆, 周期现象还是旋转对称, 都会自然产生 $\pi$. 所以 $\pi$ 是几何内在的常数，不依赖几何上的尺度.
 
-接下来我们介绍自然常数 $e$.
+\smallskip
 
-% 这一部分还不完善	<-------------------------- HERE
+在十六世纪后, 我们常用无穷级数计算 $\pi$ 的值, 并由此衍生出了千奇百怪的公式, 它们之所以长得奇怪实际上是为了追求更快的收敛速度, 使每计算一项可以增加更多位的十进制精度, 例如 Ramanujan 著名的公式
+\[
+\frac{1}{\pi} = \frac{2\sqrt{2}}{9801}\sum_{n=0}^{\infty}\frac{(4n)!}{(n!)^4}\frac{1103+26390n}{396^{4n}}.
+\]
+以及受其启发, 现代计算 $\pi$ 常用的 Chudnovsky 公式, 计算机就使用此公式计算 $\pi$ 的值.
+\[
+\frac{1}{\pi} = 12\sum_{n=0}^{\infty}\frac{(-1)^n(6n)!(13591409+545140134n)}{(3n)!(n!)^3\,640320^{3n+3/2}}.
+\]
+\smallskip
 
-最后介绍一个十分神秘的数学常数 $\gamma$.
-
-% 这一部分还不完善	<-------------------------- HERE
-
-
-\subsection{数列与部分极限}
-
-
-我们曾经介绍过波尔查诺-魏尔斯特拉斯原理 (定理\ref{thm:R4}) , 在这里给出另一等价表述.
-\begin{theorem}{波尔查诺-魏尔斯特拉斯原理}{R4'}
-	每个有界实数列都含有收敛的子列.
+与 $\pi$ 相关的还有一个有趣的问题, 著名的巴塞尔问题, 即计算所有自然数平方的导数和, 惊人的是全体自然数竟然以这种奇妙的方式与几何上的常数 $\pi$ 建立起了联系.
+\begin{theorem}{巴塞尔问题}{basel}
+	\[
+		\sum_{n = 1}^{\infty} \frac{1}{n^{2}} = \frac{1}{1^{2}} + \frac{1}{2^{2}} + \frac{1}{3^{2}} + \frac{1}{4^{2}} + \cdots = \frac{\pi^{2}}{6}
+	\]
 \end{theorem}
-\begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{proof}
+巴塞尔问题由 Pietro Mengoli 于 1644 年提出. 1735 年, Euler 给出了第一个不严格的证明, 并于 1741 年给出严格的证明. 巴塞尔问题得名于 Euler 居住的瑞士城市巴塞尔. 由于与之相关的证明需使用积分与无穷级数的知识, 我将其放在 \hyperlink{A2}{附录 A.2}.
+\bigskip
 
+接下来我们介绍自然常数 $e$. Jacob Bernoulli 于 1683 年时研究连续复利问题时发现了常数 $e$. Euler在 1727 年开始用e来表示这个常数, 所以也常称 $e$ 为 Euler 数.
 
-\begin{lemma}
-	从每一个实数列中都可以选出一个收敛的或趋于无穷的子列.
+$e$ 在分析学中的重要性与算数中的 $1$ 和 几何中的 $\pi$ 的重要程度相当. 连续变化, 增长率, 指数过程都会自然产生 $e$, 它与指对幂函数与极限过程都有着深刻的联系.
+
+我们先介绍连续复利问题, 连续复利是指利息在无限短的间隔内进行计算利息并加入本金产生新利息，即计息频率趋于无穷大的极限模型. 其中我们假设利息为计息频率的倒数, 则有下式
+\[
+	\lim_{n\to\infty} \left(1 + \frac{1}{n}\right)^n.
+\]
+
+接下来我们证明该数列收敛. 首先我们给出以下引理.
+% Bernoulli 不等式
+\begin{lemma}{Bernoulli 不等式}{bernoulli}
+	对于 $n \in \N, \alpha > -1$ 有
+	\[
+		(1 + \alpha)^n \ge 1 + n\alpha.
+	\]	
 \end{lemma}
 \begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
+	$n = 1$ 时结论显然成立, 考虑用数学归纳法证明. 假设 $(1 + \alpha)^n \ge 1 + n\alpha$ 成立, 证明 $(1 + \alpha)^{n+1} \ge 1 + (n + 1)\alpha$ 成立.
+	\[
+		(1 + \alpha)^{n+1} = (1 + \alpha) (1 + \alpha)^n \ge (1 + \alpha) (1 + n\alpha) = 1 + \alpha + n\alpha + n \alpha^2 \ge 1 + (n + 1)\alpha.
+	\]
+	于是由归纳原理可知 Bernoulli 不等式成立.
 \end{proof}
 
-% 上下极限
+\begin{example}
+	证明数列 $a_n = \left\{ \left(1 + \frac{1}{n}\right)^n \right\}$ 收敛.
+\end{example}
 
-% 实数集完备性的基本定理
-\subsection{实数集完备性的基本定理}
+\begin{solution}
+	构造如下数列 
+	\[
+		b_n = a_n \cdot \left(1 + \frac{1}{n}\right) = \left(1 + \frac{1}{n}\right)^{n+1},
+	\]
+	判断 $b_n$ 的单调性, 即比较 $\frac{b_{n-1}}{b_n}$ 与 $1$ 的大小.
+	\[
+		\frac{b_{n-1}}{b_n} = \frac{\left(1 + \frac{1}{n - 1}\right)^{n}}{\left(1 + \frac{1}{n}\right)^{n+1}} = \frac{\left(\frac{n}{n - 1}\right)^{n}}{\left(\frac{n + 1}{n}\right)^{n+1}} = \frac{n^{2n}}{(n^2 -1)^n} \cdot \frac{n}{n + 1} = \left(1 +\frac{1}{n^2 -1}\right)^n \cdot \frac{n}{n + 1},
+	\]
+	利用 \hyperref[lem:bernoulli]{Bernoulli 不等式} 可得
+	\[
+		\frac{b_{n-1}}{b_n} = \left(1 +\frac{1}{n^2 -1}\right)^n \cdot \frac{n}{n + 1} \ge \left(1 + \frac{n}{n^2 -1}\right) \cdot \frac{n}{n + 1} > \left(1 + \frac{1}{n}\right) \cdot \frac{n}{n + 1} = 1.
+	\]
+	则可知 $b_n$ 单调递减, 显然 $b_n$ 是非负数列, 所以由 \hyperref[thm:R6]{Weierstrass 定理} 有 $\lim\limits_{n\to\infty}\left\{ \left(1 + \frac{1}{n}\right)^{n+1} \right\}$ 收敛. 进一步可得
+	\[
+		\lim\limits_{n\to\infty} a_n = \lim_{n\to\infty} b_n \left(1 + \frac{1}{n}\right)^{-1} = \lim_{n\to\infty} b_n \cdot \lim_{n\to\infty}\left(1 + \frac{1}{n}\right)^{-1} = \lim_{n\to\infty} b_n.
+	\]
+	所以数列 $\left\{ \left(1 + \frac{1}{n}\right)^n \right\}$ 收敛
+\end{solution}
 
-在上述的
+由此我们有如下定义.
 
-
-% 级数初步
-\subsection{级数初步}
-\begin{definition}{级数}
-表达式 $a_1 + a_2 + \cdots + a_n + \cdots$ 记作 $\sum\limits_{n=1}^\infty a_n$, 通常称为级数或无穷级数. 其中数列 $\{a_n\}$ 的元素称为级数的项, 而 $a_n$ 称之为级数的第 $n$ 项. $s_n = \sum\limits_{k=1}^n a_k$ 称为级数的前 $n$ 项和.
-
-如果级数的前 $n$ 项和的数列收敛就称级数收敛, 否则称级数发散.级数的前 $n$ 项和数列的极限 $\lim\limits_{n\to\infty} s_n = s$ 称为级数的和(如果该极限存在), 做出如下记号.
+\begin{definition}{自然常数}{e}
 \[
-	\sum_{n=1}^\infty a_n = s.
+	e := \lim_{n\to\infty} \left(1 + \frac{1}{n}\right)^n.
 \]
 \end{definition}
-
-
-\subsubsection{级数的柯西准则}
-\begin{theorem}{级数收敛的柯西准则} 
-级数 $\sum\limits_{n=1}^\infty a_n$ 收敛的充要条件为, 对任何 $\varepsilon > 0$, 可以求出数 $N \in \N$, 使得从 $m\ge n > N$ 可知 $\lvert a_n + \cdots + a_m \rvert < \varepsilon$.
-\end{theorem}
-
-\begin{corollary}
-	如果在一个级数中只改变有限的项, 则级数敛散性不变.
-\end{corollary}
-
-\begin{corollary}
-	级数 $\sum_{n=1}^\infty a_n$ 收敛的一个必要条件为, 它的项在 $n\to\infty$ 时趋于零, 即 $\lim_{n\to\infty} a_n = 0$
-\end{corollary}
-
-\begin{example}
-	考虑无穷几何级数 $\lim_{n=1}^\infty q^{n-1}$
-\end{example}
-
-% 这一部分还不完善	<-------------------------- HERE
-
-\begin{example}
-	调和级数 
-\end{example}
-
-% 这一部分还不完善	<-------------------------- HERE
-
-\subsubsection{绝对收敛性}
-
-如果数列 $\sum_{n=1}^\infty \lvert a_n \rvert$ 收敛, 就说级数 $\sum_{n=1}^\infty a_n$ 绝对收敛.由级数的柯西准则可知, 绝对收敛是一个比简单收敛更强的条件.
-
-\begin{theorem}[非负项级数收敛准则]
-	非负项级数 $a_1 + \cdots + a_n + \cdots$ 收敛的充要条件是其前 $n$ 项和数列上有界.
-\end{theorem}
-
-\subsubsection{自然常数的级数形式}
-
-带着我们对级数的了解, 我们再次考虑自然常数 $e$. 根据我们曾学过的内容, 我们知道,
-\[
-	e = \lim_{n\to\infty} \left(1 + \frac1n\right)^n.
-\]
 
 根据牛顿二项式定理公式,
 \[
@@ -1942,11 +2521,169 @@ f(y) = B.
 
 级数形式是 $e$ 的一个特别便于计算的表达式.
 
+除此之外对 $e$ 还有以下定理.
+
+\begin{theorem}{}{e_3}
+对任意的 $n \in \Z_+$, 有
+\[
+	\left(n + \frac1{n}\right)^{n} < \left(n + \frac1{n + 1}\right)^{n + 1} < e < \left(n + \frac1{n+1}\right)^{n + 2} < \left(n + \frac1{n}\right)^{n + 1}.
+\]	
+\end{theorem}
+
+\begin{proof}
+	由单调性可证.
+\end{proof}
+
+
+% 这一部分还不完善	<-------------------------- HERE
+
+对于上述的两个常数, 我们有如下定理.
+\begin{theorem}
+	常数 $e$ 是无理数 (Euler), 常数 $\pi$ 是无理数 (Johann Heinrich Lambert).
+\end{theorem} 
+\begin{remark}
+	不仅是无理数, 两个常数实际上都是 \hyperref[def:transcendental]{超越数}.	
+\end{remark}
+\begin{proof}
+	参考 \hyperlink{A1}{附录 A.1}.
+\end{proof}
+\bigskip
+
+最后介绍一个十分神秘的数学常数 $\gamma$, 我们称之为 Euler 常数. 实际上我们根本不知道 $\gamma$ 是有理数还是无理数
+
+前面我们给出了著名的 \hyperref[thm:basel]{巴塞尔问题}, 即所有正整数的二次幂的倒数和. 现在考虑一般情况, 即所有正整数的 $p > 0$ 次幂的倒数和, 即如下级数
+\[
+	\sum_{n = 1}^{\infty} \frac{1}{n^p}.
+\]
+有部分和序列
+\[
+	s_n = \sum_{k = 1}^{k} \frac{1}{k^p}.
+\]
+
+若把 $p$ 换成复数幂就得到了著名的 Riemann $\zeta$ 函数.
+
+\begin{definition}{Riemann $\zeta$ 函数}
+	设有复数 $s \in \C$, 写为 $s = \sigma + it$. 当实部 $\sigma > 1$ 时, 定义为
+	\[
+		\zeta(z) := \sum_{n = 1}^{\infty} \frac{1}{n^s}.
+	\]
+\end{definition}
+
+我们回到 $p \in \R^+$ 的情况, 首先我们注意到其部分和数列显然是单调递增的, 所以只要我们能证明其上有界则可证明级数收敛. 
+
+首先我们将部分和数列按 $2$ 的幂分组,
+\[
+s_{2^m} = 1 + \left(\frac1{2^p}\right) + \left(\frac1{3^p}+\frac1{4^p}\right) + \left(\frac1{5^p}+\cdots+\frac1{8^p}\right) + \cdots + \left(\frac1{(2^{m-1}+1)^p} + \cdots+\frac1{(2^m)^p}\right).
+\]
+对于第 $k$ 组, 其包含 $2^{k-1}$ 个项, 且有对于组内任意项有
+\[
+	\frac1{n^p} \le \frac1{(2^{k-1})^p},
+\]
+则可得
+\[
+	\sum_{n = 2^{k-1}+1}^{2^k} \frac1{n^p} \le \frac{2^{k-1}}{2^{(k-1)p}} = 2^{(k-1)(1-p)}.
+\]
+进一步有
+\[
+	s_{2^m} = 1 + \sum_{k=1}^{m}\sum_{n = 2^{k-1}+1}^{2^k} \frac1{n^p} \le 1 + \sum_{k=1}^{m} 2^{(k-1)(1-p)} = 1 + \sum_{i = 0}^{m-1} \left(2^{(1-p)}\right)^{i}.
+\]
+注意到 $\sum\limits_{i = 0}^{m-1} \left(2^{1-p}\right)^{i}$ 是一个几何级数, 则 $2^{1-p} < 1$ 时级数收敛, 即 $p > 1$ 时级数收敛. 类似的, 对于 $\zeta(z)$ 当且仅当 $\Re (z) > 1$ 时收敛.
+  
+当级数 $\sum\limits_{n = 1}^{\infty} \frac{1}{n^p}$ 中 $p = 1$ 时, 我们称之为调和数列 (Harmonic series), 之所以称为调和级数, 是因为每一项都是其前后两项的调和中项 (音律中，如果一个弦的长度是另一个弦的倒数比例, 它们会发出和谐的声音). 现在我们考虑如下极限.
+\[
+	\lim_{n\to\infty} \frac{\sum\limits_{n = 1}^{\infty} \frac{1}{n}}{\ln n}
+\]
+显然这是一个 $\frac{\infty}{\infty}$ 型极限, 我们可以对其应用 \hyperref[thm:stolz_1]{Stolz 定理}, 则有
+\[
+	\begin{aligned}
+		\lim_{n\to\infty} \frac{\sum\limits_{n = 1}^{\infty} \frac{1}{n}}{\ln n} &= \lim_{n\to\infty} \frac{\frac{1}{n}}{\ln n - \ln (n - 1)} = \lim_{n\to\infty} \frac{\frac{1}{n}}{\ln \frac{n}{n - 1}} \\
+		&= \lim_{n\to\infty} \frac{\frac{1}{n}}{\ln \left(1 + \frac{1}{n}\right)} \cdot \lim_{n\to\infty} \frac{\ln \left(1 + \frac{1}{n}\right)}{\ln \left(1+\frac{1}{n - 1}\right)}\\
+		&= \lim_{n\to\infty} \frac{1}{\ln \left(1 + \frac{1}{n}\right)^n} \cdot \frac{\frac{1}{n}}{\frac{1}{n - 1}}\\
+		&= 1.
+	\end{aligned}
+\]
+即有
+\[
+	\sum_{n = 1}^{\infty}\frac{1}{n} \sim \ln n \quad (n \to \infty).
+\]
+由此我们定义如下数列
+\[
+	a_n := \sum_{k = 1}^{n}\frac{1}{k} - \ln n.
+\]
+则有
+\[
+	a_{n+1} - a_n = \frac{1}{n+1} - \ln (n+1) + \ln n = \frac{1}{n+1} - \ln \left(1+\frac1n\right) < 0.
+\]
+即
+\[
+	a_n > a_{n+1} > 0,
+\]
+根据 \hyperref[thm:R6]{Weierstrass 定理}, $\lim\limits_{n\to\infty}a_n$ 存在
+
+\begin{definition}{Euler 常数}
+	Euler 常数 $\gamma$ 定义为
+	\[
+		\gamma := \lim_{b\to\infty}\left(\sum_{k=1}^n\frac{1}{k} − \ln n \right) = 0.577215664901532\cdots.
+	\]
+\end{definition}
+
+\begin{conjecture}
+$\gamma$ 是无理数.	
+\end{conjecture}
+
+% 这一部分还不完善	<-------------------------- HERE
+
+
+\subsection{数列与部分极限}
+% 子列
+\begin{definition}{子列}
+如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$ 称为数列的子列.
+\end{definition}
+
+% 极限点
+\begin{definition}{极限点}
+称数列的一个收敛子列的极限为数列的一个极限点.
+\end{definition}
+
+% 上下极限
+\begin{definition}{上下极限}
+数列的所有极限点的上确界(下确界)为上极限(下极限)记为
+\[
+	\varlimsup_{n\to\infty}\{x_n\}
+\]
+\end{definition}
+
+我们曾经介绍过 Bolzano-Weierstrass 原理 (\hyperref[thm:R4]{极限点定理}) , 在这里给出致密性定理, 即其另一等价表述.
+\begin{theorem}{Bolzano-Weierstrass 原理}{R4'}
+	每个有界实数列都含有收敛的子列.
+\end{theorem}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+
+\begin{lemma}
+	从每一个实数列中都可以选出一个收敛的或趋于无穷的子列.
+\end{lemma}
+\begin{proof}
+	% 这一部分还不完善	<-------------------------- HERE
+\end{proof}
+
+% 上下极限
+
+% 实数集完备性的基本定理
+\subsection{实数集完备性的基本定理}
+
+在上述的
+
+% 这一部分还不完善	<-------------------------- HERE
+
+
 \section{函数极限}
 
 \subsection{函数极限的定义}
 
-我们现给出函数极限的第一种定义方式, 也就是最早由柯西提出的定义, 即 $\varepsilon$-$\delta$ 语言.
+我们现给出函数极限的第一种定义方式, 也就是最早由 Cauchy 提出的定义, 即 $\varepsilon$-$\delta$ 语言.
 
 \begin{definition}{$\varepsilon$-$\delta$ 语言}
 对于函数 $f:E \to \R$, 如果对于任何一个数 $\varepsilon > 0$, 都存在一个数 $\delta > 0$ 使得对于满足 $\lvert x - a \rvert < \delta$ 的任意 $x \in E$, 关系式 $\lvert f(x) - A\rvert < \varepsilon$ 都成立, 我们说, 当 $x$ 趋于 $a$ 时, 函数 $f$ 趋于 $A$, 或者说 $A$ 是 $f$ 在 $x$ 趋于 $a$ 时的极限.  
@@ -1993,7 +2730,7 @@ f(y) = B.
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proof}
 
-\begin{proposition}[柯西极限定义与海涅极限定义的等价性命题]
+\begin{proposition}{Cauchy 极限定义与海涅极限定义的等价性命题}
 	% 这一部分还不完善	<-------------------------- HERE
 \end{proposition}
 
@@ -2054,7 +2791,7 @@ f(y) = B.
 \]
 
 \begin{remark}
-在提出连续性的严谨定义以前，莱布尼茨曾定义连续函数就是图像可以一笔画出来, 不需要抬笔的函数, 欧拉定义连续函数是用单一函数表示的一条曲线.
+在提出连续性的严谨定义以前，Leibniz 曾定义连续函数就是图像可以一笔画出来, 不需要抬笔的函数, Euler 定义连续函数是用单一函数表示的一条曲线.
 \end{remark}
 
 % 讨论函数在一个点连续的概念
@@ -2105,19 +2842,19 @@ f(y) = B.
 
 \section{微分学的基本定理}
 
-\subsection{费马引理}
+\subsection{Fermat 引理}
 
 
-\subsection{罗尔定理}
+\subsection{Rolle 定理}
 
 
-\subsection{拉格朗日有限增量定理}
+\subsection{Lagrange 有限增量定理}
 
 
 \subsubsection{常函数检验法}
 
 
-\subsection{柯西有限增量定理}
+\subsection{Cauchy 有限增量定理}
 
 
 \subsection{泰勒公式}
@@ -2357,11 +3094,11 @@ f(y) = B.
 
 \subsection{中值定理}
 
-\subsection{泰勒公式}
+\subsection{Tyler 公式}
 
 \section{条件极值}
 
-\subsection{拉格朗日乘数法}
+\subsection{Lagrange 乘数法}
 
 % ================================================================================== 
 % 								  	重 积 分
@@ -2427,119 +3164,6 @@ f(y) = B.
 
 我们曾在介绍实数理论时短暂提及过有关群的概念, 而我们将在这章详细介绍群论.
 
-\section{基本概念}
-
-\subsection{代数运算}
-
-设 $M$ 是一个集合, 如果有一个发色, 它对 $M$ 中任意两个有次序的元素 $a$ 与 $b$ 在 $M$ 中都有一个唯一确定的元素 $d$ 与它们对应, 则称这个法则是集合 $M$ 的一个代数运算.有代数运算的集合, 简称为代数系统.我将使用符号 $\circ$ 来表示本定义中所说的法则, 则通常把 $a$ 与 $b$ 通过此法则 $\circ$ 所确定的元素 $d$ 记为
-\[
-	a \circ b = d
-\]
-显然这正是加法与乘法所共有的最本质的属性.因此, 代数运算就是加法运算与乘法运算在最一般情况下的一种自然推广.
-
-\subsection{运算律}
-
-设 $M$ 是一个有代数运算 $\circ$ 的集合.如果对 $M$ 中任意元素 $a, b, c$ 都有
-\[
-	(a\circ b) \circ c = a \circ (b \circ c)
-\]
-则称 $M$ 这个代数运算满足结合律.
-
-\begin{theorem}
-	若集合 $M$ 有代数运算 $\circ$ 满足结合律, 则对 $M$ 中任意 $n(n\ge 3)$ 个元素无论怎么加括号, 其结果都相等.
-\end{theorem}
-
-\begin{proof}
-	对元素个数 $n$ 用数学归纳原理, % 这一部分还不完善	<-------------------------- HERE
-\end{proof}
-
-设 $M$ 是一个有代数运算 $\circ$ 的集合.如果对 $M$ 中任意元素 $a, b$ 都有
-\[
-	a\circ b = b \circ a
-\]
-则称 $M$ 这个代数运算满足交换律.
-
-\begin{theorem}
-	若集合 $M$ 的代数运算 $\circ$ 既满足结合律又满足交换律, 则对 $M$ 中任意 $n$ 个元素进行运算时可以任意结合和交换元素的前后次序, 其结果均相等.
-\end{theorem}
-
-\begin{proof}
-	对元素个数 $n$ 用数学归纳原理, % 这一部分还不完善	<-------------------------- HERE
-\end{proof}
-
-设集合 $M$ 有两个代数运算 $\circ$ 及 $\oplus$.如果对 $M$ 中任意元素 $a, b, c$ 都有
-\[
-	a \circ (b \oplus c) = (a \circ b) \oplus (a \circ c)
-\]
-则称运算 $\circ$ 对 $\oplus$ 满足左分配律；如果
-\[
-	(b \oplus c) \circ a = (b \circ a) \oplus (c \circ a)
-\]
-则称运算 $\circ$ 对 $\oplus$ 满足右分配律.
-
-\begin{theorem}
-	设集合 $M$ 有两个代数运算 $\circ$ 及 $\oplus$, 其中 $\oplus$ 满足结合律, 而 $\circ$ 对 $\oplus$ 满足于左分配律, 则对 $M$ 中任意元素 $a$ 及 $b_1, b_2, \cdots , b_n$ 有
-	\[
-		a \circ (b_1 \oplus b_2 \oplus \cdots \oplus b_n) = (a \circ b_1) \oplus \cdots \oplus (a \circ b_n)
-	\]
-\end{theorem}
-
-\begin{proof}
-	对元素个数 $n$ 用数学归纳原理即可得证, 且对有分配律也有类似结论, 不再赘述.
-\end{proof}
-
-\subsection{同态与同构}
-
-设集合 $M$ 与 $\overline{M}$ 各有代数运算 $\circ$ 及 $\overline{\circ}$, 且 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个映射.如果 $\varphi$ 保持运算, 即对 $M$ 中任意元素 $a, b$, 在 $\varphi$ 之下由
-\[
-	a \rightarrow \overline{a}, \ b \rightarrow \overline{b}
-\]
-总可得
-\[
-	a \circ b \rightarrow \overline{a} \overline{\circ} \overline{b}
-\]
-则称 $\varphi$ 为代数系统 $M$ 到 $\overline{M}$ 的一个同态映射, 若 $\varphi$ 又是满射, 则 $\varphi$ 得一个同态满射.
-
-如果 $M$ 到 $\overline{M}$ 存在同态满射, 则简称 $M$ 与 $\overline{M}$ 同态, 记为
-\[
-	M\sim\overline{M}
-\]
-
-% 结合律和交换律在同态满射上的传递性
-\begin{theorem}
-	设集合 $M$ 与 $\overline{M}$ 分别有代数运算 $\circ$ 与 $\overline{\circ}$, 且 $M \sim \overline{M}$, 则
-	\ITEMS
-		\item 当 $\circ$ 满足结合律时, $\overline{\circ}$ 也满足结合律
-		\item 当 $\circ$ 满足交换律时, $\overline{\circ}$ 也满足交换律
-	\ITEME
-\end{theorem}
-
-\begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{proof}
-
-
-
-\begin{theorem}
-	设集合 $M$ 有代数运算 $\circ$ 即 $\oplus$ , 集合 $\overline{M}$ 有代数运算 $\overline{\circ}$ 及 $\overline{\oplus}$；又 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个满射, 且是关于 $\circ$ 与 $\overline{\circ}$ 以及 $\oplus$ 与 $\overline{\oplus}$ 的同态, 则当 $\circ$ 对 $\oplus$ 满足左(右)分配律时, $\overline{\circ}$ 对 $\overline{\oplus}$ 也满足左(右)分配律.
-\end{theorem}
-
-\begin{proof}
-	证明方法类似, 不再重复.
-\end{proof}
-
-设 $\varphi$ 是 $M$ 到 $\overline{M}$ (关于代数运算 $\circ$ 及 $\overline{\circ}$)的的一个同态满射, 如果 $\varphi$ 又是单射(即 $\varphi$ 是双射), 则称 $\varphi$ 是 $M$ 与 $\overline{M}$ 的一个同构映射.
-
-如果集合 $M$ 与 $\overline{M}$ 存在同构映射, 就说 $M$ 与 $\overline{M}$ 同构, 记为 $M \cong \overline{M}$.否则, 即若 $M$ 到 $\overline{M}$ 不存在任何同构映射, 则称 $M$ 与 $\overline{M}$ 不同构.
-
-$M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自同态, 同样 $M$ 到自身的同构映射, 叫做 $M$ 的自同构映射, 简称 $M$ 的自同构.
-
-\begin{example}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{example}
-
-\section{群的定义和初步性质}
-
 % ================================================================================== 
 % 								  环 与 域
 % ==================================================================================
@@ -2550,17 +3174,17 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 % 							测 度 与 勒 贝 格 测 度 
 % ================================================================================== 
 
-\chapter{测度与勒贝格测度}
+\chapter{测度与 Lebesgue 测度}
 
-\section{勒贝格外测度}
+\section{Lebesgue 外测度}
 
-\section{勒贝格测度}
+\section{Lebesgue 测度}
 
-\section{可测集与波莱尔集}
+\section{可测集与 Borel 集}
 
 \section{一个不可测集的例子}
 
-\section{构造一个非波莱尔集的可测集}
+\section{构造一个非 Borel 集的可测集}
 
 \section{可测函数}
 
@@ -2574,7 +3198,7 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 % 								勒 贝 格 积 分
 % ================================================================================== 
 
-\chapter{勒贝格积分}
+\chapter{Lebesgue 积分}
 
 % ================================================================================== 
 % 								初 等 概 率 论
@@ -2681,7 +3305,7 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 
 \hypertarget{A1}{\section{一些超越数的证明}}
 
-
+\hypertarget{A2}{\section{巴塞尔问题}}
 
 
 
