@@ -975,13 +975,21 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \section{抽象代数初步}
 
+抽象代数是现代数学思想的体现, 我们通过研究抽象的结构与运算的形式, 则可得到一般的运算上的性质.
+
 \subsection{代数运算}
 
-设 $M$ 是一个集合, 如果有一个发色, 它对 $M$ 中任意两个有次序的元素 $a$ 与 $b$ 在 $M$ 中都有一个唯一确定的元素 $d$ 与它们对应, 则称这个法则是集合 $M$ 的一个代数运算.有代数运算的集合, 简称为代数系统.我将使用符号 $\circ$ 来表示本定义中所说的法则, 则通常把 $a$ 与 $b$ 通过此法则 $\circ$ 所确定的元素 $d$ 记为
-\[
-	a \circ b = d
-\]
-显然这正是加法与乘法所共有的最本质的属性.因此, 代数运算就是加法运算与乘法运算在最一般情况下的一种自然推广.
+\begin{definition}{代数运算}
+	设 $A, B, D$ 为集合, 称从 $A \times B$ 到 $D$ 的映射
+	\[
+		\circ: A \times B \rightarrow D
+	\]
+	为代数运算 (Algebraic operation). 特别地, 当映射为
+	\[
+		\circ: A \times A \rightarrow A
+	\]
+	时, 即为集合 $A$ 上的二元代数运算 (Binary operation).
+\end{definition}
 
 \subsection{运算律}
 
@@ -990,7 +998,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \[
 	(a\circ b) \circ c = a \circ (b \circ c)
 \]
-则称 $M$ 这个代数运算满足结合律.
+则称 $M$ 上代数运算 $\circ$ 满足结合律 (Associativity), 或称 $\circ$ 是结合的..
 \end{definition}
 
 \begin{theorem}
@@ -1006,7 +1014,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \[
 	a\circ b = b \circ a
 \]
-则称 $M$ 这个代数运算满足交换律.
+则称 $M$ 上代数运算 $\circ$ 满足交换律 (Commutativity), 或称 $\circ$ 是可交换的.
 \end{definition}
 
 \begin{theorem}
@@ -1022,7 +1030,7 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \[
 	a \circ (b \oplus c) = (a \circ b) \oplus (a \circ c)
 \]
-则称运算 $\circ$ 对 $\oplus$ 满足左分配律；如果
+则称运算 $\circ$ 对 $\oplus$ 满足左分配律 (Left )；如果
 \[
 	(b \oplus c) \circ a = (b \circ a) \oplus (c \circ a)
 \]
@@ -1086,9 +1094,6 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自同态, 同样 $M$ 到自身的同构映射, 叫做 $M$ 的自同构映射, 简称 $M$ 的自同构.
 
-\begin{example}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{example}
 
 % ------------------------------------------------------
 % ------------------------------------------------------
@@ -1592,7 +1597,7 @@ f(y) = B.
 % 关于实数集完备性的一些基本定理
 \section{关于实数集完备性的一些基本定理}
 
-\subsection{闭区间套定理 (Cauchy-Cantor 原理)}
+\subsection{闭区间套原理 (Cauchy-Cantor 原理)}
 
 \begin{definition}{集合套}
 设 $X_1, X_2, \cdots, X_n, \cdots$ 是某些闭区间的序列, 如果 $X_1\supset X_2\supset \cdots \supset X_n \supset\cdots$, 且对 $\forall \varepsilon > 0$, 在序列中可以找到长度 $|X_k| < \varepsilon$ 的区间, 我们称 $X_1, X_2, \cdots, X_n, \cdots$ 为闭区间套序列.
@@ -1607,13 +1612,13 @@ f(y) = B.
 \end{idea*}
 
 \begin{proof}
-首先	指出, 对于上述序列中的任何两个闭区间 $I_m = [a_m, b_m], I_n = [a_n, b_n]$ 必有 $a_m \le b_n$.因此, 对于数集 $A =\{a_m | m\in \N\},  B= \{b_n| n\in \N\}$, 根据完备性公理, 可以找到数 $c\in\R$ 使得对于 $\forall a_m\in A, \forall b_n\in B$ 有 $a_m\le c\le b_n$.特别的, 对于 $\forall n\in N$ 都有 $a_n\le c \le b_n$, 即点 $c$ 属于所有闭区间 $I_n$.
+首先	指出, 对于上述序列中的任何两个闭区间 $I_m = [a_m, b_m], I_n = [a_n, b_n]$ 必有 $a_m \le b_n$.因此, 对于数集 $A =\{a_m | m\in \N\},  B= \{b_n| n\in \N\}$, 根据完备性公理, 可以找到数 $c\in\R$ 使得对于 $\forall a_m\in A, \forall b_n\in B$ 有 $a_m\le c\le b_n$. 特别的, 对于 $\forall n\in N$ 都有 $a_n\le c \le b_n$, 即点 $c$ 属于所有闭区间 $I_n$.
 
-现在, 假设有两个不同的有相似性质的点 $c_1, c_2$, 假如 $c_1 < c_2$, 则对于任何 $n\in\N$ 均有,  $a_n \le c_1 < c_2 \le b_n$ 从而 $0 < c_1 - c_2 < b_n - a_n$.于是, 上述序列中的每一个闭区间的长度不可能小于 $c_2 - c_1 > 0$, 这意味着, 如果在该序列中有长度任意小的闭区间则公共点是唯一的. 
+现在, 假设有两个不同的有相似性质的点 $c_1, c_2$, 假如 $c_1 < c_2$, 则对于任何 $n\in\N$ 均有,  $a_n \le c_1 < c_2 \le b_n$ 从而 $0 < c_1 - c_2 < b_n - a_n$. 于是, 上述序列中的每一个闭区间的长度不可能小于 $c_2 - c_1 > 0$, 这意味着, 如果在该序列中有长度任意小的闭区间则公共点是唯一的. 
 \end{proof}
 \smallskip
 
-\subsection{有限覆盖定理 (Borel–Lebesgue 原理, Heine-Borel 原理)}
+\subsection{有限覆盖原理 (Borel–Lebesgue 原理, Heine-Borel 原理)}
 
 \begin{definition}{覆盖}
 设 $S=\{X\}$ 是由一组集合 $X$ 构成的集合族, 如果 $Y\subset \bigcup\limits_{X\in S}X$, 那么我们说 $S$ 覆盖集合 $Y$.
@@ -1627,7 +1632,7 @@ f(y) = B.
 \begin{proof}
 设 $S =\{U\}$ 是覆盖闭区间 $[a, b] = I_1$ 的开区间族, $U$ 是构成 $S$ 的开区间.假如闭区间 $I_1$ 不能被 $S$ 中有限个开区间覆盖, 我们将闭区间 $I_1$ 等分为两个闭区间, 则其中至少有一个不能被 $S$ 中有限个开区间覆盖, 我们把这个区间记为 $I_2$, 我们再通过类似的方法得到 $I_3, I_4, \cdots$.
 
-于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$, 而且根据其构造方法可知, 第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$, 所以在此序列中有长度任意小的闭区间, 根据 \hyperref[thm:R2]{闭区间套定理}, 存在一点 $c$ 包含于所有闭区间 $I_n$, 而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon,  c+\varepsilon)$, 在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$, 所以有 $I_n \subset U$, 这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾.
+于是我们就构建出了一个闭区间套序列 $I_1 \supset I_2 \supset I_3 \supset \cdots$, 而且根据其构造方法可知, 第 $n$ 个区间的长度为 $\lvert I_n \rvert = \frac{\lvert I_1 \rvert}{2^{n-1}}$, 所以在此序列中有长度任意小的闭区间, 根据 \hyperref[thm:R2]{闭区间套原理}, 存在一点 $c$ 包含于所有闭区间 $I_n$, 而考虑 $c$ 点的一 $\varepsilon$ 邻域 $U = (c - \varepsilon,  c+\varepsilon)$, 在上述闭区间序列中总能找出一个 $I_n$ 使得 $\lvert I_n \rvert < \varepsilon$, 所以有 $I_n \subset U$, 这与 $I_n$ 不能被开区间族的有限子族覆盖相矛盾.
 \end{proof}
 \smallskip
 
@@ -1644,11 +1649,12 @@ f(y) = B.
 \begin{proof}
 设 $X$ 是 $\R$ 的给定子集并且满足定理条件, 由有界集的定义可知, 某闭区间 $I = [a, b] \subset\R$ 包含集合 $X$. 我们证明集合 $I$ 上至少有一个点是 $X$ 的极限点.
 
-假如并非如此, 每个点 $x \in I$ 就会有这样的邻域 $U(x)$, 其中或者根本没有 $X$ 中的点, 或者只有有限个属于集合 $X$ 的点, 对每个点 $x\in I$ 构造出的这种邻域的总体 $\{U\}$ 组成闭区间 $I$ 的开区间覆盖, 根据 \hyperref[thm:R3]{有限覆盖定理}, 可以从上述覆盖中, 选出有限个开区间 $I(x_1), \cdots, U(x_n)$, 使它们仍覆盖区间 $I$.因为 $X \subset I$, 所以它们也覆盖集合 $X$.然而 $X$ 并不是有限集, 我们得到了矛盾.
+假如并非如此, 每个点 $x \in I$ 就会有这样的邻域 $U(x)$, 其中或者根本没有 $X$ 中的点, 或者只有有限个属于集合 $X$ 的点, 对每个点 $x\in I$ 构造出的这种邻域的总体 $\{U\}$ 组成闭区间 $I$ 的开区间覆盖, 根据 \hyperref[thm:R3]{有限覆盖原理}, 可以从上述覆盖中, 选出有限个开区间 $I(x_1), \cdots, U(x_n)$, 使它们仍覆盖区间 $I$.因为 $X \subset I$, 所以它们也覆盖集合 $X$.然而 $X$ 并不是有限集, 我们得到了矛盾.
 \end{proof}
 \smallskip
 
 \section{函数}
+
 % ------------------------------------------------------
 % ------------------------------------------------------
 % ------------------------------------------------------
@@ -1833,7 +1839,7 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 \smallskip
 
 % 迫敛性
-\begin{theorem}{数列极限的迫敛性 (夹逼定理)}{sandwich}
+\begin{theorem}{数列极限的迫敛性 (夹逼定理)}{Ssandwich}
 设数列 $\{x_n\}, \{y_n\}, \{z_n\}$ 满足以下条件, 对于任何 $n > N \in \N$, 关系式 $x_n \le y_n \le z_n$ 成立.如果数列 $\{x_n\}, \{z_n\}$ 收敛于同一个极限, 则数列 $\{y_n\}$ 也收敛于该极限. 
 \end{theorem}
 
@@ -2294,7 +2300,7 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 	
 	我们做出如下定义 $a_n := \inf\limits_{k \ge n} x_k ,\ b_n := \sup\limits_{k \ge n} x_k$.
 	
-	则显然有 $a_n \le a_{n+1} \le b_{n+1} \le b_n$. 根据 \hyperref[thm:R2]{闭区间套定理} 可得闭区间套列 $[a_n, b_n]$ 存在一公共点 $A$. 
+	则显然有 $a_n \le a_{n+1} \le b_{n+1} \le b_n$. 根据 \hyperref[thm:R2]{闭区间套原理} 可得闭区间套列 $[a_n, b_n]$ 存在一公共点 $A$. 
 	
 	对于任何 $n \in \N$我们有
 	\[
@@ -2627,6 +2633,8 @@ s_{2^m} = 1 + \left(\frac1{2^p}\right) + \left(\frac1{3^p}+\frac1{4^p}\right) + 
 	\]
 \end{definition}
 
+Alexander Aptekarev 在 2009 年证明了 Euler 常数 $\gamma$ 和 Euler-Gompertz 常数 $\delta$ 至少有一个是无理的, 则我们有以下猜想.
+
 \begin{conjecture}
 $\gamma$ 是无理数.	
 \end{conjecture}
@@ -2640,43 +2648,82 @@ $\gamma$ 是无理数.
 如果 $x_1, x_2, \cdots, x_n, \cdots$ 是某数列, 而 $n_1 < n_2 < \cdots < n_k < \cdots$ 是严格单调递增自然数列, 则数列 $x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots$ 称为数列的子列.
 \end{definition}
 
-% 极限点
-\begin{definition}{极限点}
-称数列的一个收敛子列的极限为数列的一个极限点.
-\end{definition}
-
-% 上下极限
-\begin{definition}{上下极限}
-数列的所有极限点的上确界(下确界)为上极限(下极限)记为
-\[
-	\varlimsup_{n\to\infty}\{x_n\}
-\]
-\end{definition}
-
 我们曾经介绍过 Bolzano-Weierstrass 原理 (\hyperref[thm:R4]{极限点定理}) , 在这里给出致密性定理, 即其另一等价表述.
 \begin{theorem}{Bolzano-Weierstrass 原理}{R4'}
 	每个有界实数列都含有收敛的子列.
 \end{theorem}
 \begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
+	设 $E$ 是有界数列 $\{x_n\}$ 的值集, 如果 $E$ 是有限集, 则显然存在收敛子列. 若 $E$ 是无限集, 则根据 \hyperref[thm:R4]{极限点定理} 可知 $E$ 至少存在一个极限点 $x$. 由极限点定义可知存在子列收敛于 $x$.
 \end{proof}
 
-
-\begin{lemma}
+\begin{corollary}
 	从每一个实数列中都可以选出一个收敛的或趋于无穷的子列.
-\end{lemma}
+\end{corollary}
+
 \begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
+	设有无界数列 $\{x_n\}$ , 则存在数列 $\{n_k\}$ 其中 $n_k \in \N$ 使得 $\lvert x_{n_k} \rvert > k$ 且 $n_k < n_{k+1}$, 则 $\{x_{n_k}\}$ 趋于无穷. 
 \end{proof}
+
 
 % 上下极限
+\begin{definition}{上下极限}
+设有数列 $\{x_n\}$, 我们称对于任意 $k$ 数列 $\{x_n\}_{n \ge k}$ 的上确界 (下确界) 的极限为上极限 (下极限) 记为
+\[
+	\varlimsup_{n\to\infty} x_n \equiv \limsup_{n\to\infty} x_n := \lim_{k\to\infty} \sup_{k \ge n} x_k,
+\]
+\[
+	\varliminf_{n\to\infty} x_n \equiv \liminf_{n\to\infty} x_n := \lim_{k\to\infty} \inf_{k \ge n} x_k.
+\]
+\end{definition}
+
+\begin{proposition}
+	任何数列的上极限与下极限分别为部分极限中的最大值和最小值.
+\end{proposition}
+
+\begin{proof}
+	先考虑数列有界的情况, 我们以下极限 $i = \varliminf_{k\to\infty} x_k$ 为例, 则有数列 $i_n = \inf_{k \ge n} x_k$ 是不减数列. 对于 $n \in \N_+$, 根据下确界的定义, 按照归纳原理可以求出 $k_n \in \N_+$, 使得 $k_n - k_{n+1}$ 且
+	\[
+		i_{k_{n-1} + 1} \le x_{k_n} < i_{k_{n-1} + 1} + \frac{1}{n},\ (k_0 = 0)
+	\]
+	令 $n \to \infty$ 可得
+	\[
+		\lim_{n \to \infty} i_{k_{n-1} + 1} = i,
+	\]
+	\[
+		\lim_{n \to \infty} \left(i_{k_{n-1} + 1} + \frac{1}{n}\right) = i,
+	\]
+	根据数列极限的 \hyperref[thm:Ssandwich]{迫敛性} 可得
+	\[
+		\lim_{n \to \infty} x_{k_n} = i.
+	\]
+	则 $i$ 是一个极限点, 因为对于 $\forall \varepsilon > 0$, 可以求出 $n \in \N$ 使得 $i - \varepsilon < i_n$ 所以任何极限点都不能小于 $i$. 类似的可以证明上确界是极限点的最大值.
+	无界数列显然.
+\end{proof}
+
+\begin{corollary}{}{liminfeqlimsup}
+	数列有极限, 或趋于无穷的充要条件是上下极限相等.
+\end{corollary}
+
+\begin{proof}
+	数列极限的 \hyperref[thm:Ssandwich]{迫敛性} 易证.
+\end{proof}
+
+\begin{corollary}
+	数列收敛的充要条件是数列的子列也都收敛.
+\end{corollary}
+
+\begin{proof}
+	由推论 \ref{cor:liminfeqlimsup} 可知数列极限存在时其上下极限重合, 子列的上下极限介于原数列上下极限之间, 则子列的上下极限也重合, 则其子列与原数列收敛于同一极限.
+\end{proof}
 
 % 实数集完备性的基本定理
 \subsection{实数集完备性的基本定理}
 
-在上述的
+我们在前文中已经介绍过了实数集完备性的六大基本定理, 分别为 \hyperref[thm:R1]{确界原理},\ \hyperref[thm:R2]{闭区间套原理},\ \hyperref[thm:R3]{有限覆盖原理},\ \hyperref[thm:R4]{Bolzano-Weierstrass 原理},\ \hyperref[thm:R5]{Cauchy 法则}\ 和\ \hyperref[thm:R6]{单调数列极限存在准则}.
 
+实际上上述六个定理都是等价的, 可以用其中任意一个定理推出其他所有定理. 上述的这六个定理保障了实数集的完备性, 即在实数轴上没有缺口, 实数集是稠密的 (稠密集的定义见点集拓扑部分).
 % 这一部分还不完善	<-------------------------- HERE
+% TODO: 补充一下稠密性的跳转
 
 
 \section{函数极限}
@@ -2688,7 +2735,7 @@ $\gamma$ 是无理数.
 \begin{definition}{$\varepsilon$-$\delta$ 语言}
 对于函数 $f:E \to \R$, 如果对于任何一个数 $\varepsilon > 0$, 都存在一个数 $\delta > 0$ 使得对于满足 $\lvert x - a \rvert < \delta$ 的任意 $x \in E$, 关系式 $\lvert f(x) - A\rvert < \varepsilon$ 都成立, 我们说, 当 $x$ 趋于 $a$ 时, 函数 $f$ 趋于 $A$, 或者说 $A$ 是 $f$ 在 $x$ 趋于 $a$ 时的极限.  
 
-我们也可以用逻辑符号描述上述定义
+我们也可以用形式符号描述上述定义
 \[
 	\forall \varepsilon > 0 \ \exists \delta > 0\ \forall a \in E\ (0 < \lvert x - a \rvert < \delta \Rightarrow \lvert f(x) - A \rvert < \varepsilon).
 \]
@@ -2706,12 +2753,15 @@ $\gamma$ 是无理数.
 分别称为点 $a$ 在集合 $E$ 中的邻域与去心邻域.
 \end{definition}
 
-于是我们可以给出函数极限的另一种表述: 如果对于点 $A$ 任何一个邻域, 都可以找到点 $a$ 在集合 $E$ 中的一个去心邻域, 使得它在映射 $f: E \to \R$ 下的像包含于点 $A$ 的给定邻域, 则数 $A$ 称为函数 $f: E \to \R$ 在 $x$ 沿集合 $E$ 趋于点 $a$ 时的极限.
+于是我们可以给出函数极限的另一种表述.
+\begin{definition}{函数极限邻域定义}
+如果对于点 $A$ 任何一个邻域, 都可以找到点 $a$ 在集合 $E$ 中的一个去心邻域, 使得它在映射 $f: E \to \R$ 下的像包含于点 $A$ 的给定邻域, 则数 $A$ 称为函数 $f: E \to \R$ 在 $x$ 沿集合 $E$ 趋于点 $a$ 时的极限.
 
-用逻辑符号描述上述定义为
+用形式符号上述定义为
 \[
 	\left( \lim_{E \ni x \to a} f(x) = A\right) := \forall V_{\R}(A)\ \exists \mathring{U}_E(a) \left( f\left( \mathring{U}_E(a)\right) \subset V_{\R}(A)\right).
 \]
+\end{definition}
 
 
 \begin{example}
@@ -2998,22 +3048,14 @@ $\gamma$ 是无理数.
 
 
 % ================================================================================== 
-% 								   行 列 式
+% 							线 性 方 程 组 与 矩 阵
 % ================================================================================== 
 
-\chapter{行列式}
+\chapter{线性方程组与矩阵}
 
-% ================================================================================== 
-% 							    线 性 方 程 组
-% ================================================================================== 
+\section{线性方程组}
 
-\chapter{线性方程组}
 
-% ================================================================================== 
-% 								    矩 阵
-% ================================================================================== 
-
-\chapter{矩阵}
 
 % ================================================================================== 
 % 							      向 量 空 间 
