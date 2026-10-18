@@ -730,7 +730,6 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	\[
 		\operatorname{graph}(f) := \{(a,f(a))\mid a \in A\} \subseteq A \times B.
 	\]
-% 特别的, 我们称非空的数集之间的映射为函数(数集的定义见 \ref{number set}).
 \end{definition}
 
 \begin{definition}{限制与延拓}
@@ -975,7 +974,9 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \section{抽象代数初步}
 
-抽象代数是现代数学思想的体现, 我们通过研究抽象的结构与运算的形式, 则可得到一般的运算上的性质.
+抽象代数是最能体现现代数学思想的分支之一, 实际上抽象代数也叫近世代数. 在抽象代数中我们将脱离对具体集合与具体运算的研究, 转而研究符合指定 ``对称性"的抽象代数结构, 从具体数系和具体运算中抽象出共同结构，再用公理化的方法统一研究.
+
+19 世纪 20 年代, Abel 严格证明了一般五次以上方程不可能用根式求解，并引入了交换群 (Abel群) 的概念. 紧随其后, 法国天才 Galois 在 1830 年前后彻底解决了方程的可解性问题: 他不仅使用了 ``群" 这一术语, 还引入了正规子群等概念, 并证明一个方程有根式解当且仅当其对应的伽罗瓦群是可解群. 伽罗瓦的理论首次揭示出, 方程求解的实质是一个结构性质问题, 从而开辟了以群论研究代数方程的全新领域.
 
 \subsection{代数运算}
 
@@ -1030,11 +1031,11 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \[
 	a \circ (b \oplus c) = (a \circ b) \oplus (a \circ c)
 \]
-则称运算 $\circ$ 对 $\oplus$ 满足左分配律 (Left )；如果
+则称运算 $\circ$ 对 $\oplus$ 满足左分配律 (Left distributivity)；如果
 \[
 	(b \oplus c) \circ a = (b \circ a) \oplus (c \circ a)
 \]
-则称运算 $\circ$ 对 $\oplus$ 满足右分配律.
+则称运算 $\circ$ 对 $\oplus$ 满足右分配律 (Right distributivity).
 \end{definition}
 
 \begin{theorem}
@@ -1050,20 +1051,24 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 
 \subsection{同态与同构}
 
-设集合 $M$ 与 $\overline{M}$ 各有代数运算 $\circ$ 及 $\overline{\circ}$, 且 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个映射.如果 $\varphi$ 保持运算, 即对 $M$ 中任意元素 $a, b$, 在 $\varphi$ 之下由
+\begin{definition}{同态}{}
+设集合 $M$ 与 $\overline{M}$ 各有代数运算 $\circ$ 及 $\overline{\circ}$, 且 $\varphi$ 是 $M$ 到 $\overline{M}$ 的一个映射. 如果 $\varphi$ 保持运算, 即对 $M$ 中任意元素 $a, b$, 在 $\varphi$ 之下有
 \[
-	a \rightarrow \overline{a}, \ b \rightarrow \overline{b}
+	\varphi(a) = \overline{a}, \ \varphi(b) = \overline{b},
 \]
 总可得
 \[
-	a \circ b \rightarrow \overline{a} \overline{\circ} \overline{b}
+	\varphi(a \circ b) = \overline{a} \overline{\circ} \overline{b}.
 \]
-则称 $\varphi$ 为代数系统 $M$ 到 $\overline{M}$ 的一个同态映射, 若 $\varphi$ 又是满射, 则 $\varphi$ 得一个同态满射.
+则称 $\varphi$ 为代数系统 $M$ 到 $\overline{M}$ 的一个同态映射 (Homomorphic mapping), 若 $\varphi$ 又是满射, 则 $\varphi$ 得一个同态满射.
 
-如果 $M$ 到 $\overline{M}$ 存在同态满射, 则简称 $M$ 与 $\overline{M}$ 同态, 记为
+如果 $M$ 到 $\overline{M}$ 存在同态满射, 则简称 $M$ 与 $\overline{M}$ 同态 (Homomorphism), 记为
 \[
-	M\sim\overline{M}
+	M\sim\overline{M}.
 \]
+
+同态指的是一个映射保持代数结构中的运算关系, 即映射与运算的顺序可以交换.
+\end{definition}
 
 % 结合律和交换律在同态满射上的传递性
 \begin{theorem}
@@ -1075,9 +1080,8 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{theorem}
 
 \begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
+	假设有同态映射 $\varphi$, 则由其定义易证.
 \end{proof}
-
 
 
 \begin{theorem}
@@ -1085,14 +1089,98 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 \end{theorem}
 
 \begin{proof}
-	证明方法类似, 不再重复.
+	假设有同态映射 $\varphi$, 则由其定义易证.
 \end{proof}
 
-设 $\varphi$ 是 $M$ 到 $\overline{M}$ (关于代数运算 $\circ$ 及 $\overline{\circ}$)的的一个同态满射, 如果 $\varphi$ 又是单射(即 $\varphi$ 是双射), 则称 $\varphi$ 是 $M$ 与 $\overline{M}$ 的一个同构映射.
+\begin{definition}{同构}
+设 $\varphi$ 是 $M$ 到 $\overline{M}$ (关于代数运算 $\circ$ 及 $\overline{\circ}$) 的一个同态满射, 如果 $\varphi$ 又是单射 (即 $\varphi$ 是双射), 则称 $\varphi$ 是 $M$ 与 $\overline{M}$ 的一个同构映射 (Isomorphic mapping).
 
-如果集合 $M$ 与 $\overline{M}$ 存在同构映射, 就说 $M$ 与 $\overline{M}$ 同构, 记为 $M \cong \overline{M}$.否则, 即若 $M$ 到 $\overline{M}$ 不存在任何同构映射, 则称 $M$ 与 $\overline{M}$ 不同构.
+如果集合 $M$ 与 $\overline{M}$ 存在同构映射, 就说 $M$ 与 $\overline{M}$ 同构 (Isomorphism), 记为 $M \cong \overline{M}$. 否则, 即若 $M$ 到 $\overline{M}$ 不存在任何同构映射, 则称 $M$ 与 $\overline{M}$ 不同构.
 
-$M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自同态, 同样 $M$ 到自身的同构映射, 叫做 $M$ 的自同构映射, 简称 $M$ 的自同构.
+$M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自同态 (endomorphism), 同样 $M$ 到自身的同构映射, 叫做 $M$ 的自同构映射, 简称 $M$ 的自同构 (Automorphism).
+
+同构指的是两个代数结构在结构上完全相同，只是元素的名字可能不同.
+\end{definition}
+
+同构是抽象代数中最重要的概念之一, 从运算的性质上来看两个同构的代数系统是完全相同的, 这也正好揭示了抽象代数所研究问题的实质.
+\bigskip
+
+接下来我们将介绍几种代数结构, 但我们暂时不会深入介绍性质, 以便于指出下一节中数集的代数结构.
+
+\subsection{群}
+
+群论始于Abel关于五次多项式方程没有一般代数解, 和Galois关于五次以上多项式方程没有一般代数解的Galois 理论(Galois theory).
+
+\begin{axiom}{群}{group}
+	设有序偶 $(G,\circ)$, 其中 $G$ 是非空集合, $\circ$ 是二元运算, 有以下公理
+	\ITEMS
+		\item[{\bf G$_1$}] $\circ$ 是结合的,
+		\item[{\bf G$_2$}] $G$ 中有单位元 $e$ 称为 $G$ 的单位元 (Identity), 对 $\forall a \in G$ 都有
+		\[
+			e \circ a = a = a \circ e,
+		\]
+		\item[{\bf G$_3$}]  对任何 $a \in G$ 都有 $a^{-1} \in G$ 称为 $a$ 的逆元 (Inverse), 有
+		\[
+			a^{-1} \circ a = e = a \circ a^{-1}.
+		\] 
+	\ITEME 
+	若 $(G,\circ)$ 满足上述三条公理, 则称其为一个群. 如果 $G$ 中的元素个数有限, 则称 $G$ 是有限的 (Finite) 并把元素个数 $\lvert G \rvert$ 称为群 $G$ 的阶 (Order). 若 $G$ 中的元素个数无限, 则称 $G$ 是无限的 (Infinite), $\lvert G \rvert$ 为无限.
+\end{axiom}
+
+\begin{remark}
+	上面给出的是公理化定义, 实际上只要满足左单位元和左逆元
+	\[
+		e \circ a = a,\qquad a^{-1} \circ a = e,
+	\]
+	即可从结合律推出 $(G,\circ)$ 是群.
+\end{remark}
+
+\begin{definition}{Abelian 群}{abeliangroup}
+	若有群 $(G,\circ)$ 其中 $\circ$ 是可交换的, 即对任意 $a,b \in D$ 有
+	\[
+		a \circ b = b \circ a,
+	\]
+	则称 $G$ 为 Abelian 群或交换群
+\end{definition}
+
+\subsection{环}
+
+\begin{axiom}{环}{ring}
+	设有三元组 $(R,\oplus,\otimes)$ 其中 $R$ 是一个非空集合, 其上定义了两个二元运算, 分别为 $\oplus$ (加法) 和 $\otimes$ (乘法), 其中 $a \otimes b$ 可以记为 $ab$. 有以下公理
+	\ITEMS
+		\item[{\bf R$_1$}] $(R,\oplus)$ 是 Abelian 群,
+		\item[{\bf R$_2$}] 乘法运算 $\otimes$ 是结合的,
+		\item[{\bf R$_3$}] 乘法运算 $\otimes$ 满足分配律, 即对 $\forall a,b,c \in R$ 有
+		\[
+			(a \oplus b) \otimes c = ac \oplus bc, \quad c \otimes(a\oplus b) = ca \oplus cb.
+		\]
+	\ITEME
+	若 $(R,\oplus,\otimes)$ 满足上述三条公理, 则称其为一个环 (Ring). 
+\end{axiom}
+
+\begin{definition}{交换环}{commutativering}
+	如果环 $(R,+,\cdot)$ 中乘法运算 $\otimes$ 是可交换的, 即对 $a,b \in \R$ 有
+	\[
+		a \otimes b = b \otimes a.
+	\]
+	则称之为交换环 (commutative ring).
+\end{definition}
+
+\subsection{域}
+
+\begin{axiom}{域}{field}
+	设有三元组 $(F,\oplus,\otimes)$ 其中 $F$ 是一个非空集合, 其上定义了两个二元运算, 分别为 $\oplus$ (加法) 和 $\otimes$ (乘法), 其中 $a \otimes b$ 可以记为 $ab$. 有以下公理
+	\ITEMS
+		\item[{\bf F$_1$}] $(F,\oplus)$ 是 Abelian 群, 单位元为 $0_F$,
+		\item[{\bf F$_2$}] $(F\setminus\{0_F\},\otimes)$ 是 Abelian 群,
+		\item[{\bf F$_3$}] 乘法运算 $\otimes$ 满足分配律, 即对 $\forall a,b,c \in R$ 有
+		\[
+			(a \oplus b) \otimes c = ac \oplus bc, \quad c \otimes(a\oplus b) = ca \oplus cb.
+		\]
+	\ITEME
+	若 $(F,\oplus,\otimes)$ 满足上述三条公理, 则称其为一个域 (Field).
+
+\end{axiom}
 
 
 % ------------------------------------------------------
@@ -1106,9 +1194,212 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 
 
 \section{数集公理系统与一般性质}
-\label{number set}
 
-\subsection{实数集的定义}
+我们在这一节将沿着历史上数学家们对数集的探索, 来逐步学习现代的数集公理系统.
+
+\subsection{自然数}
+
+首先有最符合我们自然使用的自然数集, 结绳计数就是自然数集的例子.
+
+\begin{axiom}{Dedekind–Peano 自然数公理化}{N}
+自然数集 (Natural numbers) 是三元组 $(\N,0,\nu)$, 其中 $\N$ 是集合, $0 \in \N$ 是固定点, 而 $\nu$ 是如下映射
+\[
+	\nu: \N \rightarrow \N_*
+\]
+其中 $\N_* = \N\setminus\{0\}$ , 满足有以下公理
+\ITEMS
+	\item[{\bf N$_0$}] $\nu$ 是单射,
+	\item[{\bf N$_1$}] 如果 $N \subset \N$ 是包含 $0$ 的子集且 $\nu (n) \in N$ 对所有 $n \in N$ 都成立, 则 $N = \N$.
+\ITEME
+\end{axiom}
+
+上述对自然数的刻画称为 Dedekind–Peano 自然数公理化, 其等价于我们熟悉的 Peano 算数公理.
+
+\begin{axiom}{Peano 算数公理}
+如果以下条件成立, 则集合 $\N$ 称为自然数集, 其元素称为自然数.
+\ITEMS
+	\item $0$ 是自然数.
+	\item 对于集合 $\N$ 中的任意元素 $n$, 其后继 $n'$ 也是 $\N$ 中的一个明确且唯一的自然数.
+	\item $0$ 不是任何自然数的后继数.
+	\item 对于每个自然数 $b, c$, 有 $b=c$ 当且仅当 $b' = c'$.
+	\item 任意关于自然数的命题, 如果证明: 它对自然数 $0$ 是真的, 且假定它对自然数 $a$ 为真时, 可以证明对 $a'$ 也真, 那么命题对所有自然数都真.
+\ITEME
+\end{axiom}
+
+\begin{remark}
+	\hyperref[ax:N]{公理 N$_2$} (Peano 算数公理的公理 5) 保证了数学归纳原理的正确性, 是数学证明的基本工具.自然数集在某些定义下不包含 $0$, 在这里我们记不包含零的自然数集为 $\N^+$.
+\end{remark}
+
+\begin{example}
+	用数学归纳原理证明牛顿二项式公式,
+	\[
+		(a + b)^{n} = \sum_{k = 0}^{n} {n \choose k} a^{n - k} b^{k},
+	\]
+	其中 ${n \choose k}$ 称为二项式系数, 其等于 $\frac {n!}{k!(n-k)!}$. 符号 $!$ 表示阶乘, 即所有小于等于该数的正整数的积.
+\end{example}
+\begin{solution}
+	假设对于某一 $m \in \N^+$, 有
+	\[
+		(a + b)^{m} = \sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}.
+	\]
+	
+	我们要证明其对 $(a + b)^{m+1}$ 成立,
+	\[
+	\begin{aligned}
+		(a + b)^{m+1} & = (a + b)(a + b)^{m}\\
+		& = (a + b)\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}\\
+		& = a\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k} + b\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}\\
+		& = \sum_{k = 0}^{m} {m \choose k} a^{m - k + 1} b^{k} + \sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k + 1} 
+	\end{aligned}
+	\]
+	
+	对于上式中 $\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k + 1}$, 令 $k = j - 1$
+	\[
+		\sum_{j = 1}^{m+1} {m \choose j-1} a^{m - j + 1} b^{j}.
+	\]
+	
+	将结果带回原式可得
+	\[
+		(a + b)^{m+1} = \sum_{j = 1}^{m+1} {m + 1 \choose j} a^{m - j + 1} b^{j}.
+	\]
+	
+	因为 $(a+b)^1 = {1 \choose 1}a^1 b^0 + {1 \choose 1}a^0 b^1$ 显然成立, 根据归纳原理, 上式对所有正整数 $n$ 成立.
+\end{solution}
+
+
+\subsection{整数}
+
+\begin{theorem}{整数环}{ir}
+存在满足性质
+\ITEMS
+	\item $\N \subset \Z,$
+	\item $\Z$ 上的环运算限制到 $\N$ 上给出了 $\N$ 上的运算.
+	\item $\Z$ 是带单位元的最小整环.
+\ITEME
+在同构意义下满足上述性质的环 $\Z$ 是唯一的, 称为整数环 (Ring of integers).
+	
+\end{theorem}
+
+\begin{proof}
+	% TODO: 完成证明 并补充前面的抽象代数部分
+\end{proof}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+
+\begin{definition}{因数}
+当数 $m, n \in \Z$, 而数 $k=m\cdot n^{-1} \in \Z$ 时, 即当 $m =k\cdot n$, 其中 $k \in \Z$ 时, 我们说 $m$ 可以被 $n$ 整除, 其中 $n$ 是 $m$ 的因数.
+\end{definition}
+
+\begin{definition}{素数}
+设 $p\in\N ,  p\neq 1$.如果数 $p$ 在 $\N$ 中没有与 $1$ 和 $p$ 不同的因数, 该数就称为素数.
+\end{definition}
+
+\begin{theorem}{算数基本定理}
+每个自然数能唯一的(不考虑顺序)表示为乘积的形式
+\[
+	n = p_1 \cdots p_k.
+\]
+其中 $p_1, \cdots , p_k$ 是素数.
+\end{theorem}
+
+\begin{definition}{互素数}
+如果数 $m, n \in \Z$ 没有与 $1, -1$ 不同的公因数, 它们就称为互素数.
+\end{definition}
+
+
+\subsection{有理数}
+
+\begin{theorem}
+	在同构意义下, 存在唯一的最小域 $\Q$ 使得 $\Z$ 是其子环.
+\end{theorem}
+
+% TODO: 补充证明
+
+\begin{definition}{有理数集}
+形如 $\frac{p}{q}$ 的数, 其中 $p, q\in\Z$, 且 $q\neq 0$, 称为有理数, 记有理数集为 $\Q$.
+\end{definition}
+\begin{remark}
+有理数的英文为 Rational numbers, Rational 虽然有“理性的”的意思, 但是在这里翻译为“有理数”实际上并不准确, 因为 ratio 在这里是比率的意思, 所以 Rational numbers 的实际含义应该为“比率数”. 
+\end{remark}
+
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+
+
+\begin{definition}{无理数集}
+不是有理数的实数称为无理数, 我们一般用符号 $\R\setminus\Q$ 表示无理数.
+\end{definition}
+\smallskip
+
+在这里证明一个有意思的例子, 实数 $\sqrt 2$ 存在, 且是一个无理数.
+\begin{proof}
+
+以上命题根据无理数的定义可以写为:  $s^2 = 2,  s\in \R,  s\notin \Q$.
+
+设 $X$ 和 $Y$ 是满足以下条件的正实数的集合:  $\forall x \in X (x^2 < 2), \ \forall y \in Y (2 < y^2)$.因为 $1 \in X,  2 \in Y$, 所以 $X$ 和 $Y$ 都不是空集.
+
+此外, 因为对于正实数 $x$ 和 $y$ 有 $(x < y) \Leftrightarrow (x^2 < y^2)$, 所以任何元素 $x \in X$ 小于任何元素 $y \in Y$.根据完备性公理, 存在一个数 $s \in \R$, 使得对于 $\forall x \in X,  \forall y \in Y$ 有 $x \le s \le y$.
+
+我们先证明 $s^2 = 2$, 假如 $s^2 < 2$, 因为 $1 \in X$ 那么可知 $1^2 \le s^2 < 2$, 即 $0 < \Delta = 2 - s^2 \le 1$.这意味着
+\[
+	\left( s + \frac{\Delta}{3s} \right)^2 = s^2 + 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 + \Delta = 2.
+\]
+这与 $x \le s$ 相矛盾, 所以不成立.
+
+假如 $s^2 > 2$, 因为 $2 \in Y$ 那么可知 $2 < s^2 le 2^2$, 即 $0 < \Delta = s^2 - 2 <3$.这意味着
+\[
+	\left( s - \frac{\Delta}{3s} \right)^2 = s^2 - 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 - \Delta = 2.
+\]
+这与集合 $Y$ 有下界 $s$ 相矛盾, 所以不成立.
+
+于是我们证明了 $s^2 = 2$, 接下来只需要证明 $s \notin \Q$ 即可, 假如 $s \in \Q$, 设 $m/n$ 是 $s$ 的既约分数, 则 $m^2 = 2n^2$, 所以 $m^2$ 能被 $2$ 整除, 而这也表示 $m$ 也能被 $2$ 整除.但是, 如果 $m = 2k$, 则 $2k^2 = n^2$, 而根据同样的理由 $n$ 也应当能被 $2$ 整除, 这与 $m/n$ 是 $s$ 的既约分数相矛盾.
+
+\end{proof}
+\smallskip
+
+无理数又可以分为代数数和超越数.
+
+\begin{definition}{代数数和超越数}{transcendental}
+如果一个实数是具有有理系数的代数方程
+\[
+	a_0 x^n + \cdots + a_{n-1} x + a_n = 0
+\]
+的根, 该实数就称为代数数, 不满足这个条件的实数称为超越数.
+\end{definition}
+
+由于目前我们还没有介绍到集合的势, 我将超越数的势, 超越数 $\pi$ 的证明, Hilbert 第七问题这几个有意思的问题放在 \hyperlink{A1}{附录 A.1}.
+
+\subsection{实数}
+
+
+\begin{theorem}
+在同构意义下, 存在唯一的序完备扩域 $\R \supset \Q$. 这个扩域称为实数域.
+\end{theorem}
+
+% TODO: 完成证明域实数域的性质
+
+
+\begin{proposition}{稠密性}
+\ITEMS
+	\item (Archimedes) 对每个 $x\in\R$ 存在 $n\in\N$ 使得 $n>x$.
+	\item (有理数在R 中稠密) 对所有满足 $a<b$ 的 $a,b\in\R$ 存在 $r\in\Q$ 满足 $a<r<b$.
+	\item (无理数在R 中稠密) 对所有满足 $a<b$ 的 $a,b\in\R$ 存在$\xi\in\R\setminus\Q$ 满足 $a<\xi<b$
+\ITEME
+\end{proposition}
 
 如果以下四组条件成立, 则集合 $\R$ 称为实数集, 其元素称为实数, 这些条件称为实数公理系统.
 
@@ -1139,8 +1430,6 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 	\]
 \end{axiom}
 	
-	如果在某集合 $G$ 上定义了满足前三条公理的运算, 我们就说在 $G$ 上给定了群结构, 即 $G$ 是群, 如果成该运算为加法, 就称这个群为加法群, 如果除此之外还知道该运算满足交换律, 即条件 $4_+$ 成立, 就称这个群为交换群或阿贝尔群.
-	
 \begin{axiom}{乘法公理}
 	定义如下映射(乘法运算)
 	\[
@@ -1167,15 +1456,6 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 		x \cdot y = y \cdot x.
 	\]
 \end{axiom}
-
-	我们指出集合 $\R\setminus0$ 相对于乘法运算是(乘法)群.
-	
-	乘法相对于加法满足分配律, 即 $\forall x, y, z \in \R$, 
-	\[
-		(x+y)\cdot z = x \cdot z + y \cdot z.
-	\]
-	
-	如果某集合 $G$ 上定义了满足上述全部公理的两种运算, 则 $G$ 称为代数域.
 	
 \begin{axiom}[序公理]
 	对于$\R$的元素$x$, $y$, 可以存在$x\le y$是否成立, 这时以下条件成立
@@ -1190,13 +1470,9 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 
 \end{axiom}
 	
-如果一个集合的某些元素之间的关系满足公理 $0_\le$, $1_\le$, $2_\le$, 该集合就称为偏序集, 如果除此之外还满足 $3_\le$, 即集合的任何两个元素都是可比较的, 该集合就称为线性序集.
-
-	
 \begin{axiom}{完备性公理}
 	如果 $X$ 和 $Y$ 是 $\R$ 的非空子集, 并对于任何 $x\in X$, $y\in Y$ 有 $x \le y$, 则存在 $c\in\R$, 使得对于任何元素 $x\in X$, $y\in Y$ 有 $x\le c\le y$.
 \end{axiom}
-
 
 % 实数集代数性质
 
@@ -1247,140 +1523,6 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 	设 $X \subseteq \R$ 是给定的子集, 而 $Y = \{y\in\R | \forall x \in X (x \le y)\}$ 是 $X$ 的上界的集合, 依条件 $X\neq \varnothing,  Y\neq \varnothing$.于是, 根据完备性公理, 存在 $c \in \R$, 使得 $\forall x \in X, \forall y \in Y (x\le c\le y)$, 因此数 $c$ 既是 $X$ 的上界, 也是 $Y$ 的下届, 所以有 $c = \min Y = \max X$.
 \end{proof}
 \smallskip
-
-
-
-\subsection{自然数集}
-
-\begin{axiom}{Peano 算数公理}
-如果以下条件成立, 则集合 $\N$ 称为自然数集, 其元素称为自然数.
-\ITEMS
-	\item $0$ 是自然数.
-	\item 对于集合 $N$ 中的任意元素 $n$, 其后继 $n'$ 也是 $N$ 中的一个明确且唯一的自然数.
-	\item $0$ 不是任何自然数的后继数.
-	\item 对于每个自然数 $b, c$,  $b=c$ 当且仅当 $b' = c'$.
-	\item 任意关于自然数的命题, 如果证明: 它对自然数 $0$ 是真的, 且假定它对自然数 $a$ 为真时, 可以证明对 $a'$ 也真, 那么命题对所有自然数都真.
-\ITEME
-\end{axiom}
-\begin{remark}
-	其中公理 5 保证了数学归纳原理的正确性, 是数学证明的基本工具.自然数集在某些定义下不包含 $0$, 在这里我们记不包含零的自然数集为 $\N_+$.
-\end{remark}
-
-\begin{example}
-	用数学归纳原理证明牛顿二项式公式,
-	\[
-		(a + b)^{n} = \sum_{k = 0}^{n} {n \choose k} a^{n - k} b^{k},
-	\]
-	其中 ${n \choose k}$ 称为二项式系数, 其等于 $\frac {n!}{k!(n-k)!}$. 符号 $!$ 表示阶乘, 即所有小于等于该数的正整数的积.
-\end{example}
-\begin{solution}
-	假设对于某一 $m \in \N_+$, 有
-	\[
-		(a + b)^{m} = \sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}.
-	\]
-	
-	我们要证明其对 $(a + b)^{m+1}$ 成立,
-	\[
-	\begin{aligned}
-		(a + b)^{m+1} & = (a + b)(a + b)^{m}\\
-		& = (a + b)\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}\\
-		& = a\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k} + b\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k}\\
-		& = \sum_{k = 0}^{m} {m \choose k} a^{m - k + 1} b^{k} + \sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k + 1} 
-	\end{aligned}
-	\]
-	
-	对于上式中 $\sum_{k = 0}^{m} {m \choose k} a^{m - k} b^{k + 1}$, 令 $k = j - 1$
-	\[
-		\sum_{j = 1}^{m+1} {m \choose j-1} a^{m - j + 1} b^{j}.
-	\]
-	
-	将结果带回原式可得
-	\[
-		(a + b)^{m+1} = \sum_{j = 1}^{m+1} {m + 1 \choose j} a^{m - j + 1} b^{j}.
-	\]
-	
-	因为 $(a+b)^1 = {1 \choose 1}a^1 b^0 + {1 \choose 1}a^0 b^1$ 显然成立, 根据归纳原理, 上式对所有正整数 $n$ 成立.
-	
-\end{solution}
-
-
-\subsection{有理数与无理数}
-
-\begin{definition}{整数集}
-自然数集与非零自然数的相反数的集合的并集称为整数集, 记作 $\Z$.
-\end{definition}
-
-\subsubsection{算数基本定理}
-
-\begin{definition}{}
-当数 $m, n \in \Z$, 而数 $k=m\cdot n^{-1} \in \Z$ 时, 即当 $m =k\cdot n$, 其中 $k \in \Z$ 时, 我们说 $m$ 可以被 $n$ 整除, 其中 $n$ 是 $m$ 的因数.
-\end{definition}
-
-\begin{definition}{}
-设 $p\in\N ,  p\neq 1$.如果数 $p$ 在 $\N$ 中没有与 $1$ 和 $p$ 不同的因数, 该数就称为素数.
-\end{definition}
-
-\begin{theorem}{算数基本定理}
-每个自然数能唯一的(不考虑顺序)表示为乘积的形式
-\[
-	n = p_1 \cdots p_k.
-\]
-其中 $p_1, \cdots , p_k$ 是素数.
-\end{theorem}
-
-\begin{definition}{}
-如果数 $m, n \in \Z$ 没有与 $1, -1$ 不同的公因数, 它们就称为互素数.
-\end{definition}
-
-\begin{definition}{有理数集}
-形如 $\frac{p}{q}$ 的数, 其中 $p, q\in\Z$, 且 $q\neq 0$, 称为有理数, 记有理数集为 $\Q$.
-\end{definition}
-\begin{remark}
-有理数的英文为 Rational numbers, Rational 虽然有“理性的”的意思, 但是在这里翻译为“有理数”实际上并不准确, 因为 ratio 在这里是比率的意思, 所以 Rational numbers 的实际含义应该为“比率数”. 
-\end{remark}
-
-
-\begin{definition}{无理数集}
-不是有理数的实数称为无理数, 我们一般用符号 $\R\setminus\Q$ 表示无理数.
-\end{definition}
-\smallskip
-
-在这里证明一个有意思的例子, 实数 $\sqrt 2$ 存在, 且是一个无理数.
-\begin{proof}
-以上命题根据无理数的定义可以写为:  $s^2 = 2,  s\in \R,  s\notin \Q$.
-
-设 $X$ 和 $Y$ 是满足以下条件的正实数的集合:  $\forall x \in X (x^2 < 2), \ \forall y \in Y (2 < y^2)$.因为 $1 \in X,  2 \in Y$, 所以 $X$ 和 $Y$ 都不是空集.
-
-此外, 因为对于正实数 $x$ 和 $y$ 有 $(x < y) \Leftrightarrow (x^2 < y^2)$, 所以任何元素 $x \in X$ 小于任何元素 $y \in Y$.根据完备性公理, 存在一个数 $s \in \R$, 使得对于 $\forall x \in X,  \forall y \in Y$ 有 $x \le s \le y$.
-
-我们先证明 $s^2 = 2$, 假如 $s^2 < 2$, 因为 $1 \in X$ 那么可知 $1^2 \le s^2 < 2$, 即 $0 < \Delta = 2 - s^2 \le 1$.这意味着
-\[
-	\left( s + \frac{\Delta}{3s} \right)^2 = s^2 + 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 + \Delta = 2.
-\]
-这与 $x \le s$ 相矛盾, 所以不成立.
-
-假如 $s^2 > 2$, 因为 $2 \in Y$ 那么可知 $2 < s^2 le 2^2$, 即 $0 < \Delta = s^2 - 2 <3$.这意味着
-\[
-	\left( s - \frac{\Delta}{3s} \right)^2 = s^2 - 2\frac{\Delta}{3} + \left( \frac{\Delta}{3s} \right)^2 > s^2 - \Delta = 2.
-\]
-这与集合 $Y$ 有下界 $s$ 相矛盾, 所以不成立.
-
-于是我们证明了 $s^2 = 2$, 接下来只需要证明 $s \notin \Q$ 即可, 假如 $s \in \Q$, 设 $m/n$ 是 $s$ 的既约分数, 则 $m^2 = 2n^2$, 所以 $m^2$ 能被 $2$ 整除, 而这也表示 $m$ 也能被 $2$ 整除.但是, 如果 $m = 2k$, 则 $2k^2 = n^2$, 而根据同样的理由 $n$ 也应当能被 $2$ 整除, 这与 $m/n$ 是 $s$ 的既约分数相矛盾.
-
-\end{proof}
-\smallskip
-
-无理数又可以分为代数数和超越数.
-
-\begin{definition}{代数数和超越数}{transcendental}
-如果一个实数是具有有理系数的代数方程
-\[
-	a_0 x^n + \cdots + a_{n-1} x + a_n = 0
-\]
-的根, 该实数就称为代数数, 不满足这个条件的实数称为超越数.
-\end{definition}
-
-由于目前我们还没有介绍到集合的势, 我将超越数的势, 超越数 $\pi$ 的证明, Hilbert 第七问题这几个有意思的问题放在 \hyperlink{A1}{附录 A.1}.
 
 
 在一些其他的实数公理系统中, 阿基米德原理常被列为公理, 不过我们实际上可以通过完备性公理证明此原理.
@@ -1441,6 +1583,11 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 如果 $x,y$ 一正一负, 例如 $x < 0 < y$, 则或者 $x < x+y \le 0$, 或者 $0 \le x+y <y$. 对于前者有 $\lvert x + y\rvert < \lvert x \rvert$, 对于后者有 $\lvert x + y\rvert < \lvert y \rvert$, 即对于二者都有 $\lvert x+y\rvert \le \lvert x\rvert + \lvert y\rvert$.
 \end{proof}
 \smallskip
+
+
+\subsection{复数}
+
+% TODO: 完成复数相关内容
 
 
 
@@ -1583,6 +1730,8 @@ f(y) = B.
 连续统假设是一个在 ZFC 公理化集合论体系内不可证(不能被证明、也不能被证伪)的命题.
 \section{良序集}
 
+% TODO: 良序集
+
 % ------------------------------------------------------
 % ------------------------------------------------------
 % ------------------------------------------------------
@@ -1654,6 +1803,10 @@ f(y) = B.
 \smallskip
 
 \section{函数}
+
+\subsection{基本初等函数}
+
+% TODO: 补充完整
 
 % ------------------------------------------------------
 % ------------------------------------------------------
@@ -2681,7 +2834,7 @@ $\gamma$ 是无理数.
 \end{proposition}
 
 \begin{proof}
-	先考虑数列有界的情况, 我们以下极限 $i = \varliminf_{k\to\infty} x_k$ 为例, 则有数列 $i_n = \inf_{k \ge n} x_k$ 是不减数列. 对于 $n \in \N_+$, 根据下确界的定义, 按照归纳原理可以求出 $k_n \in \N_+$, 使得 $k_n - k_{n+1}$ 且
+	先考虑数列有界的情况, 我们以下极限 $i = \varliminf_{k\to\infty} x_k$ 为例, 则有数列 $i_n = \inf_{k \ge n} x_k$ 是不减数列. 对于 $n \in \N^+$, 根据下确界的定义, 按照归纳原理可以求出 $k_n \in \N^+$, 使得 $k_n - k_{n+1}$ 且
 	\[
 		i_{k_{n-1} + 1} \le x_{k_n} < i_{k_{n-1} + 1} + \frac{1}{n},\ (k_0 = 0)
 	\]
@@ -2730,10 +2883,57 @@ $\gamma$ 是无理数.
 
 \subsection{函数极限的定义}
 
+首先给出在无穷远处的函数极限.
+
+\begin{definition}{无穷远处的函数极限}
+	\ITEMS
+		\item 假设函数为 $f : (a,+\infty) \rightarrow \R$ 和实数 $A \in \R$, 若对于 $\forall \varepsilon > 0$, $\exists M > a$, $\forall x > M$ 都有
+		\[
+			\lvert f(x) - A \rvert < \varepsilon.
+		\]
+		则 $\lim\limits_{x\to+\infty} f(x) = A$.
+		\bigskip
+		
+		\item 假设函数为 $f : (-\infty,b) \rightarrow \R$ 和实数 $A \in \R$, 若对于 $\forall \varepsilon > 0$, $\exists M < b$, $\forall x < M$ 都有
+		\[
+			\lvert f(x) - A \rvert < \varepsilon.
+		\]
+		则 $\lim\limits_{x\to-\infty} f(x) = A$.
+		\bigskip
+		
+		\item 假设函数为 $f : (-\infty,+\infty) \rightarrow \R$ 和实数 $A \in \R$, 若对于 $\forall \varepsilon > 0$, $\exists M > 0$, $\forall \lvert x\rvert > M$ 都有
+		\[
+			\lvert f(x) - A \rvert < \varepsilon.
+		\]
+		则 $\lim\limits_{x\to\infty} f(x) = A$.
+	
+	\ITEME
+\end{definition}
+
+% 空心邻域
+\begin{definition}{空心邻域}
+从一个点的邻域去掉该点本身, 所得集合为该点的空心邻域或去心邻域. 我们引入如下记号
+\[
+	\mathring{U}(a,\rho) := (a - \rho, a + \rho)\setminus \{a\}= (a - \rho,a) \cup (a,a + \rho).
+\]
+称为点 $a$ 的去心邻域.
+\end{definition}
+
 我们现给出函数极限的第一种定义方式, 也就是最早由 Cauchy 提出的定义, 即 $\varepsilon$-$\delta$ 语言.
 
-\begin{definition}{$\varepsilon$-$\delta$ 语言}
-对于函数 $f:E \to \R$, 如果对于任何一个数 $\varepsilon > 0$, 都存在一个数 $\delta > 0$ 使得对于满足 $\lvert x - a \rvert < \delta$ 的任意 $x \in E$, 关系式 $\lvert f(x) - A\rvert < \varepsilon$ 都成立, 我们说, 当 $x$ 趋于 $a$ 时, 函数 $f$ 趋于 $A$, 或者说 $A$ 是 $f$ 在 $x$ 趋于 $a$ 时的极限.  
+\begin{definition}{$\varepsilon$-$\delta$ 语言}{e-d}
+对于函数 $f:\mathring{U}(a,\rho) \rightarrow \R$, 和 $A\in\R$ 其中 $f(a) = A$. 如果对于任何 $\varepsilon > 0$, 都存在 $\delta > 0$ 使得对于满足 
+\[
+	\lvert x - a \rvert < \delta,
+\] 
+的任意 $x \in E$ 都有
+\[
+	\lvert f(x) - A \rvert < \varepsilon,
+\] 
+我们说, 当 $x$ 趋于 $a$ 时, 函数 $f$ 趋于 $A$, 或者说 $A$ 是 $f$ 在 $x$ 趋于 $a$ 时的极限. 记为
+\[
+	\lim_{x\to\infty} f(x) = A.
+\]
 
 我们也可以用形式符号描述上述定义
 \[
@@ -2741,19 +2941,7 @@ $\gamma$ 是无理数.
 \]
 \end{definition}
 
-% 空心邻域
-\begin{definition}{空心邻域}
-从一个点的邻域去掉该点本身, 所得集合为该点的空心邻域或去心邻域. 我们引入如下记号
-\[
-	\begin{aligned}
-		U_E(a) &:= E \cap U(a),\\
-		\mathring{U}_E(a) &:= E \cap U(a)
-	\end{aligned}
-\]
-分别称为点 $a$ 在集合 $E$ 中的邻域与去心邻域.
-\end{definition}
-
-于是我们可以给出函数极限的另一种表述.
+我们可以给出函数极限的等价表述.
 \begin{definition}{函数极限邻域定义}
 如果对于点 $A$ 任何一个邻域, 都可以找到点 $a$ 在集合 $E$ 中的一个去心邻域, 使得它在映射 $f: E \to \R$ 下的像包含于点 $A$ 的给定邻域, 则数 $A$ 称为函数 $f: E \to \R$ 在 $x$ 沿集合 $E$ 趋于点 $a$ 时的极限.
 
@@ -2763,45 +2951,107 @@ $\gamma$ 是无理数.
 \]
 \end{definition}
 
+\begin{definition}{单侧极限}{onesidelimit}
+\ITEMS
+	\item 对于函数 $f: (a-\rho,a) \rightarrow \R$, 和 $A\in\R$ 其中 $f(a) = A$.如果对于任何 $\varepsilon > 0$, 都存在 $\delta \in (0,\rho]$ 使得对于任意 $x \in (a-\delta,a)$ 都有
+	\[
+		\lvert f(x) - A \rvert < \varepsilon,
+	\] 
+	则称 $A$ 为 $f(x)$ 在 $a$ 的左极限 (Left-hand limit), 记为
+	\[
+		f(a-) := \lim_{x\to\infty-} f(x) = A.
+	\]
+	\smallskip
+
+	\item 对于函数 $f: (a,a+\rho) \rightarrow \R$, 和 $A\in\R$ 其中 $f(a) = A$.如果对于任何 $\varepsilon > 0$, 都存在 $\delta \in (0,\rho]$ 使得对于任意 $x \in (a,a+\delta)$ 都有
+	\[
+		\lvert f(x) - A \rvert < \varepsilon,
+	\] 
+	则称 $A$ 为 $f(x)$ 在 $a$ 的左极限 (Left-hand limit), 记为
+	\[
+		f(a+) := \lim_{x\to\infty+} f(x) = A.
+	\]
+
+\ITEME
+\end{definition}
+
+
+\begin{theorem}
+	函数 $f$ 在点 $a$ 收敛且极限为 $A$ 的充要条件是 $f$ 在 $a$ 点的左右极限存在且等于 $A$, 即
+	\[
+	\lim_{x\to a} f(x) = A\quad \iff\quad f(a-) = A = f(a+).
+	\]
+\end{theorem}
+
+\begin{proof}
+	由定义显然.
+\end{proof}
+
 
 \begin{example}
 	符号函数
 	\[
-		\mathrm{sgn} x = \begin{cases}
+		\mathrm{sgn} (x) = \begin{cases}
 			1, & x>0,\\
 			0, & x=0,\\
 			-1, & x<0
 		\end{cases}
 	\]
-	是在整个数轴上定义的. 我们来证明在 $x$ 趋于 $0$ 时，它没有极限.
+	是在整个数轴上定义的. 证明在 $x$ 趋于 $0$ 时，它没有极限.
 \end{example}
 
-\begin{proof}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{proof}
+\begin{solution}
+	显然 $\mathrm{sgn} (0-) = -1$, $\mathrm{sgn} (0+) = 1$ 左右极限不相等, 极限不存在.
+\end{solution}
 
-\begin{proposition}{Cauchy 极限定义与海涅极限定义的等价性命题}
-	% 这一部分还不完善	<-------------------------- HERE
-\end{proposition}
-
-% 七种极限定义
-% 左右单侧极限
-% 无穷极限
-% 极限趋近于无穷(极限不存在)
+\begin{definition}{无穷极限}
+对于函数 $f:\mathring{U}(a,\rho) \rightarrow \R$, 如果对于任何 $E > 0$, 都存在 $\delta > 0$ 使得对于满足 
+\[
+	\lvert x - a \rvert < \delta,
+\] 
+的任意 $x \in E$ 都有
+\[
+	\lvert f(x) \rvert > E.
+\] 
+则记 $\lim\limits_{x\to a} f(x) = \infty$.
+\end{definition}
 
 
 \subsection{函数极限的性质}
 
-\subsubsection{函数极限的一般性质}
+\begin{theorem}{函数极限的唯一性}{Flimit_p1}
+函数在同一个点不可能有两个不同的极限.
+\end{theorem}
+\begin{idea*}
+使用反证法, 假设函数在一点有两个不同的极限, 证明两个极限相同.
+\end{idea*}
+
+\begin{proof}
+类比数列极限易证.
+\end{proof}
+\smallskip
+
+\begin{theorem}{函数极限的局部有界性}{Flimit_p2}
+
+\end{theorem}
+\begin{idea*}
+
+\end{idea*}
+
+\begin{proof}
+类比数列极限易证.
+\end{proof}
+\smallskip
+
+% TODO 性质
+
 
 
 % 这一部分还不完善	<-------------------------- HERE
 
-\subsubsection{极限过程与算数运算}
 
-\subsubsection{极限过程与不等式}
 
-\subsubsection{两个重要实例}
+\subsection{两个重要极限}
 
 \subsection{函数极限的一般定义}
 
