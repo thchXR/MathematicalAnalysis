@@ -2,6 +2,7 @@
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
 
 \geometry{paper=a4paper, left=1.5cm, right=1.5cm, top=3cm, bottom=3cm}
 
@@ -16,6 +17,20 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\ve}[1]{\boldsymbol{#1}}
 \newcommand{\Ve}[1]{\overrightarrow{#1}}
+\newcommand{\vtimes}[2]{\ve{#1} \times \ve{#2}}
+\newcommand{\Vtimes}[2]{\Ve{#1} \times \Ve{#2}}
+
+\newcommand{\parallelsum}{\mathbin{\!/\mkern-5mu/\!}}
+
+
+
+\newcommand{\FIGS}{
+	\begin{figure}[htbp]
+	\centering
+}
+\newcommand{\FIGE}{
+	\end{figure}
+}
 
 
 \elegantnewtheorem{idea}{证明思路}{prostyle}
@@ -483,7 +498,7 @@ Russel 悖论设集合 $A=\{x\mid x\in A\}$, 那么我们可以假设 $A\in A\Ri
 \begin{axiom}{分离公理模式 (axiom schema of separation)}{zfc2}
 	设有表达式 $\varphi (u,p_1,\cdots,p_n)$, 则对任何集合 $X$ 和任意 $p_1,\cdots ,p_n$ 存在 $Y = \{u \in X \mid \varphi(u,p_1,\cdots,p_n)\}.$
 	\[
-		\forall X , \forall p_{1} , \ldots , \forall p_{n} , \exists Y , \forall x \left(x \in Y \Longleftrightarrow x \in X \land \varphi \left(x , p_{1} , \ldots , p_{n}\right)\right).
+		\forall X , \forall p_{1} , \ldots , \forall p_{n} , \exists Y , \forall x \left(x \in Y \longleftrightarrow x \in X \land \varphi \left(x , p_{1} , \ldots , p_{n}\right)\right).
 	\]
 \end{axiom}
 
@@ -1525,13 +1540,13 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \smallskip
 
 
-在一些其他的实数公理系统中, 阿基米德原理常被列为公理, 不过我们实际上可以通过完备性公理证明此原理.
+在一些其他的实数公理系统中, Archimedes 原理常被列为公理, 不过我们实际上可以通过完备性公理证明此原理.
 
-\begin{theorem}[阿基米德原理]
+\begin{theorem}{Archimedes 原理}
 	如果 $h$ 是任意一个固定的正数, 则对于任何实数 $x$, 可以找到唯一的整数 $k$, 使得 $(k-1)h\le x < kh$.
 \end{theorem}
 \begin{proof}
-	因为整数集 $\Z$ 没有上界, 所以集合 $\{n\in\Z\mid x/h<n\}$ 是整数集的非空下有界子集.于是该集合有最小元素 $k$, 即 $(k-1) \le x/h < k$.因为 $h > 0$, 所以这些不等式等价于上述阿基米德原理中的不等式.由数集最小元素的唯一性可知, 满足上面两个不等式的整数 $k$ 是唯一的.
+	因为整数集 $\Z$ 没有上界, 所以集合 $\{n\in\Z\mid x/h<n\}$ 是整数集的非空下有界子集.于是该集合有最小元素 $k$, 即 $(k-1) \le x/h < k$.因为 $h > 0$, 所以这些不等式等价于上述 Archimedes 原理中的不等式.由数集最小元素的唯一性可知, 满足上面两个不等式的整数 $k$ 是唯一的.
 \end{proof}
 \smallskip
 
@@ -3013,12 +3028,13 @@ $\gamma$ 是无理数.
 \[
 	\lvert f(x) \rvert > E.
 \] 
-则记 $\lim\limits_{x\to a} f(x) = \infty$.
+称极限不存在, 记 $\lim\limits_{x\to a} f(x) = \infty$.
 \end{definition}
 
 
 \subsection{函数极限的性质}
 
+% 唯一性
 \begin{theorem}{函数极限的唯一性}{Flimit_p1}
 函数在同一个点不可能有两个不同的极限.
 \end{theorem}
@@ -3031,9 +3047,81 @@ $\gamma$ 是无理数.
 \end{proof}
 \smallskip
 
+% 有界性
 \begin{theorem}{函数极限的局部有界性}{Flimit_p2}
+若函数在某一点 $a$ 处有极限, 则函数在 $a$ 的某个去心邻域必有界.
+\end{theorem}
+
+\begin{idea*}
+显然由定义可知, 存在 $\delta$ 使得当 $x$ 在 $a$ 的 $\delta$ 空心邻域上, 那么 $f(x)$ 将在 $A$ 的空心邻域上.
+\end{idea*}
+
+\begin{proof}
+类比数列极限易证.
+\end{proof}
+\smallskip
+
+% 保序性
+\begin{theorem}{函数极限的局部保序性}{Flimit_p3}
 
 \end{theorem}
+
+\begin{idea*}
+
+\end{idea*}
+
+\begin{proof}
+类比数列极限易证.
+\end{proof}
+\smallskip
+
+% 绝对值
+\begin{theorem}{函数极限的绝对值性值}{Flimit_p4}
+
+\end{theorem}
+
+\begin{idea*}
+
+\end{idea*}
+
+\begin{proof}
+类比数列极限易证.
+\end{proof}
+\smallskip
+
+% 迫敛性
+\begin{theorem}{函数极限的迫敛性}{Flimit_p5}
+
+\end{theorem}
+
+\begin{idea*}
+
+\end{idea*}
+
+\begin{proof}
+类比数列极限易证.
+\end{proof}
+\smallskip
+
+% 四则运算
+\begin{theorem}{函数极限的四则运算}{Flimit_p6}
+
+\end{theorem}
+
+\begin{idea*}
+
+\end{idea*}
+
+\begin{proof}
+类比数列极限易证.
+\end{proof}
+\smallskip
+
+% 复合函数极限
+\begin{theorem}{复合函数极限}{Flimit_p7}
+
+\end{theorem}
+
 \begin{idea*}
 
 \end{idea*}
@@ -3059,7 +3147,6 @@ $\gamma$ 是无理数.
 
 \subsection{函数极限与数列极限的关系}
 
-\subsubsection{海涅定理}
 \begin{theorem}[海涅定理]
 	
 \end{theorem}
@@ -3122,6 +3209,8 @@ $\gamma$ 是无理数.
 
 \section{*数学史: 无穷小的幽灵}
 
+
+
 % ================================================================================== 
 % 									微 分 学
 % ================================================================================== 
@@ -3130,9 +3219,11 @@ $\gamma$ 是无理数.
 
 \subsection{引子}
 % 这一部分还不完善	<-------------------------- HERE
+% TODO: 导数补充引子
+
 \subsection{可微函数}
 
-我们先
+
 
 \subsection{切线, 导数和微分的几何意义}
 % 这一部分还不完善	<-------------------------- HERE
@@ -3225,7 +3316,7 @@ $\gamma$ 是无理数.
 % ================================================================================== 
 % 								  向 量 代 数
 % ================================================================================== 
-
+\chapter{向量代数}
 \section{向量与线性运算}
 
 \subsection{向量及其表示}
@@ -3234,7 +3325,7 @@ $\gamma$ 是无理数.
 	我们称只有大小的量为数量(标量), 把既有大小又有方向的量称为向量(矢量).
 \end{definition}
 
-我们常常使用有向线段来表示向量, 有向线段方向代表向量的方向, 有向线段长度代表向量大小. 记为 $\Ve{AB}$, 其中 $A$ 是向量的起点, $B$ 是向量的终点. 有时我们也用黑体小写字母 $\ve{a}$ 表示向量(手写时仍用箭头表示).
+我们常常使用有向线段来表示向量, 有向线段方向代表向量的方向, 有向线段长度代表向量大小. 记为 $\Ve{AB}$, 其中 $A$ 是向量的起点, $B$ 是向量的终点. 有时我们也用黑体小写字母 $\ve a$ 表示向量(手写时仍用箭头表示).
 
 \begin{definition}{模}
 	向量 $\Ve{AB}$ 的大小, 也称为向量的模, 记作 $\lvert \Ve{AB} \rvert$.
@@ -3245,7 +3336,7 @@ $\gamma$ 是无理数.
 \end{definition}
 
 \begin{definition}{共线}
-	对于一组向量, 若将其平移至同一起点后, 它们在同一直线上, 那么就称这组向量是共线的(平行的), 用记号 $\parallel$ 表示.	
+	对于一组向量, 若将其平移至同一起点后, 它们在同一直线上, 那么就称这组向量是共线的(平行的), 用记号 $\parallelsum$ 表示.	
 \end{definition}
 
 零向量的的方向不定, 零向量与任何向量共线.
@@ -3259,42 +3350,884 @@ $\gamma$ 是无理数.
 \subsection{向量的加法与减法}
 
 \begin{definition}{向量的和}
-设有两向量 $\ve{a} = \Ve{OA} ,\ \ve{b} = \Ve{AB}$
+设有两向量 $\ve a = \Ve{OA} ,\ \ve b = \Ve{AB}$, 则两向量的和也是一个向量, 可以用平行四边形法则或三角形法则得出
+\[
+	\ve a + \ve b = \Ve{OA} + \Ve{AB} = \Ve{OA}.
+\]
+两个向量的差由和的逆运算可得
+
 \end{definition}
+
+\FIGS
+    % 三角形法则
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[
+            >=Stealth,
+            vector/.style={->, thick},
+            auxiliary/.style={dashed, gray, thick},
+            scale=1
+        ]
+            \coordinate (O) at (0,0);
+            \coordinate (A) at (3,0);
+            \coordinate (B) at (4.5,2);
+
+            \draw[vector, blue] (O) -- (A)
+                node[midway, below] {$\ve a$};
+            \draw[vector, blue] (A) -- (B)
+                node[midway, right] {$\ve b$};
+            \draw[vector, red] (O) -- (B)
+                node[near end, above left] {$\ve c=\ve a+\ve b$};
+
+            \fill (O) circle (1.5pt) node[below left] {$O$};
+            \fill (A) circle (1.5pt) node[below] {$A$};
+            \fill (B) circle (1.5pt) node[above right] {$B$};
+        \end{tikzpicture}
+        \caption{向量加法的三角形法则}
+        \label{fig:triangle}
+    \end{minipage}\hfill
+    % 平行四边形法则 
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[
+            >=Stealth,
+            vector/.style={->, thick},
+            auxiliary/.style={dashed, gray, thick},
+            scale=1
+        ]
+            \coordinate (O) at (0,0);
+            \coordinate (A) at (3,0);
+            \coordinate (B) at (1.5,2);
+            \coordinate (C) at (4.5,2);
+
+            \draw[vector, blue] (O) -- (A)
+                node[midway, below] {$\ve a$};
+            \draw[vector, blue] (O) -- (B)
+                node[midway, above left] {$\ve b$};
+
+            \draw[auxiliary] (A) -- (C);
+            \draw[auxiliary] (B) -- (C);
+
+            \draw[vector, red] (O) -- (C)
+                node[near end, above left] {$\ve c=\ve a+\ve b$};
+
+            \fill (O) circle (1.5pt) node[below left] {$O$};
+            \fill (A) circle (1.5pt) node[below right] {$A$};
+            \fill (B) circle (1.5pt) node[above left] {$B$};
+            \fill (C) circle (1.5pt) node[above right] {$C$};
+        \end{tikzpicture}
+        \caption{向量加法的平行四边形法则}
+        \label{fig:parallelogram}
+    \end{minipage}
+\FIGE
 
 \subsection{数乘}
 
+\begin{definition}{向量数乘}
+	设有向量 $\ve {v}$ 和一实数 $\lambda$ 则称向量
+	\[
+		\lambda\ve{v}
+	\]
+	为向量 $\ve {v}$ 的数乘, 在几何上数乘是向量的按比例缩放.
+\end{definition}
+
 \subsection{共线与共面向量}
 
+\begin{definition}{共线}{collinearity}
+	两个向量 $\ve a,\ve b$ 称为共线 (Collinearity), 或称平行, 若它们线性相关, 即存在不全为零的 $\alpha,\beta$, 使得  
+    \[
+    \alpha\ve a+\beta\ve b=\ve{0}.
+    \]
+    等价地，若 $\ve a\ne\ve{0}$，则存在 $\lambda$，使得  
+    \[
+    \ve b=\lambda\ve a.
+    \]
+\end{definition} 
+
+\begin{definition}{共面}{coplanarity}
+三个向量 $\ve a,\ve b,\ve c$ 称为共面 (Coplanarity), 若它们线性相关, 即存在不全为零的 $\alpha,\beta,\gamma$, 使得  
+    \[
+    \alpha\ve a + \beta\ve b + \gamma\ve c=\ve{0}.
+    \]
+\end{definition}
+
+
 \subsection{定比分点}
+
+\begin{definition}{向径}
+取定一个点 $O$, 对于空间中一点 $P$，从 $O$ 指向 $P$ 的向量 $\Ve{OP}$ 称为点 $P$ 的向径 (Position vector)，可简记为 $\ve{P}$.
+\end{definition}
 	
+\FIGS
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\begin{tikzpicture}[
+            >=Stealth,
+            vector/.style={->, thick},
+            scale=0.8
+        ]
+        	\coordinate (O) at (2,0);
+            \coordinate (P1) at (0,4);
+            \coordinate (P) at (3,4);
+            \coordinate (P2) at (7,4);
+
+            \draw[blue] (P1) -- (P2);
+            \draw[vector, red] (O) -- (P)
+                node[midway, left] {$\ve{P}$};
+            \draw[vector, red] (O) -- (P2)
+                node[midway, below right] {$\ve{P_2}$};
+            \draw[vector, red] (O) -- (P1)
+                node[midway, below left] {$\ve{P_1}$};
+
+
+            \fill (O) circle (1.5pt) node[below] {$O$};
+            \fill (P1) circle (1.5pt) node[above] {$P_1$};
+            \fill (P2) circle (1.5pt) node[above] {$P_2$};
+            \fill (P) circle (1.5pt) node[above] {$P$};
+\end{tikzpicture}
+\caption{定比分点}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.55\textwidth}
+	\indent 如图所示, 在线段 $P_1 P_2$ 上求一点 $P$ 使得 $P_1 P$ 与 $ P P_2$ 的长度之比为定数 $\lambda$.
+  
+	\indent 由三角形法则显然可以由
+  	\[
+  		\Ve{P_1 P} = \lambda \Ve{P P_2},
+  	\]
+  	得出
+  	\[
+  		\Ve{OP} = \frac{\Ve{OP_1}+\lambda\Ve{OP_2}}{1+\lambda}.
+ 	\]
+  	\indent 由此可得定比分点公式.
+\end{minipage}
+\FIGE
+
+\begin{theorem}{定比分点公式}
+设有线段 $P_1 P_2$ 其上有定比分点 $P$, 有 $P_1 P = \lambda P P_2$, 则
+\[
+	\ve{P} = \frac{\ve{P_1}+\lambda\ve{P_2}}{1+\lambda}.
+\]
+\end{theorem}
+
+类似的我们有如下公式.
+
+\begin{theorem}{线段中点公式}
+设有线段 $AB$ 其上有中点 $M$, 则
+\[
+	\ve{M} = \frac{\ve a+\ve b}{2}.
+\]
+\end{theorem}
+
+
+\begin{theorem}{三角形重心公式}
+设有三角形 $\triangle ABC$ 的重心为 $G$, 则
+\[
+	\ve{G} = \frac{\ve a + \ve b + \ve c}{3}.
+\]
+\end{theorem}
+
+
 
 % 向量的内积
 \section{向量的内积}
 
-\subsection{向量夹角}
-
 \subsection{向量的投影}
+
+\begin{definition}{向量夹角}
+	两个非零向量 $\ve a, \ve b$ 之间的夹角, 是指将它们平移到同一始点所得到的那个介于 $0$ 与 $\pi$ 之间的夹角, 记为 $\langle\ve a,\ve b\rangle$ 或 $\angle (\ve a,\ve b)$.
+\end{definition}
+
+\begin{definition}{点到轴上的投影}
+	设有一点 $P$ 和一个轴 $g$ , $P$ 在 $g$ 上的投影是经过 $P$ 且垂直于 $g$ 的平面与 $g$ 的交点 $P'$. 
+\end{definition}
+\smallskip
+
+\FIGS
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[
+            >=Stealth,
+            vector/.style={->, thick},
+            scale=0.8
+        ]
+        	\coordinate (A) at (2,0);
+            \coordinate (B) at (2,6);
+            \coordinate (C) at (4,7);
+            \coordinate (D) at (4,1);
+            \coordinate (P) at (3.2,5);
+            \coordinate (P') at (3,3.5);
+            \coordinate (g) at (6,3.5);
+            \coordinate (P1) at (0,3.5);
+            \coordinate (P2) at (2,3.5);
+
+            \draw[black] (A) -- (B) -- (C) -- (D) -- (A);
+            \draw[black] (P) -- (P');
+            \draw[->, blue] (P') -- (g);
+            \draw[dashed, blue] (P') -- (P2);
+            \draw[blue] (P2) -- (P1);
+
+
+            \fill (g) circle (0pt) node[below] {$g$};
+            \fill[orange] (P) circle (1.5pt) node[above] {$P$};
+            \fill[red] (P') circle (1.5pt) node[below] {$P'$};
+\end{tikzpicture}
+\caption{}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[
+            >=Stealth,
+            vector/.style={->, thick},
+            scale=0.8
+        ]
+        	\coordinate (A) at (1,0);
+            \coordinate (B) at (1,6);
+            \coordinate (C) at (3,7);
+            \coordinate (D) at (3,1);
+            
+            \coordinate (P1) at (1.5,4);
+            \coordinate (P1') at (2,3.5);
+            \coordinate (g1) at (0,3.5);
+            \coordinate (g2) at (1,3.5);
+            
+            \coordinate (E) at (5,0);
+            \coordinate (F) at (5,6);
+            \coordinate (G) at (7,7);
+            \coordinate (H) at (7,1);
+            
+            \coordinate (P2) at (6.2,5);
+            \coordinate (P2') at (6,3.5);
+            \coordinate (g3) at (5,3.5);
+            
+            \coordinate (P) at (5,4.745);
+            \coordinate (g) at (9,3.5);
+
+            \draw[black] (A) -- (B) -- (C) -- (D) -- (A);
+            \draw[black] (E) -- (F) -- (G) -- (H) -- (E);
+            \draw[black] (P1) -- (P1');
+            \draw[black] (P2) -- (P2');
+            \draw[->, blue] (P2') -- (g);
+            \draw[blue] (g1) -- (g2);
+            \draw[dashed, blue] (g2) -- (P1');
+            \draw[red] (P1') -- (g3);
+            \draw[->, dashed, red] (g3) -- (P2');
+            
+            \draw[orange] (P1) -- (P);
+			\draw[->, dashed, orange] (P) -- (P2);
+
+            \fill (g) circle (0pt) node[below] {$g$};
+            \fill[orange] (P1) circle (1.5pt) node[above] {$P_1$};
+            \fill[red] (P1') circle (1.5pt) node[below] {$P_1'$};
+            \fill[orange] (P2) circle (1.5pt) node[above] {$P_2$};
+            \fill[red] (P2') circle (1.5pt) node[below] {$P_2'$};
+\end{tikzpicture}
+\caption{}
+\end{minipage}
+\FIGE
+
+
+\begin{definition}{向量到轴上的投影}
+	设有一向量 $\Ve{P_1 P_2}$ 和一个轴 $g$ , $\Ve{P_1 P_2}$ 在 $g$ 上的投影, 是指经过 $\Ve{P_1 P_2}$ 的始点和终点在 $g$ 上的投影所组成的向量 $\Ve{P_1' P_2'}$. 记为 $\rm{Prj}_g\Ve{P_1 P_2}$
+\end{definition}
+
+由投影的定义可得如下定理.
+
+\begin{theorem}
+设 $\theta$ 为向量 $\Ve{P_1 P_2}$ 与轴 $g$ 的夹角.
+\[
+	\rm{Prj}_g\Ve{P_1 P_2} = \lvert \Ve{P_1 P_2} \rvert \cos \theta.
+\]
+\end{theorem}
+
+
+\begin{corollary}
+\[
+	\rm{Prj}_g(\ve a + \ve b) = \rm{Prj}_g\ve a + \rm{Prj}_g\ve a.
+\]
+\end{corollary}
+
+\begin{corollary}
+\[
+	\rm{Prj}_g(\lambda\ve a) = \lambda\rm{Prj}_g(\ve a).
+\]
+\end{corollary}
+
 
 \subsection{向量的内积}
 
+\begin{definition}{内积}
+	两个向量 $\ve a, \ve b$ 的内积 (Inner product) 是一个数量, 记为 $\ve a \cdot \ve b$, 所以也称为数量积或点乘. 其等于这两个向量的模乘以两向量夹角的余弦, 即
+	\[
+		\ve a\cdot\ve b := \lvert \ve a \rvert \lvert \ve b \rvert \cos \langle\ve a,\ve b\rangle.
+	\]
+	若用坐标表示两个向量则有
+	\[
+	\ve a\cdot\ve b = a_1b_1+\cdots+a_nb_n=\sum_{i=1}^n a_i b_i.
+	\]
+\end{definition}
+
+显然两向量垂直时, 即 $\langle\ve a,\ve b\rangle = \frac{\pi}{2}$ 时有如下定理.
+
+\begin{theorem}{内积与垂直}{}
+	两个非零向量垂直的充要条件是其内积为零, 即
+	\[
+		\ve a \perp \ve b \quad \iff \quad \ve a\cdot\ve b =0.
+	\]
+\end{theorem}
+
+除此之外, 利用内积可以用于计算两向量的夹角,
+\[
+\cos \langle \ve a, \ve b \rangle = \frac{\ve a \cdot \ve b}{\lvert \ve a \rvert \lvert \ve b \rvert}.
+\]
+
+内积也常常用来计算向量的长度, 对于任意向量 $\ve a$ 都有
+\[
+	\ve a ^2 := \ve a \cdot \ve a = \lvert \ve a \rvert \lvert \ve a \rvert \cos 0 = \lvert \ve a \rvert ^2,
+\]
+于是有
+\[
+\lvert a \rvert = \sqrt{\ve a ^2}.
+\]
+
+内积也可以用投影表示, 或者用内积表示投影, 如
+\[
+	\ve a \cdot \ve b = \lvert \ve b \rvert \rm{Prj}_{\ve b} \ve a (= \lvert \ve a \rvert \rm{Prj}_{\ve a} \ve b),
+\]
+\[
+	\rm{Prj}_{\ve b} \ve a  = \frac{\ve a \cdot \ve b}{\lvert \ve b \rvert}.
+\]
+
+\subsection{内积的性质}
+
+\begin{theorem}{内积运算律} 
+对于任意向量 $\ve a, \ve b, \ve c$ 及任意实数 $\lambda$, 有
+\ITEMS
+	\item 交换律
+	\[
+		\ve a \cdot \ve b = \ve b \cdot \ve a.
+	\]
+	\item 与数乘的结合律
+	\[
+		(\lambda \ve a) \cdot \ve b = \lambda (\ve a \cdot \ve b).
+	\]
+	\item 分配律
+	\[
+		a \cdot (\ve b + \ve c) = \ve a \cdot \ve b + \ve a \cdot \ve c.
+	\]
+\ITEME
+\end{theorem}
+
+\begin{proof}
+	自证不难.
+\end{proof}
+
+\subsection{内积的应用}
+
+\begin{example}
+	用向量证明三角形的余弦定理, 即在 $\triangle ABC$ 中有
+	\[
+		c^2 = a^2 + b^2 - 2ab \cos C. 
+	\]
+\end{example}
+
+\begin{solution}
+	由向量减法可知 $\Ve{AB} = \Ve{CB} - \Ve{CA}$, 对向量两边同时求与自己的内积可得
+	\[
+		\begin{aligned}
+			(\Ve{AB})^2 &= (\Ve{CB} - \Ve{CA})^2\\
+			&= (\Ve{CB})^2 + (\Ve{CA})^2 - 2 (\Ve{CB} \cdot  \Ve{CA})\\
+			&= \lvert\Ve{CB}\rvert^2 + \lvert\Ve{CA}\rvert^2 - 2 \lvert\Ve{CB}\rvert  \lvert\Ve{CA}\rvert \cos \langle \Ve{CB},\Ve{CA} \rangle,
+		\end{aligned}
+	\]
+	显然其中 $\lvert\Ve{AB}\rvert = c$, $\lvert\Ve{CA}\rvert = b$, $\lvert\Ve{CB}\rvert = a$, $\langle \Ve{CB},\Ve{CA} \rangle = \cos C$ 则有
+	\[
+		c^2 = a^2 + b^2 - 2ab \cos C. 
+	\]
+\end{solution}
+
+\begin{example}
+	证明 Schwarz 不等式
+	\[
+		\lvert \ve a \cdot \ve b \rvert \le \lvert \ve a \rvert \lvert \ve b \rvert.
+	\]
+\end{example}
+
+\begin{solution}
+	由内积定义可知
+	\[
+		\lvert \ve a \cdot \ve b \rvert = \bigl\lvert \lvert\ve a\rvert \lvert \ve b \rvert \cos\langle \ve a, \ve b \rangle \bigr\rvert,
+	\]
+	显然 $-1 \le \cos\langle \ve a, \ve b \rangle \le 1$, 则有
+	\[
+		\lvert \ve a \cdot \ve b \rvert \le \lvert \ve a \rvert \lvert \ve b \rvert.
+	\]
+\end{solution}
 
 
 \section{向量的外积}
 
+设有不共面的三个向量 $\ve x, \ve y, \ve z$, 如图若向量组 $\{\ve x,\ve y,\ve z\}$ 分别构成右手系和左手系. 用物理中右手螺旋定则的手势, 将指向掌心的四指的弯曲方向, 表示从 $\ve a$ 的方向经过最小平角的转动方向达到 $\ve b$ 的方向, 若此时拇指的方向与 $\ve c$ 同向, 那么称 $\{\ve x,\ve y,\ve z\}$ 为右手系, 否则称之为左手系.
+\bigskip
+
+\FIGS
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[
+  >=Stealth,
+  axis/.style={->, thick, line width=1.2pt}
+]
+  	\draw[axis, blue]  (0,0,0) -- (2.8,0,0) node[right] {$x$};
+  	\draw[axis, green!60!black] (0,0,0) -- (0,2.5,0) node[above] {$y$};
+  	\draw[axis, red]   (0,0,0) -- (0,0,2.5) node[above left] {$z$};
+  
+  	\fill (0,0,0) circle (1.5pt);
+\end{tikzpicture}
+\caption{右手系}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[
+  >=Stealth,
+  axis/.style={->, thick, line width=1.2pt}
+]
+  	\draw[axis, blue]  (0,2.5,0) -- (2.8,2.5,0) node[right] {$x$};
+  	\draw[axis, green!60!black] (0,2.5,0) -- (0,0,0) node[below] {$y$};
+  	\draw[axis, red]   (0,2.5,0) -- (0,2.5,2.5) node[above left] {$z$};
+  
+  	\fill (0,2.5,0) circle (1.5pt);
+\end{tikzpicture}
+\caption{左手系}
+\end{minipage}
+\FIGE
+
+\begin{remark}
+	虽然图中画的 $\ve x, \ve y, \ve z$ 看起来相互垂直, 但实际上只要不共面的三个向量就可以构成右手系或左手系, 不需垂直.
+\end{remark}
+
 \subsection{外积的定义}
+
+\begin{definition}
+	三维向量 $\ve a$ 与 $\ve b$ 的外积 (Vector product) 也是一个三维向量, 记为 $\vtimes{a}{b}$, 所以也称为向量积或叉乘, 其方向垂直于 $\ve a$ 与 $\ve b$ 所构成的平面, 且 $\{\ve a, \ve b, \vtimes{a}{b}\}$ 是右手系, 其大小为
+	\[
+		\lvert \vtimes{a}{b} \rvert = \lvert \ve a \rvert \lvert \ve b \rvert \sin \langle \ve a, \ve b \rangle.
+	\]
+	若用坐标表示两个向量则有
+	\[
+		\ve a\times\ve b=
+		\begin{vmatrix}
+		\ve i & \ve j & \ve k\\
+		a_1 & a_2 & a_3\\
+		b_1 & b_2 & b_3
+		\end{vmatrix}.
+	\]
+\end{definition}
+
+显然外积可以用于计算平行四边形的面积, 设有以 $\ve a, \ve b$ 为邻边的平面四边形, 则有
+\[
+	S = \lvert \ve a \rvert \lvert \ve b \rvert \sin \langle \ve a, \ve b \rangle = \lvert \vtimes{a}{b} \rvert.
+\]
+这就是外积的模的几何意义.
+
+类似于内积可以判断两向量是否垂直, 外积可以判断两向量是否共线.
+
+\begin{theorem}{外积与共线}{}
+	两个非零向量共线的充要条件是其外积为零向量, 即
+	\[
+		\ve a \parallelsum \ve b \quad \iff \quad \ve a\times\ve b = \ve 0.
+	\]
+\end{theorem}
+也可以用外积计算两向量夹角的正弦
+\[
+	\sin \langle \ve a, \ve b \rangle = \frac{\lvert \vtimes{a}{b} \rvert}{\lvert \ve a \rvert \lvert \ve b \rvert}.
+\]
+
+外积也可以计算与两个向量 $\ve a, \ve b$ 垂直的向量, 则 $\lambda (\vtimes{a}{b})$ 可以表示任意垂直于 $\ve a, \ve b$ 的向量.
+\smallskip
+
+求点 $P$ 到直线 $l$ 的距离 $d$, 可以在直线 $l$ 上, 任取一向量 $\Ve{AB}$, 则由外积的模的几何意义, 可得
+\[
+	d = \frac{\lvert \Ve{AP} \times \Ve{AB} \rvert}{\lvert\Ve{AB}\rvert}.
+\]
+
 
 \subsection{外积的性质}
 
+
+\begin{lemma}{}{opl1}
+设 $\ve a$ 在与 $\ve c$ 垂直的平面 $\alpha$ 上的投影向量为 $\ve a'$, 则
+\[
+\ve a \times \ve c = \ve a' \times \ve c.
+\] 	
+\end{lemma}
+
+\begin{proof}
+	显然 $\langle \ve a',\ve c \rangle = \frac{\pi}{2}$ 则可得
+	\[
+		\lvert \ve a \times \ve c\rvert = \lvert \ve a \rvert \lvert \ve c \rvert \sin \langle \ve a,\ve c \rangle,
+	\]
+	\[
+		\lvert \ve a' \times \ve c\rvert = \lvert \ve a' \rvert \lvert \ve c \rvert.
+	\]
+	又因为 $\langle \ve a',\ve c \rangle = \langle \ve a,\ve c \rangle + \langle \ve a',\ve a \rangle$ 可得
+	\[
+		\sin \langle \ve a,\ve c \rangle  = \cos \langle \ve a',\ve a \rangle.
+	\]
+	综上可得
+	\[
+		\lvert \ve a \times \ve c\rvert = \lvert \ve a \rvert \lvert \ve c \rvert \cos \langle \ve a,\ve a' \rangle = \lvert \ve a' \rvert \lvert \ve c \rvert = \lvert \ve a' \times \ve c\rvert.
+	\]
+\end{proof}
+
+\begin{lemma}{}{opl2}
+	设有向量 $\ve a',\ve c$, 其中 $\lvert \ve c \rvert = 1$, $\ve a'$ 是与 $\ve c$ 垂直的平面 $\alpha$ 上的一个向量, 则将 $\ve a'$ 在 $\alpha$ 上顺时针 (从 $\ve c$ 所指的方向看, 或沿 $\ve c$ 的方向的逆时针) 旋转 $\frac{\pi}{2}$ 得到 $\ve a_1$,则有
+	\[
+		\ve a_1 = \ve a' \times \ve c.
+	\]
+\end{lemma}
+
+\begin{proof}
+	由定义显然.
+\end{proof}
+
+
+\begin{theorem}{外积运算律} 
+对于任意向量 $\ve a, \ve b, \ve c$ 及任意实数 $\lambda$, 有
+\ITEMS
+	\item 反交换律
+	\[
+		\vtimes{a}{b} = -\ve b \times \ve a.
+	\]
+	\item 与数乘的结合律
+	\[
+		\lambda \vtimes{a}{b} = \lambda (\vtimes{a}{b}).
+	\]
+	\item 分配律
+	\[
+		(\ve a + \ve b) \times \ve c = \ve a \times \ve c + \ve b \times \ve c.
+	\]
+\ITEME
+\end{theorem}
+
+\begin{proof}
+反交换律与结合律由定义显然, 这里只证明分配律.
+
+不失一般性的我们可以设 $\ve c$ 为单位向量, 则对于与 $\ve c$ 垂直的平面 $\alpha$, 向其作向量 $\ve a, \ve b$ 的投影 $\ve a', \ve b'$ , 由 \hyperref[lem:opl1]{引理 \ref{lem:opl1}} 可知
+\[
+	\ve a \times \ve c = \ve a' \times \ve c, \quad \ve b \times \ve c = \ve b' \times \ve c,
+\]
+由 \hyperref[lem:opl2]{引理 \ref{lem:opl2}}, 则将 $a', b'$ 在 $\alpha$ 平面上顺时针旋转 $\frac{\pi}{2}$ , 过程如 \hyperref[fig:ope1]{下图} 所示, 则显然有
+\[
+	(\ve a + \ve b) \times \ve c = \ve a \times \ve c + \ve b \times \ve c.
+\] 
+\end{proof}
+\bigskip
+
+\FIGS
+\begin{tikzpicture}[
+            >=Stealth,
+            vec/.style={->, thick},
+            scale=0.8
+        ]
+        	\coordinate (A) at (0,0,0);
+            \coordinate (B) at (10,0,0);
+            \coordinate (C) at (10,0,10);
+            \coordinate (D) at (0,0,10);
+            
+            \coordinate (o) at (3.5,0,3.5);
+            \coordinate (c) at (3.5,3,3.5);
+            
+            \coordinate (a) at (7.3,2.5,5);
+            \coordinate (b) at (8.5,5,2);
+            
+            \coordinate (a') at (7.3,0,5);
+            \coordinate (b') at (8.5,0,2);
+            
+            \coordinate (a'') at (2,0,7.3);
+            \coordinate (b'') at (5,0,8.5);
+            
+
+            \draw[black] (A) -- (B) node[above right] {$\alpha$} -- (C) -- (D) -- (A);
+            
+            \draw[vec, black] (o) -- (c) node[left] {$\ve c$};
+            \draw[vec, red] (o) -- (a) node[right] {$\ve a$};
+            \draw[vec, green!60!black] (o) -- (b) node[midway, above left] {$\ve a' + \ve b'$};
+            \draw[vec, blue] (a) -- (b) node[right] {$\ve b$};
+            
+            \draw[dashed, orange] (a) -- (a');
+            \draw[dashed, orange] (b) -- (b');
+            
+            \draw[vec, red] (o) -- (a') node[right] {$\ve a'$};
+            \draw[vec, green!60!black] (o) -- (b') node[midway, above] {$\ve a' + \ve b'$};
+            \draw[vec, blue] (a') -- (b') node[right] {$\ve b'$};
+            
+            \draw[vec, red] (o) -- (a'') node[above left] {$\ve a' \times \ve c$};
+            \draw[vec, green!60!black] (o) -- (b'') node[midway, right] {$(\ve a' + \ve b') \times \ve c$};
+            \draw[vec, blue] (a'') -- (b'') node[right] {$\ve b' \times \ve c$};
+\end{tikzpicture}
+\caption{}
+\label{fig:ope1}
+\FIGE
+
 \subsection{外积的应用}
 
+\begin{example}
+用向量证明正弦定理, 即在 $\triangle ABC$ 中有
+	\[
+		\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}.
+	\]
+\end{example}
+
+\begin{solution}
+	设 $\Ve AB = \ve c, \Ve CA = \ve b, \Ve CB = \ve a$ 则由三角形法则显然 $\ve a = \ve b + \ve c$ 则有
+	\[
+		\vtimes{a}{b} = (\ve b + \ve c) \times \ve b = \ve b \times \ve b + \ve c \times \ve b = \ve c \times \ve b,
+	\]
+	\[
+		\ve c \times \ve a = \ve c \times (\ve b + \ve c) = \ve c \times \ve b + \ve c \times \ve c = \ve c \times \ve b.
+	\]
+	即
+	\[
+		\vtimes{a}{b} = \ve c \times \ve b = \ve c \times \ve a.
+	\]
+	则可知
+	\[
+		\lvert \ve a \rvert \lvert \ve b \rvert \sin \langle \ve a, \ve b \rangle = \lvert \ve c \rvert \lvert \ve b \rvert \sin \langle \ve c, \ve b \rangle = \lvert \ve c \rvert \lvert \ve a \rvert \sin \langle \ve c, \ve a \rangle,
+	\]
+	连等式同除以 $\lvert \ve a \rvert \lvert \ve b \rvert \lvert \ve c \rvert$ 可得
+	\[
+		 \frac{\sin \langle \ve a, \ve b \rangle}{\lvert \ve c \rvert} = \frac{\sin \langle \ve c, \ve b \rangle}{\lvert \ve a \rvert} = \frac{\sin \langle \ve c, \ve a \rangle}{\lvert \ve b \rvert},
+	\]
+	稍作整理则有
+	\[
+		\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}.
+	\]
+\end{solution}
+\bigskip
+
+\begin{example}
+	对于不共线的两个非零向量 $\ve a, \ve b$ 证明
+	\[
+		(\vtimes{a}{b})^2 = \ve a^2 \ve b^2 - (\ve a \cdot \ve b)^2.
+	\]
+	并进一步推出三角形 $\triangle ABC$ 的 Heron 公式, 其中 $s$ 为三角形周长的一半.
+	\[
+		S_{\triangle ABC} = \sqrt{s (s - a)(s - b)(s - c)}.
+	\]
+\end{example}
+
+\begin{solution}
+	由外积与内积的定义可知
+	\[
+		(\vtimes{a}{b})^2 = \ve a^2 \ve b^2 \sin^2 \langle \ve a, \ve b \rangle,
+	\]
+	\[
+		(\ve a \cdot \ve b)^2 = \ve a^2 \ve b^2 \cos^2 \langle \ve a, \ve b \rangle.
+	\]
+	则显然有
+	\[
+		(\vtimes{a}{b})^2 = \ve a^2 \ve b^2 - (\ve a \cdot \ve b)^2.
+	\]
+	\smallskip
+	
+	对于三角形 $\triangle ABC$ 有 $\Ve{BC} = \ve a, \Ve{CA} = \ve b, \Ve{AB} = \ve c$ 显然有
+	\[
+	\begin{aligned}
+		\ve a + \ve b + \ve c &= \ve 0\\
+		\ve a + \ve b &= -\ve c\\
+		(\ve a + \ve b)^2 &= \ve c^2\\
+		\ve a^2 + \ve b^2 + 2(\ve a \cdot \ve b) &= \ve c^2\\
+		\ve a \cdot \ve b &= \frac{1}{2}\left(\ve c^2 - \ve a^2 - \ve b^2 \right)
+	\end{aligned}
+	\]
+	
+	由外积的几何意义有
+	\[
+		S_{\triangle ABC} = \frac{1}{2} \lvert \vtimes{a}{b} \rvert,
+	\]
+	综上有
+	\[
+		\begin{aligned}
+			(S_{\triangle ABC})^2 &= \frac{1}{4} \lvert \vtimes{a}{b} \rvert^2\\
+			&= \frac{1}{4} \left(a^2 b^2 - (\ve a \cdot \ve b)^2\right)\\
+			&= \frac{1}{4} \left(a^2 b^2 - \frac{1}{4}\left(\left(c^2 - a^2 - b^2 \right)^2\right)\right)\\
+			&= \frac{1}{16} \left(4 a^2 b^2 - \left(\left(c^2 - a^2 - b^2 \right)^2\right)\right)\\
+			&= \frac{1}{16} \left(2ab + \left(c^2 - a^2 - b^2 \right)\right) \left(2ab - \left(c^2 - a^2 - b^2 \right)\right)\\
+			&= \frac{1}{16} \left(c^2 - (a - b)^2\right) \left((a + b)^2 - c^2\right)\\
+			&=\frac{1}{16} \left(c - a + b\right) \left(c + a - b\right) \left(a + b - c\right) \left(a + b + c\right).
+		\end{aligned}
+	\]
+	代入 $s = a + b + c$ 可得
+	\[
+		S_{\triangle ABC} = \sqrt{s (s - a)(s - b)(s-c)}.
+	\]
+\end{solution}
 
 \section{混合积和双重外积}
 
 \subsection{向量的混合积}
 
+\begin{definition}{混合积}
+我们定义向量 $\ve a, \ve b, \ve c$ 的混合积 (Scalar triple product) 为, 向量 $\ve a$ 与 $\ve b$ 的外积, 再与 $\ve c$ 作内积. 混合积的结果是一个数量, 记为 $(\ve a,\ve b, \ve c)$, 即
+\[
+	(\ve a,\ve b, \ve c) = (\vtimes{a}{b}) \cdot \ve c.
+\]
+\end{definition}
+
+同样的我们来分析混合积的几何意义, 首先由定义可知
+\[
+\begin{aligned}
+	(\ve a,\ve b,\ve c) &= (\vtimes{a}{b}) \cdot \ve c\\
+	&= \lvert \vtimes{a}{b} \rvert \lvert \ve c \rvert \cos \langle \vtimes{a}{b},\ve c \rangle\\
+	&= \lvert \vtimes{a}{b} \rvert \rm{Prj}_{\vtimes{a}{b}} \ve c.
+\end{aligned}
+\]
+则混合积的符号 取决于投影 $\rm{Prj}_{\vtimes{a}{b}} \ve c$ 的符号. 即当 $\ve a, \ve b, \ve c$ 构成右手系时 (如 \hyperref[fig:ltriplep]{图 \ref*{fig:ltriplep}}) 混合积为正, 当 $\ve a, \ve b, \ve c$ 构成左手系时 (如 \hyperref[fig:rtriplep]{图 \ref*{fig:ltriplep}}) 混合积为负.
+
+\FIGS
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+	\begin{tikzpicture}[
+            >=Stealth,
+            vec/.style={->, thick},
+            scale=0.8
+        ]
+			\coordinate (a) at (6,0,4);
+			\coordinate (b) at (0,0,0);
+			\coordinate (c) at (1,4,4);
+			\coordinate (o) at (0,0,4);
+			\coordinate (p) at (0,6,4);
+			\coordinate (c') at (0,4,4);
+			
+			\coordinate (ctrf) at (7,4,4);
+			\coordinate (ctrb) at (7,4,0);
+			\coordinate (cbrb) at (6,0,0);
+			\coordinate (ctlb) at (1,4,0);
+			
+			\draw[vec, red] (o) -- (a) node[midway, below] {$\ve a$};
+			\draw[vec, dashed, blue] (o) -- (b) node[midway, below right] {$\ve b$};
+			\draw[vec, green!60!black] (o) -- (c) node[midway, right] {$\ve c$};
+			\draw[vec, black] (o) -- (p) node[right] {$\vtimes{a}{b}$};
+			\draw[dashed, orange] (c) -- (c');
+			
+			\draw[black] (a) -- (cbrb) -- (ctrb) -- (ctrf) -- (a);
+			\draw[black] (ctrb) -- (ctlb) -- (c) -- (ctrf);
+			\draw[dashed, black] (cbrb) -- (b) -- (ctlb);
+			\draw[vec, dashed, green!50!black] (o) -- (c') node[midway, left] {$\rm{Prj}_{\vtimes{a}{b}} \ve c$};
+	\end{tikzpicture}
+	\caption{右手系}
+	\label{fig:ltriplep}
+\end{minipage}\hfil
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+	\begin{tikzpicture}[
+            >=Stealth,
+            vec/.style={->, thick},
+            scale=0.8
+        ]
+        	\coordinate (a) at (6,4,4);
+			\coordinate (b) at (0,4,0);
+			\coordinate (c) at (1,0,4);
+			\coordinate (o) at (0,4,4);
+			\coordinate (p) at (0,7,4);
+			\coordinate (c') at (0,0,4);
+			
+			\coordinate (cbrf) at (7,0,4);
+			\coordinate (cbrb) at (7,0,0);
+			\coordinate (ctrb) at (6,4,0);
+			\coordinate (cblb) at (1,0,0);
+			
+			\draw[vec, red] (o) -- (a) node[midway, below] {$\ve a$};
+			\draw[vec, blue] (o) -- (b) node[midway, below right] {$\ve b$};
+			\draw[vec, green!60!black] (o) -- (c) node[midway, right] {$\ve c$};
+			\draw[vec, black] (o) -- (p) node[right] {$\vtimes{a}{b}$};
+			\draw[dashed, orange] (c) -- (c');
+			
+			\draw[black] (a) -- (ctrb) -- (cbrb) -- (cbrf) -- (a);
+			\draw[dashed, black] (cbrb) -- (cblb) -- (b);
+			\draw[dashed, black] (cblb) -- (c);
+			\draw[black] (cbrf) -- (c);
+			\draw[black] (ctrb) -- (b);
+			
+			\draw[vec, dashed, green!50!black] (o) -- (c') node[midway, left] {$\rm{Prj}_{\vtimes{a}{b}} \ve c$};
+	\end{tikzpicture}
+	\caption{左手系}
+	\label{fig:rtriplep}
+\end{minipage}
+\FIGE
+
+而且不难发现投影 $\rm{Prj}_{\lvert \vtimes{a}{b} \rvert} \ve c$ 的绝对值即该平行六面体在由 $\ve, a \ve b$ 构成的面上的高, 所以混合积的绝对值是以 $\ve a, \ve b, \ve c$ 为邻边的平行六面体的体积.
+
+由混合积的定义及其几何意义可得
+\[
+	(\ve a, \ve a , \ve c) = 0,
+\]
+\[
+	(\ve a, \ve b, \ve c) = (\ve c, \ve a, \ve b) = (\ve b, \ve c , \ve a) = - (\ve a, \ve c, \ve b) = - (\ve b, \ve a , \ve c) = - (\ve c, \ve b , \ve a)
+\]
+\[
+	(\ve a_1 + \ve a_2, \ve b, \ve c) = (\ve a_1, \ve b, \ve c) + (\ve a_2, \ve b, \ve c),
+\]
+\[
+	(\lambda\ve a, \ve b, \ve c) = \lambda(\ve a, \ve b, \ve c).
+\]
+
+\begin{theorem}{混合积与共面}
+	三个向量 $\ve a, \ve b, \ve c$ 共面的充要条件为 $(\ve a, \ve b, \ve c) = 0$
+\end{theorem}
+\begin{proof}
+	我们先证明必要性, 由 \hyperref[def:coplanarity]{共面的定义} 可知存在实数 $\lambda,\mu$ 使得
+	\[
+		\ve a = \lambda\ve b + \mu\ve c.
+	\]
+	代入混合积则有
+	\[
+		(\ve a, \ve b, \ve c) = (\lambda\ve b + \mu\ve c, \ve b, \ve c) = \lambda(\ve b, \ve b, \ve c) + \mu(\ve c, \ve b, \ve c) = 0.
+	\]
+	
+	接下来证明充分性, 当 $(\ve a, \ve b, \ve c) = 0$ 时, 显然有 $\vtimes{a}{b}= \ve 0$ 或 $\ve c = \ve 0$ 或 $\vtimes{a}{b} \perp \ve c$, 其中前两种情况显然可知三向量共面, 而第三种情况由 $\vtimes{a}{b} \perp \ve a$ 和 $\vtimes{a}{b} \perp \ve b$ 可知三向量共面.
+\end{proof}
+
+\begin{example}
+	设 $\ve a, \ve b, \ve c$ 为三个不共面的向量, 将任意向量 $\ve d$ 分解为向量 $\ve a, \ve b, \ve c$ 的线性组合
+	\[
+		\ve d = x\ve a + y\ve b + z\ve c.
+	\]
+\end{example}
+
+\begin{solution}
+	注意到
+	\[
+		(\ve d, \ve b, \ve c) = (x\ve a + y\ve b + z\ve c, \ve b, \ve c) = x(\ve a, \ve b, \ve c) + y(\ve b, \ve b, \ve c) + z(\ve c, \ve b, \ve c) = x(\ve a, \ve b, \ve c).
+	\]
+	则有
+	\[
+		x = \frac{(\ve d, \ve b, \ve c)}{(\ve a, \ve b, \ve c)},
+	\]
+	类似的可得
+	\[
+		y = \frac{(\ve a, \ve d, \ve c)}{(\ve a, \ve b, \ve c)}, \quad z = \frac{(\ve a, \ve b, \ve d)}{(\ve a, \ve b, \ve c)}.
+	\]
+\end{solution}
+
+\begin{corollary}
+	空间中任一向量关于三个不共面的向量的分解式是唯一的.
+\end{corollary}
+
 \subsection{向量的双重外积}
 
+
+
+
+% ================================================================================== 
+% 							        多 项 式
+% ================================================================================== 
+
+\chapter{多项式}
+
+\subsection{数域与一元代数多项式}
 
 
 % ================================================================================== 
@@ -3344,8 +4277,9 @@ $\gamma$ 是无理数.
 % ================================================================================== 
 % 							    平 面 与 直 线
 % ================================================================================== 
-
 \chapter{平面与直线}
+
+从这一部分开始我们将继续学习空间解析几何, 是后续将学习的多元函数微积分的基础.
 
 \section{坐标系与坐标系中的向量计算}
 
@@ -3452,9 +4386,9 @@ $\gamma$ 是无理数.
 
 \chapter{群}
 
-从这一章我们开始学习抽象代数.虽然代数学是数学的一个古老分支, 但是在过去的一百年间, 代数学的研究对象和研究方法都发生了巨大的变化, 一系列显得代数领域被建立起来, 形成了所谓的抽象代数或近世代数.
+从这一章我们详细学习抽象代数.虽然代数学是数学的一个古老分支, 但是在过去的一百年间, 代数学的研究对象和研究方法都发生了巨大的变化, 一系列显得代数领域被建立起来, 形成了所谓的抽象代数或近世代数.
 
-我们曾在介绍实数理论时短暂提及过有关群的概念, 而我们将在这章详细介绍群论.
+我们曾在介绍实数理论时短暂提及过有关群的概念, 而我们将在这章更详细的介绍群论.
 
 % ================================================================================== 
 % 								  环 与 域
