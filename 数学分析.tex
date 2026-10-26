@@ -2034,25 +2034,26 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 
 % 运算性质
 \begin{theorem}{极限的四则运算}{Slimit_p5}
-设 $\{x_n\}, \{y_n\}$ 是两个数列, 如果 $\lim\limits_{n\to\infty} x_n = A, \ \lim\limits_{n\to\infty} y_n = B$ 则
+设 $\{x_n\}, \{y_n\}$ 是两个数列, $\alpha, \beta$ 是两个常数, 如果 $\lim\limits_{n\to\infty} x_n = A, \ \lim\limits_{n\to\infty} y_n = B$ 则
 	\ITEMS
-		\item $\lim\limits_{n\to\infty} (x_n + y_n) = A + B$.
+		\item $\lim\limits_{n\to\infty} (\alpha x_n + \beta y_n) = \alpha A + \beta B$.
 		\item $\lim\limits_{n\to\infty} x_n \cdot y_n = A \cdot B$.
 		\item 当 $y_n\neq 0, \ n\in\N$ 且 $B \neq 0$ 时 $\lim\limits_{n\to\infty} \frac{x_n}{y_n} = \frac AB$.
 	\ITEME
 \end{theorem}
  
 \begin{idea*}
-	构造性证明, 通过换元 $A = x_n + \alpha,\ B = y_n + \beta$ 与不等式关系使得原式小于任意给定的 $\varepsilon$.
+	构造性证明, 通过换元 $A = x_n + a,\ B = y_n + b$ 与不等式关系使得原式小于任意给定的 $\varepsilon$.
 \end{idea*}
 
 \begin{proof}
 	我们逐个来证明:
 	\ITEMS
-		\item 设给定 $\varepsilon > 0$, 对于数列 $\{x_n\}$ 存在 $N'$ 使得 $\forall n > N'$ 有 $\lvert x_n - A \rvert < \frac{\varepsilon}{2}$. 类似的, 对于数列 $\{y_n\}$ 存在 $N''$ 使得 $\forall n > N''$ 有 $\lvert y_n - B \rvert < \frac{\varepsilon}{2}$. 于是, 当 $n > \max\{N', N''\}$ 时, 有
+		\item 设给定 $\varepsilon > 0$, 对于数列 $\{x_n\}$ 存在 $N'$ 使得 $\forall n > N'$ 有 $\lvert x_n - A \rvert < \frac{\varepsilon}{2 \alpha}$. 类似的, 对于数列 $\{y_n\}$ 存在 $N''$ 使得 $\forall n > N''$ 有 $\lvert y_n - B \rvert < \frac{\varepsilon}{2 \beta}$. 于是, 当 $n > \max\{N', N''\}$ 时, 有
 		\[
-			\lvert(A + B) - (x_n + y_n)\rvert \le \lvert A-x_n\rvert +\lvert B-y_n\rvert < \frac{\varepsilon}{2}+\frac{\varepsilon}{2} =\varepsilon.
+			\lvert(\alpha A + \beta B) - (\alpha x_n + \beta y_n)\rvert \le \lvert \alpha A - \alpha x_n\rvert +\lvert \beta B - \beta y_n\rvert < \frac{\varepsilon}{2}+\frac{\varepsilon}{2} =\varepsilon.
 		\]
+		
 		\item 注意到
 		\[
 		\begin{aligned}
@@ -2144,9 +2145,6 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 	以上是构造性的证明方式, 也常见一种非构造性的分析性与归纳性证明, 可以参考陈纪修老师的数学分析. 在数学构成主义（Constructivism）看来, 证明一个对象存在, 就必须把它构造出来. 他们拒绝使用排中律等非构造性逻辑. 不过两者都属于 $\varepsilon - N$ 语言下的严格证明.
 \end{remark}
 
-\begin{remark}
-	数乘显然对极限过程成立, 在这里不做证明.
-\end{remark}
 
 % 无穷小与无穷大
 \subsection{无穷小与无穷大}
@@ -3063,11 +3061,14 @@ $\gamma$ 是无理数.
 
 % 保序性
 \begin{theorem}{函数极限的局部保序性}{Flimit_p3}
-
+设有 $\lim\limits_{x \to a} f(x) = A, \lim\limits_{x \to a} g(x) = B$, 设有 $A > B$ 则存在 $a$ 的某个空心邻域 $\mathring{U}(a,\rho)$ 上有
+\[
+	f(x) > g(x).
+\]
 \end{theorem}
 
 \begin{idea*}
-
+构建介于 $A, B$ 之间一点, 则存在一个 $x$ 的邻域使得两个极限的邻域都不包含该点.
 \end{idea*}
 
 \begin{proof}
@@ -3076,26 +3077,43 @@ $\gamma$ 是无理数.
 \smallskip
 
 % 绝对值
-\begin{theorem}{函数极限的绝对值性值}{Flimit_p4}
-
+\begin{theorem}{函数极限的绝对值性质}{Flimit_p4}
+设有 $\lim\limits_{x \to a} f(x) = A$ 则有
+\[
+	\lim\limits_{x \to a} \lvert f(x) \rvert = \lvert A \rvert.
+\]
 \end{theorem}
 
 \begin{idea*}
-
+应用反向三角不等式可证.
 \end{idea*}
 
 \begin{proof}
-类比数列极限易证.
+根据极限的定义, 对于任意的 $\varepsilon > 0$, 存在 $\delta > 0$ 使得对于任意 $x \in \mathring{U}(a,\delta)$ 都有
+\[
+	\lvert f(x) - A \rvert < \varepsilon.
+\]
+则有
+\[
+	\bigl\lvert \lvert f(x) \rvert - \lvert A \rvert \bigr\rvert \le \lvert f(x) - A \rvert < \varepsilon.
+\]
+即
+\[
+	\lim_{x \to a} \lvert f(x) \rvert = \lvert A \rvert.
+\]
 \end{proof}
 \smallskip
 
 % 迫敛性
 \begin{theorem}{函数极限的迫敛性}{Flimit_p5}
-
+	设有函数 $f(x) , g(x), h(x)$, 若 $x$ 在某空心邻域上有 $g(x) \le f(x) \le h(x)$, 且有 $\lim\limits_{x \to a} g(x) = \lim\limits_{x \to a} h(x) = A$. 则有
+	\[
+		\lim_{x \to a} f(x) = A.
+	\]
 \end{theorem}
 
 \begin{idea*}
-
+由定义易证, 取更小的 $\delta$ 邻域即可.
 \end{idea*}
 
 \begin{proof}
@@ -3105,11 +3123,16 @@ $\gamma$ 是无理数.
 
 % 四则运算
 \begin{theorem}{函数极限的四则运算}{Flimit_p6}
-
+设 $f(x), g(x)$ 是两个函数, $\alpha, \beta$ 是两个常数, 如果 $\lim\limits_{x\to x_0} f(x) = A, \ \lim\limits_{x\to x_0} g(x) = B$, 则
+	\ITEMS
+		\item $\lim\limits_{x\to x_0} (\alpha f(x) + \beta g(x)) = \alpha A + \beta B$.
+		\item $\lim\limits_{x\to x_0} f(x) \cdot g(x) = A \cdot B$.
+		\item 当 $y_n\neq 0, \ n\in\N$ 且 $B \neq 0$ 时 $\lim\limits_{x\to x_0} \frac{f(x)}{g(x)} = \frac AB$.
+	\ITEME
 \end{theorem}
 
 \begin{idea*}
-
+类比 \hyperref[thm:Slimit_p5]{数列极限的四则运算}.
 \end{idea*}
 
 \begin{proof}
@@ -3119,27 +3142,148 @@ $\gamma$ 是无理数.
 
 % 复合函数极限
 \begin{theorem}{复合函数极限}{Flimit_p7}
-
+设有函数 $f(u), g(x)$, 如果 $\lim\limits_{u\to u_0}f(u) = A, \ \lim\limits_{x\to x_0}g(x) = u_0$ 且在 $x_0$ 的某空心邻域上有 $g(x) \neq u_0$ 则复合函数 $f \circ g$ 在 $x_0$ 处极限存在且
+\[
+	\lim_{x\to x_0}f[g(x)] = A.
+\]
 \end{theorem}
 
 \begin{idea*}
-
+根据函数极限定义, 从 $x_0$ 领域先对应到 $u_0$ 的领域再对应到 $A$ 的邻域.
 \end{idea*}
 
 \begin{proof}
-类比数列极限易证.
+根据极限的定义对于任意 $\varepsilon > 0$, 则存在 $\eta > 0$ 使得对于任意 $u \in \mathring{U}(u_0,\eta)$ 都有
+\[
+	\lvert f(u) - A \rvert < \varepsilon.
+\]
+再根据极限定义, 对这个 $eta$ 存在 $\delta$ 使得对于任意 $x \in \mathring{U}(x_0,\delta)$ 都有
+\[
+	\lvert g(x) - u_0 \rvert < \eta.
+\]
+即对于 $x \in \mathring{U}(x_0,\delta)$ 有
+\[
+	\lvert f[g(x)] - A \rvert < \varepsilon.
+\]
+
 \end{proof}
 \smallskip
 
-% TODO 性质
-
-
-
-% 这一部分还不完善	<-------------------------- HERE
-
-
-
 \subsection{两个重要极限}
+
+\begin{theorem}{辛格函数}{Ilimit1}
+\[
+	\lim_{x \to 0}\frac{\sin x}{x} = 1.
+\]	
+\end{theorem}
+
+\begin{idea*}
+	用迫敛性证明.
+\end{idea*}
+
+\begin{proof}
+	如 \hyperref[fig:Ilimit1]{下图} 所示, 显然有
+	\[
+		\sin x < x < \tan x.
+	\]
+	
+\FIGS
+	\begin{tikzpicture}[
+  		>=Stealth,
+  		axis/.style={->, thick, line width=1.2pt}
+  	]
+		\coordinate (O) at (0,0);
+        \coordinate (B) at (4,0);
+        \coordinate (B') at (0,4);
+        \coordinate (C) at (4,4);
+        \coordinate (A) at (2.828,2.828);
+        \coordinate (A') at (2.828,0);
+        
+        \draw (B) arc[start angle=0, end angle=90, radius=4cm];
+        
+        \draw[black] (O) -- (C);
+        \draw[black] (C) -- (B) node[midway, right] {$\tan x$};
+        \draw[black] (A) -- (B) node[midway, below left] {$x$};
+        \draw[dashed, black] (A) -- (A') node[midway, left] {$\sin x$};
+        
+       	\draw[axis] (-0.5,0) -- (5,0);
+       	\draw[axis] (0,-0.5) -- (0,5);
+		
+		\fill (O) circle (1.5pt) node[below left] {$O$};
+		\fill (A) circle (1.5pt) node[above] {$A$};
+		\fill (B) circle (1.5pt) node[below] {$B$};
+		\fill (C) circle (1.5pt) node[above] {$C$};
+	\end{tikzpicture}
+	\caption{}
+	\label{fig:Ilimit1}
+\FIGE
+
+\smallskip
+
+	同时除以 $\sin x$ 可得
+	\[
+		1 < \frac{x}{\sin x} < \frac{1}{\cos x}.
+	\]
+	取倒数则有
+	\[
+		\cos x < \frac{\sin x}{x} < 1.
+	\]
+	令 $x \to 0$ 则有
+	\[
+		\lim_{x \to 0} \cos x  < \lim_{x \to 0}\frac{\sin x}{x} < 1,
+	\]
+	应用倍角公式可得
+	\[
+		\lim_{x \to 0} \cos x = \lim_{x \to 0} \left(1 - \sin^2 \frac{x}{2}\right) = 1 - \lim_{x \to 0} \sin^2 \frac{x}{2} = 1.
+	\]
+	则由 \hyperref[thm:Flimit_p5]{迫敛性} 可知
+	\[
+		\lim_{x \to 0}\frac{\sin x}{x} = 1.
+	\]
+\end{proof}
+
+
+
+接下来我们介绍第二个重要极限, 即以函数极限得到的 $e$. 我们先引入如下取整符号.
+
+\begin{definition}{取整符号}
+	对于任意实数 $x$, 记 $\lfloor x \rfloor = n$ (也称为 Gauss 符号 $[x]$), 其中 $n$ 是唯一的整数, 且满足 $n \le x < n + 1$; $\lceil x \rceil = n$, 其中 $n$ 是唯一的整数, 且满足 $n - 1 < x \le n$.
+\end{definition}
+
+\begin{theorem}
+\[
+	\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e.
+\]
+\end{theorem}
+\begin{idea*}
+	由 $e$ 的数列极限定义可推出如上函数极限, 利用迫敛性构造函数, 用取整符号使得构造出的函数可以应用数列极限. 
+\end{idea*}
+\begin{proof}
+	构造如下不等式, 
+	\[
+		\left(1 + \frac{1}{\lfloor x \rfloor + 1}\right)^{\lfloor x \rfloor} < \left(1 + \frac{1}{x}\right)^{x} < \left(1 + \frac{1}{\lfloor x \rfloor}\right)^{\lfloor x \rfloor + 1},
+	\]
+	由 \hyperref[def:e]{$e$ 的定义} 可知
+	\[
+		\lim_{n \to \infty} (1 + \frac{1}{n + 1})^n = \lim_{n \to \infty} (1 + \frac{1}{n})^{n+1} = e.
+	\]
+	由迫敛性可知
+	\[
+		\lim_{x \to +\infty} (1 + \frac{1}{x})^x = e.
+	\]
+	在考虑 $x \to -\infty$ 的情况, 令 $y = -x$ 则有
+	\[
+	\begin{aligned}
+		\lim_{x \to -\infty} \left(1 + \frac{1}{x}\right)^x &= \lim_{y \to +\infty} \left(1 - \frac{1}{y}\right)^{-y} = \lim_{y \to +\infty} \left(\frac{y - 1}{y}\right)^{-y} = \lim_{y \to +\infty} \left(\frac{y}{y - 1}\right)^{y}\\
+		&= \lim_{y \to +\infty} \left[\left(1 + \frac{1}{y - 1}\right)^{y - 1}\left(1 + \frac{1}{y - 1}\right)\right] = e.
+	\end{aligned}
+	\]
+	综上可得
+	\[
+		\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e.
+	\]
+\end{proof}
+
 
 \subsection{函数极限的一般定义}
 
@@ -3155,6 +3299,7 @@ $\gamma$ 是无理数.
 
 \subsection{连续性的基本定义}
 
+\begin{definition}{连续性}
 假设函数 $f$ 在点 $a$ 的整个邻域上有定义, 我们说函数 $f$ 在点 $a$ 连续, 如果对于函数在点 $a$ 的值 $f(x)$ 的任何一个邻域 $V(f(a))$, 都可以找到点 $a$ 的邻域 $U(a)$, 使它在映射 $f$ 下的像包含于 $V(f(a))$.
 
 这里给出连续性的形式逻辑写法, 同时给出常用的两个变体
@@ -3167,6 +3312,7 @@ $\gamma$ 是无理数.
 \[
 	\forall \varepsilon > 0\ \exists \delta > 0\ \forall x\in \R\ (\lvert x - a\rvert < \delta \Rightarrow \lvert f(x) - f(a)\rvert < \varepsilon).
 \]
+\end{definition}
 
 接下来我们考虑更一般的情况, 设函数 $f: E \to \R$ 定义在某个集合上的实值函数, 而 $a$ 是函数定义域中的一个点.
 
@@ -4218,7 +4364,118 @@ $\gamma$ 是无理数.
 
 \subsection{向量的双重外积}
 
+我们现在讨论三个向量 $\ve a, \ve b, \ve c$ 的双重外积 $(\vtimes ab) \times\ve c$, 我们先从特殊一点的情形入手.
 
+\begin{example}
+	证明
+	\[
+		(\vtimes ab) \times \ve a = \ve a^2 \ve b - (\ve a \cdot \ve b) \ve a.
+	\]
+\end{example}
+
+\begin{solution}
+	若 $\ve a, \ve b$ 有一个为零, 则结果显然成立. 若 $\ve a, \ve b$ 非零, 当 $\ve a, \ve b$ 共线时, 设 $\ve a = \lambda \ve b$, 此时等式两边均取零, 结果成立.
+	
+	当 $\ve a, \ve b$ 不共线时, $\vtimes ab \neq \ve 0$, 根据外积的定义有
+	\[
+		(\vtimes ab)\times \ve a \perp \vtimes ab,\quad \ve a \perp \vtimes ab,\quad \ve b \perp \vtimes ab.
+	\]
+	则显然 $(\vtimes ab)\times \ve a$ 显然与 $\ve a, \ve b$ 共面, 由 \hyperref[def:coplanarity]{共面的定义} 有实数 $\lambda, \mu$ 使得
+	\[
+		(\vtimes ab)\times \ve a = \lambda \ve a + \mu \ve b.
+	\]
+	我们先设法确定 $\mu$ 的值, 对等式两边同时求与 $(\vtimes ab)\times \ve a$ 的内积.
+	\[
+	\begin{aligned}
+		[(\vtimes ab)\times \ve a] ^2 &= (\lambda \ve a + \mu \ve b) \cdot [(\vtimes ab)\times \ve a]\\
+		\lvert(\vtimes ab)\times \ve a\rvert ^2 &= \mu \ve b \cdot [(\vtimes ab)\times \ve a]\\
+		\lvert (\vtimes ab) \rvert ^2 \lvert \ve a \rvert^2 \sin^2\langle \vtimes ab, \ve a \rangle &= (\vtimes ab, \ve a, \mu \ve b)\\
+		(\vtimes ab)^2 \ve a ^2 &= (\ve a, \mu \ve b, \vtimes ab)\\
+		(\vtimes ab)^2 \ve a ^2 &= \mu (\vtimes ab) \cdot (\vtimes ab)\\
+		\ve a ^2 &= \mu.
+	\end{aligned}
+	\]
+	
+	接下来试着确定 $\lambda$ 的值, 对等式两边同时求与 $\ve a$ 的内积.
+	\[
+	\begin{aligned}
+		[(\vtimes ab) \times \ve a] \cdot \ve a &= (\lambda \ve a + \mu \ve b) \cdot \ve a\\
+		0 &= \lambda \ve a ^2 + \ve a^2 \ve b \cdot \ve a\\
+		0 &= \lambda + \ve a \cdot \ve b\\
+		\lambda &= - \ve a \cdot \ve b.
+	\end{aligned}
+	\]
+	
+	综上可得
+	\[
+		(\vtimes ab)\times \ve a = \ve a^2 \ve b - (\ve a \cdot \ve b) \ve a.
+	\]
+\end{solution}
+
+
+\begin{theorem}
+	对任意向量 $\ve a, \ve b, \ve c$ 有
+	\[
+		(\vtimes ab) \times \ve c = (\ve a \cdot \ve c)\ve {b} - (\ve b \cdot \ve c) \ve a.
+	\]
+\end{theorem}
+
+\begin{proof}
+	若 $\ve a, \ve b, \ve c$ 中有一个为零, 则结果显然成立. 若 $\ve a, \ve b, \ve c$ 非零, 且当 $\ve a, \ve b$ 共线时, 有 $\vtimes ab = \ve 0$, 此时等式两边均取零, 结果成立.
+	
+	若 $\ve a, \ve b$ 不共线, 则 $\vtimes ab \neq \ve 0$, 由外积定义有
+	\[
+		(\vtimes ab) \times \ve c \perp (\vtimes ab), \quad \ve a \perp (\ve a \times \ve b),  \quad\ve b \perp (\vtimes ab).
+	\]
+	
+	所以 $(\vtimes ab) \times \ve c$ 与 $\ve a, \ve b$ 共面, 由 \hyperref[def:coplanarity]{共面的定义} 有实数 $\lambda, \mu$ 使得
+	\[
+		(\vtimes ab)\times \ve c = \lambda \ve a + \mu \ve b.
+	\]
+	这次我们先设法确定 $\lambda$ 的值, 对等式两边同时求与 $\vtimes bc$ 的内积.
+	\[
+	\begin{aligned}
+		(\vtimes bc) \cdot [(\vtimes ab)\times \ve c] &= (\vtimes bc) \cdot (\lambda \ve a + \mu \ve b)\\
+		(\vtimes ab, \ve c, \vtimes bc) &= (\ve b, \ve c, \lambda \ve a + \mu \ve b)\\
+		(\ve c, \vtimes bc, \vtimes ab) &= (\lambda \ve a + \mu \ve b, \ve b, \ve c)\\
+		[\ve c \times (\vtimes bc)] \cdot (\vtimes ab) &= [(\lambda \ve a + \mu \ve b) \times \ve b] \cdot \ve c\\
+		[- (\vtimes bc) \times \ve c] \cdot (\vtimes ab) &= \lambda (\ve a,\ve b, \ve c)\\
+		[(\vtimes cb) \times \ve c] \cdot (\vtimes ab) &= \lambda (\ve a,\ve b, \ve c)\\
+		[\ve c^2 \ve b - (\ve b \cdot \ve c) \ve c] \cdot (\vtimes ab) &= \lambda (\ve a,\ve b, \ve c)\\
+		-(\ve b \cdot \ve c) (\ve a,\ve b, \ve c) &= \lambda (\ve a,\ve b, \ve c)\\
+		-(\ve b \cdot \ve c) &= \lambda.
+	\end{aligned}
+	\]
+	接下来确定 $\mu$ 的值, 对等式两边同时求与 $\vtimes ca$ 的内积.
+	\[
+	\begin{aligned}
+		(\vtimes ca) \cdot [(\vtimes ab)\times \ve c] &= (\vtimes ca) \cdot (\lambda \ve a + \mu \ve b)\\
+		(\vtimes ab, \ve c, \vtimes ca) &= (\ve c, \ve a, \lambda \ve a + \mu \ve b)\\
+		(\ve c, \vtimes ca, \vtimes ab) &= (\ve a,\lambda \ve a + \mu \ve b, \ve c)\\
+		[\ve c \times (\vtimes ca)] \cdot (\vtimes ab) &= [\ve a \times (\lambda \ve a + \mu \ve b)] \cdot \ve c\\
+		[- (\vtimes ca) \times \ve c] \cdot (\vtimes ab) &= \mu (\ve a,\ve b, \ve c)\\
+		-[\ve c^2 \ve a - (\ve a \cdot \ve c) \ve c] \cdot (\vtimes ab) &= \mu(\ve a,\ve b, \ve c)\\
+		(\ve a \cdot \ve c) (\ve a,\ve b, \ve c) &= \mu (\ve a,\ve b, \ve c)\\
+		\ve a \cdot \ve c &= \mu.
+	\end{aligned}
+	\]
+	综上可得
+	\[
+		(\vtimes ab) \times \ve c = (\ve a \cdot \ve c)\ve {b} - (\ve b \cdot \ve c) \ve a.
+	\]
+\end{proof}
+
+\begin{corollary}
+	\[
+	\ve a \times (\vtimes bc) = (\ve a \cdot \ve c) \ve b - (\ve a \cdot \ve b) \ve c.
+	\]
+\end{corollary}
+
+\begin{corollary}
+	\[
+	(\vtimes ab) \times (\vtimes cd) = (\ve a, \ve c, \ve d) \ve b - (\ve b, \ve c, \ve d) \ve a  = (\ve a, \ve b, \ve d) \ve c - (\ve a, \ve b, \ve d) \ve c.
+	\]
+\end{corollary}
 
 
 % ================================================================================== 
@@ -4282,6 +4539,9 @@ $\gamma$ 是无理数.
 从这一部分开始我们将继续学习空间解析几何, 是后续将学习的多元函数微积分的基础.
 
 \section{坐标系与坐标系中的向量计算}
+
+
+
 
 % ================================================================================== 
 % 						   特 殊 曲 面 与 二 次 曲 面
