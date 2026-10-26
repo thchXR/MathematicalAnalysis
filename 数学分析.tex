@@ -2148,39 +2148,36 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 
 % 无穷小与无穷大
 \subsection{无穷小与无穷大}
-\begin{definition}{无穷小量}
-	称极限值为 $0$ 的数列为无穷小量.
+\begin{definition}{无穷小数列}
+	称极限值为 $0$ 的数列为无穷小数列.
 \end{definition}
-\begin{remark}
-无穷小量不是某个固定的很小的数, 而是一个变量 (数列).	
-\end{remark}
 
-由无穷小量的定义我们可以直接得到
+由无穷小数列的定义我们可以直接得到
 \[
-	\lim_{n \to \infty} x_n = a \iff \{x_n - a\} \text{是无穷小量}.
+	\lim_{n \to \infty} x_n = a \iff \{x_n - a\} \text{是无穷小数列}.
 \]
 
-\begin{definition}{无穷大量}
+\begin{definition}{无穷大数列}
 	若对于任意给定的 $G > 0$, 可以找到正整数 $N$, 使得当 $n > N$ 时成立
 	\[
 		\lvert x_n \rvert > G,
 	\] 
-	则称数列 $\{x_n\}$ 是无穷大量, 记为
+	则称数列 $\{x_n\}$ 是无穷大数列, 记为
 	\[
 		\lim_{n\to\infty} x_n = \infty.
 	\]
-	特别的, 如果 $\{x_n\}$ 从某一项开始都是正 (负) 的, 则称其为 正 (负) 无穷大量, 分别记为
+	特别的, 如果 $\{x_n\}$ 从某一项开始都是正 (负) 的, 则称其为 正 (负) 无穷大数列, 分别记为
 	\[
 		\lim_{n\to\infty} x_n = +\infty (\lim_{n\to\infty} x_n = -\infty)
 	\]	
 \end{definition}
 
-\begin{theorem}{无穷大量与无穷小量的关系}{inftyrelation}
-	设 $x_n \neq 0$, 则 $\{x_n\}$ 是无穷大量的充要条件是 $\left\{\frac{1}{x_n}\right\}$ 是无穷小量.
+\begin{theorem}{无穷大数列与无穷小数列的关系}{inftyrelation}
+	设 $x_n \neq 0$, 则 $\{x_n\}$ 是无穷大数列的充要条件是 $\left\{\frac{1}{x_n}\right\}$ 是无穷小数列.
 \end{theorem}
 
 \begin{proof}
-	有 $\{x_n\}$ 是无穷大量, 对于 $\forall \varepsilon > 0$, 取 $G = \frac{1}{\varepsilon} > 0$, 由无穷大量的定义, $\exists N, \forall n > N: \lvert x_n \rvert > G = \frac{1}{\varepsilon}$ 则有 $\left\lvert\frac{1}{x_n} \right\rvert< \varepsilon$, 即 $\left\{\frac{1}{x_n}\right\}$ 是无穷小量.
+	有 $\{x_n\}$ 是无穷大数列, 对于 $\forall \varepsilon > 0$, 取 $G = \frac{1}{\varepsilon} > 0$, 由无穷大数列的定义, $\exists N, \forall n > N: \lvert x_n \rvert > G = \frac{1}{\varepsilon}$ 则有 $\left\lvert\frac{1}{x_n} \right\rvert< \varepsilon$, 即 $\left\{\frac{1}{x_n}\right\}$ 是无穷小数列.
 	
 	同理可证充分性.
 \end{proof}
@@ -2196,7 +2193,7 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 % Stolz定理
 \subsection{Stolz 定理}
 
-我们在处理无穷大量与无穷小量的商的极限问题时, 常常会遇到形如 $\infty/\infty$ 或 $0/0$ 的极限, 其结果可能是无穷大量或实数极限, 但也有可能不存在极限, 我们称这种极限为不定式或待定式 (Indeterminate form).
+我们在处理无穷大数列与无穷小数列的商的极限问题时, 常常会遇到形如 $\infty/\infty$ 或 $0/0$ 的极限, 其结果可能是无穷大数列或实数极限, 但也有可能不存在极限, 我们称这种极限为不定式或待定式 (Indeterminate form).
 
 \begin{remark}
 虽然也有其他的形如 $0\cdot \infty , 1^{\infty }, \infty -\infty , 0^{0}, \infty ^{0}$ 等不定式, 但总是可以将其化为 $\infty/\infty$ 或 $0/0$ 的不定式. 实际上 $\infty/\infty$ 型或 $0/0$ 型极限本质是相同的. 但是针对这两种情形, Stolz 定理的内容有一些细微的差异.
@@ -2265,7 +2262,7 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 		\[
 			x_n - x_{n-1} > y_n - y_{n-1},
 		\] 
-		则可知 $\{x_n\}_{n>N}$ 也是严格单调递增数列, 且可知 $\{x_n\}$ 为正无穷大量. 由于
+		则可知 $\{x_n\}_{n>N}$ 也是严格单调递增数列, 且可知 $\{x_n\}$ 为正无穷大数列. 由于
 		\[
 			\lim_{n \to \infty} \frac{x_n -x_{n-1}}{y_n - y_{n-1}} = +\infty.
 		\]
@@ -2336,7 +2333,7 @@ Cantor 出生于圣彼得堡, 但他一生大部分时间是在德国度过的,
 		\]
 		\smallskip
 		
-		\item 当 $a = +\infty$ 时, 由无穷大量的定义可知, 对于给定 $C > 0$, 存在 $N \in \N$ 使得对任意 $n > N$ 有
+		\item 当 $a = +\infty$ 时, 由无穷大数列的定义可知, 对于给定 $C > 0$, 存在 $N \in \N$ 使得对任意 $n > N$ 有
 		\[
 			x_n − x_{n+1} > C (y_n − y_{n+1}),
 		\]
@@ -3244,13 +3241,13 @@ $\gamma$ 是无理数.
 
 
 
-接下来我们介绍第二个重要极限, 即以函数极限得到的 $e$. 我们先引入如下取整符号.
+接下来我们介绍第二个重要极限, 即函数极限的 $e$. 我们首先引入如下取整符号.
 
 \begin{definition}{取整符号}
 	对于任意实数 $x$, 记 $\lfloor x \rfloor = n$ (也称为 Gauss 符号 $[x]$), 其中 $n$ 是唯一的整数, 且满足 $n \le x < n + 1$; $\lceil x \rceil = n$, 其中 $n$ 是唯一的整数, 且满足 $n - 1 < x \le n$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}{}{elimit}
 \[
 	\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e.
 \]
@@ -3284,16 +3281,234 @@ $\gamma$ 是无理数.
 	\]
 \end{proof}
 
-
-\subsection{函数极限的一般定义}
-
-\subsection{函数极限的存在问题}
-
+% Heine
 \subsection{函数极限与数列极限的关系}
 
-\begin{theorem}[海涅定理]
+\begin{theorem}{Heine 定理}{Heine}
+	设有函数 $f(x)$, 极限 $\lim\limits_{x \to x_0} f(x) = A$ 的充分必要条件为, 对于任意数列 $\{x_n\}$ 满足 $x_n \neq x_0$ 且
+	\[
+		\lim_{n \to \infty} x_n = x_0.
+	\]
+	对相应函数值函数 $\{f(x_n)\}$ 有
+	\[
+		\lim_{n \to \infty} f(x_n) = A.
+	\]
+\end{theorem}
+
+\begin{solution}
+	
+\end{solution}
+
+
+\begin{theorem}{函数的柯西收敛准则}
 	
 \end{theorem}
+
+
+\subsection{一般的函数极限 (基上的函数极限)}
+% 这一部分考研不考 
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+\subsection{基上的函数极限的审敛法}
+
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+% 这一部分还不完善	<-------------------------- QWERASDF
+% ------------------------------------------------------
+% ------------------------------------------------------
+% ------------------------------------------------------
+
+
+
+% 函数阶估计
+\subsection{函数的阶估计}
+
+\begin{definition}{无穷小量}
+	给定 $a \in \R$. 若有
+	\[
+		\lim_{x \to a} f(x) = 0.
+	\]
+	则称当 $x \to a$ 时, 函数 $f(x)$ 为无穷小 (Infinitesimal) 并记为
+	\[
+		 f(x) = o(1) \; (x \to a).
+	\]
+\end{definition}
+\begin{remark}
+	注意在讨论函数无穷小时一定要注明 $x$ 趋于什么值, 对于上述无穷小量的定义, 我们可以类似定义当 $x \to a-, x \to a+, x \to -\infty, x \to +\infty, x \to \infty$ 时的无穷小量.
+\end{remark}
+
+\begin{definition}{无穷小的比较}{Oo}
+	假设函数 $u(x), v(x)$ 满足条件 $u(x) = v(x) = o(1)$, 当 $x \to a$ 时
+	\ITEMS
+		\item 若有
+		\[
+			\lim_{x \to a} \frac{u(x)}{v(x)} = 0,
+		\]
+		则称 $u(x)$ 是 $v(x)$ 在 $x \to a$ 时的高阶无穷小, 记为
+		\[
+			u(x) = o(v(x)) \; (x \to a).\; \text{(或者记为 $u \prec v$)}
+		\]
+		
+		\item  若存在 $\delta>0$ 且存在 $M > 0$ 使得对于任意 $x \in \mathring{U}(a,\delta)$ 有
+		\[
+			\left\lvert \frac{u(x)}{v(x)} \right\rvert \le M,
+		\]
+		则记
+		\[
+			u(x) = O(v(x)) \; (x \to a). \text{(或者记为 $u \preccurlyeq v$)}
+		\]
+		
+		\item  若存在 $\delta>0$ 且存在 $M > m > 0$ 使得对于任意 $x \in \mathring{U}(a,\delta)$ 有
+		\[
+			0 < m < \left\lvert \frac{u(x)}{v(x)} \right\rvert \le M;
+		\]
+		或者当 $当x \to a$ 时有
+		\[
+			u(x) = O(v(x)),\; v(x) = O(u(x)),
+		\]
+		则记
+		\[
+			u(x) \approx v(x) \; (x \to a).\; \text{(或者记为 $u \asymp v$)}
+		\]
+		
+		\item 若有
+		\[
+			\lim_{x \to a} \frac{u(x)}{v(x)} = 1,
+		\]
+		则称 $u(x)$ 是 $v(x)$ 在 $x \to a$ 时的等价无穷小, 记为
+		\[
+			u(x) \sim v(x) \; (x \to a).
+		\]
+	\ITEME
+\end{definition}
+
+\begin{definition}{无穷小的阶}
+若对于 $k > 0$ 有
+\[
+	u(x) \approx (x - a)^k,
+\]
+则称函数 $u(x)$ 为 $k$ 阶无穷小 ($k$-th order of infinitesimal) (当 $x \to a$ 时); 
+若 $c \neq 0$ 且当 $x \to a$ 时有
+\[
+	u(x) \sim c(x - a)^k,
+\]
+则称 $c(x - a)^k$ 为 $u(x)$ 的主部 (Principal) (当 $x \to a$ 时).
+\end{definition}
+
+\begin{definition}{无穷大}
+假设函数 $f(x)$ 定义在 $\mathring{U}(a,\rho)$ 内, 其中 $\rho > 0$, 定义
+\ITEMS
+\item 若对于任意 $C > 0$, 存在 $\delta > 0$ 则对于任意 $x \in \mathring{U}(a,\delta)$ 都有
+\[
+	f(x) \ge C,
+\]
+则定义
+\[
+\lim_{x \to a} f(x) = +\infty.
+\]
+
+\item 若对于任意 $C > 0$, 存在 $\delta > 0$ 则对于任意 $x \in \mathring{U}(a,\delta)$ 都有
+\[
+	f(x) \le -C,
+\]
+则定义
+\[
+\lim_{x \to a} f(x) = -\infty.
+\]
+
+\item 若对于任意 $C > 0$, 存在 $\delta > 0$ 则对于任意 $x \in \mathring{U}(a,\delta)$ 都有
+\[
+	\lvert f(x) \rvert \ge C,
+\]
+则定义
+\[
+\lim_{x \to a} f(x) = \infty.
+\]
+
+\ITEME
+\end{definition}
+
+类似于 \hyperref[def:Oo]{定义 \ref*{def:Oo}} 对无穷大量也有相同的符号.
+
+\begin{theorem}{等价替换}
+	假设 $v(x) \sim w(x)$, 当 $x \to a$ 时, 是等价无穷小或等价无穷大. 则
+	\[
+	\lim_{x \to a} u(x) w(x) = A \iff \lim_{x \to a} u(x) v(x),
+	\]
+	\[
+	\lim_{x \to a} \frac{u(x)}{w(x)} = A \iff \lim_{x \to a} \frac{u(x)}{v(x)}.
+	\]
+\end{theorem}
+
+\begin{proof}
+\[
+	u(x) w(x) \cdot \frac{v(x)}{w(x)} = u(x) v(x),
+\]
+\[
+	\frac{u(x)}{w(x)}\frac{w(x)}{v(x)} = \frac{u(x)}{v(x)}.
+\]
+则由 \hyperref[def:Oo]{等价量} 易证.
+\end{proof}
+
+\vspace{0.4em}
+下面来证明一些等价量.
+\vspace{0.4em}
+
+\begin{example}
+	证明 $\ln (1+x) \sim x, \;(x \to 0)$. 
+\end{example}
+\begin{solution}
+	由我们证明的 \hyperref[thm:elimit]{第二个重要极限} 可知
+	\[
+	\lim_{x \to 0} (1 + x)^{\frac{1}{x}} = e.
+	\]
+	对等式两边同时求对数 $\ln$,
+	\[
+	\begin{aligned}
+		\lim_{x \to 0} \frac{1}{x} \ln (1 + x) &= \ln e\\
+		\lim_{x \to 0} \frac{\ln (1 + x)}{x} &= 1.
+	\end{aligned}
+	\]
+	即 $\ln (1+x) \sim x, \;(x \to 0)$.
+\end{solution}
+
+\vspace{0.4em}
+
+\begin{example}
+	证明 $e^x - 1 \sim x, \;(x \to 0)$. 
+\end{example}
+\begin{solution}
+	令 $y = e^x  - 1$, 则当 $x \to 0$ 时, 有 $y \to 0$, 且 $x = \ln (1 + y)$, 于是
+	\[
+		\lim_{x \to 0} \frac{e^x - 1}{x} = \lim_{y \to 0} \frac{y}{\ln (1 + y)} = 1.
+	\] 
+	即 $e^x - 1 \sim x, \;(x \to 0)$.
+\end{solution}
+
+\vspace{0.4em}
+
+\begin{example}
+	证明 $(1 + x)^\alpha - 1 \sim \alpha x, \;(x \to 0)$. 
+\end{example}
+\begin{solution}
+	令 $y = (1 + x)^\alpha - 1$, 则当 $x \to 0$ 时, $y \to 0$ 于是
+	\[
+	\begin{aligned}
+		\lim_{x \to 0} \frac{(1 + x)^\alpha - 1}{x} &= \lim_{x \to 0} \frac{(1 + x)^\alpha - 1}{\ln(1 + x)^\alpha} \cdot \frac{\ln(1 + x)^\alpha}{x}\\
+		&= \lim_{y \to 0} \frac{y}{\ln (y + 1)} \cdot \lim_{x \to 0}\frac{\alpha\ln(1 + x)}{x}\\
+		&= 1 \cdot \alpha = \alpha.
+	\end{aligned}
+	\]
+	即 $(1 + x)^\alpha - 1 \sim \alpha x, \;(x \to 0)$.
+\end{solution}
+
 
 \section{函数的连续性}
 
@@ -3320,7 +3535,7 @@ $\gamma$ 是无理数.
 
 于是,
 \[
-	\forall V (f(a))\ \exists U_E (a)\ (f(U_E(a)) \subset V(f(a)))
+	\forall V (f(a))\ \exists U_E (a)\ (f(U_E(a)) \subset V(f(a))).
 \]
 
 \begin{remark}
