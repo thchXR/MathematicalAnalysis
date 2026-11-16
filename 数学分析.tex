@@ -1,5 +1,7 @@
 \documentclass[cn,toc=twocol]{elegantbook}
 
+\usepackage{booktabs}
+\usepackage{longtable}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta}
@@ -7,6 +9,9 @@
 \geometry{paper=a4paper, left=1.5cm, right=1.5cm, top=3cm, bottom=3cm}
 
 % ---------- 自定义命令 ----------
+\newcommand{\arccot}{\operatorname{arccot}}
+\newcommand{\arcsec}{\operatorname{arcsec}}
+\newcommand{\arccsc}{\operatorname{arccsc}}
 \newcommand{\ITEMS}{\begin{enumerate}}
 \newcommand{\ITEME}{\end{enumerate}}
 \newcommand{\no}{\noindent}
@@ -15,10 +20,14 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\D}{\mathscr{D}}
 \newcommand{\ve}[1]{\boldsymbol{#1}}
 \newcommand{\Ve}[1]{\overrightarrow{#1}}
 \newcommand{\vtimes}[2]{\ve{#1} \times \ve{#2}}
 \newcommand{\Vtimes}[2]{\Ve{#1} \times \Ve{#2}}
+\newcommand{\ds}{\displaystyle}
 
 \newcommand{\parallelsum}{\mathbin{\!/\mkern-5mu/\!}}
 
@@ -1007,6 +1016,14 @@ ZF 集合论不包含选择公理, 因为选择公理存在一些争议, 例如�
 	时, 即为集合 $A$ 上的二元代数运算 (Binary operation).
 \end{definition}
 
+\begin{definition}{封闭}
+	设有集合 $S$, 二元运算 $\circ$ 定义在某个包含 $S$ 的集合上, 若对任意 $a,b \in S$, 都有
+	\[
+		a \circ b \in S
+	\]
+	则称集合 $S$ 对 $\circ$ 封闭 (closure).
+\end{definition}
+
 \subsection{运算律}
 
 \begin{definition}{结合律}{}
@@ -1129,12 +1146,12 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \begin{axiom}{群}{group}
 	设有序偶 $(G,\circ)$, 其中 $G$ 是非空集合, $\circ$ 是二元运算, 有以下公理
 	\ITEMS
-		\item[{\bf G$_1$}] $\circ$ 是结合的,
-		\item[{\bf G$_2$}] $G$ 中有单位元 $e$ 称为 $G$ 的单位元 (Identity), 对 $\forall a \in G$ 都有
+		\item[{\boldmath $G_1$}] $\circ$ 是结合的,
+		\item[{\boldmath $G_2$}] $G$ 中有单位元 $e$ 称为 $G$ 的单位元 (Identity), 对 $\forall a \in G$ 都有
 		\[
 			e \circ a = a = a \circ e,
 		\]
-		\item[{\bf G$_3$}]  对任何 $a \in G$ 都有 $a^{-1} \in G$ 称为 $a$ 的逆元 (Inverse), 有
+		\item[{\boldmath $G_3$}]  对任何 $a \in G$ 都有 $a^{-1} \in G$ 称为 $a$ 的逆元 (Inverse), 有
 		\[
 			a^{-1} \circ a = e = a \circ a^{-1}.
 		\] 
@@ -1163,9 +1180,9 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \begin{axiom}{环}{ring}
 	设有三元组 $(R,\oplus,\otimes)$ 其中 $R$ 是一个非空集合, 其上定义了两个二元运算, 分别为 $\oplus$ (加法) 和 $\otimes$ (乘法), 其中 $a \otimes b$ 可以记为 $ab$. 有以下公理
 	\ITEMS
-		\item[{\bf R$_1$}] $(R,\oplus)$ 是 Abelian 群,
-		\item[{\bf R$_2$}] 乘法运算 $\otimes$ 是结合的,
-		\item[{\bf R$_3$}] 乘法运算 $\otimes$ 满足分配律, 即对 $\forall a,b,c \in R$ 有
+		\item[{\boldmath $R_1$}] $(R,\oplus)$ 是 Abelian 群,
+		\item[{\boldmath $R_2$}] 乘法运算 $\otimes$ 是结合的,
+		\item[{\boldmath $R_3$}] 乘法运算 $\otimes$ 满足分配律, 即对 $\forall a,b,c \in R$ 有
 		\[
 			(a \oplus b) \otimes c = ac \oplus bc, \quad c \otimes(a\oplus b) = ca \oplus cb.
 		\]
@@ -1186,9 +1203,9 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \begin{axiom}{域}{field}
 	设有三元组 $(F,\oplus,\otimes)$ 其中 $F$ 是一个非空集合, 其上定义了两个二元运算, 分别为 $\oplus$ (加法) 和 $\otimes$ (乘法), 其中 $a \otimes b$ 可以记为 $ab$. 有以下公理
 	\ITEMS
-		\item[{\bf F$_1$}] $(F,\oplus)$ 是 Abelian 群, 单位元为 $0_F$,
-		\item[{\bf F$_2$}] $(F\setminus\{0_F\},\otimes)$ 是 Abelian 群,
-		\item[{\bf F$_3$}] 乘法运算 $\otimes$ 满足分配律, 即对 $\forall a,b,c \in R$ 有
+		\item[{\boldmath $F_1$}] $(F,\oplus)$ 是 Abelian 群, 单位元为 $0_F$,
+		\item[{\boldmath $F_2$}] $(F\setminus\{0_F\},\otimes)$ 是 Abelian 群,
+		\item[{\boldmath $F_3$}] 乘法运算 $\otimes$ 满足分配律, 即对 $\forall a,b,c \in R$ 有
 		\[
 			(a \oplus b) \otimes c = ac \oplus bc, \quad c \otimes(a\oplus b) = ca \oplus cb.
 		\]
@@ -1223,8 +1240,8 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 \]
 其中 $\N_* = \N\setminus\{0\}$ , 满足有以下公理
 \ITEMS
-	\item[{\bf N$_0$}] $\nu$ 是单射,
-	\item[{\bf N$_1$}] 如果 $N \subset \N$ 是包含 $0$ 的子集且 $\nu (n) \in N$ 对所有 $n \in N$ 都成立, 则 $N = \N$.
+	\item[{\boldmath $N_0$}] $\nu$ 是单射,
+	\item[{\boldmath $N_1$}] 如果 $N \subset \N$ 是包含 $0$ 的子集且 $\nu (n) \in N$ 对所有 $n \in N$ 都成立, 则 $N = \N$.
 \ITEME
 \end{axiom}
 
@@ -1820,6 +1837,8 @@ f(y) = B.
 \section{函数}
 
 \subsection{基本初等函数}
+
+
 
 % TODO: 补充完整
 
@@ -3295,14 +3314,53 @@ $\gamma$ 是无理数.
 	\]
 \end{theorem}
 
-\begin{solution}
-	
-\end{solution}
+\begin{idea*}
+必要性由定义显然, 充分性用反证法证明.	
+\end{idea*}
 
-
-\begin{theorem}{函数的柯西收敛准则}
+\begin{proof}
+	必要性由定义显然, 我们重点证明充分性.
 	
+	设 $\lim\limits_{x \to x_0} f(x) \neq A$ 即, $\exists \varepsilon_0 > 0$, $\forall \delta > 0$, $\exists x \in \mathring{U}(x_0,\delta)$ 使得
+	\[
+		\lvert f(x) - A \rvert \ge \varepsilon_0,
+	\]
+	取 $\{\delta_n\}$ 其中 $\delta_n = \frac{1}{n}$, 则对于每一个 $\delta_k$ 都存在 $x_k \in \mathring{U}(x_0,\delta_k)$ 满足
+	 \[
+		\lvert f(x_k) - A \rvert \ge \varepsilon_0,
+	\]
+	则数列 $\{x_n\}$ 满足 $x_n \neq x_0$ 且 $\lim\limits_{x \to x_0} f(x) \neq A$, 与 $\lim\limits_{x \to x_0} f(x) = A$ 相矛盾, 所以有
+	\[
+	\lim\limits_{x \to x_0} f(x) \neq A
+	\]
+	充分性得证.
+\end{proof}
+
+\vspace{0.6em}
+
+\begin{theorem}{函数的 Cauchy 收敛准则}
+	设有函数 $f(x)$, 那么极限
+	\[
+		\lim_{x \to \infty} f(x)
+	\]
+	存在的充要条件是, 对于 $\forall \varepsilon$, 都 $\exists M > 0$, 使得任意满足 $\lvert x\rvert,\lvert y\rvert > M$ 的 $x,y$ 都有
+	\[
+		\lvert f(x) - f(y) \rvert < \varepsilon;
+	\]
+	
+	极限
+	\[
+		\lim_{x \to x_0} f(x)
+	\]
+	存在的充要条件是, 对于 $\forall \varepsilon$, 都 $\exists \delta > 0$, 使得任意 $x,y \in \mathring{U}(x_0,\delta)$ 都有
+	\[
+		\lvert f(x) - f(y) \rvert < \varepsilon.
+	\]
 \end{theorem}
+
+\begin{proof}
+	必要性显然, 充分性通过数列极限的 \hyperref[thm:R5]{Cauchy 准则} 可以得到任意收敛到 $\infty$ (或 $x_0$) 的数列的函数值数列收敛, 再由 \hyperref[thm:Heine]{Heine 定理} 可证.
+\end{proof}
 
 
 \subsection{一般的函数极限 (基上的函数极限)}
@@ -3495,7 +3553,7 @@ $\gamma$ 是无理数.
 \vspace{0.4em}
 
 \begin{example}
-	证明 $(1 + x)^\alpha - 1 \sim \alpha x, \;(x \to 0)$. 
+	证明 $(1 + x)^\alpha - 1 \sim \alpha, \;(x \to 0)$. 
 \end{example}
 \begin{solution}
 	令 $y = (1 + x)^\alpha - 1$, 则当 $x \to 0$ 时, $y \to 0$ 于是
@@ -3506,67 +3564,334 @@ $\gamma$ 是无理数.
 		&= 1 \cdot \alpha = \alpha.
 	\end{aligned}
 	\]
-	即 $(1 + x)^\alpha - 1 \sim \alpha x, \;(x \to 0)$.
+	即 $(1 + x)^\alpha - 1 \sim \alpha, \;(x \to 0)$.
 \end{solution}
 
-
+% 函数的连续性
 \section{函数的连续性}
 
 \subsection{连续性的基本定义}
 
-\begin{definition}{连续性}
-假设函数 $f$ 在点 $a$ 的整个邻域上有定义, 我们说函数 $f$ 在点 $a$ 连续, 如果对于函数在点 $a$ 的值 $f(x)$ 的任何一个邻域 $V(f(a))$, 都可以找到点 $a$ 的邻域 $U(a)$, 使它在映射 $f$ 下的像包含于 $V(f(a))$.
+\begin{definition}{连续性 Bolzano, Cauchy, Weierstrass, Heine, Jordan}{continuous}
+设函数 $f$ 在 $U(a,\rho)$ 上有定义, 我们说函数 $f$ 在点 $a$ 连续 (Continuous), 如果
+\[
+	\lim_{x \to a} f(x) = f(a),
+\]
+即对于任意的 $\varepsilon > 0$ 都存在 $\delta > 0$ 使得任意 $x \in \mathring{U}(a,\delta)$ 都有
+\[
+	\lvert f(x) - f(a) \rvert < \varepsilon.
+\]
+此时 $a$ 称为函数 $f(x)$ 的连续点 (Point of continuity).
 
-这里给出连续性的形式逻辑写法, 同时给出常用的两个变体
+如果函数 $f$ 在开区间 $(a,b)$ 上任意点连续, 则称函数 $f$ 在开区间 $(a,b)$ 上连续, 假设函数 $f$ 定义在区间 $[a,a + \rho)$ 内, 如果
 \[
-	\forall V(f(a))\ \exists U(a)\ (f(U(a)) \subset V(f(a))),
+	f(a+) := \lim_{x\to a+} f(x) = f(a),
 \]
+则称函数 $f(x)$ 在 $a$ 处右连续 (Right continuous). 假设函数 $f(x)$ 定义在区间 $(a−\rho,a]$ 内,如果
 \[
-	\forall \varepsilon > 0\ \exists U(a)\ \forall x \in U(a)\ (\lvert f(x) - f(a)\rvert < \varepsilon),
+	f(a−) := \lim_{x \to a−} f(x) = f(a), 
 \]
-\[
-	\forall \varepsilon > 0\ \exists \delta > 0\ \forall x\in \R\ (\lvert x - a\rvert < \delta \Rightarrow \lvert f(x) - f(a)\rvert < \varepsilon).
-\]
+则称函数 $f(x)$ 在 $a$ 处左连续 (Left continuous).
+
+如果 $f(x)$ 在开区间 $(a,b)$ 内连续, 在 $a$ 处右连续, 且在 $a$ 处左连续, 则称函数 $f(x)$ 在闭区间 $[a, b]$ 内连续.
 \end{definition}
 
-接下来我们考虑更一般的情况, 设函数 $f: E \to \R$ 定义在某个集合上的实值函数, 而 $a$ 是函数定义域中的一个点.
-
-我们说函数 $f: E \to \R$ 在点 $a \in E$ 连续, 如果对于函数在点 $a$ 的值 $f(a)$ 的任何一个邻域 $V(f(a))$, 可以找到点 $a$ 在集合 $E$ 中的一个邻域 $U_E(a)$, 使得它的像 $f(U_E(a))$ 包含于 $V(f(a))$.
-
-于是,
+\begin{example}
 \[
-	\forall V (f(a))\ \exists U_E (a)\ (f(U_E(a)) \subset V(f(a))).
+f(x) = \begin{cases}
+	a_n + \sin (\pi x), & 2n \le x \le 2n + 1,\\
+	b_n + \cos (\pi x), & 2n - 1 < x < 2n.
+\end{cases}\quad n \in \Z.
 \]
-
-\begin{remark}
-在提出连续性的严谨定义以前，Leibniz 曾定义连续函数就是图像可以一笔画出来, 不需要抬笔的函数, Euler 定义连续函数是用单一函数表示的一条曲线.
-\end{remark}
-
-% 讨论函数在一个点连续的概念
-% 这一部分还不完善	<-------------------------- HERE
-
-\subsection{间断点}
-
-如果函数 $f: E \to \R$ 在集合 $E$ 的某个点上不连续, 则该点称为函数 $f$ 的间断点.
-
-
-
-点 $a\in E$ 称为函数 $f:E \to \R$ 的第一类间断点, 如果如果极限
+求出使以上函数在 $\R$ 上连续的 $a_n, b_n$.
+\end{example}
+\begin{solution}
+显然需要满足 $f(x)$ 在 $2n$ 与 $2n - 1$ 处连续, 即
+\[
+	f(2n-) = f(2n) = f(2n+),
+\]
+\[
+	f(2n-1 -) = f(2n-1) = f(2n-1 +).
+\]
+代入函数 $f$ 可得
 \[
 \begin{aligned}
-	&\lim_{E\ni x \to a - 0} f(x),\\
-	&\lim_{E\ni x \to a + 0} f(x)
+	\lim_{x \to 2n-} [b_n + \cos (\pi x)] &= a_n + \sin (2n\pi)\\
+	b_n + 1 &= a_n
 \end{aligned}
 \]
-都存在, 但至少其中一个极限不等于函数在点 $a$ 的值 $f(a)$
+\[
+\begin{aligned}
+	a_{n-1} + \sin [(2n - 1)\pi] &= \lim_{x \to 2n-1+} [b_n + \cos (\pi x)]\\
+	a_{n-1} &= b_n - 1
+\end{aligned}
+\]
+综上可得
+\[
+	a_n = a_{n-1} + 2,
+\]
+\[
+	b_n = a_n - 1 = a_{n-1} + 1.
+\]
+\end{solution}
 
-如果点 $a\in E$ 是函数 $f: E \to \R$ 的间断点, 并且满足 $f|_{E\setminus a} = \widetilde{f}|_{E\setminus a}$ 的连续函数 $\widetilde{f}: E \to \R$, 则 $a$ 称为函数 $f: E \to \R$ 的可去间断点.
+\vspace{0.5em}
 
-\subsection{连续函数的局部性质}
+\begin{example}
+考察 $(0,1)$ 上的 Riemann 函数 $R(x)$ 的连续性.
+\[
+R(x) = \begin{cases}
+	0, &x \in (0,1)\setminus\Q,\\
+	\frac{1}{q}, &x \in \Q \cap (0,1).
+\end{cases}
+\]
+\end{example}
+\begin{solution}
+对于有理点 $x_0 = \frac{p}{q}$, 对于 $\forall \delta > 0$, 总存在无理数 $x \in \mathring{U}(x_0,\delta)$ 使得 
+\[
+	\lvert R(x) - R(x_0)\rvert = \frac{1}{q}.
+\]
+显然当 $\varepsilon \in (0,\frac{1}{q})$ 时, 总有
+\[
+	\lvert R(x) - R(x_0)\rvert>\varepsilon,
+\]
+所以函数不连续.
+\smallskip
 
-\subsection{连续函数的整体性质}
 
-\subsection{闭区间上的连续函数的性质}
+取 $\forall \varepsilon > 0$, 对于任意有理点 $x_0\in(0,1)$ 在其任意邻域上都只有有限个有理数 $\frac{p}{q}$ 满足 
+\[
+	R(\frac{p}{q}) = \frac{1}{q} \ge \varepsilon,
+\]
+即取 $q$ 为比 $\frac{1}{\varepsilon}$ 小的正整数, 在这些有理点中总能取得与 $x_0$ 距离最近的点, 取 $\delta > 0$ 小于该距离, 显然任意 $[x_0-\delta,x_0+\delta]$ 上的点 $x$ 都满足 
+\[
+	\lvert R(x) - R(x_0) \rvert < \varepsilon.
+\]
+\end{solution}
+
+
+%\begin{remark}
+%在提出连续性的严谨定义以前，Leibniz 曾定义连续函数就是图像可以一笔画出来, 不需要抬笔的函数, Euler 定义连续函数是用单一函数表示的一条曲线.
+%\end{remark}
+
+\subsection{间断点}
+\begin{definition}
+如果函数 $f: E \to \R$ 在集合 $E$ 的某个点上不连续, 则该点称为函数 $f$ 的间断点 (Discontinuity).
+\smallskip
+
+假设 $a$ 是一个间断点
+\ITEMS
+\item 若 $f(a−)$ 和 $f(a+)$ 都存在, 则称 $a$ 是第一类间断点 (Discontinuity of first kind). 
+\begin{itemize}
+	\item 如果 $f(a−) = f(a+)$ 则称 $a$ 为可去间断点 (Removable discontinuity).
+	\item 如果 $f(a−) \neq f(a+)$ 则称 $a$ 为跳跃间断点 (Jump discontinuity) 称 $\lvert f(a+)−
+f(a−)\rvert$ 称为函数 $f$ 在 $a$ 处的跃度 (Jump).
+\end{itemize}
+\smallskip
+
+\item 若 $f(a−)$ 和 $f(a+)$ 至少有一个不存在, 则称 $a$ 是第二类间断点 (Discontinuity of second kind).
+\ITEME
+\end{definition}
+
+\subsection{连续函数的性质}
+
+\begin{theorem}{连续函数的四则运算法则}
+如果函数 $f(x)$ 和 $g(x)$ 在 $x = a$ 处连续, 则函数
+\[
+	f(x) \pm g(x), f(x)g(x) , \frac{f(x)}{g(x)} (g(a) \neq 0)
+\]	
+在 $x = a$ 处连续.
+\end{theorem}
+\begin{proof}
+由 \hyperref[thm:Flimit_p6]{函数极限的四则运算} 易证.	
+\end{proof}
+
+\vspace{0.5em}
+
+\begin{theorem}{复合函数的连续性}
+	假设有函数 $f,g$ 其中函数 $f$ 在 $y_0$ 处连续, 且函数 $g$ 在 $x_0$ 处极限为 $y_0$, 则
+	\[
+		\lim_{x \to x_0} f(g(x)) = f\left(\lim_{x \to x_0} g(x)\right).
+	\]
+	特别地, 如果函数 $g$ 在 $x_0$ 处也连续, 则复合函数 $f(g(x))$ 在 $x_0$ 处也连续.
+\end{theorem}
+\begin{proof}
+	由函数 $f$ 在 $y_0$ 处连续可知, 对于任意 $\varepsilon > 0$ 都存在 $\delta > 0$ 使得对任意 $y \in \mathring{U}(y_0,\delta)$ 都有
+	\[
+		\lvert f(y) - f(y_0) \rvert < \varepsilon.
+	\]
+	因为函数 $g$ 在 $x_0$ 处极限为 $y_0$, 即存在 $\eta > 0$ 使得对任意 $x \in \mathring{U}(x_0,\eta)$ 都有
+	\[
+		\lvert g(x) - y_0 \rvert < \delta.
+	\]
+	即
+	\[
+		\lvert f(g(x)) - f(y_0) \rvert < \varepsilon.
+	\]
+\end{proof}
+
+\vspace{0.5em}
+
+\begin{theorem}{有界性定理}{C_p1}
+设函数 $f$ 在 $[a,b]$ 上连续, 则 $f$ 在 $[a,b]$ 上有界.
+\end{theorem}
+
+\begin{idea*}
+	用反证法证明, 假设函数无界, 则可以构造无界函数值数列, 由 \hyperref[thm:R4']{致密性定理} 可知与连续性相矛盾.
+\end{idea*}
+
+\begin{proof}
+	假设 $f$ 在 $[a,b]$ 上无界, 即对于任意 $n \in \N^+$ 都存在 $x_n \in [a,b]$ 使得
+	\[
+		f(x_n) \ge n,
+	\]
+	显然数列 $\{x_n\}$ 有界, 由 \hyperref[thm:R4']{致密性定理} 可知存在收敛子列 $\{x_{n_k}\}$ 有
+	\[
+		\lim_{k\to\infty} x_{n_k} = c \in [a,b],
+	\] 
+	因为函数 $f$ 在 $[a,b]$ 上连续, 则
+	\[
+		f(c) = \lim_{k\to\infty} f(x_{n_k}),
+	\]
+	即数列 $\{f(x_{n_k})\}$ 收敛, 这与 $f(x_{n_k}) \ge n_k$ 矛盾.
+\end{proof}
+
+\vspace{0.5em}
+
+\begin{theorem}{Weierstrass 最值定理}{C_p2}
+	若函数 $f$ 在 $[a,b]$ 上连续, 则存在 $\xi ,\eta \in [a,b]$ 满足不等式
+	\[
+		f(\xi) \le f(x) \le f(\eta), 
+	\]
+	对任意 $x \in [a,b]$ 都成立.
+\end{theorem}
+
+\begin{idea*}
+	由 \hyperref[thm:C_p1]{有界性定理} 可知有上确界, 假设上确界不在 $[a,b]$ 上, 则可以构造函数并由 \hyperref[thm:C_p1]{有界性定理} 证明 $M$ 不是上确界与条件矛盾.
+\end{idea*}
+
+\begin{proof}
+	不失一般性的只证明存在 $\eta \in [a,b]$ 使得 $f(x) \le f(\eta)$, 由 \hyperref[thm:C_p1]{有界性定理} 和 \hyperref[thm:R1]{确界原理} 可知存在 $M = \sup\limits_{x \in [a,b]} f(x)$. 利用反证法, 假设 $M > f(x)$ 对任意 $x\in[a,b]$ 都成立. 定义
+	\[
+		F(x) := \frac{1}{M - f(x)} > 0,\quad x\in[a,b].
+	\]
+	则 $F$ 在 $[a,b]$ 上连续. 再次由 \hyperref[thm:C_p1]{有界性定理} 得到存在正数 $K > 0$ 使得不等式 $0 < F(x) \le K$ 对任意 $x\in[a,b]$ 都成立. 故对任意 $x\in[a,b]$ 有
+	\[
+		f(x) \le M - \frac{1}{K},
+	\]
+	则 $M - \frac{1}{K}$ 是一个比 $M$ 更小上届, 与 $M$ 是上确界相矛盾. 所以 $M= f(\eta)$ 对某个 $\eta\in[a,b]$ 成立.
+\end{proof}
+
+
+\vspace{0.5em}
+
+我们引入连续函数空间的符号,
+\[
+	f \in \mathscr{C} (I)
+\]
+这表示函数 $f$ 在区间 $I$ 上连续.
+
+\vspace{0.5em}
+
+\begin{theorem}{零点定理}{C_p3}
+设 $f \in \mathscr{C}([a,b])$ 且 $f(a)f(b) < 0$ 则存在 $\xi \in (a,b)$ 满足
+	\[
+		f(\xi) = 0.
+	\]
+\end{theorem}
+\begin{idea*}
+	应用反证法证明, 用二分法构造闭区间套找到零点.
+\end{idea*}
+
+\begin{proof}
+	不失一般性的, 我们只需证明 $f(x) < 0 < f(b)$, 假设对于任何 $x \in (a,b)$ 都有 $f(x) \neq 0$. 若 $f\left(\frac{a+b}{2}\right) > 0$ 则取 $a_1 = a, b_1 = \frac{a+b}{2}$, 若 $f\left(\frac{a+b}{2}\right) < 0$ 则取 $a_1 \frac{a+b}{2}, b_1 = b$, 重复上述步骤构造出闭区间套 $\{[a_n,b_n]\}$, 恒有 $f(a_n) < 0 < f(b_n)$ 且
+	\[
+		 \lim_{n\to\infty}\lvert [a_n,b_n] \rvert = \lim_{n\to\infty} (b_n - a_n) = 0,
+	\]
+	由 \hyperref[thm:R2]{闭区间套定理} 可知存在 $\xi \in (a,b)$ 使得
+	\[
+		 \lim_{n\to\infty}a_n < \xi < \lim_{n\to\infty} b_n,
+	\]
+	则有
+	\[
+		0 \ge \lim_{n\to\infty}f(a_n) = f(\xi) = \lim_{n\to\infty}f(b_n) \ge 0.
+	\]
+\end{proof}
+
+
+
+\begin{theorem}{Bolzano-Cauchy 介值定理}{C_p4}
+设 $f \in \mathscr{C}([a,b])$, 有 $M_f := \sup\limits_{x\in[a,b]} f(x), m_f := \inf\limits_{x\in[a,b]} f(x)$ 则对于任意 $\mu \in [m_f,M_f]$ 存在 $\xi \in (a,b)$ 满足
+	\[
+		f(\xi) = \mu.
+	\]
+\end{theorem}
+\begin{idea*}
+	用 \hyperref[thm:C_p2]{最值定理} 构造函数将问题化简至 \hyperref[thm:C_p3]{零点定理} 的情况.
+\end{idea*}
+\begin{proof}
+	由 \hyperref[thm:C_p2]{最值定理} 可知存在 $f(\xi_1) = M_f, f(\xi_2) = m_f$, 不失一般性的假设 $\xi_1 < \xi_2$, 定义
+	\[
+		F(x) := f(x) - \mu,
+	\]
+	则由 $\mu \in [m_f,M_f]$ 有 $F(\xi_1) = m_f - \mu < 0$ 且 $F(\xi_2) = M_f - \mu \ge 0$ 则由 \hyperref[thm:C_p1]{零点定理} 可知, 存在 $\xi \in (a,b)$ 使得
+	\[
+		F(\xi) = 0 \Rightarrow f(\xi) = \mu.
+	\]
+\end{proof}
+
+\begin{remark}
+\hyperref[thm:C_p1]{有界性定理}, \hyperref[thm:C_p2]{最值定理}, \hyperref[thm:C_p3]{零点定理}, \hyperref[thm:C_p4]{介值定理} 都是在闭区间上才有的性质, 这些性质在开区间上不一定成立.	
+\end{remark}
+
+
+
+\subsection{一致连续性}
+
+\begin{definition}{一致连续性}
+	设有函数 $f : I \to \R$, 如果对任意 $\varepsilon > 0$ 存在 $\delta >0$, 对任意 $x,y\in I$ 只要满足 $\lvert x - y \rvert < \delta$, 就有
+\[
+	\lvert f(x) - f(y)\rvert < \varepsilon.
+\]
+则称 $f$ 在 $I$ 上为一致连续的 (Uniformly continuous).
+\end{definition}
+\begin{remark}
+	一致连续函数必是连续函数. 说函数 $f$ 是一致连续的一定要讲明定义域.	
+\end{remark}
+
+
+\begin{theorem}{一致连续性的四则运算}
+假设函数 $f,g$ 在区间 $I$ 上都是一致连续的, 则
+\ITEMS
+\item 对任意常数 $\alpha, \beta \in \R, \alpha f + \beta g$ 在 $I$ 上是一致连续的.
+\item 如果 $f,g$ 在 $I$ 上有界, 则 $fg$ 在 $I$ 上是一致连续的.
+\item 如果 $f$ 在 $I$ 上有界且存在 $\varepsilon_0 > 0$ 满足 $g \ge \varepsilon_0$ 对任意 $x \in I$ 都成立, 则 $\frac fg$ 在 $I$ 上一致连续.
+\ITEME
+\end{theorem}
+\begin{proof}
+	读者自证.
+\end{proof}
+
+\begin{theorem}{Cantor 定理}{cantor}
+如果 $f \in \mathscr{C}([a,b])$, 那么 $f$ 在 $[a,b]$ 上是一致连续的.
+\end{theorem}
+\begin{proof}
+假设 $f$ 在 $[a,b]$ 上不是一致连续的, 则存在 $\varepsilon_0 > 0$ 和数列 $\{x_n\},\{y_n\} \subset [a,b]$ 满足 $x_n - y_n \to 0$ 但是 
+\[
+	\lvert f(x_n) - f(y_n) \rvert \ge \varepsilon_0,
+\]
+由 \hyperref[R_4']{致密性定理} 可知, 存在 $\{y_n\}$ 的收敛子列 $\{y_{n_k}\}$ 满足 $y_{n_k} \to y_0$, 其中 $y_0 \in [a,b]$. 取 $x_{n_k} = y_{n_k} + (x_{n_k} - y_{n_k}) \to  y_0 + 0 =  y_0$, 则
+\[
+	\varepsilon_0 \le \lvert f(x_{n_k}) - f(y_{n_k}) \rvert \to (y_0 - y_0) = 0.
+\]
+矛盾表明函数 $f$ 在 $[a,b]$ 上是一致连续的.
+\end{proof}
+
+
+\begin{theorem}{Heine-Cantor 定理}{heinecantor}
+连续紧致空间上每一个连续函数都是一致连续的.
+\end{theorem}
+
 
 \section{*数学史: 无穷小的幽灵}
 
@@ -3582,59 +3907,1394 @@ $\gamma$ 是无理数.
 % 这一部分还不完善	<-------------------------- HERE
 % TODO: 导数补充引子
 
-\subsection{可微函数}
+\subsection{微分}
+
+\begin{definition}{微分}{differential}
+	假设函数 $f$ 定义在某个邻域 $U(x_0,r)$ 内. 当 $x \to x_0$ 时, 如果存在常数 $A$ (不依赖 $x$) 使得
+	\[
+		f(x) = f(x_0) + A(x - x_0) + o(x - x_0),
+	\]
+则称 $f$ 在 $x_0$ 处可微 (Differentiable). 线性函数 $A(x - x_0)$ 称为 $f$ 在 $x_0$ 处的微分 (Differential).
+\end{definition}
+
+我们引入以下记号
+\ITEMS
+	\item $\Delta x := x - x_0$,
+	\item $\Delta x \equiv \Delta f := f(x) - f(x_0) = f(x_0 + \Delta x) - f(x)$,
+	\item $df(x) := A (x - x_0)$ 或者 $dy \equiv df := A \Delta x$.
+\ITEME
+
+\begin{theorem}
+	如果函数 $f$ 在 $x_0$ 处可微, 则函数 $f$ 在 $x_0$ 处连续, 反之不成立.
+\end{theorem}
+
+\begin{proof}
+	由 \hyperref[def:differential]{微分} 与 \hyperref[def:continuous]{连续} 的定义显然.
+\end{proof}
+
+下面是一个处处连续处处不可微的函数的例子.
+
+\begin{example}
+	Weierstrass 函数为
+	\[
+		W(x) = \sum_{n = 0}^{\infty} b^n \cos(a^n x \pi),
+	\]
+	其中 $0 < b < 1$, $a > 0$ 为奇数, 且满足 $2ab > 2 + 3\pi$.
+\end{example}
 
 
 
-\subsection{切线, 导数和微分的几何意义}
-% 这一部分还不完善	<-------------------------- HERE
+\subsection{导数}
 
+\begin{definition}{导数}{derivative}
+	假设函数 $f$ 定义在邻域 $U(x_0,r)$ 内, 若极限
+	\[
+		f'(x_0) := \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x-x_0},
+	\]
+	存在, 则称 $f$ 在 $x_0$ 处可导 (Derivable), 称极限 $f'(x_0)$ 为 $f(x)$ 在 $x_0$ 处的导数 (Derivative).
+\end{definition}
+
+\begin{remark}
+导数的本质是一个函数极限.	
+\end{remark}
+
+
+\begin{theorem}
+	函数 $f$ 在 $x_0$ 处可微当且仅当 $f$ 在 $x_0$ 处可导.
+\end{theorem}
+\begin{proof}
+	由 \hyperref[def:derivative]{导数} 与 \hyperref[def:differential]{微分}的定义显然.
+\end{proof}
+\begin{remark}
+	函数 $f$ 是一元函数时上述定理成立, 即可微必可导.	
+\end{remark}
+
+对于给定区间 $I$, 如果函数 $f$ 在 $I$ 内处处可导, 记作 $f \in \D(I)$. 如果函数 $f \in \D(I)$ 的导函数 $f'$ 在 $I$ 内处处连续, 记作 $f \in \mathscr{C}^1(I)$. 则显然有
+\[
+	\mathscr{C}^1(I) \subsetneq \D(I) \subsetneq \mathscr{C}(I). 
+\]
+
+\subsection{导数的几何意义}
+
+考虑曲线 $y = f(x)$ 和其上点 $P = (x_0,y_0)$. 取曲线上点 $Q = (x,y)$ 得到直线 $\overline{PQ}$ 方程
+\[
+	y - y_0 = \frac{f(x) - f(x_0)}{x - x_0} (x - x_0).
+\]
+当 $Q$ 沿着曲线趋于 $P$ 得到 $P$ 处的切线方程 (Tangent line equation)
+\[
+	y - f(x_0) = f'(x_0) (x - x_0).
+\]
+此时过 $P$ 的法线方程 (Normal line equation) 为
+\[
+\begin{cases}
+	y - f(x_0) = - \frac{1}{f'(x_0)}(x - x_0), & f'(x_0) \neq 0,\\
+	x = x_0, & f'(x_0) = 0.
+\end{cases}
+\]
+
+\subsection{单侧导数}
+
+\begin{definition}{单侧导数}
+	假设函数 $f$	定义在区间 $[x_0,x_0+r)$ 内, 函数 $f$ 在 $x_0$ 处的右导数 (Right-sided derivative) 为
+	\[
+		f_+' (x_0) := \lim_{x \to x_0+} \frac{f(x) - f(x_0)}{x - x_0}.
+	\]
+	类似对于定义在区间 $(x_0 - r,x_0]$ 内的函数 $f$ 在 $x_0$ 处的左导数 (Left-sided derivative) 为
+	\[
+		f_-' (x_0) := \lim_{x \to x_0-} \frac{f(x) - f(x_0)}{x - x_0}.
+	\]
+\end{definition}
+
+\begin{theorem}
+	函数 $f$ 在 $x_0$ 处可导当且仅当左右导数存在且相等.	
+\end{theorem}
+\begin{proof}
+	由定义显然.
+\end{proof}
 
 \section{基本微分法则}
 
+由基本初等函数的导数可以求得以下求导法则.
+\begin{example}
+	$(c)' = 0$.
+\end{example}
+\begin{solution}
+	由定义显然.
+\end{solution}
+
+\vspace{0.8em}
+
+\begin{example}
+	$(\sin x)' = \cos x$, $(\cos x)' = -\sin x$.
+\end{example}
+\begin{solution}
+	根据导数的定义
+	\[
+		(\sin x)' = \lim_{\Delta x \to 0}\frac{\sin (x + \Delta x) - \sin x}{\Delta x},
+	\]
+	由和差化积公式可知
+	\[
+	\begin{aligned}
+		\frac{\sin (x + \Delta x) - \sin x}{\Delta x} &= \frac{2\sin\left(\frac{x + \Delta x + x}{2}\right)\cos \left(\frac{x + \Delta x - x}{2}\right)}{\Delta x}\\
+		&= \frac{2\sin\left(x + \frac{\Delta x}{2}\right)\cos \left(\frac{\Delta x}{2}\right)}{\Delta x}\\
+		&= \sin\left(x + \frac{\Delta x}{2}\right) \frac{\cos \left(\frac{\Delta x}{2}\right)}{\frac{\Delta x}{2}},
+	\end{aligned}
+	\]
+	由 \hyperref[thm:Ilimit1]{第一个重要极限} 有
+	\[
+		(\sin x)' = \lim_{\Delta x \to 0}\frac{\sin (x + \Delta x) - \sin x}{\Delta x} = \lim_{\Delta x \to 0}\sin\left(x + \frac{\Delta x}{2}\right) \frac{\cos \left(\frac{\Delta x}{2}\right)}{\frac{\Delta x}{2}} = \lim_{\Delta x \to 0} \sin\left(x + \frac{\Delta x}{2}\right)= \sin x.
+	\]
+	
+	同理我们可以证明
+	\[
+		(\cos x)' = -\sin x.
+	\]
+\end{solution}
+
+\vspace{0.8em}
+
+\begin{example}
+	$(\ln x)' = \frac{1}{x}$.
+\end{example}
+\begin{solution}
+	根据导数的定义
+	\[
+	\begin{aligned}
+		(\ln x)' &= \lim_{\Delta x \to 0} \frac{\ln (x + \Delta x) - \ln x}{\Delta x}\\
+		&= \lim_{\Delta x \to 0} \frac{\ln \left(1 + \frac{\Delta x}{x}\right)}{\Delta x}\\
+		&= \lim_{\Delta x \to 0} \frac{1}{x}\frac{x}{\Delta x}\ln \left(1 + \frac{\Delta x}{x}\right)\\
+		&= \lim_{\Delta x \to 0} \frac{1}{x}\ln \left(1 + \frac{\Delta x}{x}\right)^{\frac{x}{\Delta x}},
+	\end{aligned}
+	\]
+	由 \hyperref[thm:Ilimit2]{第二个重要极限} 有
+	\[
+	(\ln x)' = \lim_{\Delta x \to 0} \frac{1}{x}\ln \left(1 + \frac{\Delta x}{x}\right)^{\frac{x}{\Delta x}} = \frac{1}{x} \ln e = \frac{1}{x}.
+	\]
+\end{solution}
+
+\vspace{0.8em}
+
+\begin{example}
+	$(\log_a x)' = \frac{1}{x \ln a}$, 其中 $a > 0, a \neq 1, x > 0$.
+\end{example}
+\begin{solution}
+	由于 $\log_a x = \frac{\ln x}{\ln a}$ 应用上一例的结论可得
+	\[
+		(\log_a x)' = \frac{(\ln x)'}{\ln a} = \frac{1}{x \ln a}.
+	\]
+\end{solution}
+
+\vspace{0.8em}
+
+\begin{example}
+	$(a^x)' = a^x \ln a$, 其中 $a > 0, x \in \R$.
+\end{example}
+\begin{solution}
+	根据导数的定义
+	\[
+	\begin{aligned}
+		(a^x)' &= \lim_{\Delta x \to 0} \frac{a^{x + \Delta x} - a^x}{\Delta x}\\
+		&= a^x \lim_{\Delta x \to 0} \frac{a^{\Delta x} - 1}{\Delta x}\\
+		&= a^x \lim_{\Delta x \to 0} \frac{e^{\Delta x \ln a} - 1}{\Delta x}\\
+		&= a^x \lim_{\Delta x \to 0} \ln a \frac{e^{\Delta x \ln a} - 1}{\Delta x \ln a}\\
+		&= a^x \ln a \lim_{t \to 0} \frac{e^{t} - 1}{t}\\
+		&= a^x \ln a.
+	\end{aligned}
+	\]
+\end{solution}
+
+\vspace{0.8em}
+
+\begin{example}
+	$(x^a)' = a x^{a - 1}$, 其中 $a \in \R, x > 0$.
+\end{example}
+\begin{solution}
+	根据导数的定义
+	\[
+	\begin{aligned}
+		(x^a)' &= \lim_{\Delta x \to 0} \frac{(x + \Delta x)^a - x^a}{\Delta x}\\
+		&= \lim_{\Delta x \to 0} \frac{x^a(1 + \frac{\Delta x}{x})^a - x^a}{\Delta x}\\
+		&= x^{a - 1}\lim_{\Delta x \to 0} \frac{(1 + \frac{\Delta x}{x})^a - 1}{\frac{\Delta x}{x}}\\
+		&= a x^{a -1}.
+	\end{aligned}
+	\]
+\end{solution}
+
+\subsection{导数的算数运算}
+
+\begin{theorem}{}{dp1}
+	如果 $f,g \in \D(I)$, $\alpha,\beta\in\R$, 那么 $\alpha f + \beta g \in \D(I)$ 且
+	\[
+		(\alpha f + \beta g)' = \alpha f' + \beta g'.
+	\]
+\end{theorem}
+\begin{proof}
+	由导数的定义
+	\[
+	\begin{aligned}
+		(\alpha f(x) + \beta g(x))' &= \lim_{\Delta x \to 0}\frac{\alpha f(x + \Delta x) + \beta g(x + \Delta x) - \alpha f(x) - \beta g(x)}{\Delta x}\\
+		&= \lim_{\Delta x \to 0}\frac{\alpha f(x + \Delta x) - \alpha f(x)}{\Delta x} + \lim_{\Delta x \to 0}\frac{\beta g(x + \Delta x)- \beta g(x)}{\Delta x}\\
+		&= \alpha f'(x) + \beta g'(x).
+	\end{aligned}
+	\]
+\end{proof}
+
+
+\begin{theorem}{Leibniz 法则}{Leibniz1}
+	如果 $f,g \in \D(I)$, 那么$fg \in \D(I)$ 且
+	\[
+		(fg)' = f'g + fg'.
+	\]
+\end{theorem}
+\begin{proof}
+	由导数的定义
+	\[
+	\begin{aligned}
+		(f(x) g(x))' &= \lim_{\Delta x \to 0}\frac{f(x + \Delta x)g(x + \Delta x) - f(x)g(x)}{\Delta x}\\
+		&= \lim_{\Delta x \to 0}\frac{f(x + \Delta x)g(x + \Delta x) - f(x)g(x + \Delta x) + f(x)g(x + \Delta x) - f(x)g(x)}{\Delta x}\\
+		&= \lim_{\Delta x \to 0} g(x + \Delta x) \frac{f(x + \Delta x) - f(x)}{\Delta x} + \lim_{\Delta x \to 0} f(x) \frac{ g(x + \Delta x)- g(x)}{\Delta x}\\
+		&= f'(x)g(x) + f(x)g'(x).
+	\end{aligned}
+	\]
+\end{proof}
+
+
+\begin{theorem}
+	如果 $f,g \in \D(I), g \neq 0$ 在 $I$ 内, 那么
+	\[
+		\left(\frac fg \right)' = \frac{f'g - fg'}{g^2}.
+	\]
+\end{theorem}
+\begin{proof}
+	由导数的定义
+	\[
+	\begin{aligned}
+		\left(\frac fg \right)' &=  \lim_{\Delta x \to 0} \frac{\frac{f(x+\Delta x)}{g(x+\Delta x)} - \frac{f(x)}{g(x)}}{\Delta x}\\
+		&= \lim_{\Delta x \to 0} \frac{f(x+\Delta x)g(x) - f(x) g(x+\Delta x)}{g(x) g(x+\Delta x) \Delta x}\\
+		&= \lim_{\Delta x \to 0} \frac{f(x+\Delta x)g(x) - f(x)g(x) - f(x) g(x+\Delta x) + f(x)g(x)}{g(x) g(x+\Delta x) \Delta x}\\
+		&= \lim_{\Delta x \to 0} \frac{\bigl(f(x+\Delta x) - f(x)\bigr)g(x) - \bigl(g(x+\Delta x) - g(x)\bigr)f(x)}{g(x) g(x+\Delta x) \Delta x}\\
+		&= \lim_{\Delta x \to 0} \frac{\frac{f(x+\Delta x) - f(x)}{\Delta x}g(x) - \frac{g(x+\Delta x) - g(x)}{\Delta x}f(x)}{g(x) g(x+\Delta x)}\\
+		&= \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}.
+	\end{aligned}
+	\]
+\end{proof}
+\vspace{1em}
+
+\begin{example}
+	求 $\tan x, \cot x, \sec x, \csc x$.
+\end{example}
+\begin{solution}
+\[
+	(\tan x)' = \left(\frac{\sin x}{\cos x}\right)' = \frac{\cos^2 x - (-\sin^2 x)}{\cos^2 x} = \frac{1}{\cos^2 x} = \sec^2 x.
+\]
+\[
+	(\cot x)' = \left(\frac{\cos x}{\sin x}\right)' = \frac{-\sin^2 x - \cos^2 x}{\sin^2 x} = -\frac{1}{\sin^2 x} = -\csc^2 x.
+\]
+\[
+	(\sec x)' = \left(\frac{1}{\cos x}\right)' = \frac{0\cdot\cos x - (-\sin x)}{\cos^2 x} = \frac{1}{\cos x}\frac{\sin x}{\cos x} =\sec x \tan x.
+\]
+\[
+	(\csc x)' = \left(\frac{1}{\sin x}\right)' = \frac{0\cdot\sin x - (\cos x)}{\sin^2 x} = -\frac{1}{\sin x}\frac{\cos x}{\sin x} = -\csc x \cot x.
+\]
+\end{solution}
+
+%\begin{definition}{导子}
+%	
+%\end{definition}
+
+% TODO:导子
+
+\subsection{反函数的导数}
+
+\begin{theorem}{反函数的导数}
+	设有 $f \in \D(I)$, 且 $f$ 严格单调, $f'(x_0) \neq 0$ 其中 $x_0 \in (a,b)$ 则其反函数 $x = f^{-1}(y) = g(x)$ 在 $(\alpha,\beta)$ ($\alpha = \min\{f(a+),f(b-)\},\beta = \max\{f(a+),f(b-)\}$, $y_0 = f(x_0)$) 上可导且有
+	\[
+		g'(y_0) = \frac{1}{f'(x_0)}.
+	\]
+\end{theorem}
+
+\begin{proof}
+	不失一般性的可设 $f$ 严格单调递增, 由函数 $f$ 的连续性可知 $f^{-1} \in \mathscr{C}((\alpha,\beta))$ 且也严格单调递增, 由于
+	\[
+		\Delta y = f(x + \Delta x) - f(x) \neq 0 \Longleftrightarrow \Delta x = f^{-1}(y + \Delta y) - f^{-1}(y),
+	\]
+	得到当 $\Delta y \to 0$ 时 $\Delta x \to x$. 则有
+	\[
+		g'(y_0) = \frac{f^{-1}(y_0 + \Delta y) - f^{-1}(y_0)}{\Delta y} = \frac{\Delta x}{f(x_0 + \Delta x) - f(x_0)} = \frac{1}{f'(x_0)}.
+	\]
+\end{proof}
+\vspace{1em}
+
+\begin{example}
+	求 $(\arcsin x)', (\arccos x)', (\arctan x)'$.
+\end{example}
+\begin{solution}
+\[
+	(\arcsin x)' = \frac{1}{(\sin y)'} = \frac{1}{\cos y} = \frac{1}{\cos \arcsin x} = \frac{1}{\sqrt{1 - \sin^2 \arcsin x}} = \frac{1}{\sqrt{1 - x^2}}.
+\]
+\[
+	(\arccos x)' = \frac{1}{(\cos y)'} = \frac{1}{-\sin y} = -\frac{1}{\sin \arccos x} = -\frac{1}{\sqrt{1 - \cos^2 \arccos x}} = -\frac{1}{\sqrt{1 - x^2}}.
+\]
+\[
+	(\arctan x)' = \frac{1}{(\tan y)'} = \frac{1}{\sec^2 y} = \frac{1}{1 + \tan^2 \arctan x}  = \frac{1}{\sqrt{1 + x^2}}.
+\]
+\[
+	(\arccot x)' = \frac{1}{(\cot y)'} = \frac{1}{-\csc^2 y} =- \frac{1}{1 + \cot^2 \arccot x}  = -\frac{1}{\sqrt{1 + x^2}}.
+\]
+\end{solution}
+
+\subsection{复合函数的导数}
+
+\begin{theorem}{链式法则}
+	设有函数 $u = g(x), y = f(u)$, 满足 $g$ 在 $x_0$ 处可导, 且 $f$ 在 $u_0 = g(x_0)$ 处可导, 则复合函数 $f \circ g$ 在 $x_0$ 处可导且
+	\[
+		(f \circ g)'(x_0) = f'[g(x_0)] g'(x_0).
+	\]
+\end{theorem}
+\begin{idea*}
+	通过 $\Delta y$ 的定义化简导数极限证明, 注意分类讨论, 构造函数证明特殊情况.
+\end{idea*}
+\begin{proof}
+	由导数的定义, 考虑如下极限
+	\[
+		(f \circ g)'(x_0) = \lim_{\Delta x \to 0} \frac{f[g(x_0 + \Delta x)] - f[g(x_0)]}{\Delta x},
+	\]
+	因为 $\Delta y = g(x_0 + \Delta x) - g(x_0)$, 则
+	\[
+		\lim_{\Delta x \to 0} \frac{f[g(x_0 + \Delta x)] - f[g(x_0)]}{\Delta x} = \lim_{\Delta x \to 0} \frac{f[g(x_0) + \Delta y] - f[g(x_0)]}{\Delta x}
+	\]
+	当 $\Delta y \neq 0$ 时, 有
+	\[
+		\lim_{\Delta x \to 0} \frac{f[g(x_0) + \Delta y] - f[g(x_0)]}{\Delta x} = \lim_{\Delta x \to 0} \frac{f[g(x_0) + \Delta y] - f[g(x_0)]}{\Delta y} \frac{\Delta y}{\Delta x}.
+	\]
+	因为 $g$ 在 $x_0$ 可导, 则其在 $x_0$ 连续, 有
+	\[
+		\Delta x \to 0 \Longrightarrow \Delta y \to x.
+	\]
+	则
+	\[
+	\begin{aligned}
+		\lim_{\Delta x \to 0} \frac{f[g(x_0) + \Delta y] - f[g(x_0)]}{\Delta y} \frac{\Delta y}{\Delta x} &= \lim_{\Delta x \to 0} \frac{f[g(x_0) + \Delta y] - f[g(x_0)]}{\Delta y} \frac{g(x_0 + \Delta x) -g(x_0)}{\Delta x}\\
+		&= f'[g(x_0)] g'(x_0).
+	\end{aligned}
+	\]
+	
+	但是 $\Delta y = 0$ 时, 构造如下辅助函数 $\varphi$
+	\[
+		\varphi(x) = \begin{cases}
+			\frac{f[g(x_0) + t] - f(g(x_0))}{t}, & t \neq 0,\\
+			f'[g(x_0)], & t = 0.
+		\end{cases}
+	\]
+	显然 $\varphi$ 在 $0$ 处连续, 注意到
+	\[
+		f[g(x_0) + t] - f[g(x_0)] = t \varphi(t),
+	\]
+	令 $t = \Delta y$, 则有
+	\[
+	\begin{aligned}
+		\lim_{\Delta x \to 0} \frac{f[g(x_0) + \Delta y] - f[g(x_0)]}{\Delta x} &= \lim_{\Delta x \to 0} \frac{\Delta y \varphi(\Delta y)}{\Delta x}\\
+		&= g'(x_0) \varphi(0)\\
+		&= g'(x_0) f'[g(x_0)].
+	\end{aligned}
+	\]
+\end{proof}
+
+\vspace{0.5em}
+
+\begin{corollary}{一阶微分的形式不变性}
+设有函数 $y = f(u)$ 可导, 则
+\[
+	dy = df(u) = f'(u)du.
+\]
+若 $u = g(x)$ 可导, 则也有 $du = dg(x) = g'(x)dx$ 从而
+\[
+\begin{aligned}
+	d[f(g(x))] &= f'(g(x)) g'(x) dx\\
+	&= f'(u) du.
+\end{aligned}
+\]
+即无论 $u$ 是一个自变量还是关于 $x$ 的函数, 微分形式 $dy = f'(u) du$ 保持不变.	
+\end{corollary}
+
+\vspace{0.5em}
+
+\begin{definition}{双曲函数}
+	定义双曲函数如下
+	\[
+		\sinh x := \frac{e^x - e^{-x}}{2},\ \cosh x := \frac{e^x + e^{-x}}{2},\ \tanh x := \frac{\sinh x}{\cosh x},\ \coth := \frac{\cosh x}{\sinh x}.
+	\]
+\end{definition}
+
+\begin{example}
+	求 $(\sinh x)',(\cosh x)',(\tanh x)',(\coth x)'$.
+\end{example}
+\begin{solution}
+	用链式法则易证,
+	\[
+	\begin{aligned}
+		(\sinh x)' &= \left(\frac{e^x - e^{-x}}{2}\right)'\\
+		&= \frac{\left(e^x\right)' - \left(e^{-x}\right)'}{2}\\
+		&= \frac{e^x + e^{-x}}{2}\\
+		&= \cosh x.
+	\end{aligned}
+	\]
+	同理可证 $(\cosh x)' = \sinh x$.
+	
+	\[
+	\begin{aligned}
+		(\tanh x)' &= \left(\frac{\sinh x}{\cosh x}\right)'\\
+		&= \frac{\cosh^2 x - \sinh^2 x}{\cosh^2 x}\\
+		&= \frac{\frac{e^{2x} + 2 + e^{-2x}}{4} - \frac{e^{2x} - 2 + e^{-2x}}{4}}{\cosh^2 x}\\
+		&= \frac{1}{\cosh^2 x}.
+	\end{aligned}
+	\]
+	同理可证 $(\coth x)' = \frac{1}{\sinh^2 x}$.
+\end{solution}
+
+\subsection{隐函数的导数}
+
+首先解释一下什么是隐函数, 其实我们接触过很多隐式定义的函数, 例如单位圆
+\[
+	x^2 + y^2 - 1 = 0.
+\]
+对于这种函数我们可以写为如下形式
+\[
+	F(x,y) = 0\; \text{其中}\; y = f(x).
+\]
+对于隐函数 $F(x,y) = 0$ 我们用 $F_x(x_0, y_0)$ 是表示在 $F(x,y)$ 中把 $y$ 视为常数, 然后对 $x$ 求导, 再把 $(x_0,y_0)$ 带入所得的函数值. 具体可见多元函数微分学章节. % TODO: 多元函数微分
+对前式两边求导有
+\[
+	F_x(x_0,y_0) + F_y(x_0,y_0) y' = 0.
+\]
+则有
+\[
+	y' = -\frac{F_x(x_0,y_0)}{F_y(x_0,y_0)},\ F_y(x_0,y_0) \neq 0.
+\]
+
+\vspace{0.5em}
+
+\begin{example}
+	已知 $y^3 + 3y = x$ 求 $y'(x)$.
+\end{example}
+\begin{solution}
+	\[
+		\begin{aligned}
+			y^3 + 3y &= x\\
+			y^3 + 3y - x &= 0\\
+			3 y^2 y' + 3 y' - 1 &= 0\\
+			(3 y^2 + 3)y' &= 1.
+		\end{aligned}
+	\]	
+\end{solution}
+
+\subsection{参数方程的导数}
+
+\begin{definition}{参数方程}
+	参数方程 (parametric equation) 如下
+	\[
+		x = \varphi(t),\ y= \psi(t),\ a \le t \le b,
+	\]
+	其中 $t$ 称为参数 (parameter), 点集 $\{(\varphi(t),\psi(t)): a \le t \le b\}$ 成为参数曲线, $(\varphi(a),\psi(a))$ 和 $(\varphi(b),\psi(b))$ 分别称为起点与终点.
+\end{definition}
+
+
+假设 $\varphi,\psi$ 可导, $\varphi(t)$ 严格单调, 且 $\varphi' \neq 0$. 因为反函数 $t = \varphi^{-1}(x)$ 存在, 则得到 $y = \psi(\varphi^{-1}(x))$ 和
+\[
+y'(x_0) = (\psi \circ \varphi^{-1})'(x_0) = \frac{\psi'(t_0)}{\varphi'(t_0)},\; \varphi^{-1}(x_0) = t_0.
+\]
+
+\subsection{基本初等函数的导数}
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \begin{tabular}{ccc}
+      \toprule
+      函数 $f(x)$ & 导数 $f'(x)$ & 微分 $df$ \\
+      \midrule
+      $C$  		  & $0$                 & $0$ \\
+      $x$         & $1$                 & $dx$ \\
+      $x^n$       & $n x^{n-1}$         & $n x^{n-1}\,dx$ \\
+      $e^x$       & $e^x$               & $e^x\,dx$ \\
+      $a^x$       & $a^x\ln a$          & $a^x\ln a\,dx$ \\
+      $\ln x$     & $\dfrac{1}{x}$      & $\dfrac{1}{x}\,dx$ \\
+      $\log_a x$  & $\dfrac{1}{x\ln a}$ & $\dfrac{1}{x\ln a}\,dx$ \\
+      $\sin x$    & $\cos x$            & $\cos x\,dx$ \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \begin{tabular}{ccc}
+      \toprule
+      函数 $f(x)$ & 导数 $f'(x)$ & 微分 $df$ \\
+      \midrule
+      $\cos x$    & $-\sin x$           & $-\sin x\,dx$ \\
+      $\tan x$    & $\sec^2 x$          & $\sec^2 x\,dx$ \\
+      $\cot x$    & $-\csc^2 x$         & $-\csc^2 x\,dx$ \\
+      $\sec x$    & $\sec x\tan x$      & $\sec x\tan x\,dx$ \\
+      $\csc x$    & $-\csc x\cot x$     & $-\csc x\cot x\,dx$ \\
+      $\arcsin x$ & $\dfrac{1}{\sqrt{1-x^2}}$  & $\dfrac{1}{\sqrt{1-x^2}}\,dx$ \\
+      $\arccos x$ & $-\dfrac{1}{\sqrt{1-x^2}}$ & $-\dfrac{1}{\sqrt{1-x^2}}\,dx$ \\
+      $\arctan x$ & $\dfrac{1}{1+x^2}$  & $\dfrac{1}{1+x^2}\,dx$ \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+  \vspace{0.4em}
+  \captionof{table}{常见函数的导数与微分}
+\end{center}
+
+\section{高阶导数}
+
+\begin{definition}{高阶导数}
+	假设函数 $f \in \D(U(x_0,r))$ 且导函数 $f'$ 在 $x_0$ 处也可导, 则称函数 $f$ 在 $x_0$ 处二阶可导, 则称
+	\[
+		\frac{d^2 f}{dx^2}(x_0) \equiv f''(x_0) := (f')'(x_0) = \left. \frac{d}{dx}\left(\frac{d}{dx} f(x)\right) \right\vert_{x=x_0},
+	\]
+	为 $f$ 在 $x_0$ 点的二阶导数 (Second derivative). 一般的, 假设函数 $f$ 在 $U(x_0,r)$ 内 $n$ 阶可导且 $f^{(n)}$ 在 $x_0$ 处也可导, 则称函数 $f$ 在 $x_0$ 处 $n + 1$ 阶可导, 并记为
+	\[
+		f^{(n + 1)} (x_0) := (f^{(n)})'(x_0).
+	\]
+\end{definition}
+
+Newton 曾用如下符号表示不同阶的导数
+\[
+	\dot{y}, \ddot{y}, \dddot{y}.
+\]
+Leibniz 采用如下记号
+\[
+	\frac{dy}{dx} = \frac{df}{dx} = \frac{d}{dx} f,\; \frac{d^n y}{dx^n} = \frac{d^n f}{dx^n} = \frac{d^n}{dx^n} f.
+\]
+Euler 采用
+\[
+	D_x y = D_x f(x).
+\]
+Lagrange 采用符号
+\[
+	f', f'', f''', f^{(n)}.
+\]
+\bigskip
+
+\subsection{可微函数空间}
+
+
+首先我们引入如下记号
+\[
+	f \in \D^k(I) \Longleftrightarrow f^{(i)} \in \D(I), 0 \le i \le k−1, 
+\]
+\[
+	f \in \mathscr{C}^k(I) \Longleftrightarrow f \in \D^k(I), f^{(k)} \in \mathscr{C}(I).
+\]
+注意到
+\[
+	\D(I) = \D^1(I), \mathscr{C}(I) \neq \mathscr{C}^1(I).
+\]
+
+\begin{definition}{光滑函数}
+	定义
+	\[
+		\D^{\infty}(I) := \bigcap_{n\ge 1}\D^n(I), \mathscr{C}^{\infty}(I) := \bigcap_{n \ge 1}\mathscr{C}^n(I).
+	\]
+	注意到 $\D^{\infty}(I) = \mathscr{C}^{\infty}(I)$, 称函数 $f \in \mathscr{C}^{\infty}(I)$ 为 $I$ 上的光滑函数 (Smooth function).
+\end{definition}
+
+% TODO: 例题 SL(2,Z)
+
+\subsection{算数运算}
+
+\begin{theorem}{Leibniz}
+	假设函数 $f,g$ 均 $n$ 阶可导, 则 $fg$ 也 $n$ 阶可导且
+	\[
+		(fg)^{(n)} = \sum_{k = 0}^{n}{n \choose k} f^{(n - k)}g^{(k)}.
+	\]
+\end{theorem}
+\begin{idea*}
+	用数学归纳法即可证明, 归纳基础为 \hyperref[thm:Leibniz1]{Leibniz 法则}.
+\end{idea*}
+\begin{proof}
+	假设结论在 $n$ 阶时成立, 证明其在 $n+1$ 阶时也成立
+	\[
+	\begin{aligned}
+		(fg)^{(n+1)} &= \bigl((fg)'\bigr)^{(n)}\\
+		&= (f'g + fg')^{(n)}\\
+		&= (f'g)^{(n)} + (fg')^{(n)}\\
+		&= \sum_{k = 0}^{n} {n \choose k} f^{(n - k + 1)}g^{(k)} + \sum_{k = 0}^{n} {n \choose k} f^{(n - k)}g^{(k + 1)}\\
+		&= f^{(n + 1)}g + \sum_{k = 1}^{n} {n \choose k} f^{(n - k + 1)}g^{(k)} + \sum_{k = 1}^{n + 1} {n \choose k - 1}f^{(n - k + 1)}g^{(k)}\\
+		&= f^{(n + 1)}g + \sum_{k = 1}^{n} {n \choose k} f^{(n - k + 1)}g^{(k)} + fg^{(n + 1)} +\sum_{k = 1}^{n} {n \choose k - 1} f^{(n - k + 1)}g^{(k)}\\
+		&= f^{(n + 1)}g + fg^{(n + 1)} + \sum_{k = 1}^{n} \left[{n \choose k} + {n \choose k - 1}\right] f^{(n - k + 1)} + g^{(k)},
+	\end{aligned}
+	\]
+	其中 ${n \choose k} + {n \choose k - 1}$ 有
+	\[
+	\begin{aligned}
+		{n \choose k} + {n \choose k - 1} &= \frac{n!}{k!(n-k)!} + \frac{n!}{(k-1)!(n-k+1)!}\\
+		&= \frac{n!(n-k+1)}{k!(n-k+1)!} + \frac{n!k}{k!(n-k+1)!}\\
+		&= \frac{(n+1)!}{k!(n-k+1)!}\\
+		&= {n+1 \choose k}.
+	\end{aligned}
+	\]
+	则
+	\[
+	\begin{aligned}
+		(fg)^{(n+1)} &= f^{(n + 1)}g + fg^{(n + 1)} + \sum_{k = 1}^{n} \left[{n \choose k} + {n \choose k - 1}\right] f^{(n - k + 1)} + g^{(k)} \\
+		&= \sum_{k = 0}^{n + 1} {n+1 \choose k} f^{(n - k + 1)} + g^{(k)}.
+	\end{aligned}
+	\]
+	再由 \hyperref[thm:Leibniz1]{Leibniz 法则} 可知结论对任意 $n$ 都成立
+\end{proof}
+
 \section{微分学的基本定理}
 
-\subsection{Fermat 引理}
+\begin{definition}{极值}
+	设函数 $f$ 定义在 $(a,b)$ 上, 有 $x_0 \in (a,b)$ 满足
+	\ITEMS
+		\item 存在邻域 $U(x_0,\delta) \subset (a,b)$ 使得对任意 $x \in U(x_0,\delta)$ 都有
+		\[
+			f(x) \le f(x_0),
+		\]
+		则称 $x_0$ 是函数 $f$ 的极大值点或局部最大值点 (Local maximum point).
+		
+		\item 存在邻域 $U(x_0,\delta) \subset (a,b)$ 使得对任意 $x \in U(x_0,\delta)$ 都有
+		\[
+			f(x) \ge f(x_0),
+		\]
+		则称 $x_0$ 是函数 $f$ 的极小值点或局部最小值点 (Local minimum point).
+	\ITEME
+	
+	称 $x_0 \in (a,b)$ 是极值点或局部最值点 (Local extrema point) 如果 $x_0$ 是极大值点或极小值点. 相应的函数值称为极值或局部最值 (Local extrema).
+\end{definition}
+
+\begin{theorem}{Fermat 定理}{fermat}
+	若 $x_0$ 是定义在 $(a,b)$ 上的函数 $f$ 的极值点且 $f$ 在 $x_0$ 处可导, 则 $f′(x_0) = 0$.
+\end{theorem}
+\begin{proof}
+	不妨设 $x_0$ 是极小值点, 对于任意的 $\delta > 0$ 满足 $U(x_0,\delta) \in (a,b)$ 与任意的 $x \in U(x_0,\delta)$ 由极小值点的定义可知
+	\[
+		f(x_0) \le f(x),
+	\]
+	对于满足 $x_0 - \delta < x < x_0$ 的任意 $x$ 有
+	\[
+		f(x) - f(x_0) \ge 0,\ x - x_0 < 0,
+	\]
+	即
+	\[
+		\frac{f(x) - f(x_0)}{x - x_0} \le 0.
+	\]
+	同理对于满足 $x_0 < x < x_0 + \delta$ 的任意 $x$ 有
+	\[
+		\frac{f(x) - f(x_0)}{x - x_0} \ge 0.
+	\]
+	由上可知 $f_+'(x_0) \ge 0, f_-'(x_0) \le 0$, 根据 $f$ 在 $x_0$ 处可导可知
+	\[
+		0 \le f_+'(x_0) = f_-'(x_0) \le 0,
+	\]
+	即 $f'(x_0) = 0$.
+\end{proof}
+
+\begin{definition}{驻点}
+	如果 $f′(x_0) = 0$ 称 $x_0$ 是函数 $f$ 的驻点 (Stationary point) 或临界点 (Critical point).
+\end{definition}
+
+\vspace{0.5em}
+
+回顾 \hyperref[thm_C_p4]{连续函数的介值定理}, 在证明该定理时我们所用的条件是 $f \in \mathscr{C}^{1}([a,b])$, 下面的定理告诉我们, 该条件可以被削弱为 $f \in \D((a,b))$.
+
+\begin{theorem}{Darboux 定理}{darboux}
+	设有函数 $f \in \D((a,b))$, 对于 $x_1,x_2\in(a,b)$ 满足 $f'(x_1)f'(x_2) < 0$, 则存在 $\xi\in(x_1,x_2)$ 使得 $f'(\xi) = 0$.
+\end{theorem}
+\begin{idea*}
+	用 \hyperref[thm:C_p2]{最值定理} 和 \hyperref[thm:fermat]{Fermat 定理} 结合极值的定义可以证明.
+\end{idea*}
+\begin{proof}
+	不妨假设 $x_1 < x_2$, $f′(x_1) < 0$, 且 $f′(x_2) >0$ (若符号相反则令 $F = -f$, 考察 $F$). 由于函数 $f \in \D((a,b))$, 由 $f'(x_1) \le 0, f'(x_2) \ge 0$ 根据 \hyperref[Flimit_p3]{局部保序性} (保号性) 在 $x_1, x_2$ 处存在邻域 $U(x_1,\delta_1), U(x_2,\delta_2)$ 使得
+	\[
+		\frac{f(x) - f(x_1)}{x - x_1} \le 0, x \in U(x_1,\delta_1),
+	\]
+	\[
+		\frac{f(x) - f(x_2)}{x - x_2} \ge 0, x \in U(x_2,\delta_2).
+	\]
+	那么则存在 $x_1' \in [x_1, x_1 + \delta), \ x_2' \in (x_2 - \delta, x_2]$ 满足 $x_1' < x_2'$ 且 $f(x_1') < f(x_1), f(x_2') < f(x_2)$, 即
+	\[
+		x_1' - x_1 > 0, x_2' - x_2 < 0.  
+	\]
+	综上可得
+	\[
+		f(x_1') - f(x_1) < 0, f(x_2') - f(x_2) < 0.
+	\]
+	所以 $x_1, x_2$ 均不是最小值, 根据 \hyperref[thm:C_p2]{最值定理} 可知, 存在 $\xi \in (x_1, x_2)$ 使得 
+	\[
+		f(\varepsilon) = \min_{[x_1,x_2]}f.
+	\]
+	那么由 \hyperref[thm:fermat]{Fermat 定理} 可知 $f'(\xi) = 0$.
+\end{proof}
+\vspace{0.5em}
+
+进一步可得对于 $x_1,x_2\in(a,b)$ 任意 $\eta \in (f'(x_1),f'(x_2))  $, 则存在 $\xi\in(x_1,x_2)$ 使得 $f'(\xi) = \eta$.
+
+\subsection{微分中值定理}
+
+\begin{theorem}{Rolle 定理}{rolle}
+	设有函数 $f \in \mathscr{C}([a,b]) \cap \D((a,b))$, 且 $f(a) = f(b)$ 那么则存在 $\xi \in (a,b)$ 满足 $f'(\xi) = 0$.
+\end{theorem}
+\begin{idea*}
+	用 \hyperref[thm:C_p2]{最值定理} 和 \hyperref[thm:fermat]{Fermat 定理} 证明.
+\end{idea*}
+\begin{proof}
+	根据 \hyperref[thm:C_p2]{最值定理} 可知存在 $\xi,\eta \in [a,b]$ 满足
+	\[
+		f(\xi) = \max_{[a,b]} f ,\ f(\eta) = \min_{[a,b]} f.
+	\]
+	则对于任意 $x \in [a,b]$ 有
+	\[
+		f(\xi) \ge f(x) \ge f(\eta).
+	\]
+	假设最大值最小值相等, 那么 $f$ 是常函数, 显然 $f'$ 恒为 $0$. 若最大值最小值不相等, 那么说明 $\xi, \eta$ 其中之一不是区间的端点 $a,b$, 不妨假设 $a < \xi < b$, 则由 \hyperref[thm:fermat]{Fermat 定理} 可知 $f'(\xi) = 0$.
+\end{proof}
+
+\begin{remark}
+因为要直接对区间应用最值定理, 所以要求在闭区间上连续.	
+\end{remark}
+
+\vspace{0.5em}
+
+\begin{theorem}{Lagrange 中值定理}{lagrange}
+	设有函数 $f \in \mathscr{C}([a,b]) \cap \D((a,b))$, 那么则存在 $\xi \in (a,b)$ 满足 
+	\[
+		f'(\xi) = \frac{f(b) - f(a)}{b - a}.
+	\]
+\end{theorem}
+\begin{proof}
+	证明很显然, 由区间端点确定的直线为
+	\[
+		y = \frac{f(b) - f(a)}{b - a} (x - a) + f(a).
+	\]
+	构造如下辅助函数
+	\[
+		F(x) := f(x) - \frac{f(b) - f(a)}{b - a} (x - a) - f(a).
+	\]
+	则对 $F(x)$ 有 $F(x) \in \mathscr{C}([a,b]) \cap \D((a,b))$ 且 $F(a) = F(b) = 0$, 应用 \hyperref[thm:rolle]{Rolle 定理} 即可证明.
+\end{proof}
+
+\vspace{0.5em}
+
+\begin{theorem}{Cauchy 中值定理}{cauchy}
+	设 $f,g\in \mathscr{C}([a,b])\cap \D\bigl((a,b)\bigr)$, 且 $g'(x)\neq 0\ (\forall x\in(a,b))$,
+则存在 $\xi\in(a,b)$ 满足
+\[
+\frac{f'(\xi)}{g'(\xi)}=\frac{f(b)-f(a)}{g(b)-g(a)}.
+\]
+\end{theorem}
+\begin{idea*}
+	建立辅助函数, 证明辅助函数导数为零, 用 \hyperref[thm:rolle]{Rolle 定理} 即可证明.
+\end{idea*}
+\begin{proof}
+	由 $g'\neq0$ 知 $g(b)\neq g(a)$. 令
+$\lambda=\dfrac{f(b)-f(a)}{g(b)-g(a)}$, 构造
+\[
+F(x):=f(x)-f(a)-\lambda\bigl[g(x)-g(a)\bigr],
+\]
+则 $F\in \mathscr{C}([a,b])\cap \D\bigl((a,b)\bigr)$ 且 $F(a)=F(b)=0$, 
+由 \hyperref[thm:rolle]{Rolle 定理}, 存在 $\xi\in(a,b)$ 使
+\[
+0=F'(\xi)=f'(\xi)-\lambda g'(\xi).
+\]
+\end{proof}
 
 
-\subsection{Rolle 定理}
+% TODO Peano
+
+%\begin{theorem}{Peano 定理}
+%设 $f,g,h\in \mathscr{C}([a,b])\cap \D\bigl((a,b)\bigr)$, 则存在 $\xi\in(a,b)$ 满足
+%\[
+%\begin{vmatrix}
+%f'(\xi) & g'(\xi) & h'(\xi)\\
+%f(a) & g(a) & h(a)\\
+%f(b) & g(b) & h(b)
+%\end{vmatrix}=0,
+%\qquad
+%F(x):=\begin{vmatrix}
+%f(x) & g(x) & h(x)\\
+%f(a) & g(a) & h(a)\\
+%f(b) & g(b) & h(b)
+%\end{vmatrix}.
+%\]
+%\end{theorem}
 
 
-\subsection{Lagrange 有限增量定理}
+
+\section{L'Hospital 法则}
+
+\begin{theorem}{$\frac{0}{0}$ 型}{lhospital1}
+	设 $f,g\in \D\bigl((a,b)\bigr)$, $g'\neq 0$, 且
+$\lim\limits_{x\to a+}f(x)=\lim\limits_{x\to a+}g(x)=0$. 若
+$\lim\limits_{x\to a+}\dfrac{f'(x)}{g'(x)}=A$ (存在或为 $\infty$), 则
+\[
+\lim_{x\to a+}\frac{f(x)}{g(x)}=\lim_{x\to a+}\frac{f'(x)}{g'(x)}.
+\]
+\end{theorem}
+\begin{proof}
+	延拓定义
+\[
+F(x):=\begin{cases}0,&x=a\\ f(x),&a<x<b\end{cases},
+\qquad
+G(x):=\begin{cases}0,&x=a\\ g(x),&a<x<b\end{cases}.
+\]
+则 $F,G\in \mathscr{C}([a,b])\cap \D\bigl((a,b)\bigr)$，从而对任意 $x\in(a,b)$，
+存在 $\xi\in(a,x)$ 满足
+\[
+\frac{F(x)}{G(x)}=\frac{F(x)-F(a)}{G(x)-G(a)}=\frac{F'(\xi)}{G'(\xi)}
+\;\Longrightarrow\;
+\frac{f(x)}{g(x)}=\frac{f'(\xi)}{g'(\xi)}\to A.
+\]
+\end{proof}
+
+\begin{theorem}{$\frac{\infty}{\infty}$ 型}{lhospital2}
+	设 $f,g\in \D\bigl((a,b)\bigr)$, $g'\neq 0$, 且 $\lim\limits_{x\to a+}f(x)=\lim\limits_{x\to a+}g(x)=\infty$. 若 $\lim\limits_{x\to a+}\dfrac{f'(x)}{g'(x)}=A$ (存在或为 $\infty$), 则
+\[
+\lim_{x\to a+}\frac{f(x)}{g(x)} = \lim_{x\to a+}\frac{f'(x)}{g'(x)} = A.
+\]
+\end{theorem}
+\begin{proof}
+	% TODO: 无穷比无穷洛必达法则
+\end{proof}
+
+\section{Taylor 公式}
+
+多项式函数是一类性质简单且便于研究的函数, 数学家们总是有着使用多项式函数来近似任意函数的构想，而 Tayler 公式就是其中之一.
+
+设函数 $f(x)$ 在定义域上 $n$ 阶可导, 假设可以用一个多项式 $P_n(x)$ 表示函数 $f(x)$, 即
+\[
+	f(x) = P_n(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots + a_n x^n.
+\]
+对函数求各阶导数
+\[
+\begin{aligned}
+	f'(x) &= a_1 + 2 a_2 x + 3 a_3 x^2 + \cdots + n a_n x^{n - 1},\\
+	f''(x) &= 2! a_2 + 3 \cdot 2 a_3 x + \cdots + n (n - 1) a_n x^{n - 2},\\
+	&\vdots\\
+	f^{(n)}(x) &= n! a_n.
+\end{aligned}
+\]
+由此可以用在 $0$ 处的导数表示多项式系数, 即
+\[
+	a_1 = \frac{f'(0)}{1!},\ a_2 = \frac{f''(0)}{2!},\ \cdots\ , a_n = \frac{f^{(n)}(0)}{n!}. 
+\]
+则有
+\[
+	f(x) = P_n(x) = f(0) + \frac{f'(0)}{1!} x + \frac{f''(0)}{2!} x^2 + \frac{f'''(0)}{3!} x^3 + \cdots + \frac{f^{(n)}(0)}{n!} x^n.
+\]
+上式就是 Taylor 公式的基础, 但该式只能在 $0$ 处将函数展开成多项式, 那么我们考虑将多项式平移至任意 $x_0$ 处, 则有.
+
+\begin{definition}{Taylor 公式}
+假设函数 $f$ 在 $x_0$ 处 $n$ 阶可导, 则 $f \in \D^{n-1} ((x_0 - \delta, x_0 + \delta))$ 对某个 $\delta >0$ 成立. $f$ 在 $x_0$ 处的 $n$ 阶 Taylor 多项式定义为
+\[
+	P_n(x) \equiv P_n(x;x_0,f) := f(x_0) + \sum_{k = 1}^n \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k.
+\]
+特别的, 当 $x_0$ 取 $0$ 时称之为 Maclaurin 公式.
+\end{definition}
+
+若对 Taylor 公式求导可得
+\[
+\begin{aligned}
+	P_n'(x; x_0, f) &= \sum_{k = 1}^n \frac{f^{(k)}(x_0)}{k!} k (x - x_0)^{k-1}\\
+	&= \sum_{k = 1}^n \frac{f^{(k)}(x_0)}{(k-1)!} (x - x_0)^{k-1}\\
+	&= f'(x_0) + \sum_{k = 1}^{n} \frac{f^{(k+1)}(x_0)}{k!} (x - x_0)^{k}\\
+	&= P_{n-1}(x; x_0, f').
+\end{aligned}
+\]
+
+% 余项
+\subsection{Peano 余项}
+
+\begin{theorem}{Peano 型余项}
+假设函数 $f$ 在 $x_0$ 处 $n$ 阶可导, 则存在 $\delta > 0$ 使得对于任意 $x \in (x_0 - \delta, x_0 + \delta)$ 有
+\[
+	f(x) = P_n(x) + r_n(x),
+\]
+其中
+\[
+	r_n(x) = o((x - x_0)^n),\ x \to x_0.
+\]
+\end{theorem}
+
+\begin{proof}
+	由 $r_n(x) = f(x) - P_n(x)$, 反复应用 \hyperref[thm:lhospital1]{L'Hospital 法则} 可得
+	\[
+	\begin{aligned}
+		\lim_{x \to x_0} \frac{f'(x) - P_n'(x)}{(x - x_0)^n} &= \lim_{x \to x_0} \frac{f(x) -  P_{n-1}(x; x_0, f')}{n(x - x_0)^{n-1}}\\
+		&= \lim_{x \to x_0} \frac{f''(x) -  P_{n-2}(x; x_0, f'')}{n(n-1)(x - x_0)^{n-2}}\\
+		&\ \vdots \\
+		&= \lim_{x \to x_0} \frac{f^{(n-1)}(x) -  P_{1}(x; x_0, f^{(n-1)})}{n!(x - x_0)}\\
+		&= \lim_{x \to x_0} \frac{f^{(n-1)}(x) -  f^{(n-1)}(x_0) - f^{(n)}(x_0) (x - x_0)}{n!(x - x_0)}\\
+		&= \frac{1}{n!}\lim_{x \to x_0} \frac{f^{(n-1)}(x) -  f^{(n-1)}(x_0)}{x - x_0} - \frac{1}{n!}\lim_{x \to x_0} \frac{f^{(n)}(x_0) (x - x_0)}{x - x_0}\\
+		&= \frac{1}{n!} \left(f^{(n)}(x_0) - f^{(n)}(x_0)\right)\\
+		&= 0.
+	\end{aligned}
+	\]
+	即 $r_n(x) = o((x - x_0)^n),\ x \to x_0$.
+\end{proof}
+
+\subsection{Lagrange 余项}
+
+\begin{theorem}{Lagrange 余项}{lagrangeR}
+	设函数 $f \in \mathscr{C}^n([x_0,x_0+\delta]) \cap \D^{n+1}((x_0,x_0+\delta))$ 则对任意 $x \in (x_0-\delta,x_0+\delta)$ 都存在 $\xi \in (x_0-\delta,x_0+\delta)$ 有
+	\[
+		f(x) = P_n(x) + \frac{f^{n+1}(\xi)}{(n+1)!} (x-x_0)^{n+1}.
+	\]
+\end{theorem}
+\begin{idea*}
+	构造函数时考虑要让 $G(x)=0$, $G(x_0​)=r_n(x)$, $G(t)$ 要逐项相消只剩最高阶, 要让 $H'$ 与 $G'$ 中的 $(x-t)^n$ 配平.
+\end{idea*}
+
+\begin{proof}
+	直接对 $f(x)$ 和它的泰勒多项式用中值定理不好用, 因为中间会出现很多低阶导数项. 于是想办法把余项 $r_n(x)$ 变成某个辅助函数在两个端点的差, 再用中值定理.
+ 
+	对于任意确定的 $x \neq x_0$, 构造辅助函数
+	\[
+		G(t)=f(x)-P_n(x;t,f)=f(x)-\sum_{k=0}^{n}\frac{f^{(k)}(t)}{k!}(x-t)^k,
+	\]
+	\[
+		H(t)=(x-t)^{n+1}.
+	\]
+	根据 \hyperref[thm:cauchy]{Cauchy 中值定理} 可知, 存在 $\xi \in (x_0,x_0+\delta)$ 使得
+	\[
+		\frac{G(x_0)}{H(x_0)} = \frac{G(x) - G(x_0)}{H(x) - H(x_0)} = \frac{G'(\xi)}{H'(\xi)},
+	\]
+	我们先求 $G'(t)$, 对和式逐项求导可得
+	\[
+		\left(\frac{f^{(k)}(t)}{k!}(x-t)^k\right)' = \frac{f^{(k+1)}(t)}{k!}(x-t)^k - \frac{f^{(k)}(t)}{(k - 1)!}(x-t)^{k - 1},\quad k > 0,
+	\]
+	则
+	\[
+	\begin{aligned}
+		G'(t) &= 0 - \left(\frac{f^{(n+1)}(t)}{n!}(x-t)^n - \frac{f^{(n)}(t)}{(n - 1)!}(x-t)^{n - 1} + \frac{f^{(n)}(t)}{(n-1)!}(x-t)^{n-1} - \frac{f^{(n - 1)}(t)}{(n - 2)!}(x-t)^{n - 2} + \cdots\right.\\
+		&\qquad + \left. \frac{f''(t)}{1!}(x-t) - \frac{f'(t)}{0!}(x-t)^{0} + \frac{f'(x)}{0!}\right)\\
+		&= -\frac{f^{(n+1)}(t)}{n!}(x-t)^n.
+	\end{aligned}
+	\]
+	带回前式可得
+	\[
+		\frac{G(x_0)}{H(x_0)} = \frac{G'(\xi)}{H'(\xi)} = \frac{-\frac{f^{(n+1)}(\xi)}{n!}(x-\xi)^n}{-(n+1)(x-\xi)^{n}} = \frac{f^{(n+1)}(\xi)}{(n+1)!}.
+	\]
+	即
+	\[
+	\begin{aligned}
+		\frac{r_n(x)}{(x-x_0)^{n+1}} &= \frac{f^{(n+1)}(\xi)}{(n+1)!}\\
+		r_n(x) &= \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}.
+	\end{aligned}
+	\]
+\end{proof}
 
 
-\subsubsection{常函数检验法}
+\subsection{Cauchy 余项}
+
+\begin{theorem}{Cauchy 余项}
+	设函数 $f \in \mathscr{C}^n([x_0,x_0+\delta]) \cap \D^{n+1}((x_0,x_0+\delta))$ 则对任意 $x \in (x_0-\delta,x_0+\delta)$ 都存在 $\xi \in (x_0-\delta,x_0+\delta)$ 有
+	\[
+		f(x) = P_n(x) + \frac{f^{n+1}(\xi)}{n!} (x-\xi)^{n}(x-x_0).
+	\]
+\end{theorem}
+\begin{proof}
+和 \hyperref[thm:lagrangeR]{	Lagrange 余项} 的证明相似, 不过取 $H(t) = x - t$ 则可得
+\[
+	\frac{G(x_0)}{H(x_0)} = \frac{G'(\xi)}{H'(\xi)} = \frac{-\frac{f^{(n+1)}(\xi)}{n!}(x-\xi)^n}{-1} = \frac{f^{(n+1)}(\xi)}{n!}(x-\xi)^n.
+\]
+即
+\[
+\begin{aligned}
+	\frac{r_n(x)}{x - x_0} &= \frac{f^{(n+1)}(\xi)}{n!}(x-\xi)^n.\\
+		r_n(x) &= \frac{f^{(n+1)}(\xi)}{n!}(x - \xi)^{n}(x - x_0).
+\end{aligned}
+\]
+\end{proof}
+
+下面来看几个常用函数的 Taylor 展开与余项, 其中 $\xi = \theta x$.
+
+\begin{example}
+	指数函数 $e^x$ 的 Maclaurin 展开式.
+\end{example}
+
+\begin{solution}
+\[
+	\begin{aligned}
+		e^x &= e^0 + \sum_{k = 1}^n \frac{e^0}{k!} x^k + r_n(x)\\
+		&\Rightarrow 1 + \sum_{k = 1}^n \frac{x^k}{k!} +  \frac{e^{\theta x}}{(n+1)!}x^{n+1}\\
+		&\Rightarrow 1 + \sum_{k = 1}^n \frac{x^k}{k!} +  \frac{e^{\theta x}}{n!}x^{n+1}(1-\theta)^n.
+	\end{aligned}
+\]
+\end{solution}
+\vspace{0.5em}
+
+\begin{example}
+	对数函数 $\ln(1+x)$ 的 Maclaurin 展开式.
+\end{example}
+
+\begin{solution}
+\[
+	\begin{aligned}
+		\ln(1+x) &= 0 + \sum_{k = 1}^n \frac{(-1)^{k-1}(k-1)!\frac{1}{(1+x)^k}}{k!} x^k + r_n(x)\\
+		&\Rightarrow \sum_{k = 1}^n \frac{(-1)^{k-1}x^k}{k} + \frac{(-1)^{n}}{(n+1)(1+\theta x)^{n+1}}x^{n+1}\\
+		&\Rightarrow \sum_{k = 1}^n \frac{(-1)^{k-1}x^k}{k} + \frac{(-1)^{n}}{n(1+\theta x)^{n+1}}x^{n+1}(1-\theta)^n.
+	\end{aligned}
+\]
+\end{solution}
+\vspace{0.5em}
+
+\begin{example}
+	三角函数 $\sin x$ 的 Maclaurin 展开式.
+\end{example}
+
+\begin{solution}
+注意到 $(\sin x)^{(n)} = \sin (x+\frac{n\pi}{2})$,
+\[
+	\begin{aligned}
+		\sin x &= \sin 0 + \sum_{k = 1}^n \frac{\sin\left(\frac{k\pi}{2}\right)}{k!} x^k + r_n(x)\\
+		&= \sum_{k = 0}^n \frac{(-1)^k}{(2k + 1)!} x^{2k+1} + r_{2n + 1}(x)\\
+		&\Rightarrow \sum_{k = 0}^n \frac{(-1)^k}{(2k + 1)!} x^{2k+1} + \frac{\sin\left(\xi + \frac{(2n + 2)\pi}{2}\right)}{(2n+2)!} x^{2n+2}\\
+		&\Rightarrow \sum_{k = 0}^n \frac{(-1)^k}{(2k + 1)!} x^{2k+1} + \frac{\sin\left(\xi + \frac{(2n + 2)\pi}{2}\right)}{(2n+1)!} x^{2n+2}(1-\theta)^{2n+1}.
+	\end{aligned}
+\]
+\end{solution}
+\begin{remark}
+注意余项 $r_{2n+1}(x)$ 与 $r_{2n+2}(x)$ 虽然按照公式写出来的表达式不同, 但是由于 $r_n(x) = f(x) - P_n(x)$ 而 $P_{2n+1}(x) = P_{2n+2}(x)$ 所以 $r_{2n+1}(x) = r_{2n+2}(x)$.	
+\end{remark}
+\vspace{0.5em}
+
+\begin{example}
+	三角函数 $\cos x$ 的 Maclaurin 展开式.
+\end{example}
+
+\begin{solution}
+\[
+	\begin{aligned}
+		\cos x &= \sum_{k = 0}^n \frac{(-1)^k}{(2k)!} x^{2k} + r_{2n}(x)\\
+		&\Rightarrow \sum_{k = 0}^n \frac{(-1)^k}{(2k)!} x^{2k} + \frac{\cos\left(\xi + \frac{(2n + 1)\pi}{2}\right)}{(2n+1)!} x^{2n+1}\\
+		&\Rightarrow \sum_{k = 0}^n \frac{(-1)^k}{(2k)!} x^{2k} + \frac{\cos\left(\xi + \frac{(2n + 1)\pi}{2}\right)}{(2n)!} x^{2n+1}(1-\theta)^{2n}.
+	\end{aligned}
+\]
+\end{solution}
+\vspace{0.5em}
+
+\begin{example}
+	函数 $(1 + x)^\alpha$ 的 Maclaurin 展开式.
+\end{example}
+
+\begin{solution}
+\[
+	\begin{aligned}
+		(1 + x)^\alpha &= 1 + \sum_{k = 0}^n \frac{\alpha!(1+0)^{\alpha-k}}{(\alpha-k)!k!}x^k + r_n(x)\\
+		&\Rightarrow \sum_{k = 0}^n {\alpha \choose k} x^k + {\alpha \choose n+1} (1+\theta x)^{\alpha - (n + 1)} x^{n+1}\\
+		&\Rightarrow \sum_{k = 0}^n {\alpha \choose k} x^k + {\alpha \choose n+1} (n+1) (1+\theta x)^{\alpha - (n + 1)} (1-\theta)^{n}x^{n+1}.
+	\end{aligned}
+\]
+\end{solution}
 
 
-\subsection{Cauchy 有限增量定理}
 
-
-\subsection{泰勒公式}
-
-
-
-\section{微分与函数}
-
-\section{复数与初等函数}
+\subsection{Taylor 级数}
 
 \section{微分学的应用}
 
-\section{原函数}
+\subsection{极值与一阶导数}
+
+\subsection{凹凸性与二阶导数}
+
 
 % ================================================================================== 
 % 									积 分 学
 % ================================================================================== 
 \chapter{积分学}
 
-\section{积分的定义与可积函数集}
+\section{不定积分}
 
-\subsection{引子}
+考虑导数运算的逆运算, 显然若导数运算的逆运算存在, 则必不唯一.
 
-\subsection{黎曼积分的定义}
+\subsection{原函数与不定积分}
 
-\subsection{可积函数集}
+\begin{definition}{原函数}
+	假设函数 $f$ 是定义在 $I$ 上的函数, 如果函数 $F\in\D(I)$ 满足
+	\[
+		F'(x) = f(x),
+	\]
+	则称 $F$ 是 $f$ 的原函数 (Primitive). 
+\end{definition}
+
+\begin{definition}{不定积分}
+	假设函数 $f$	是定义在 $I$ 上的函数, 定义其不定积分 (Indefinite integral) 为
+	\[
+		\int f(x) \; dx := \{\text{定义在 $I$ 上的所有 $f$ 的原函数}\}.
+	\]
+	如果 $F$ 是原函数则有
+	\[
+		\int f(x) \; dx = F(x) + C.
+	\]
+	其中 $\int$ 为积分号 (Integral sign), $f$ 为被积函数 (Integrand), $x$ 称为积分变量 (Variable of integration), $C$ 为积分常数 (Integration constant).
+\end{definition}
+
+根据定义可得
+\[
+	\left(\int f(x) \; dx\right)' = f(x),\ \int F'(x) dx = F(x) + C.
+\]
+
+\subsection{基本不定积分表}
+
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \begin{tabular}{cc}
+      \toprule
+      不定积分 $\ds \int f(x) dx$ &  原函数 $F(x) + C$ \\
+      \midrule
+      $\ds \int 0 \; dx$ & $C$\\
+      $\ds \int 1 \; dx$ & $x + C$\\
+      $\ds \int x^\alpha \; dx$ & $\ds \frac{1}{1+\alpha} x^{1+\alpha} + C$\\
+      $\ds \int e^x \; dx$       & $e^x + C$\\
+      $\ds \int a^x \; dx$       & $\ds \frac{a^x}{\ln a} + C$\\
+      $\ds \int \frac{1}{x} \; dx$     & $\ln \lvert x \rvert + C$\\
+      $\ds \int \sin x \; dx$    & $-\cos x + C$\\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \begin{tabular}{cc}
+      \toprule
+      不定积分 $\ds \int f(x) dx$ &  原函数 $F(x) + C$ \\
+      \midrule
+      $\ds \int \cos x \; dx$    & $\sin x + C$ \\
+      $\ds \int \frac{1}{\cos^2 x} \; dx$    & $\tan x + C$ \\
+      $\ds \int \frac{1}{\sin^2 x} \; dx$    & $-\cot x + C$ \\
+      $\ds \int \dfrac{1}{\sqrt{1-x^2}} \; dx$ & $\arcsin x + C$ \\
+      $\ds \int \dfrac{1}{1+x^2} \; dx$ & $\arctan x + C$ \\
+      $\ds \int \dfrac{1}{\sqrt{1+x^2}} \; dx$ & $\ln \left(x + \sqrt{1+x^2}\right) + C$ \\
+      $\ds \int \dfrac{1}{1-x^2} \; dx$ & $\ds\frac12\ln \left\lvert \frac{1+x}{1-x} \right\rvert + C$ \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+  \vspace{0.4em}
+  \captionof{table}{常见不定积分与原函数}
+\end{center}
+
+\subsection{不定积分的性质}
+
+\begin{theorem}
+	如果
+	\[
+		\int f(x) \; dx = F(x) + C,\quad \int g(x) \; dx = f(x) + C,
+	\]
+	则对于任意 $\alpha,\beta\in\R$ 有
+	\[
+		\int [\alpha f(x) + \beta g(x)] \; dx = \alpha \int f(x) \; dx + \beta \int g(x) \; dx = [\alpha F(x) + \beta G(x)] + C.
+	\]
+\end{theorem}
+\begin{proof}
+	由 \hyperref[thm:dp1]{导数的线性运算} 显然.
+\end{proof}
+
+
+\subsection{变量替换}
+
+变量替换的基本思想是通过 $x = \varphi(t)$ 得到
+\[
+	\int f(x) \; dx = \int f(\varphi(t))\varphi'(t) \; dt.
+\]
+由此我们可得如下两种代换方式:
+
+如果给定的不定积分可以写成
+\[
+	\int g(x) \; dx = \int f(\varphi(t))\varphi'(t) \; dt,
+\]
+则有
+\[
+	\int g(x) \; dx = F(x) + C.
+\]
+
+如果对不定积分
+\[
+	\int f(x)\;  dx,
+\]
+存在 $x = \varphi(t)$ 使得
+\[
+	\int f(\varphi(t))\varphi'(t)\; dt.
+\]
+则有
+\[
+	\int f(x) \; dx = F(t) + C = F(\varphi^{-1}(x)) + C.
+\]
+
+\vspace{0.5em}
+
+
+\begin{example}
+	我们有如下变量替换
+	\[
+		\begin{aligned}
+			\int g(x^2) x \; dx &= \frac12\int g(x^2) \; d(x^2),\\
+			\int g(\ln x) \frac{dx}{x} &= \int g(\ln x) \; d \ln x,\\
+			\int g(\sin x) \cos x \; dx &= \int g(\sin x) \; d\sin x,\\
+			\int g(\cos x) \sin x \; dx &= - \int g(\cos x) \; d\cos x,\\
+			\int \frac{g(\tan x)}{\cos^2 x} \; dx &= \int g(\tan x) \; d \tan x,\\
+			\int \frac{g'(x)}{g(x)} \; dx &= \ln \lvert g(x) \rvert + C.
+		\end{aligned}
+	\]
+\end{example}
+\vspace{0.5em}
+
+\begin{example}
+	其他常用的变量替换
+	\[
+		x = a\sin t, a\sin^2 t, a\cos t, a\cos^2 t.
+	\]	
+\end{example}
+\vspace{0.5em}
+
+\begin{example}
+	由万能公式做如下变量替换 $t = \tan\frac{x}{2}$ 得到 $dt = \left(1 + \tan^2\frac{x}{2}\right)d\frac{x}{2}$ 且
+	\[
+	\cos x = \frac{1 - \tan^2 \frac{x}{2}}{1 + \tan^2 \frac{x}{2}},\ \sin x = \frac{2\tan \frac{x}{2}}{1 + \tan^2 \frac{x}{2}},\ \tan x = \frac{2\tan \frac{x}{2}}{1 - \tan^2 \frac{x}{2}}.
+	\]
+\end{example}
+
+\subsection{分部积分法}
+
+由 \hyperref[thm:Leibniz1]{Leibniz 法则} 可得分部积分法 (Integration by parts)
+\[
+	\int u \; dv = uv - \int v \; du.
+\]
+\vspace{0.5em}
+
+\begin{example}
+	\[
+		\int \ln x \; dx = x\ln x - \int x\;d\ln x = x\ln x - x + C = x (\ln x - 1) + C.
+	\]
+\end{example}
+\vspace{0.5em}
+
+\begin{example}
+	\[
+		\int \arctan x \; dx = x\arctan x - \int x \; d \arctan x = x\arctan x - \int x\frac{dx}{1 + x^2} = x\arctan x - \frac{1}{2} \ln (1 + x^2) + C.
+	\]
+\end{example}
+\vspace{0.5em}
+
+\begin{example}
+	\[
+		\int \arcsin x \; dx = x\arcsin x - \int x \; d \arcsin x = x\arcsin x - \int x\frac{dx}{\sqrt{1 - x^2}} = x\arcsin x + \sqrt{1 - x^2} + C.
+	\]
+\end{example}
+
+\subsection{有理函数的原函数}
+
+有理函数的不定积分 (Indefinites of rational functions), 即如下不定积分
+\[
+	\int R(x) \; dx,\quad R(x) := \frac{P(x)}{Q(x)},
+\]
+其中 $P(x), Q(x)$ 是多项式.
+
+对于有理函数, 我们将其分为如下几种情形
+\ITEMS
+	\item $\ds \int p(x) \; dx$, 其中 $\ds p(x) = \sum_{i=0}^N \alpha_i x^i$ 则
+	\[
+		\int p(x)\; dx = \sum_{i=0}^N \frac{\alpha_i}{i + 1} x^{i + 1} + C.
+	\]
+	
+	\item $\ds \int \frac{dx}{(x - a)^k}$, $k\in\N$.
+	\[
+		\ds \int \frac{dx}{(x - a)^k} = 
+		\begin{cases}
+			\ln \lvert x - a \rvert	+ C, & k = 1,\\
+			\frac{1}{1 - k} (x - a)^{1-k}, & k\neq 1.
+		\end{cases}
+	\]
+	
+	\item $\ds \int \frac{bx + c}{\left(x^2 + px + q\right)^k}dx$, $p^2 - 4q < 0$.
+	
+	其中
+	\[
+		x^2 + px + q = \left(x + \frac{p}{2}\right)^2 + \left(q - \frac{p^2}{4}\right) = \left(x + \frac{p}{2}\right)^2 + \left(\sqrt{q - \frac{p^2}{4}}\right)^2, 
+	\]
+	和
+	\[
+		\frac{bx + c}{\left(x^2 + px + q\right)^k} = \frac{b(x + \frac{p}{2}) + (c - \frac{bp}{2})}{\left[\left(x + \frac{p}{2}\right)^2 + \left(\sqrt{q - \frac{p^2}{4}}\right)^2\right]^k}
+	\]
+	得到
+	\[
+		\int \frac{bx + c}{\left(x^2 + px + q\right)^k}dx = \frac{b}{2} \int \frac{d\left(x + \frac{p}{2}\right)^2}{\left[\left(x + \frac{p}{2}\right)^2 + \left(\sqrt{q - \frac{p^2}{4}}\right)^2\right]^k} + \left(c - \frac{bp}{2}\right)\int \frac{dx}{\left[\left(x + \frac{p}{2}\right)^2 + \left(\sqrt{q - \frac{p^2}{4}}\right)^2\right]^k}.
+	\]
+\ITEME
+% TODO: 不定积分
+
+\subsection{形如 $\ds \int R(\sin x,\cos x)\; dx$ 的原函数}
+
+\subsection{形如 $\ds \int R(x,y(x))\; dx$ 的原函数}
+
+\subsection{椭圆积分}
+
+
+
+\section{定积分}
+
+\subsection{Riemann 积分的定义}
+
+\begin{definition}{Riemann 积分}{}
+	闭区间 $[a,b]$ 上的划分 (Partition) $T$, 是指该区间上的一组有限个点 $x_0,x_1, \cdots, x_n$ 并满足关系 
+	\[
+		a= x_0 < x_1 < \cdots <x_n = b.
+	\]
+方便起见, 把划分 $T$ 记为 $T : a = x_0 < x_1 < \cdots < x_n = b$. 我们把区间 $[x_i - 1,x_i]$, $1 \le i \le n$, 统称为 $T$ 的区间. 记
+\[
+	\Delta x_i := x_i - x_{i-1},\quad \lVert T \rVert := \max_{1\le i \le n} \Delta x_i,
+\]
+这里把 $\lVert T \rVert$ 称为 $T$ 的模 (Norm).
+\smallskip
+
+闭区间 $[a,b]$ 上的带点划分 (Partition with distinguished points) 是指序偶 $(T,\xi)$, 它是由划分 $T : a= x_0 <x_1 < \cdots < x_n = b$ 和一组有限点 $\xi_i \in [x_{i-1},x_i]$, $1 \le i \le n$,所组成. 其中 $\xi = (\xi_1,\cdots,\xi_n)$.
+\smallskip
+
+假设函数 $f$ 定义在闭区间 $[a,b]$ 上且 $(T,\xi)$ 是 $[a,b]$ 上的带点划分, 则有限和
+\[
+	\sigma(f; T; \ve{\xi}) := \sum_{i=1}^n f(\xi_i)\Delta x_i,
+\]
+称为函数 $f$ 相对于 $[a,b]$ 上的带点划分 $(T,\xi)$ 的 Riemann 和.
+\smallskip
+
+如果存在如下极限 $I$ 且和带点划分 $(T,\xi)$ 无关,
+\[
+	I = \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n f(\xi_i)\Delta x_i
+\]
+则称 $T$ 为闭区间 $[a,b]$ 上函数 $f$ 的 Riemann 积分 (Riemann integral) 或者函数 $f$ 在 $[a,b]$ 上的定积分 (Definite integral), 并称 $f$ 在 $[a,b]$ 上是 Riemann 可积的. Riemann 积分通常记作
+\[
+	I = \int_a^b f(x)\; dx,
+\]
+这里 $a$ 和 $b$ 分别是积分下限 (Lower limit of integration) 和积分上限 (Upper limit of integration).
+\smallskip
+
+引入 Riemann 可积空间 (Riemann integrable space) 如下
+\[
+	\mathscr{R}([a,b]) := \{\text{$[a,b]$ 上所有 Riemann 可积的函数}\}.
+\]
+有
+\[
+	\D([a,b]) \subsetneq \mathscr{C}([a,b]) \subsetneq \mathscr{R}([a,b]).
+\]
+\end{definition}
+
+\begin{remark}
+	积分的思想就是分割, 近似, 求和, 取极限, 而且定积分的本质也就是一个特殊的和式极限. $\int_a^b$ 首次在 1819-1820 年间被 Joseph Fourier 所使用.
+\end{remark}
+
 
 \section{定积分的性质}
+
+\subsection{可积的必要条件}
+
+\subsection{可积的充分条件}
+
+\subsection{测度与 Lebesgue 判别法}
 
 \section{微积分}
 
@@ -4699,7 +6359,252 @@ $\gamma$ 是无理数.
 
 \chapter{多项式}
 
-\subsection{数域与一元代数多项式}
+\section{数域与一元代数多项式}
+
+\begin{definition}{多项式}
+设有数域 $\K$, $x$ 为一个未定元, 若 $a_0, a_1 ,\cdots, a_n \in \K (a_n \neq 0)$, 则称
+\[
+	a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n,
+\]
+为数域 $\K$ 上关于 $x$ 的一元 $n$ 次多项式 (Polynomial), 常记为 $f(x)$ (类似函数), 数域 $\K$ 上的所有一元多项式记为 $\K[x]$.
+\end{definition}
+
+\begin{definition}{多项式运算}
+设有多项式 $f(x),g(x),h(x)$ 如下
+\[
+f(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n,
+\]
+\[
+g(x) = b_0 + b_1 x + b_2 x^2 + \cdots + b_n x^n,
+\]
+\[
+h(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_m x^m.
+\] 
+则有
+\[
+	f(x) + g(x) = (a_0 + b_0) + (a_1 + b_1) x + (a_2 + b_2) x^2 + \cdots + (a_n + b_n) x^n,
+\]
+\[
+	cf(x) = ca_0 + ca_1 x + ca_2 x^2 + \cdots + ca_n x^n,
+\]
+\[
+	f(x) \cdot g(x) = d_0 + d_1 x + d_2 x^2 + \cdots + d_{n + m} x^{n + m},
+\]
+其中
+\[
+\begin{aligned}
+	d_0 &= a_0 c_0,\\
+	& \vdots\\
+	d_k &= \sum_{i=0}^k a_i c_{k-i},\\
+	& \vdots\\
+	d_{n + m} &= a_n c_m.
+\end{aligned}
+\]
+
+\end{definition}
+
+\begin{theorem}
+	数域 $\K[x]$ 中元素 $f(x), g(x), h(x)$ 有如下法则,
+	\ITEMS
+		\item $f(x) g(x) = g(x) f(x)$,
+		\item $(f(x) g(x)) h(x) = f(x)(g(x) h(x))$,
+		\item $(f(x) + g(x)) h(x) = f(x) h(x) + g(x) h(x)$,
+		\item $c(f(x)g(x)) = (cf(x))g(x) = f(x)(cg(x))$.
+	\ITEME
+\end{theorem}
+\begin{proof}
+	易证.
+\end{proof}
+
+由上述定理可知 $\K[x]$ 中的假发和乘法适合环的条件, 因此 $\K[x]$ 也称为 $\K$ 上的一元多项式环.
+
+\begin{definition}{次数}
+	设有 $n$ 次多项式 $f(x)$ 则记 $f(x)$ 的次数为
+	\[
+		\deg f(x) = n.
+	\]
+\end{definition}
+
+\begin{theorem}{}
+	设有 $f(x),g(x) \in \K[x]$, 则
+	\[
+		\deg (f(x) g(x)) = \deg f(x) + \deg g(x).
+	\]
+\end{theorem}
+\begin{proof}
+	由多项式的运算显然.
+\end{proof}
+
+\begin{corollary}
+	若 $f(x) \neq 0$ 且 $f(x)g(x) = f(x)h(x)$, 则
+	\[
+		g(x) = h(x).
+	\]
+\end{corollary}
+\begin{proof}
+	由 $f(x)g(x) = f(x)h(x)$, 可知 $f(x)(g(x) - h(x)) = 0$, 但 $f(x) \neq 0$ 则有
+	\[
+		g(x) = h(x).
+	\]
+\end{proof}
+
+
+\section{整除}
+
+\begin{definition}{多项式整除}
+设有 $f(x),g(x) \in \K[x]$, 若存在 $h(x) \in \K[x]$ 使得
+\[
+	f(x) = g(x) h(x),
+\]
+则称 $g(x)$ 是 $f(x)$ 的因式, 或 $g(x)$ 可以整除 $f(x)$, 记为 $g(x) \mid f(x)$.
+	
+\end{definition}
+
+\begin{theorem}{多项式整除的性质}
+设有 $f(x), g(x), h(x) \in \K[x]$, $0 \neq c \in \K$, 则
+\ITEMS
+	\item $f(x) \mid g(x)$ 则 $cf(x) \mid g(x)$,
+	\item $f(x) \mid f(x)$,
+	\item $f(x) \mid g(x), g(x) \mid h(x)$ 则 $f(x) \mid h(x)$,
+	\item $f(x) \mid g(x), f(x) \mid h(x)$ 则对于任意的多项式 $u(x),v(x)$ 有
+	\[
+		f(x) \mid g(x) u(x) + h(x) v(x),
+	\]
+	\item $f(x) \mid g(x), g(x) \mid f(x)$ 且 $f(x),g(x)$ 都是非零多项式, 则存在 $c$ 使得
+	\[
+		f(x) = c g(x).
+	\]
+\ITEME	
+\end{theorem}
+
+\begin{proof}
+	证明都很显然, 我们只证 4,5.
+	\ITEMS
+		\item[4] 有 $g(x) = f(x) p(x), h(x) = f(x) p(x)$, 则
+		\[
+			g(x) u(x) + h(x) v(x) = f(x) (p(x) u(x) + q(x) v(x)).
+		\] 
+		\item[5] 设 $g(x) = f(x) p(x), f(x) = g(x) q(x)$, 则
+		\[
+			f(x) = f(x) (p(x) q(x)).
+		\]
+		由
+		\[
+			\deg f(x) = \deg f(x) \deg (p(x) q(x)),
+		\]
+		可知
+		\[
+			\deg (p(x) q(x)) = 0,
+		\]
+		即
+		\[
+			\deg p(x) = \deg q(x) = 0.
+		\]
+	\ITEME
+\end{proof}
+
+\begin{theorem}
+	设 $f(x),g(x) \in \L[x]$, $g(x) \neq 0$, 则必 $\exists ! q(x), r(x) \in \K[x]$, 使得
+	\[
+		f(x) =g(x) q(x) + r(x),
+	\]
+	且 $\deg r(x) < \deg g(x)$.
+\end{theorem}
+\begin{idea*}
+	显然我们只需要考虑 $\deg f(x) \ge \deg g(x)$ 的情况即可, 其他情况显然. 考虑对 $\deg f(x)$ 应用数学归纳法证明, 通过将多项式降次的方法化为低次情况即可用数学归纳法证明, 用反证法法证明唯一性.
+\end{idea*}
+\begin{proof}
+	当 $f(x) = 0$ 或者 $\deg f(x) < g(x)$ 时只要令 $q(x) = 0, r(x) = f(x)$ 即有
+	\[
+		f(x)  = 0\cdot q(x) + f(x) = g(x) q(x) + r(x).
+	\] 
+	
+	假设 $\deg f(x) \ge \deg g(x)$ 应用数学归纳法, 首先考虑归纳基础, 即 $\deg f(x) = 0$ 的情况, 显然 $\deg g(x) = 0$, 则可以设 $f(x) = a, g(x) = b$, 令 $q(x) = a b^{-1}, r(x) = 0$ 则可得
+	\[
+		f(x) = a = a b^{-1} b + 0 =  g(x) q(x) + r(x).
+	\]
+	接下来有归纳假设, 假设结论对小于 $n$ 次的多项式都成立, 设有
+	\[
+		f(x) = a_n x^n +a_{n-1} x^{n-1} + \cdots + a_1 x + a_0,
+	\]
+	\[
+		g(x) = b_m x^m + b_{m-1} x^{m-1} + \cdots + b_1 x + b_0.
+	\]
+	其中 $n \ge m$, 可令
+	\[
+		f_1(x) = f(x) - a_n b_m^{-1} x^{n-m} g(x).
+	\]
+	显然 $\deg f_1(x) < n$, 则存在 $q_1(x), r(x)$ 满足 $\deg r(x) < \deg g(x)$, 使得
+	\[
+		f_1(x) = q_1(x) g(x) + r(x).
+	\]
+	于是便有
+	\[
+		f_1(x) = f(x) - a_n b_m^{-1} x^{n-m} g(x) = q_1(x) g(x) + r(x),
+	\]
+	则
+	\[
+	\begin{aligned}
+		f(x) &= a_n b_m^{-1} x^{n-m} g(x) + q_1(x) g(x) + r(x)\\
+		&= \bigl(a_n b_m^{-1} x^{n-m} + q_1(x)\bigr) g(x) + r(x).
+	\end{aligned}
+	\]
+	令
+	\[
+		q(x) = a_n b_m^{-1} x^{n-m} + q_1(x),
+	\]
+	则
+	\[
+		f(x) = q(x) g(x) + r(x).
+	\]
+	且 $\deg r(x) < \deg g(x)$.
+	
+	接下来证明唯一性, 设有 $p(x), t(x)$ 满足 $\deg g(x) > \deg t(x)$ 使得
+	\[
+		f(x) = p(x) g(x) + r(x).
+	\]
+	则显然有
+	\[
+	\begin{aligned}
+		f(x) = p(x) g(x) + t(x) &= q(x) g(x) + r(x)\\
+		(p(x) - q(x)) g(x) &= r(x) - t(x),
+	\end{aligned}
+	\]
+	显然若 $p(x) - q(x) \neq 0$ 则有如下矛盾
+	\[
+		\deg \Bigl(\bigl((p(x) - q(x)\bigr) g(x)\Bigr) \ge \deg g(x) > r(x) \ge \bigl(r(x) - t(x)\bigr).
+	\]
+	因此 $p(x) = q(x), t(x) = r(x)$.
+\end{proof}
+
+\begin{corollary}
+	设 $f(x), g(x) \in \K[x]$, $g(x) \neq 0$, 则 $g(x) \mid f(x)$ 的充分必要条件是 $g(x)$ 除 $f(x)$ 后的余式为 $0$.
+\end{corollary}
+
+
+\section{最大公因式}
+\begin{definition}{最大公因式与最小公倍式}
+	设有 $f(x),g(x) \in \K[x]$, 如果 $d(x)$ 是 $f(x),g(x)$ 的公因式, 且对于任意 $f(x),g(x)$ 的公因式 $h(x)$ 都有 $h(x) \mid d(x)$ 那么就称 $d(x)$ 是 $f(x),g(x)$ 的最大公因式, 记作 $d(x) = \gcd(f,g)$ 或者简记为 $d(x) = (f,g)$.
+	\vspace{0.5em}
+	
+	同理如果 $m(x)$ 是 $f(x),g(x)$ 的公倍式, 且对于任意 $f(x),g(x)$ 的公倍式 $l(x)$ 都有 $m(x) \mid l(x)$ 那么就称 $m(x)$ 是 $f(x),g(x)$ 的最小公倍式, 记作 $d(x) = \operatorname{lcm}(f,g)$ 或者简记为 $d(x) = [f,g]$.
+\end{definition}
+
+% 辗转相除法
+
+\begin{theorem}
+	设 $f(x), g(x) \in \K[x]$
+\end{theorem}
+
+
+\section{因式分解}
+
+
+\section{多项式函数}
+
+\section{复系数多项式}
+
+
 
 
 % ================================================================================== 
@@ -4755,6 +6660,221 @@ $\gamma$ 是无理数.
 
 \section{坐标系与坐标系中的向量计算}
 
+\begin{definition}{直角标架}
+	设 $\ve{i},\ve{j},\ve{k}$ 是空间中以 $O$ 为起点的三个向量, 他们两两垂直且都是单位向量, 则 $O; \ve{i},\ve{j},\ve{k}$ 称为空间中以 $O$ 为原点的直角标架或直角坐标系, 记为 $\{O;\ve{i},\ve{j},\ve{k}\}$. 如果 $\ve{i},\ve{j},\ve{k}$ 构成一个右手系, 那么 $\{O; \ve{i},\ve{j},\ve{k}\}$ 称为一个右手直角标架或右手直角坐标系, 否则称为左手直角标架或左手直角坐标系. 称 $\ve{i},\ve{j},\ve{k}$ 为直角坐标系的基向量.
+\end{definition}
+
+\begin{definition}{仿射标架}
+	设 $\ve{i},\ve{j},\ve{k}$ 是空间中以 $O$ 为起点的不共面的三个向量, 则称 $\{O;\ve{i},\ve{j},\ve{k}\}$ 为空间中一个以 $O$ 为原点的仿射标架或仿射坐标系. 如果 $\ve{i},\ve{j},\ve{k}$ 构成一个右手系, 那么 $\{O; \ve{i},\ve{j},\ve{k}\}$ 称为一个右手仿射标架或右手仿射坐标系, 否则称为左手仿射标架或左手仿射坐标系. 称 $\ve{i},\ve{j},\ve{k}$ 为仿射坐标系的基向量.
+\end{definition}
+
+\begin{theorem}
+	设 $\{O; \ve{i},\ve{j},\ve{k}\}$ 是一个仿射坐标系 (直角坐标系), 则任意一个向量 $\ve{v}$ 可以唯一的表示成 $\ve{v} = x\ve{i} + y\ve{j} + z\ve{k}$. 称 $(x,y,z)$ 为向量 $\ve{v}$ 在该坐标系 $\{O; \ve{i},\ve{j},\ve{k}\}$ 下的坐标, 记为 $\ve{v} = (x,y,z)$.
+\end{theorem}
+
+\begin{definition}
+	设 $\{O; \ve{i},\ve{j},\ve{k}\}$ 是一个仿射坐标系 (直角坐标系), $\ve{i},\ve{j},\ve{k}$ 所在直线通常称为坐标轴, 每两根坐标轴所组成的平面称为坐标平面 $xOy, yOz, zOx$ 坐标平面. 这三个坐标平面将空间分割为 $8$ 个部分, 称为坐标系的 $8$ 个卦限.
+\end{definition}
+
+\FIGS
+\begin{tikzpicture}[
+    % 斜投影：x 向右，y 向右上，z 向上
+    x={(1.2cm,0cm)},
+    y={(0.6cm,0.4cm)},
+    z={(0cm,1.2cm)},
+    >=Stealth,
+    line cap=round,
+    line join=round,
+    axis/.style={->, thick, black},
+    negaxis/.style={dashed, thick, gray!65},
+    ocnlabel/.style={
+        font=\small\bfseries,
+        fill=white, fill opacity=0.85, text opacity=1,
+        inner sep=1.5pt, rounded corners=1.5pt
+    },
+    scale=0.8
+]
+
+\def\L{2.4}   % 坐标平面半边长
+\def\A{3.6}   % 坐标轴长度
+
+% ================= 三个坐标平面 =================
+
+% z = 0 ： xOy 平面（红色）
+\fill[red!18, opacity=0.15]
+    (-\L,-\L,0) -- (\L,-\L,0) -- (\L,\L,0) -- (-\L,\L,0) -- cycle;
+\draw[red!55!black, thin]
+    (-\L,-\L,0) -- (\L,-\L,0) -- (\L,\L,0) -- (-\L,\L,0) -- cycle;
+
+% x = 0 ： yOz 平面（绿色）
+\fill[green!20, opacity=0.15]
+    (0,-\L,-\L) -- (0,\L,-\L) -- (0,\L,\L) -- (0,-\L,\L) -- cycle;
+\draw[green!45!black, thin]
+    (0,-\L,-\L) -- (0,\L,-\L) -- (0,\L,\L) -- (0,-\L,\L) -- cycle;
+
+% y = 0 ： zOx 平面（蓝色）
+\fill[blue!18, opacity=0.15]
+    (-\L,0,-\L) -- (\L,0,-\L) -- (\L,0,\L) -- (-\L,0,\L) -- cycle;
+\draw[blue!55!black, thin]
+    (-\L,0,-\L) -- (\L,0,-\L) -- (\L,0,\L) -- (-\L,0,\L) -- cycle;
+
+% ================= 坐标轴 =================
+
+% 负半轴（虚线）
+\draw[negaxis] (-\A,0,0) -- (0,0,0);
+\draw[negaxis] (0,-\A,0) -- (0,0,0);
+\draw[negaxis] (0,0,-\A) -- (0,0,0);
+
+% 正半轴（实线）
+\draw[axis] (0,0,0) -- (\A,0,0) node[anchor=west]  {$x$};
+\draw[axis] (0,0,0) -- (0,\A,0) node[anchor=south west] {$y$};
+\draw[axis] (0,0,0) -- (0,0,\A) node[anchor=south] {$z$};
+
+% 原点
+\fill (0,0,0) circle (1.5pt);
+\node[anchor=north east, inner sep=2pt, font=\small] at (0,0,0) {$O$};
+
+% ================= 八个卦限标注 =================
+\node[ocnlabel] at ( 1.8,  1.8,  1.8) {I};
+\node[ocnlabel] at (-1.8,  1.5,  1.8) {II};
+\node[ocnlabel] at (-1.8, -1.8,  1.8) {III};
+\node[ocnlabel] at ( 2.2, -1.6,  2.2) {IV};
+\node[ocnlabel] at ( 1.8,  1.8, -1.8) {V};
+\node[ocnlabel] at (-2.2,  1.6, -2.2) {VI};
+\node[ocnlabel] at (-1.8, -1.8, -1.8) {VII};
+\node[ocnlabel] at ( 1.8, -1.8, -1.8) {VIII};
+
+\end{tikzpicture}
+\caption{卦限}
+\FIGE
+
+\subsection{直角坐标系中的向量运算}
+
+\begin{example}
+	已知 $\ve a = (a_1,a_2,a_3), \ve b = (b_1,b_2,b_3)$. 求 $\ve a + \ve b, \ve a - \ve b, \lambda \ve a$. 
+\end{example}
+
+\begin{solution}
+	\[
+		\ve a + \ve b = (a_1 + b_1, a_2 + b_2, a_3 + b_3),
+	\]
+	\[
+		\ve a - \ve b = (a_1 - b_1, a_2 - b_2, a_3 - b_3),
+	\]
+	\[
+		\lambda \ve a = (\lambda a_1, \lambda a_2, \lambda a_3).
+	\]
+\end{solution}
+\vspace{0.5em}
+
+\begin{example}
+	已知 $\ve a = (a_1,a_2,a_3), \ve b = (b_1,b_2,b_3)$. 求 $\ve a \cdot \ve b, \lvert \ve a \rvert, \langle \ve a, \ve b \rangle$.
+\end{example}
+
+\begin{solution}
+	\[
+		\ve a \cdot \ve b = a_1 b_1 + a_2 b_2 + a_3 b_3,
+	\]
+	\[
+		\lvert \ve a \rvert = \sqrt{a_1^2 + a_2^2 + a_3^2},
+	\]
+	\[
+		\langle \ve a, \ve b\rangle = \frac{a_1 b_1 + a_2 b_2 + a_3 b_3}{\sqrt{a_1^2 + a_2^2 + a_3^2} \sqrt{b_1^2 + b_2^2 + b_3^2}}.
+	\]
+\end{solution}
+\vspace{0.5em}
+
+\begin{example}
+	已知 $\ve a = (a_1,a_2,a_3), \ve b = (b_1,b_2,b_3)$. 求 $\vtimes{a}{b}$.
+\end{example}
+
+\begin{solution}
+\[
+	\vtimes{a}{b} = \begin{vmatrix}
+		\ve i & \ve j & \ve k\\
+		a_1 & a_2 & a_3\\
+		b_1 & b_2 & b_3
+	\end{vmatrix},
+\]
+\[
+\vtimes{a}{b} = \left(\begin{vmatrix}
+		a_2 & a_3\\
+		b_2 & b_3
+	\end{vmatrix}, \begin{vmatrix}
+		a_3 & a_1\\
+		b_3 & b_1
+	\end{vmatrix}, \begin{vmatrix}
+		a_1 & a_2\\
+		b_1 & b_2
+	\end{vmatrix}\right).
+\]
+\end{solution}
+\vspace{0.5em}
+
+\begin{example}
+	已知 $\ve a = (a_1,a_2,a_3), \ve b = (b_1,b_2,b_3), \ve c = (c_1, c_2, c_3)$. 求 $(\ve a, \ve b, \ve c)$.
+\end{example}
+
+\begin{solution}
+	\[
+		(\ve a, \ve b, \ve c) = \begin{vmatrix}
+			a_1 & a_2 & a_3\\
+			b_1 & b_2 & b_3\\
+			c_1 & c_2 & c_3
+		\end{vmatrix}.
+	\]
+\end{solution}
+
+\subsection{距离公式和定比分点公式}
+
+空间中两点 $P_1 = (x_1, y_1, z_1), P_2 = (x_2, y_2, z_2)$ 间的距离公式为
+\[
+	\lvert \Ve{P_1 P_2} \rvert = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}.
+\]
+
+已知 $\Ve{OP_1} = (x_1, y_1, z_1), \Ve{OP_2} = (x_2, y_2, z_2)$, 设分点为 $P(x, y, z)$ 则
+\[
+	x = \frac{x_1 + \lambda x_2}{1+\lambda},\ y = \frac{y_1 + \lambda y_2}{1+\lambda},\ x = \frac{z_1 + \lambda z_2}{1+\lambda}.
+\]
+
+\section{平面方程}
+\subsection{平面方程}
+
+\begin{definition}{法向量}
+	设有平面 $\alpha$, 设 $\ve n$ 是与平面 $\alpha$ 垂直的一个非零向量, 称之为 $\alpha$ 的法向量.
+\end{definition}
+
+\begin{proposition}{点法式}
+	设有平面 $\alpha$, $\alpha$ 上一点 $P_0$, 与平面 $\alpha$ 的法向量 $\ve n$, 则对于平面上的动点 $\ve P$ 有
+	\[
+		\ve n \cdot (\ve P - \ve P_0) = 0.
+	\]
+	我们称上式为向量形式的点法式方程.
+	
+	若 $\ve n = (A, B, C), \ve P = (x, y, z), \ve P_0 = (x_0, y_0, z_0)$, 则有
+	\[
+		A (x - x_0) + B (y - y_0) + C (z - z_0) = 0.
+	\]
+	我们称上式为坐标形式的点法式方程.
+\end{proposition}
+
+\begin{proposition}{一般式}
+	对点法式稍作变形可得
+	\[
+		A x + B y + C z + D = 0.
+	\]
+	我们称之为平面的一般式方程.
+	
+	写为向量形式即为
+	\[
+		\ve n \cdot \ve P + D = 0.
+	\]
+\end{proposition}
+
+
+\begin{theorem}
+	平面方程是三元一次方程, 反之三元一次方程必表示平面.
+\end{theorem}
 
 
 
