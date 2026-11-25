@@ -443,7 +443,7 @@ A \subseteq B.
 
 \subsection{Russel 悖论与数学危机}
 
-Russel 悖论设集合 $A=\{x\mid x\in A\}$, 那么我们可以假设 $A\in A\Rightarrow A\notin A$, 同样 $A\notin A \Rightarrow A\in A$, 我们得出了截然不同的两种结果. 这意味着现代数学基础的集合论存在瑕疵, 数学家们随即对集合论进行了严格的约束, 从而规避了逻辑悖论, 但实际上数学危机远远不只是 Russel 悖论这么简单的问题, 而且仍并未被 ``完美" 解决. 
+Russel 悖论设集合 $A=\{x\mid x \notin x\}$, 那么我们可以假设 $A\in A\Rightarrow A\notin A$, 同样 $A\notin A \Rightarrow A\in A$, 我们得出了截然不同的两种结果. 这意味着现代数学基础的集合论存在瑕疵, 数学家们随即对集合论进行了严格的约束, 从而规避了逻辑悖论, 但实际上数学危机远远不只是 Russel 悖论这么简单的问题, 而且仍并未被 ``完美" 解决. 
 
 实际上的数学危机是一次将数学界分为三个学派的巨大分歧, 以 Russel 为代表的逻辑主义, 以布劳威尔为首的直觉主义, 以及 Hilbert 所率领的形式主义. 其中为主导的 Hilbert 与他的形式主义曾提出了著名的 Hilbert 纲领, 试图通过形式化的方法解决数学危机, 但之后的哥德尔不完备定理却表明任何系统都无法做到既完全又自洽, 击碎了 Hilbert 纲领的设想. 但 Hilbert 纲领深刻地重塑了现代数学与逻辑学, 我们也常称 Hilbert 为现代数学之父. 虽然数学不得已从追求绝对真理撤退到现代数学体系, 但却是我们对人类理性边界的认知的提升. 
 
@@ -1473,9 +1473,9 @@ $M$ 到自身的同态映射, 称为 $M$ 的自同态映射, 简称 $M$ 的自�
 		x\cdot 1 = 1\cdot x = x.
 	\]
 	
-	2$_\bullet$. 对于任何元素 $x\in\R\setminus0$, 元素 $-x\in\R$ 一定存在, 称为 $x$ 的逆元素, 满足
+	2$_\bullet$. 对于任何元素 $x\in\R\setminus\{0\}$, 元素 $x^{-1}\in\R$ 一定存在, 称为 $x$ 的逆元素, 满足
 	\[
-		x+(-x)=(-x)+x=0.
+		xx^{-1}=x^{-1}x=1.
 	\]
 	
 	3$_\bullet$. 运算满足结合律, 即对 $\R$ 的任何元素 $x, y, z$ 满足
@@ -5354,7 +5354,7 @@ G(x):=\begin{cases}0,&x=a\\ g(x),&a<x<b\end{cases}.
 
 \subsection{可积的必要条件}
 
-\begin{theorem}
+\begin{theorem}{Riemann 可积的必要条件}{Intnc}
 	如果 $f \in \mathscr{R}([a,b])$, 那么 $f$ 在 $[a,b]$ 上有界.	
 \end{theorem}
 
@@ -5421,14 +5421,16 @@ G(x):=\begin{cases}0,&x=a\\ g(x),&a<x<b\end{cases}.
 	\]
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}{振幅审敛法}{darbouxct}
 	如果函数 $f$ 在区间 $[a,b]$ 上有界, 且满足对 $\forall \varepsilon > 0, \exists \delta >0$ 使得满足 $\lVert T \rVert < \delta$ 的所有 $[a,b]$ 上的划分 $T$ 都有
 	\[
 		\sum_{i=1}^n \omega (f ; \Delta_i) \Delta x_i < \varepsilon.
 	\] 
 	则 $f \in \mathscr{R}([a,b])$.
 \end{theorem}
-
+\begin{idea*}
+	先证明简单情况, 即其中一个划分是另一个划分的加细, 再由任意两个划分找到共同的加细则可得证.
+\end{idea*}
 \begin{proof}
 	由 \hyperref[thm:R5]{Cauchy 准则}可知
 	\[
@@ -5439,17 +5441,17 @@ G(x):=\begin{cases}0,&x=a\\ g(x),&a<x<b\end{cases}.
 		\left\lvert \sigma(f;T',\ve\xi') - \sigma(f;T'',\ve\xi'') \right\rvert < \varepsilon.
 	\]
 	
-	假设有 $[a,b]$ 上的划分 $T$ 和其加细 $\widetilde T$, $\widetilde T$ 把原来的第 $i$ 个区间 $\Delta_i$ 又切成了更小的区间 $\Delta_{i,j}$, 长度记为 $\Delta x_{x,j}$, 取点 $\xi_{i,j}$ 则有
+	假设有 $[a,b]$ 上的划分 $T$ 和其加细 $\widetilde T$, $\widetilde T$ 把原来的第 $i$ 个区间 $\Delta_i$ 又切成了更小的区间 $\Delta_{i,j}$, 长度记为 $\Delta x_{i,j}$, 取点 $\xi_{i,j}$ 则有
 	\[
 	\begin{aligned}
-		\left\lvert \sigma(f;\widetilde T,\widetilde{\ve\xi}) - \sigma(f;T,\ve\xi) \right\rvert  &= \left\lvert \sum_{i=1}^n \sum_{j=1}^{n_i} f(\xi_{i,j}) \Delta x_{i,j} + \sum_{i=1}^n f(\xi_i) \Delta x_i \right\rvert\\
-		&= \left\lvert \sum_{i=1}^n \sum_{j=1}^{n_i} [f(\xi_{i,j})  + f(\xi_i)] \Delta x_{i,j} \right\rvert.
+		\left\lvert \sigma(f;\widetilde T,\widetilde{\ve\xi}) - \sigma(f;T,\ve\xi) \right\rvert  &= \left\lvert \sum_{i=1}^n \sum_{j=1}^{n_i} f(\xi_{i,j}) \Delta x_{i,j} - \sum_{i=1}^n f(\xi_i) \Delta x_i \right\rvert\\
+		&= \left\lvert \sum_{i=1}^n \sum_{j=1}^{n_i} [f(\xi_{i,j})  - f(\xi_i)] \Delta x_{i,j} \right\rvert.
 	\end{aligned}
 	\]
 	应用三角不等式
 	\[
 	\begin{aligned}
-		\left\lvert \sigma(f;\widetilde T,\widetilde{\ve\xi}) - \sigma(f;T,\ve\xi) \right\rvert  &= \sum_{i=1}^n \sum_{j=1}^{n_i} \lvert f(\xi_{i,j})  + f(\xi_i)\rvert \Delta x_{i,j}\\
+		\left\lvert \sigma(f;\widetilde T,\widetilde{\ve\xi}) - \sigma(f;T,\ve\xi) \right\rvert  &\le \sum_{i=1}^n \sum_{j=1}^{n_i} \lvert f(\xi_{i,j}) - f(\xi_i)\rvert \Delta x_{i,j}\\
 		&\le \sum_{i=1}^n \sum_{j=1}^{n_i} \omega(f;\Delta_{i}) \Delta x_{i,j}\\
 		&= \sum_{i=1}^n \omega(f;\Delta_{i}) \Delta x_{i}.
 	\end{aligned}
@@ -5461,12 +5463,14 @@ G(x):=\begin{cases}0,&x=a\\ g(x),&a<x<b\end{cases}.
 	现在我们有了足够的铺垫, 对于任意两个满足 $\lVert T'\rVert < \delta,\lVert T''\rVert < \delta$ 划分 $(T',\ve\xi'), (T'',\ve\xi'')$ 我们都可以找到一个公共的加细 $(\widetilde T,\widetilde{\ve\xi})$ ($\widetilde T = T' \cup T''$) 使得
 	\[
 		\begin{aligned}
-			\left\lvert \sigma(f; T', \ve\xi') - \sigma(f; T'', \ve\xi'') \right\rvert &= \left\lvert \sigma(f; T', \ve\xi') - \sigma(f; \widetilde{T}, \widetilde{\ve\xi}) + \sigma(f; \widetilde{T}, \widetilde{\xi}) - \sigma(f; T'', \ve\xi'') \right\rvert \\
+			\left\lvert \sigma(f; T', \ve\xi') - \sigma(f; T'', \ve\xi'') \right\rvert &= \left\lvert \sigma(f; T', \ve\xi') - \sigma(f; \widetilde{T}, \widetilde{\ve\xi}) + \sigma(f; \widetilde{T}, \widetilde{\ve\xi}) - \sigma(f; T'', \ve\xi'') \right\rvert \\
  			&\le \left\lvert \sigma(f; T', \ve\xi') - \sigma(f; \widetilde{T}, \widetilde{\ve\xi}) \right\rvert + \left\lvert \sigma(f; \widetilde{T}, \widetilde{\ve\xi}) - \sigma(f; T'', \ve\xi'') \right\rvert \\
  			&< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
  		\end{aligned}
 	\]
+	因此 $f \in \mathscr{R}([a,b])$.
 \end{proof}
+
 
 \begin{corollary}
 	$\mathscr{C}([a,b]) \subsetneq \mathscr{R}([a,b])$.
@@ -5481,86 +5485,314 @@ G(x):=\begin{cases}0,&x=a\\ g(x),&a<x<b\end{cases}.
 	\[
 		\sum_{i=1}^n \omega(f;\Delta_i) \Delta x_i < \sum_{i=1}^n \frac{\varepsilon} {b - a}\Delta x_i = \varepsilon.
 	\]
+	由 \hyperref[thm:darbouxct]{振幅审敛法} 可证.
 \end{proof}
 
 \begin{corollary}
 	如果有界函数 $f$ 在闭区间 $[a,b]$ 上只有有限个间断点, 那么函数 $f \in \mathscr{R}([a,b])$.
 \end{corollary}
-
+\begin{idea*}
+	用总长度极小的开区间包含间断点, 在这些区间取最大振幅对积分和的贡献很小, 再通过 \hyperref[thm:cantor]{Cantor 定理} 得到一致连续, 控制其他区域的振幅.
+\end{idea*}
 \begin{proof}
-	% TODO
+	根据有界性得到 $\omega(f; [a,b]) \le C < +\infty$, 假设函数 $f$ 有 $k$ 个不连续点 $y_1,\cdots,y_k \in [a,b]$, 对任意给定 $\varepsilon > 0$ 取 $\ds \delta_1 := \frac{\varepsilon}{8Ck}$. 构造每个间断点的 $\delta_1$ 邻域, 即 $U(y_i, \delta_1) = (y_i - \delta_1, y_i + \delta_1) \cap [a,b]$. 若 $\varepsilon$ 足够小使得 $U(y_i,\delta_1)$ 互不相交, 那么
+	\[
+		[a,b] \setminus \bigcup_{i=1}^k U(y_i,\delta_1),
+	\]
+	是 $k + 1$ 个互不相交的闭区间 $B_1,\cdots,B_{k+1}$ 的并, 由 \hyperref[thm:cantor]{Cantor 定理} 可知在这样区间上连续是一致连续的, 则存在 $\delta_2$ 使得任何满足 $\lvert \Delta \rvert < \delta_2$ (其中 $\Delta \subseteq B_j$) 的 $\Delta$ 都有
+	\[
+		\omega(f;\Delta) < \frac{\varepsilon}{2(b-a)}.
+	\]
+	取 $\delta = \min\{\delta_1,\delta_2\}$ 则对 $[a,b]$ 上满足 $\lVert T \rVert < \delta$ 的任意划分 $T$ 有
+	\[
+	\begin{aligned}
+		\sum_{i=1}^n \omega (f;\Delta_i) \Delta x_i &= \sum_{\forall j, \Delta_i \cap U_j = \varnothing} \omega (f;\Delta_i) \Delta x_i + \sum_{\forall j, \Delta_i \cap U_j \neq \varnothing} \omega (f;\Delta_i) \Delta x_i\\
+		&< \frac{\varepsilon}{2(b-a)} \sum_{\forall j, \Delta_i \cap U_j = \varnothing} \Delta x_i +\ \color{blue}{C \sum_{\forall j, \Delta_i \cap U_j \neq \varnothing} \Delta x_i}\\
+		&< \frac{\varepsilon}{2(b-a)} (b-a) +\ \color{blue}{Ck(\delta + 2\delta_1 + \delta)}\\
+		&< \frac{\varepsilon}{2} + 4Ck\frac{\varepsilon}{8Ck}\\
+		&= \varepsilon.
+	\end{aligned}
+	\]
+	由 \hyperref[thm:darbouxct]{振幅审敛法} 可证.
 \end{proof}
+
+\begin{remark}
+	其中
+	\[
+		\sum_{\forall j, \Delta_i \cap U_j \neq \varnothing} \Delta x_i < k(\delta + 2\delta_1 + \delta),
+	\]
+	而非 $\ds k(2\delta_1)$, 因为 $\Delta_i$ 可能不完全包含于 $U_j$ 即 $\ds \sum_{\forall j, \Delta_i \cap U_j \neq \varnothing} \Delta x_i \ge \sum_{\forall j,U_j} \Delta x_i = k(2\delta_1)$.
+\end{remark}
+
 
 \begin{corollary}
 	闭区间上的单调函数一定是可积的.
 \end{corollary}
 
 \begin{proof}
-	% TODO
+	不失一般性不妨假设 $f(b) \neq f(a)$. 如果函数 $f$ 单调则
+	\[
+		\omega(f; [a,b]) = \lvert f(b) - f(a) \rvert > 0.
+	\]
+	对于任意 $\varepsilon > 0$, 取 $\ds \delta = \frac{\varepsilon}{\lvert f(b) - f(a) \rvert}$, 对于任意满足 $\lVert T \rVert < \delta$ 的划分 $T$ 有
+	\[
+	\begin{aligned}
+		\sum_{i=1}^n \omega(f; \Delta_i) \Delta x_i &< \lvert f(b) - f(a) \rvert \sum_{i=1}^n \Delta x_i\\
+		&< \lvert f(b) - f(a) \rvert \frac{\varepsilon}{\lvert f(b) - f(a) \rvert}\\
+		&= \varepsilon.
+	\end{aligned}
+	\]
+	由 \hyperref[thm:darbouxct]{振幅审敛法} 可证.
 \end{proof}
 
+% Darboux 理论
 \begin{definition}{Darboux 理论}
 	我们先引入如下记号, 假设函数 $f : [a,b] \to \R$ 是定义在闭区间 $[a,b]$ 上的有界函数. 记
 	\[
-		M \equiv M_f := \sup_{[a,b]}
-f, m≡mf := inf
-[a,b] f. (5.3.8)
-对[a,b] 上的任意划分T: a= x0 <x1 <···<xn = b, 引入记号
-Mi := sup
-∆i
-f, mi := inf
-∆i
-f, 1 ≤i≤n, (5.3.9)
-这里∆i = [xi−1,xi].
+		M \equiv M_f := \sup_{[a,b]}f,\ m \equiv m_f := \inf_{[a,b]} f.
+	\]
+	对 $[a,b]$ 上的任意划分 $T: a = x_0 < x_1 < \cdots < x_n = b$, 引入记号
+	\[
+		M_i := \sup_{\Delta_i}f,\ m_i := \inf_{\Delta_i}f, 1 \le i \le n,
+	\]
+	其中 $\Delta_i = [x_{i−1}, x_i]$.
+	\vspace{0.5em}
+	
+	\ITEMS
+	\item 函数 $f$ 相对于划分 $T$ 的 Darboux 下和 (Lower Darboux sum) 定义为
+	\[
+		\underline{S}(f; T) := \sum_{i=1}^n m_i \Delta x_i.
+	\]
+	
+	\item 函数 $f$ 相对于划分 $T$ 的 Darboux 上和(Upper Darboux sum) 定义为
+	\[
+		\overline{S}(f; T) := \sum_{i=1}^n M_i \Delta x_i.
+	\]
+	
+	\item 函数 $f$ 的 Darboux 下积分 (Lower Darboux integral) 和Darboux 上积分(Upper Darboux integral) 分别定义为
+	\[
+		\underline{I} := \sup_{T} \underline{S} (f;T), \overline{I} := \inf_{T}\overline
+		{S} (f;T).
+	\]
+	\ITEME
 \end{definition}
 
-\begin{theorem}{$\mathscr{R}$ 是向量空间}
-	
+\begin{theorem}{Darboux 定理} % TODO Darboux 定理
+	\[
+		\underline{I} = \lim_{\lVert T \rVert \to 0} \underline{S} (f;T),\; \overline{I} = \lim_{\lVert T \rVert \to 0} \overline{S} (f;T).
+	\]
 \end{theorem}
+\begin{idea*}
+	通过构造一个我们想要的划分, 再取其与我们要求的划分的共同加细
+\end{idea*}
+\begin{proof}
+	
+\end{proof}
+
+\begin{theorem}{Darboux 判别法}
+	有界函数 $f : [a,b] \to \R$ 在 $[a,b]$ 上可积当且仅当 $\underline{I}$ 和 $\overline{I}$ 都存在且 $\underline{I} = \overline{I}$. 此时有
+	\[
+		\underline{I} = \overline{I} = I = \int_a^b f(x)\;dx.
+	\]
+\end{theorem}
+\begin{proof}
+	% TODO
+\end{proof}
+
+
+\vspace{1em}
+
+由上面的定理我们可知 \hyperref[thm:darbouxct]{振幅审敛法} 实际上是黎曼可积的充要条件, 在这里补充必要性的证明.
+\begin{proof}
+	
+\end{proof}
+
+\begin{theorem}{$\mathscr{R}$ 是向量空间}
+	假设 $f,g \in \mathscr{R}([a,b])$ 则
+	\ITEMS
+		\item $f + g \in \mathscr{R}([a,b])$.
+		\item 对任意 $\alpha \in \R$ 有 $\alpha f \in R([a,b])$.
+		\item $\lvert f \rvert \in \mathscr{R}([a,b])$.
+		\item 对任意 $[c,d] \subseteq [a,b]$ 有 $f|_{[c,d]} \in \mathscr{R}([c,d])$.
+		\item $fg \in \mathscr{R}([a,b])$.
+	\ITEME
+\end{theorem}
+
+\begin{proof}
+	\ITEMS
+		\item 根据定义可知
+		\[
+		\begin{aligned}
+			\int_a^b(f + g)(x)\;dx &= \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n (f+g)(\xi_i) \Delta x_i\\
+			&=  \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n [f(\xi_i) + g(\xi_i)] \Delta x_i\\
+			&=\int_a^b f(x)\;dx + \int_a^b g(x)\;dx.
+		\end{aligned}
+		\]
+		
+		\item 根据定义可知
+		\[
+		\begin{aligned}
+			\int_a^b(\alpha f)(x)\;dx &= \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n (\alpha f)(\xi_i) \Delta x_i\\
+			&= \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n \alpha f(\xi_i) \Delta x_i\\
+			&= \alpha \int_a^b f(x)\;dx.
+		\end{aligned}
+		\]
+		
+		\item 根据定义可知
+		\[
+			\int_a^b \lvert f \rvert(x)\;dx = \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n \lvert f (\xi_i) \rvert \Delta x_i.
+		\]
+		由
+		\[
+			\sum_{i = 1}^n \omega(\lvert f \rvert; \Delta x_i) \le \sum_{i = 1}^n \omega(f; \Delta x_i),
+		\]
+		使用 \hyperref[thm:darbouxct]{振幅审敛法} 可得 $\lvert f \rvert \in \mathscr{R}([a,b])$.
+		
+		\item $[c,d]$ 上的划分 $\hat T$ 可以延拓为 $[a,b]$ 上的划分 $T$, 所以 $\lVert T \rVert \le \lVert \hat T \rVert$. 从而
+		\[
+			\sum_{\hat T} \omega (f|_{[c,d]};\Delta_i) \Delta x_i \le \sum_{T} \omega (f;\Delta_i) \Delta x_i.
+		\]
+		使用 \hyperref[thm:darbouxct]{振幅审敛法} 可得 $f|_{[c,d]} \in \mathscr{R}([a,b])$.
+		
+		\item 对于任何 $f,g \in \mathscr{R}([a,b])$ 有
+		\[
+			fg = \frac{1}{4}\left[(f + g)^2 - (f - g)^2\right]
+		\]
+		则我们只需要证明 $f^2 \in \mathscr{R}([a,b])$. 由 $f \in \mathscr{R}([a,b])$ 与 \hyperref[thm:Intnc]{可积的必要条件} 可得 $\lvert f \rvert \le C$, 则有
+		\[
+			\left\lvert f^2(x_1) - f^2(x_2) \right\rvert = \bigl\lvert [f(x_1) + f(x_2)][f(x_1) - f(x_2)] \bigr\rvert \le 2C\lvert f(x_1) - f(x_2) \rvert,
+		\]
+		和
+		\[
+			\sum_{i=1}^n \omega(f^2;\Delta_i)\Delta x_i \le 2C \sum_{i=1}^n \omega(f;\Delta_i)\Delta x_i,
+		\]
+		所以 $f^2 \in \mathscr{R}([a,b])$.
+	\ITEME
+\end{proof}
 
 \subsection{测度初步与 Lebesgue 准则}
 有关测度的详细定义参考后续实变函数部分.
 
 \begin{definition}{Lebesgue 零测集}
+	集合 $E \subseteq \R^n$, 如果对任意 $\varepsilon > 0$ 存在可数的开覆盖 $S$ 满足
+	\[
+		E \subseteq \bigcup\limits_{I \in S}I\quad \text{和} \quad \sum_{I \in S} \lvert I \rvert < \varepsilon.
+	\]
 \end{definition}
+\begin{remark}
+	显然点集是零测集, 零测集的可数并也是零测集 (次可加性, 见后续章节).	
+\end{remark}
 
 \begin{definition}{几乎处处}
+	若集合 $E \subseteq \R^n$ 上性质 $P$ 在除去一个零测集外都成立, 就称该性质 $P$ 几乎处处成立(almost everywhere).
 \end{definition}
 
 \begin{theorem}{Lebesgue 准则}
-	函数 $f(x) \in \mathscr{R}([a,b])$ 的充要条件是函数 $f(x)$ 在区间 $[a,b]$ 上几乎处处连续.
+	函数 $f(x) \in \mathscr{R}([a,b])$ 的充要条件是函数 $f(x)$ 在区间 $[a,b]$ 上有界且几乎处处连续.
+\end{theorem}
+\begin{proof}
+	将在实分析章节证明.
+\end{proof}
+
+\begin{theorem}
+	假设函数 $f$ 在 $[a,b]$ 上有界, 则下面断言等价:
+	\ITEMS
+		\item $f \in \mathscr{R}([a,b])$,
+		\item $\underline{I} = \overline{I}$,
+		\item 对任意 $\varepsilon > 0$ 存在 $[a,b]$ 上的划分 $T$ 满足
+		\[
+			\overline{S}(f; T) - \underline{S}(f; T) < \varepsilon,
+		\]
+		\item $\ds \lim_{\lVert T \rVert \to 0}[\underline{S}(f; T) - \overline{S}(f; T)] = 0$,
+		\item 存在 $[a,b]$ 上的一组划分 $\{T_m\}_{m \ge 1}$ 满足
+		\[
+			\lim_{m\to\infty}[\underline{S}(f; T_m) - \overline{S}(f; T_m)] = 0,
+		\]
+		\item $f$ 在 $[a,b]$ 上几乎处处连续,
+		\item 对任意 $\varepsilon > 0$ 和任意 $\eta > 0$ 存在 $[a,b]$ 上的划分 $T$ 满足
+		\[
+			\sum_{\omega(f;\Delta_i) \ge \varepsilon}\Delta x_i < \eta,
+		\]
+		\item (Paul David Gustav du Bois-Reymond) 对任意 $\varepsilon > 0$, 任意 $\delta > 0$ 和任意 $E \subset [a,b]$ 只要满足条件 $\omega(f; E) \ge \varepsilon$, 就存在$I_1, \cdots, I_n$ 使得 $\ds E \subset \bigcup_{1 \le k \le n} I_k$ 和 $\ds \sum_{1 \le k \le n} \lvert I_k \rvert < \delta$ 成立.
+	\ITEME
 \end{theorem}
 
 \begin{proof}
-	
+	% TODO
 \end{proof}
-
 
 \section{定积分的性质}
 
 \subsection{基本性质}
 
 \begin{theorem}{积分函数线性}
-	
+	如果 $f,g \in \mathscr{R}([a,b])$ 且 $\alpha,\beta \in \R$, 那么 $\alpha f + \beta g \in \mathscr{R}([a,b])$ 且
+	\[
+		\int_a^b [\alpha f(x) + \beta g(x)]\;dx= \alpha \int_a^b f(x)\;dx + \beta \int_a^b g(x)\;dx.
+	\]
 \end{theorem}
 
 \begin{theorem}{积分区域可加性}
-	
+	如果 $f\in\mathscr{R}([a,b])$ 且 $c \in [a,b]$ 则 $f|_{[a,c]} \in \mathscr{R}([a,c])$ 且  $f|_{[c,b]} \in \mathscr{R}([c,b])$ 有
+	\[
+		\int_a^b f(x)\;dx = \int_a^c f(x)\;dx + \int_c^b f(x)\;dx.
+	\]
 \end{theorem}
-
+\begin{proof}
+	% TODO
+\end{proof}
 
 \begin{theorem}{单调性}
-	
+	如果 $f,g \in \mathscr{R}([a,b])$ 且在 $[a,b]$ 上满足不等式 $f \le g$ 那么
+	\[
+		\int_a^b f(x)\;dx \le \int_a^b g(x)\;dx.
+	\]
 \end{theorem}
+\begin{proof}
+	显然由
+	\[
+		\sum_{i=1}^n f(\xi_i) \Delta x_i \le \sum_{i=1}^n g(\xi_i) \Delta x_i,
+	\]
+	可证.
+\end{proof}
 
 
-\begin{theorem}{绝对可积性}
-	
+\begin{theorem}{绝对值性质}
+	如果 $f \in \mathscr{R}([a,b])$, 那么 $\lvert f \rvert \in \mathscr{R}([a,b])$ 且
+	\[
+		\left\lvert \int_a^b f(x)\;dx \right\rvert \le \int \lvert f(x) \rvert\;dx.
+	\]
 \end{theorem}
+\begin{proof}
+	由绝对值的性质可知
+	\[
+		\sum_{i = 1}^n \omega(\lvert f \rvert; \Delta x_i) \le \sum_{i = 1}^n \omega(f; \Delta x_i),
+	\]
+	因此 $\lvert f \rvert \in \mathscr{R}([a,b])$ 则有
+	\[
+		\left\lvert \sum_{i=1}^n f(\xi_i) \Delta x_i \right\rvert \le \sum_{i=1}^n \lvert f(\xi_i) \rvert \Delta x_i
+	\] 
+\end{proof}
+
+\subsection{积分中值定理}
+
+积分中值定理与微分中值定理相对应.
 
 \begin{theorem}{积分第一中值定理}
+	如果函数 $f \in \mathscr{R}([a,b])$, $\ds m := \inf_{[a,b]} f$, $\ds M := \sup_{[a,b]} f$, 那么存在 $\mu \in [m,M]$ 使得
+	\[
+		\int_a^b f(x)\;dx = \mu(b-a).
+	\]
+	\smallskip
 	
+	特别的如果函数 $f \in \mathscr{C}([a,b])$ 则存在 $\xi \in [a,b]$ 使得
+	\[
+		\int_a^b f(x)\;dx = f(\xi)(b-a).
+	\]
 \end{theorem}
+\begin{proof}
+	% TODO
+\end{proof}
 
 \begin{theorem}{广义积分第一中值定理}
 	
@@ -5568,13 +5800,30 @@ f, 1 ≤i≤n, (5.3.9)
 
 
 \begin{lemma}
-	
+	如果 $f \in \mathscr{R}([a,b])$, 那么对任意 $x \in [a,b]$ 有
+	\[
+		F(x) := \int_a^x f(t)\;dt \in \mathscr{C}([a,b]).
+	\]
 \end{lemma}
 
 
 \begin{theorem}{积分第二中值定理}
-	
+	假设 $f,g \in \mathscr{C}([a,b])$ 且 $g \ge 0$
+	\ITEMS
+		\item 如果 $g$ 单调递减, 那么存在 $\xi \in [a,b]$ 满足
+		\[
+			\int_a^b f(x) g(x)\;dx = g(a) \int_a^\xi f(x)\;dx.
+		\]
+		\item 如果 $g$ 单调递增, 那么存在 $\eta \in [a,b]$ 满足
+		\[
+			\int_a^b f(x) g(x)\;dx = g(a) \int_\eta^b f(x)\;dx.
+		\]
+	\ITEME
 \end{theorem}
+\begin{proof}
+	% TODO
+\end{proof}
+
 
 \begin{theorem}{广义积分第二中值定理}
 	
@@ -5584,6 +5833,8 @@ f, 1 ≤i≤n, (5.3.9)
 
 \section{微积分}
 
+\subsection{微积分基本定理}
+
 \begin{definition}{变上限积分}
 	假设函数 $f \in \mathscr{R}([a,b])$ 则对任意 $x\in[a,b]$ 有函数 $f|_{[a,x]} \in \mathscr{R}([a,x])$ 定义
 	\[
@@ -5592,23 +5843,220 @@ f, 1 ≤i≤n, (5.3.9)
 	称 $F$ 为 $f$ 的变上限积分.
 \end{definition}
 
-\begin{theorem}{微积分基本定理: 第一部分}
+\begin{theorem}{微积分基本定理: 第一部分}{ftc1}
+	如果 $f \in \mathscr{R}([a,b])$ 且 $f$ 在 $x_0\in[a,b]$ 处连续, 那么 $F$ 在 $x_0$ 处可导且
+	\[
+		F'(x_0) = f(x_0).
+	\]
+\end{theorem}
+\begin{proof}
+	由函数在 $x_0$ 处连续可知, 对于任意 $\varepsilon > 0$ 都存在 $\delta > 0$ 使得对满足 $\lvert x - x_0 \rvert$ 的 $x \in [a,b]$ 都有 $\lvert f(x) - f(x_0) \rvert < \varepsilon$, 现在我们要证明 $\ds \lim_{x - x_0 \to 0}\frac{F(x) - F(x_0)}{x - x_0} = f(x_0)$ 即
+	\[
+		\begin{aligned}
+			\left\lvert \frac{F(x) - F(x_0)}{x - x_0} - f(x_0) \right\rvert &= \left\lvert \frac{\int_a^x f(t)\;dt - \int_a^{x_0} f(t)\;dt}{x - x_0} - f(x_0) \right\rvert\\
+			&= \left\lvert \frac{1}{x - x_0}\int_{x_0}^x f(t)\;dt - \frac{1}{x - x_0}f(x_0)\int_{x_0}^x dt \right\rvert\\
+			&= \left\lvert \frac{1}{x - x_0}\left[\int_{x_0}^x f(t)\;dt - \int_{x_0}^x f(x_0)\;dt\right] \right\rvert\\
+			&= \left\lvert \frac{1}{x - x_0}\left[\int_{x_0}^x (f(t) - f(x_0))\;dt\right] \right\rvert\\
+			&< \frac{\varepsilon}{\lvert x - x_0 \rvert} \left\lvert \int_{x_0}^x dt \right\rvert\\
+			&= \varepsilon.
+		\end{aligned}
+	\]
+\end{proof}
+
+
+\begin{corollary}
+	如果 $f \in \mathscr{C}([a,b])$, 那么 $F\in\D([a,b])$ 且
+	\[
+		F'(x) = f(x),\; x \in [a,b].
+	\]
+\end{corollary}
+
+
+\begin{corollary}
+	如果 $f \in \mathscr{C}([a,b]), \alpha,\beta \in \D([a,b])$, 且 $a \le \alpha(x), \beta \le b$ 那么
+	\[
+		\left( \int_{\alpha(x)}^{\beta(x)}\;f(t) dt \right)' = f(\beta(x)) \beta'(x) - f(\alpha(x))\alpha'(x).
+	\] 
+\end{corollary}
+
+\begin{proof}
+	因为
+	\[
+	\begin{aligned}
+		\left( \int_{\alpha(x)}^{\beta(x)} f(t)\;dt \right)' &= \left( \int_{a}^{\beta(x)} f(t)\;dt \right)' - \left( \int_{a}^{\alpha(x)} f(t)\;dt \right)'\\
+		&= \frac{d}{dx} [F(\beta(x)) - F(\alpha(x))]\\
+		&= F'(\beta(x)) \beta'(x) - F'(\alpha(x)) \alpha'(x)\\
+		&= f(\beta(x)) \beta'(x) - f(\alpha(x)) \alpha'(x)
+	\end{aligned}
+	\]
+\end{proof}
+
+
+\begin{theorem}{微积分基本定理: 第二部分 (Newton-Leibniz 公式)}{ftc2}
+	\ITEMS
+		\item 如果 $f \in \mathscr{C}([a,b])$ 且 $F$ 是 $f$ 在 $[a,b]$ 上的原函数, 那么我们有
+		\[
+			\int_a^b f(x)\;dx = \int_a^b F'(x)\;dx = F(b) - F(a).
+		\]
+		\item 如果 $f$ 是 $[a,b]$ 上的函数满足 $f \in \mathscr{C}([a,b] \setminus \{x_1,\cdots,x_k\})$, $F$ 是 $f$ 在 $[a,b] \setminus \{x_1,\cdots,x_k\}$ 上的原函数且 $F \in \mathscr{C}([a,b])$, 那么上式仍然成立.
+	\ITEME
+\end{theorem}
+\begin{proof}
+	\ITEMS
+	\item 令
+		\[
+			\widetilde{F}(x) := \int_a^x f(t)\;dt,
+		\]
+		则 (这里 $F$ 为原函数)
+		\[
+			F' = f(x) = \widetilde{F}'(x) \quad \Rightarrow \quad F(x) = \widetilde{F}(x) + C.
+		\]
+		从而有
+		\[
+			\int_a^b f(x)\;dx = \widetilde{F}(b) = \widetilde{F}(b) - \widetilde{F}(a) = F(b) - C - F(a) + C = F(b) - F(a). 
+		\]
 	
+	\item 我们不妨假设 $x_1 < \cdots < x_k$ 并延拓为划分 $T: a = x_0 < x_1 < x_2 < \cdots < x_k < \cdots < x_n = b$, 使得 $\lVert T \rVert$ 足够小, 因为 $F \in \mathscr{C}([a,b]) \cap \D((a,b))$,由 \hyperref[thm:lagrange]{Lagrange 中值定理} 可知存在 $\xi_i \in \Delta_i$ 满足
+	\[
+		f(\xi_i) = F'(\xi_i) = \frac{F(x_i)-F(x_{i-1})}{\Delta x_{i}},
+	\]
+	则有
+	\[
+		f(\xi_i) \Delta x_{i} = F(x_i)-F(x_{i-1}), \quad 1 \le i \le n.
+	\]
+	进一步有
+	\[
+	\begin{aligned}
+		\int_a^b f(x)\;dx &= \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n f(\xi_i) \Delta x_{i}\\
+		&= \lim_{\lVert T \rVert \to 0} \sum_{i=1}^n (F(x_i)-F(x_{i-1}))\\
+		&= \lim_{\lVert T \rVert \to 0} (F(b) - F(a))\\
+		&= F(b) - F(a).
+	\end{aligned}
+	\]
+	
+	\ITEME
+\end{proof}
+
+
+\subsection{分部积分法}
+
+\begin{theorem}
+	如果 $u,v \in \mathscr{C}^1([a,b])$, 那么我们有
+	\[
+		\int_a^b u(x)v'(x)\;dx = u(x)v(x)\Big|_a^b - \int_a^b v(x)u'(x)\;dx.
+	\]  
+\end{theorem}
+\begin{proof}
+	因为
+	\[
+		\int_a^b \left[u(x)v'(x) + u'(x)v(x)\right]\;dx =  \int_a^b [u(x)v(x)]'\;dx.
+	\]	
+\end{proof}
+
+\begin{theorem}{带积分型余项的 Taylor 公式}
+	% TODO
 \end{theorem}
 
-\begin{theorem}{微积分基本定理: 第二部分 (Newton-Leibniz 公式)}
-	
+\subsection{变量替换法}
+
+\begin{theorem}
+	\ITEMS
+		\item 假设函数 $\varphi : [\alpha,\beta] \to [a,b]$ 连续可导, $(\varphi(\alpha), \varphi(\beta)) = (a,b)$, 则对任意 $f \in \mathscr{C}([a,b])$, 有 $f(\varphi(t))\varphi'(t) \in \mathscr{C}([\alpha,\beta])$ 和
+		\[
+			\int_a^b f(x)\;dx = \int_\alpha^\beta f(\varphi(t))\varphi'(t)\;dt.
+		\]
+		
+		\item 假设函数 $\varphi : [\alpha,\beta] \to [a,b]$ 连续可导且严格单调, $(\varphi(\alpha), \varphi(\beta)) = (a,b)$ 或 $(b,a)$, 则对任意 $f \in \mathscr{R}([a,b])$, 有 $f(\varphi(t))\varphi'(t) \in \mathscr{R}([\alpha,\beta])$ 和
+		\[
+			\int_{\varphi(\alpha)}^{\varphi(\beta)} f(x)\;dx = \int_\alpha^\beta f(\varphi(t))\varphi'(t)\;dt.
+		\]
+	\ITEME
 \end{theorem}
+\begin{remark}
+	其中 $\mathscr{C}$ 是比 $\mathscr{R}$ 更强的条件, 当条件从 $\mathscr{C}$ 退化为 $\mathscr{R}$ 则 $\varphi$ 需要更强的条件, 即严格单调.
+\end{remark}
+\begin{proof}
+	
+\end{proof}
+
+\subsection{Gronwall 定理}
+% TODO: Gronwall
+
 
 \section{定积分的应用}
 
 \section{反常积分}
 
-反常积分是黎曼积分的自然推广, 一般我们将其分为无穷积分和瑕积分.
+反常积分是 Riemann 积分的自然推广, 一般我们将其分为无穷积分和瑕积分.
 
-\subsection{无穷积分}
+\subsection{无穷积分 (第一类反常积分)}
 
-\subsection{瑕积分}
+\begin{definition}{无穷积分}
+	假设函数 $f : [a,+\infty) \to \R$ 满足如下性质: 对任意 $A > a$ 都有 $f \in \R([a,A])$. 如果极限
+	\[
+		\lim_{A\to+\infty}\int_a^A f(x)\;dx
+	\]
+	存在, 那么称极限值
+	\[
+		\int_a^{+\infty}f(x)\;dx := \lim_{A\to+\infty}\int_a^A f(x)\;dx.
+	\]
+	是函数 $f$ 在 $[a,+\infty)$ 上的无穷积分或第一类反常积分 (Improper integral of type I). 如果进一步该极限值是有限的, 那么称无穷积分收敛; 反之称无穷积分发散.
+\end{definition}
+
+\begin{theorem}{无穷积分收敛的等价刻画}
+	
+\end{theorem}
+
+
+\subsection{瑕积分 (第二类反常积分)}
+
+\begin{definition}{瑕积分}
+	假设函数 $f(x)$ 定义在区间 $[a,b)$ 上且在 $b$ 的任何充分小邻域内无界, 但是在任何闭子区间 $[a,b'] \subset [a,b)$ 上可积. 称
+
+	\[
+		\int_a^b f(x)\;dx := \lim_{b' \to b}\int_a^{b'} f(x)\;dx = \lim_{\eta \to 0+}\int_a^{b - \eta}f(x)\;dx,
+	\]  
+为 $f$ 在 $[a, b)$ 上的瑕积分 (improper integral of type II). 如果极限存在, 那么称瑕积分收敛, 反之称瑕积分发散
+\end{definition}
+
+\begin{theorem}{瑕积分收敛的等价刻画}
+	
+\end{theorem}
+
+
+\begin{example}
+	证明 Poisson 积分
+	\[
+		\int_{-\pi}^{\pi} \frac{1 - r^2}{1 - 2 r \cos x + r^2} dx = 2\pi, \quad 0 < r < 1.
+	\]	
+\end{example}
+
+
+\subsection{审敛法}
+
+以下三种审敛法均为非负反常积分的审敛法.
+
+\begin{theorem}{有界审敛法}
+	
+\end{theorem}
+
+\begin{theorem}{比较审敛法}
+	
+\end{theorem}
+
+\begin{theorem}{Canchy 审敛法}
+	
+\end{theorem}
+
+
+
+\begin{theorem}{Abel-Dirichlet 审敛法}
+	
+\end{theorem}
+
+
+
+\subsection{Euler 积分}
 
 
 % ================================================================================== 
@@ -5913,52 +6361,7 @@ f, 1 ≤i≤n, (5.3.9)
 \hfill
 \begin{minipage}[c]{0.45\textwidth}
 \centering
-\begin{tikzpicture}[
-            >=Stealth,
-            vector/.style={->, thick},
-            scale=0.8
-        ]
-        	\coordinate (A) at (1,0);
-            \coordinate (B) at (1,6);
-            \coordinate (C) at (3,7);
-            \coordinate (D) at (3,1);
-            
-            \coordinate (P1) at (1.5,4);
-            \coordinate (P1') at (2,3.5);
-            \coordinate (g1) at (0,3.5);
-            \coordinate (g2) at (1,3.5);
-            
-            \coordinate (E) at (5,0);
-            \coordinate (F) at (5,6);
-            \coordinate (G) at (7,7);
-            \coordinate (H) at (7,1);
-            
-            \coordinate (P2) at (6.2,5);
-            \coordinate (P2') at (6,3.5);
-            \coordinate (g3) at (5,3.5);
-            
-            \coordinate (P) at (5,4.745);
-            \coordinate (g) at (9,3.5);
-
-            \draw[black] (A) -- (B) -- (C) -- (D) -- (A);
-            \draw[black] (E) -- (F) -- (G) -- (H) -- (E);
-            \draw[black] (P1) -- (P1');
-            \draw[black] (P2) -- (P2');
-            \draw[->, blue] (P2') -- (g);
-            \draw[blue] (g1) -- (g2);
-            \draw[dashed, blue] (g2) -- (P1');
-            \draw[red] (P1') -- (g3);
-            \draw[->, dashed, red] (g3) -- (P2');
-            
-            \draw[orange] (P1) -- (P);
-			\draw[->, dashed, orange] (P) -- (P2);
-
-            \fill (g) circle (0pt) node[below] {$g$};
-            \fill[orange] (P1) circle (1.5pt) node[above] {$P_1$};
-            \fill[red] (P1') circle (1.5pt) node[below] {$P_1'$};
-            \fill[orange] (P2) circle (1.5pt) node[above] {$P_2$};
-            \fill[red] (P2') circle (1.5pt) node[below] {$P_2'$};
-\end{tikzpicture}
+\input{figures/vector-projection}%
 \caption{}
 \end{minipage}
 \FIGE
@@ -6262,47 +6665,7 @@ f, 1 ≤i≤n, (5.3.9)
 \bigskip
 
 \FIGS
-\begin{tikzpicture}[
-            >=Stealth,
-            vec/.style={->, thick},
-            scale=0.8
-        ]
-        	\coordinate (A) at (0,0,0);
-            \coordinate (B) at (10,0,0);
-            \coordinate (C) at (10,0,10);
-            \coordinate (D) at (0,0,10);
-            
-            \coordinate (o) at (3.5,0,3.5);
-            \coordinate (c) at (3.5,3,3.5);
-            
-            \coordinate (a) at (7.3,2.5,5);
-            \coordinate (b) at (8.5,5,2);
-            
-            \coordinate (a') at (7.3,0,5);
-            \coordinate (b') at (8.5,0,2);
-            
-            \coordinate (a'') at (2,0,7.3);
-            \coordinate (b'') at (5,0,8.5);
-            
-
-            \draw[black] (A) -- (B) node[above right] {$\alpha$} -- (C) -- (D) -- (A);
-            
-            \draw[vec, black] (o) -- (c) node[left] {$\ve c$};
-            \draw[vec, red] (o) -- (a) node[right] {$\ve a$};
-            \draw[vec, green!60!black] (o) -- (b) node[midway, above left] {$\ve a' + \ve b'$};
-            \draw[vec, blue] (a) -- (b) node[right] {$\ve b$};
-            
-            \draw[dashed, orange] (a) -- (a');
-            \draw[dashed, orange] (b) -- (b');
-            
-            \draw[vec, red] (o) -- (a') node[right] {$\ve a'$};
-            \draw[vec, green!60!black] (o) -- (b') node[midway, above] {$\ve a' + \ve b'$};
-            \draw[vec, blue] (a') -- (b') node[right] {$\ve b'$};
-            
-            \draw[vec, red] (o) -- (a'') node[above left] {$\ve a' \times \ve c$};
-            \draw[vec, green!60!black] (o) -- (b'') node[midway, right] {$(\ve a' + \ve b') \times \ve c$};
-            \draw[vec, blue] (a'') -- (b'') node[right] {$\ve b' \times \ve c$};
-\end{tikzpicture}
+\input{figures/cross-product-distributivity}%
 \caption{}
 \label{fig:ope1}
 \FIGE
@@ -7050,74 +7413,7 @@ h(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_m x^m.
 \end{definition}
 
 \FIGS
-\begin{tikzpicture}[
-    % 斜投影：x 向右，y 向右上，z 向上
-    x={(1.2cm,0cm)},
-    y={(0.6cm,0.4cm)},
-    z={(0cm,1.2cm)},
-    >=Stealth,
-    line cap=round,
-    line join=round,
-    axis/.style={->, thick, black},
-    negaxis/.style={dashed, thick, gray!65},
-    ocnlabel/.style={
-        font=\small\bfseries,
-        fill=white, fill opacity=0.85, text opacity=1,
-        inner sep=1.5pt, rounded corners=1.5pt
-    },
-    scale=0.8
-]
-
-\def\L{2.4}   % 坐标平面半边长
-\def\A{3.6}   % 坐标轴长度
-
-% ================= 三个坐标平面 =================
-
-% z = 0 ： xOy 平面（红色）
-\fill[red!18, opacity=0.15]
-    (-\L,-\L,0) -- (\L,-\L,0) -- (\L,\L,0) -- (-\L,\L,0) -- cycle;
-\draw[red!55!black, thin]
-    (-\L,-\L,0) -- (\L,-\L,0) -- (\L,\L,0) -- (-\L,\L,0) -- cycle;
-
-% x = 0 ： yOz 平面（绿色）
-\fill[green!20, opacity=0.15]
-    (0,-\L,-\L) -- (0,\L,-\L) -- (0,\L,\L) -- (0,-\L,\L) -- cycle;
-\draw[green!45!black, thin]
-    (0,-\L,-\L) -- (0,\L,-\L) -- (0,\L,\L) -- (0,-\L,\L) -- cycle;
-
-% y = 0 ： zOx 平面（蓝色）
-\fill[blue!18, opacity=0.15]
-    (-\L,0,-\L) -- (\L,0,-\L) -- (\L,0,\L) -- (-\L,0,\L) -- cycle;
-\draw[blue!55!black, thin]
-    (-\L,0,-\L) -- (\L,0,-\L) -- (\L,0,\L) -- (-\L,0,\L) -- cycle;
-
-% ================= 坐标轴 =================
-
-% 负半轴（虚线）
-\draw[negaxis] (-\A,0,0) -- (0,0,0);
-\draw[negaxis] (0,-\A,0) -- (0,0,0);
-\draw[negaxis] (0,0,-\A) -- (0,0,0);
-
-% 正半轴（实线）
-\draw[axis] (0,0,0) -- (\A,0,0) node[anchor=west]  {$x$};
-\draw[axis] (0,0,0) -- (0,\A,0) node[anchor=south west] {$y$};
-\draw[axis] (0,0,0) -- (0,0,\A) node[anchor=south] {$z$};
-
-% 原点
-\fill (0,0,0) circle (1.5pt);
-\node[anchor=north east, inner sep=2pt, font=\small] at (0,0,0) {$O$};
-
-% ================= 八个卦限标注 =================
-\node[ocnlabel] at ( 1.8,  1.8,  1.8) {I};
-\node[ocnlabel] at (-1.8,  1.5,  1.8) {II};
-\node[ocnlabel] at (-1.8, -1.8,  1.8) {III};
-\node[ocnlabel] at ( 2.2, -1.6,  2.2) {IV};
-\node[ocnlabel] at ( 1.8,  1.8, -1.8) {V};
-\node[ocnlabel] at (-2.2,  1.6, -2.2) {VI};
-\node[ocnlabel] at (-1.8, -1.8, -1.8) {VII};
-\node[ocnlabel] at ( 1.8, -1.8, -1.8) {VIII};
-
-\end{tikzpicture}
+\input{figures/octants}%
 \caption{卦限}
 \FIGE
 
@@ -7620,56 +7916,7 @@ h(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_m x^m.
 
 
 \FIGS
-\begin{tikzpicture}[
-            >=Stealth,
-            vec/.style={->, thick},
-            scale=1.3
-        ]
-        	\coordinate (P1) at (1,0,2);
-            \coordinate (S1) at (3,0,3);
-            \coordinate (a) at (4,0,1);
-            \coordinate (b) at (2,0,0);
-            
-            \coordinate (P2) at (1,2,-0.5);
-            \coordinate (S2) at (2,2,-2.5);
-           	\coordinate (c) at (4,2,-1.5);
-			\coordinate (d) at (3,2,0.5);
-			
-			\coordinate (o) at (0,0,1.5);
-			\coordinate (o') at (0,2,1.5);
-			\coordinate	(r) at (0.1,0.1,1.55);
-			\coordinate	(r1) at (0.1,0,1.55);
-			\coordinate	(r2) at (0,0.1,1.5);
-			\coordinate (r') at (0.05,1.9,1.4);
-			\coordinate (r'1) at (0.05,2,1.4);
-			\coordinate (r'2) at (0,1.9,1.5);
-			
-			
-			\coordinate (l) at (4,0,3.5);
-			\coordinate (l') at (2.5,2,-3.5);
-			
-			\draw[black] (o) -- (l) node[below right] {$l_1$};
-			\draw[black] (o') -- (l') node[above left] {$l_2$};
-			
-			
-            \draw[vec, blue] (P1) -- (S1) node[near end, below] {$\ve s_1$};
-            \draw[black] (S1) -- (a);
-            \draw[dashed, black] (a) -- (b) -- (P1);
-            
-            \draw[vec, red] (P2) -- (S2) node[near end, above left] {$\ve s_2$};
-            \draw[black] (S2) -- (c);
-            \draw[black] (c) -- (d) -- (P2);
-            
-            \draw[black] (P1) -- (P2);
-            \draw[black] (S1) -- (d);
-            \draw[black] (a) -- (c);
-            \draw[dashed, black] (b) -- (S2);
-            
-            \draw[green!60!black] (o) -- (o') node[midway, left] {$d$};
-            
-            \draw[black] (r1) -- (r) -- (r2);
-            \draw[black] (r'1) -- (r') -- (r'2);          
-\end{tikzpicture}
+\input{figures/skew-lines-distance}%
 \caption{异面直线距离}
 \FIGE
 

@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+            >=Stealth,
+            vec/.style={->, thick},
+            scale=0.8
+        ]
+        	\coordinate (A) at (0,0,0);
+            \coordinate (B) at (10,0,0);
+            \coordinate (C) at (10,0,10);
+            \coordinate (D) at (0,0,10);
+            
+            \coordinate (o) at (3.5,0,3.5);
+            \coordinate (c) at (3.5,3,3.5);
+            
+            \coordinate (a) at (7.3,2.5,5);
+            \coordinate (b) at (8.5,5,2);
+            
+            \coordinate (a') at (7.3,0,5);
+            \coordinate (b') at (8.5,0,2);
+            
+            \coordinate (a'') at (2,0,7.3);
+            \coordinate (b'') at (5,0,8.5);
+            
+
+            \draw[black] (A) -- (B) node[above right] {$\alpha$} -- (C) -- (D) -- (A);
+            
+            \draw[vec, black] (o) -- (c) node[left] {$\ve c$};
+            \draw[vec, red] (o) -- (a) node[right] {$\ve a$};
+            \draw[vec, green!60!black] (o) -- (b) node[midway, above left] {$\ve a' + \ve b'$};
+            \draw[vec, blue] (a) -- (b) node[right] {$\ve b$};
+            
+            \draw[dashed, orange] (a) -- (a');
+            \draw[dashed, orange] (b) -- (b');
+            
+            \draw[vec, red] (o) -- (a') node[right] {$\ve a'$};
+            \draw[vec, green!60!black] (o) -- (b') node[midway, above] {$\ve a' + \ve b'$};
+            \draw[vec, blue] (a') -- (b') node[right] {$\ve b'$};
+            
+            \draw[vec, red] (o) -- (a'') node[above left] {$\ve a' \times \ve c$};
+            \draw[vec, green!60!black] (o) -- (b'') node[midway, right] {$(\ve a' + \ve b') \times \ve c$};
+            \draw[vec, blue] (a'') -- (b'') node[right] {$\ve b' \times \ve c$};
+\end{tikzpicture}

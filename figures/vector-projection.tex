@@ -1,0 +1,46 @@
+\begin{tikzpicture}[
+            >=Stealth,
+            vector/.style={->, thick},
+            scale=0.8
+        ]
+        	\coordinate (A) at (1,0);
+            \coordinate (B) at (1,6);
+            \coordinate (C) at (3,7);
+            \coordinate (D) at (3,1);
+            
+            \coordinate (P1) at (1.5,4);
+            \coordinate (P1') at (2,3.5);
+            \coordinate (g1) at (0,3.5);
+            \coordinate (g2) at (1,3.5);
+            
+            \coordinate (E) at (5,0);
+            \coordinate (F) at (5,6);
+            \coordinate (G) at (7,7);
+            \coordinate (H) at (7,1);
+            
+            \coordinate (P2) at (6.2,5);
+            \coordinate (P2') at (6,3.5);
+            \coordinate (g3) at (5,3.5);
+            
+            \coordinate (P) at (5,4.745);
+            \coordinate (g) at (9,3.5);
+
+            \draw[black] (A) -- (B) -- (C) -- (D) -- (A);
+            \draw[black] (E) -- (F) -- (G) -- (H) -- (E);
+            \draw[black] (P1) -- (P1');
+            \draw[black] (P2) -- (P2');
+            \draw[->, blue] (P2') -- (g);
+            \draw[blue] (g1) -- (g2);
+            \draw[dashed, blue] (g2) -- (P1');
+            \draw[red] (P1') -- (g3);
+            \draw[->, dashed, red] (g3) -- (P2');
+            
+            \draw[orange] (P1) -- (P);
+			\draw[->, dashed, orange] (P) -- (P2);
+
+            \fill (g) circle (0pt) node[below] {$g$};
+            \fill[orange] (P1) circle (1.5pt) node[above] {$P_1$};
+            \fill[red] (P1') circle (1.5pt) node[below] {$P_1'$};
+            \fill[orange] (P2) circle (1.5pt) node[above] {$P_2$};
+            \fill[red] (P2') circle (1.5pt) node[below] {$P_2'$};
+\end{tikzpicture}

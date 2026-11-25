@@ -1,0 +1,68 @@
+\begin{tikzpicture}[
+    % 斜投影：x 向右，y 向右上，z 向上
+    x={(1.2cm,0cm)},
+    y={(0.6cm,0.4cm)},
+    z={(0cm,1.2cm)},
+    >=Stealth,
+    line cap=round,
+    line join=round,
+    axis/.style={->, thick, black},
+    negaxis/.style={dashed, thick, gray!65},
+    ocnlabel/.style={
+        font=\small\bfseries,
+        fill=white, fill opacity=0.85, text opacity=1,
+        inner sep=1.5pt, rounded corners=1.5pt
+    },
+    scale=0.8
+]
+
+\def\L{2.4}   % 坐标平面半边长
+\def\A{3.6}   % 坐标轴长度
+
+% ================= 三个坐标平面 =================
+
+% z = 0 ： xOy 平面（红色）
+\fill[red!18, opacity=0.15]
+    (-\L,-\L,0) -- (\L,-\L,0) -- (\L,\L,0) -- (-\L,\L,0) -- cycle;
+\draw[red!55!black, thin]
+    (-\L,-\L,0) -- (\L,-\L,0) -- (\L,\L,0) -- (-\L,\L,0) -- cycle;
+
+% x = 0 ： yOz 平面（绿色）
+\fill[green!20, opacity=0.15]
+    (0,-\L,-\L) -- (0,\L,-\L) -- (0,\L,\L) -- (0,-\L,\L) -- cycle;
+\draw[green!45!black, thin]
+    (0,-\L,-\L) -- (0,\L,-\L) -- (0,\L,\L) -- (0,-\L,\L) -- cycle;
+
+% y = 0 ： zOx 平面（蓝色）
+\fill[blue!18, opacity=0.15]
+    (-\L,0,-\L) -- (\L,0,-\L) -- (\L,0,\L) -- (-\L,0,\L) -- cycle;
+\draw[blue!55!black, thin]
+    (-\L,0,-\L) -- (\L,0,-\L) -- (\L,0,\L) -- (-\L,0,\L) -- cycle;
+
+% ================= 坐标轴 =================
+
+% 负半轴（虚线）
+\draw[negaxis] (-\A,0,0) -- (0,0,0);
+\draw[negaxis] (0,-\A,0) -- (0,0,0);
+\draw[negaxis] (0,0,-\A) -- (0,0,0);
+
+% 正半轴（实线）
+\draw[axis] (0,0,0) -- (\A,0,0) node[anchor=west]  {$x$};
+\draw[axis] (0,0,0) -- (0,\A,0) node[anchor=south west] {$y$};
+\draw[axis] (0,0,0) -- (0,0,\A) node[anchor=south] {$z$};
+
+% 原点
+\fill (0,0,0) circle (1.5pt);
+\node[anchor=north east, inner sep=2pt, font=\small] at (0,0,0) {$O$};
+
+% ================= 八个卦限标注 =================
+\node[ocnlabel] at ( 1.8,  1.8,  1.8) {I};
+\node[ocnlabel] at (-1.8,  1.5,  1.8) {II};
+\node[ocnlabel] at (-1.8, -1.8,  1.8) {III};
+\node[ocnlabel] at ( 2.2, -1.6,  2.2) {IV};
+\node[ocnlabel] at ( 1.8,  1.8, -1.8) {V};
+\node[ocnlabel] at (-2.2,  1.6, -2.2) {VI};
+\node[ocnlabel] at (-1.8, -1.8, -1.8) {VII};
+\node[ocnlabel] at ( 1.8, -1.8, -1.8) {VIII};
+
+\end{tikzpicture}
